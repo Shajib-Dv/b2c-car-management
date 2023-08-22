@@ -1,11 +1,11 @@
 import React from 'react';
 
-const UsedCar = () => {
+const Cover = () => {
     return (
         <div>
-            <h1>used cars</h1>
+            <h1>cover</h1>
         </div>
     );
 };
 
-export default UsedCar;
+export default Cover;
