@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Footer = () => {
+const UsedCar = () => {
     return (
         <div>
-            <h1>footer</h1>
+            <h1>used cars</h1>
         </div>
     );
 };
 
-export default Footer;
+export default UsedCar;
