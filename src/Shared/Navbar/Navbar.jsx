@@ -9,7 +9,7 @@ const Navbar = () => {
         <div className='mt-5'>
             <div className='flex justify-between items-center mb-2'>
                 <div className=''>
-                    <img src="https://cdn.discordapp.com/attachments/1094651413235253289/1143774205796692061/Group_560.png" alt="" />
+                    <Link to="/home"><img src="https://cdn.discordapp.com/attachments/1094651413235253289/1143774205796692061/Group_560.png" alt="" /></Link>
                 </div>
                 <div className=''>
 
