@@ -111,7 +111,6 @@ const ByMakeNPre = () => {
                                 <p className='mb-8 mt-5 text-sm'>We test each car on 150+ points, <br /> check RTO, finance and service <br /> history, AND give a 6 month <br /> warranty!</p>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
