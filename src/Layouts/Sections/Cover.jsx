@@ -15,7 +15,7 @@ const Cover = () => {
                     </div>
                 </div>
                 <div className=''>
-                    <div className='bg-[#FF7D05] rounded-lg relative'>
+                    <div className='bg-[#FF7D05] rounded-lg '>
                         <img className='' src="https://cdn.discordapp.com/attachments/1094651413235253289/1143837253987209297/image_25.png" alt="" />
                     </div>
                 </div>
@@ -42,7 +42,7 @@ const Cover = () => {
                 </select>
                 <button className='border bg-[#00A541] text-white font-medium px-7 py-2 rounded flex items-center'> <span className='text-lg'><BiSearch></BiSearch></span> Search Vehicle</button>
             </div>
-            <div className='flex mt-40 gap-10 justify-between w'>
+            <div className='flex mt-40 gap-10 justify-between h-10'>
                 <img className='' src="https://media.discordapp.net/attachments/1094651413235253289/1143862788163371149/image_10.png" alt="" />
                 <img className='' src="https://media.discordapp.net/attachments/1094651413235253289/1143862787261612084/image_7.png" alt="" />
                 <img className='' src="https://media.discordapp.net/attachments/1094651413235253289/1143862787743948870/image_8.png" alt="" />
