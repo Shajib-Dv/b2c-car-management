@@ -15,7 +15,7 @@ const Cover = () => {
                     </div>
                 </div>
                 <div className=''>
-                    <div className='bg-[#FF7D05] rounded-lg relative'>
+                    <div className='bg-[#FF7D05] rounded-lg '>
                         <img className='' src="https://cdn.discordapp.com/attachments/1094651413235253289/1143837253987209297/image_25.png" alt="" />
                     </div>
                 </div>
