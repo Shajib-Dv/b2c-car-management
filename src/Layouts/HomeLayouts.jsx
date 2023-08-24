@@ -5,6 +5,7 @@ import Footer from '../Shared/Footer/Footer';
 import Cover from './Sections/Cover';
 import FeelNBrowseByBody from './Sections/FeelNBrowseByBody';
 import Ads from './Sections/Ads';
+import ByMakeNPre from './Sections/ByMakeNPre';
 
 const HomeLayouts = () => {
     return (
@@ -12,6 +13,8 @@ const HomeLayouts = () => {
             <Navbar></Navbar>
             <Cover></Cover>
             <FeelNBrowseByBody></FeelNBrowseByBody>
+            <Ads></Ads>
+            <ByMakeNPre></ByMakeNPre>
             <Ads></Ads>
             <Outlet></Outlet>
             <Footer></Footer>
