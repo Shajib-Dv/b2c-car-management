@@ -7,6 +7,7 @@ import FeelNBrowseByBody from './Sections/FeelNBrowseByBody';
 import Ads from './Sections/Ads';
 import ByMakeNPre from './Sections/ByMakeNPre';
 import SellingCar from './Sections/SellingCar';
+import Reviews from './Sections/Reviews';
 
 const HomeLayouts = () => {
     return (
@@ -18,6 +19,7 @@ const HomeLayouts = () => {
             <ByMakeNPre></ByMakeNPre>
             <Ads></Ads>
             <SellingCar></SellingCar>
+            <Reviews></Reviews>
             <Outlet></Outlet>
             <Footer></Footer>
         </div>
