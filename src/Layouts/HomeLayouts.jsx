@@ -6,7 +6,9 @@ import Cover from './Sections/Cover';
 import FeelNBrowseByBody from './Sections/FeelNBrowseByBody';
 import Ads from './Sections/Ads';
 import ByMakeNPre from './Sections/ByMakeNPre';
-import SellingACar from './Sections/SellingACar';
+import SellingCar from './Sections/SellingCar';
+import Reviews from './Sections/Reviews';
+import FooterCoaver from './Sections/FooterCoaver';
 
 const HomeLayouts = () => {
     return (
@@ -17,11 +19,13 @@ const HomeLayouts = () => {
             <Ads></Ads>
             <ByMakeNPre></ByMakeNPre>
             <Ads></Ads>
-            <SellingACar></SellingACar>
+            <SellingCar></SellingCar>
+            <Reviews></Reviews>
+            <FooterCoaver></FooterCoaver>
             <Outlet></Outlet>
             <Footer></Footer>
         </div>
     );
 };
 
-export default HomeLayouts;
+export default HomeLayouts;  
