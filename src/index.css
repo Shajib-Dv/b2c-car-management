@@ -25,3 +25,14 @@
 .swiper-button-prev::after {
   content: "\21FD" !important;
 }
+
+.title {
+  @apply text-2xl font-bold;
+}
+
+.btn-cmn {
+  @apply btn bg-transparent capitalize hover:bg-transparent text-gray-400 font-semibold;
+}
+.btn-act {
+  @apply btn hover:bg-[#00a542c2] bg-[#00a541] text-white;
+}

@@ -1,15 +1,9 @@
 /** @format */
 
-import React, { useRef, useState } from "react";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-// import required modules
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 const carsInfo = [
@@ -51,9 +45,6 @@ const BodyStyleSlider = () => {
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
-        pagination={{
-          clickable: true,
-        }}
         loop={true}
         autoplay={true}
         navigation={true}
@@ -71,7 +62,7 @@ const BodyStyleSlider = () => {
             spaceBetween: 50,
           },
         }}
-        modules={[Pagination, Navigation, Autoplay]}
+        modules={[Navigation, Autoplay]}
         className="mySwiper"
       >
         {carsInfo.map((car) => (
