@@ -4,9 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.swiper-wrapper {
+  @apply md:ml-10;
+}
+
 .swiper-pagination-bullet-active {
   background-color: #00a541 !important;
 }
+
 .swiper-button-next::after,
 .swiper-button-prev::after {
   background-color: #00a541;
@@ -35,4 +40,15 @@
 }
 .btn-act {
   @apply btn hover:bg-[#00a542c2] bg-[#00a541] text-white;
+}
+
+.btn-details {
+  @apply border-2 border-[#00a542c2] rounded-md px-4 py-2;
+}
+
+li::before {
+  content: "•";
+  color: #00a542c2;
+  margin-right: 10px;
+  font-size: 20px;
 }

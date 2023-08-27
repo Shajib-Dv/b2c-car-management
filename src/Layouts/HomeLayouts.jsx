@@ -11,7 +11,10 @@ import ByMakeNPre from "./Sections/ByMakeNPre";
 import SellingCar from "./Sections/SellingCar";
 import Reviews from "./Sections/Reviews";
 import FooterCoaver from "./Sections/FooterCoaver";
-import RecommendedCarsSection from "../Page/RecommendedCars/layout/RecommendedCarsSection";
+import RecommendedCarsSection from "../sliders/RecommendedCars/RecommendedCarsSection";
+import MostSearchedCarSection from "../sliders/MostSearchedCar/MostSearchedCarSection";
+import UsedCarsByBudget from "../sliders/UsedCarsByBudget/UsedCarsByBudget";
+import CompareCars from "../sliders/CompareCars/CompareCars";
 
 const HomeLayouts = () => {
   return (
@@ -21,8 +24,11 @@ const HomeLayouts = () => {
       <RecommendedCarsSection />
       <FeelNBrowseByBody></FeelNBrowseByBody>
       <Ads></Ads>
+      <MostSearchedCarSection />
       <ByMakeNPre></ByMakeNPre>
       <Ads></Ads>
+      <UsedCarsByBudget />
+      <CompareCars />
       <SellingCar></SellingCar>
       <Reviews></Reviews>
       <FooterCoaver></FooterCoaver>

@@ -4,7 +4,7 @@ import { useState } from "react";
 import RecommendedCarsSlider from "./RecommendedCarsSlider";
 
 const RecommendedCarsSection = () => {
-  const [select, setSelect] = useState("A");
+  const [select, setSelect] = useState("Volkswagen");
 
   const handleOptionSelect = (opt) => {
     setSelect(opt);
@@ -14,46 +14,46 @@ const RecommendedCarsSection = () => {
     <div className="my-14 md:px-9">
       <div className="flex items-center justify-between">
         <h2 className="title">Recommended Cars For You</h2>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-3">
           <button
-            onClick={() => handleOptionSelect("A")}
-            className={select === "A" ? "btn-act" : "btn-cmn"}
+            onClick={() => handleOptionSelect("Volkswagen")}
+            className={select === "Volkswagen" ? "btn-act" : "btn-cmn"}
           >
             Volkswagen
           </button>
           <button
-            onClick={() => handleOptionSelect("B")}
-            className={select === "B" ? "btn-act" : "btn-cmn"}
+            onClick={() => handleOptionSelect("Audi")}
+            className={select === "Audi" ? "btn-act" : "btn-cmn"}
           >
             Audi
           </button>
           <button
-            onClick={() => handleOptionSelect("C")}
-            className={select === "C" ? "btn-act" : "btn-cmn"}
+            onClick={() => handleOptionSelect("Ford")}
+            className={select === "Ford" ? "btn-act" : "btn-cmn"}
           >
             Ford
           </button>
           <button
-            onClick={() => handleOptionSelect("D")}
-            className={select === "D" ? "btn-act" : "btn-cmn"}
+            onClick={() => handleOptionSelect("BMW")}
+            className={select === "BMW" ? "btn-act" : "btn-cmn"}
           >
             BMW
           </button>
           <button
-            onClick={() => handleOptionSelect("E")}
-            className={select === "E" ? "btn-act" : "btn-cmn"}
+            onClick={() => handleOptionSelect("Chevrolet")}
+            className={select === "Chevrolet" ? "btn-act" : "btn-cmn"}
           >
             Chevrolet
           </button>
           <button
-            onClick={() => handleOptionSelect("F")}
-            className={select === "F" ? "btn-act" : "btn-cmn"}
+            onClick={() => handleOptionSelect("Honda")}
+            className={select === "Honda" ? "btn-act" : "btn-cmn"}
           >
             Honda
           </button>
         </div>
       </div>
-      <div className="my-6 ">
+      <div className="my-6">
         <RecommendedCarsSlider />
       </div>
     </div>
