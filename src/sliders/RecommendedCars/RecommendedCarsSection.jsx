@@ -11,10 +11,14 @@ const RecommendedCarsSection = () => {
   };
 
   return (
-    <div className="my-14 md:px-9">
-      <div className="flex items-center justify-between">
+    <div className="my-14 md:px-9 p-5 lg:p-0">
+      <div className="lg:flex items-center justify-between">
         <h2 className="title">Recommended Cars For You</h2>
+<<<<<<< HEAD:src/sliders/RecommendedCars/RecommendedCarsSection.jsx
         <div className="flex items-center gap-3">
+=======
+        <div className="lg:flex items-center gap-5">
+>>>>>>> 205520d09531e4668614260de25934f1d17d54b3:src/Page/RecommendedCars/layout/RecommendedCarsSection.jsx
           <button
             onClick={() => handleOptionSelect("Volkswagen")}
             className={select === "Volkswagen" ? "btn-act" : "btn-cmn"}
