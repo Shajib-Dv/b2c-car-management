@@ -137,7 +137,7 @@ const UsedCarsByBudgetSlider = () => {
                 Lorem ipsum dolor sit amet, consectetur adipisicing
               </p>
 
-              <ul className="text-xs list-none flex flex-wrap">
+              <ul className="used-ul text-xs list-none flex flex-wrap">
                 {car?.features?.map((li, idx) => (
                   <li key={idx}>{li}</li>
                 ))}

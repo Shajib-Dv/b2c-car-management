@@ -46,7 +46,7 @@
   @apply border-2 border-[#00a542c2] rounded-md px-4 py-2;
 }
 
-li::before {
+.used-ul > li::before {
   content: "•";
   color: #00a542c2;
   margin-right: 10px;
