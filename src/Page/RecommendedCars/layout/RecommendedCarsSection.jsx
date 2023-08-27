@@ -11,10 +11,10 @@ const RecommendedCarsSection = () => {
   };
 
   return (
-    <div className="my-14 md:px-9">
-      <div className="flex items-center justify-between">
+    <div className="my-14 md:px-9 p-5 lg:p-0">
+      <div className="lg:flex items-center justify-between">
         <h2 className="title">Recommended Cars For You</h2>
-        <div className="flex items-center gap-5">
+        <div className="lg:flex items-center gap-5">
           <button
             onClick={() => handleOptionSelect("A")}
             className={select === "A" ? "btn-act" : "btn-cmn"}

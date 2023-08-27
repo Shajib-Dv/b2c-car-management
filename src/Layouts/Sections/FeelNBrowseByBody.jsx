@@ -8,7 +8,7 @@ import BodyStyleSlider from "../../Shared/SectionSliders/BodyStyleSlider/BodySty
 const FeelNBrowseByBody = () => {
   return (
     <div className="">
-      <div className="flex items-center justify-between lg:pr-36 py-5">
+      <div className="lg:flex items-center justify-between lg:pr-36 py-5 px-5 lg:px-0">
         <div>
           <img
             src="https://cdn.discordapp.com/attachments/1094651413235253289/1144124572556349490/Land-Rover-New-Range-Rover-Evoque-Exterior-170043_2.png"

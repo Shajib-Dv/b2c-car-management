@@ -3,11 +3,11 @@ import { AiFillStar } from 'react-icons/ai';
 
 const Reviews = () => {
     return (
-        <div className='pb-32'>
+        <div className='lg:pb-32 '>
             <div className='lg:px-32 mb-16 font-bold text-3xl'>
                 <h1 >Recent reviews</h1>
             </div>
-            <div className='flex justify-center gap-10'>
+            <div className='lg:flex justify-center gap-10 p-5 lg:p-0'>
                 <div>
                     <img src="https://cdn.discordapp.com/attachments/1094651413235253289/1144634047151222924/Img.png" alt="" />
                     <div className='px-3 mt-2'>

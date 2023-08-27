@@ -18,14 +18,14 @@ const HomeLayouts = () => {
     <div>
       <Navbar></Navbar>
       <Cover></Cover>
-      {/* <RecommendedCarsSection />
+      <RecommendedCarsSection />
       <FeelNBrowseByBody></FeelNBrowseByBody>
       <Ads></Ads>
       <ByMakeNPre></ByMakeNPre>
       <Ads></Ads>
       <SellingCar></SellingCar>
       <Reviews></Reviews>
-      <FooterCoaver></FooterCoaver> */}
+      <FooterCoaver></FooterCoaver>
       <Outlet></Outlet>
       <Footer></Footer>
     </div>

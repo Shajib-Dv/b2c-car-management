@@ -4,8 +4,8 @@ import React from "react";
 
 const SellingCar = () => {
   return (
-    <div className="py-20">
-      <div className="flex justify-center items-center gap-16">
+    <div className="lg:py-20">
+      <div className="lg:flex justify-center items-center gap-16 p-5 lg:p-0">
         <div className="flex flex-col gap-5 items-start">
           <h1 className="text-2xl font-bold">Selling a car? We’re buying!</h1>
           <p>
