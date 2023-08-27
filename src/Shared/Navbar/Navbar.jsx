@@ -6,14 +6,14 @@ import './../css/custom.css'
 
 const Navbar = () => {
     return (
-        <div className='mt-5'>
-            <div className='flex justify-between items-center mb-2'>
-                <div className=''>
+        <div className='mt-5 '>
+            <div className='lg:flex justify-between items-center mb-2 px-2 lg:px-0 '>
+                <div className='flex justify-center'>
                     <Link to="/home"><img src="https://cdn.discordapp.com/attachments/1094651413235253289/1143774205796692061/Group_560.png" alt="" /></Link>
                 </div>
                 <div className=''>
 
-                    <form className='cWidth'>
+                    <form className='lg:w-96 mb-2 mt-2 lg:mb-0 lg:mt-0'>
                         <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -25,7 +25,7 @@ const Navbar = () => {
                     </form>
 
                 </div>
-                <div className='flex gap-3 items-center'>
+                <div className='gap-3 items-center flex justify-center'>
                     <img src="https://cdn.discordapp.com/attachments/1094651413235253289/1143777982188630077/Resting.png" alt="" />
                     <div className='flex'>
                         <Link to="/newCar">Login</Link>
