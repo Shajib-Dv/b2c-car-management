@@ -8,6 +8,8 @@ import CompareCars from "../Page/CompareCars/CompareCars";
 import NewsAndReview from "../Page/NewsAndReview/NewsAndReview";
 import More from "../Page/More/More";
 import Layouts from "../Layouts/Layouts";
+import Login from "../Page/Users/Login/Login";
+import Register from "../Page/Users/Register/Register";
 
 const router = createBrowserRouter([
     {
@@ -43,6 +45,14 @@ const router = createBrowserRouter([
             {
                 path: '/more',
                 element: <More></More>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
             }
         ]
     },

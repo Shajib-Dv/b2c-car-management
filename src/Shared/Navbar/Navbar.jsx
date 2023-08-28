@@ -28,9 +28,9 @@ const Navbar = () => {
                 <div className='gap-3 items-center flex justify-center'>
                     <img src="https://cdn.discordapp.com/attachments/1094651413235253289/1143777982188630077/Resting.png" alt="" />
                     <div className='flex'>
-                        <Link to="/newCar">Login</Link>
+                        <Link to="/login">Login</Link>
                         <p>/</p>
-                        <Link to="/newCar">Register</Link>
+                        <Link to="/register">Register</Link>
                     </div>
                 </div>
             </div>
