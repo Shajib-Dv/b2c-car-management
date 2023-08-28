@@ -49,7 +49,7 @@ const RecommendedCarsSlider = () => {
     <>
       <Swiper
         slidesPerView={1}
-        spaceBetween={0}
+        spaceBetween={4}
         loop={true}
         autoplay={true}
         navigation={true}
@@ -59,7 +59,7 @@ const RecommendedCarsSlider = () => {
             spaceBetween: 20,
           },
           768: {
-            slidesPerView: 3,
+            slidesPerView: 2,
             spaceBetween: 30,
           },
           1024: {
@@ -75,7 +75,7 @@ const RecommendedCarsSlider = () => {
             key={car.id}
             className="ml-2 bg-base-100 border rounded-md p-4"
           >
-            <img src={car.img} alt="" />
+            <img src={car.img} alt="car" className="w-full md:h-64 bg-cover" />
             <div className="text-black">
               <h1 className="font-bold text-xl">{car.name}</h1>
               <p className="text-xl font-light">Rs {car.price} Lakh</p>

@@ -75,9 +75,9 @@ const MostSearchedCarSlider = () => {
         {carsInfo.map((car) => (
           <SwiperSlide
             key={car.id}
-            className="ml-2 bg-base-100 border rounded-md p-4"
+            className="md:ml-2 bg-base-100 border rounded-md p-4"
           >
-            <img src={car.img} alt="" />
+            <img src={car.img} alt="car" className="w-full md:h-64 bg-cover" />
             <div className="text-black">
               <h1 className="font-bold text-xl">{car.name}</h1>
               <p className="text-xl font-light">

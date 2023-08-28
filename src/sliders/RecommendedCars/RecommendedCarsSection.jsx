@@ -14,7 +14,7 @@ const RecommendedCarsSection = () => {
     <div className="my-14 md:px-9 p-5 lg:p-0">
       <div className="lg:flex items-center justify-between">
         <h2 className="title">Recommended Cars For You</h2>
-        <div className="flex items-center gap-3">
+        <div className="lg:flex items-center gap-3">
           <button
             onClick={() => handleOptionSelect("Volkswagen")}
             className={select === "Volkswagen" ? "btn-act" : "btn-cmn"}

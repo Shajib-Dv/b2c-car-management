@@ -11,10 +11,10 @@ const MostSearchedCarSection = () => {
   };
 
   return (
-    <div className="my-14 md:px-9">
-      <div className="flex items-center justify-between">
+    <div className="my-14 md:px-9 px-5">
+      <div className="lg:flex items-center justify-between">
         <h2 className="title">The most searched cars</h2>
-        <div className="flex items-center gap-3">
+        <div className="lg:flex items-center gap-3">
           <button
             onClick={() => handleOptionSelect("Volkswagen")}
             className={select === "Volkswagen" ? "btn-act" : "btn-cmn"}

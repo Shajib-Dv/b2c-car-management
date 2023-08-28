@@ -98,8 +98,8 @@ const UsedCarsByBudgetSlider = () => {
   return (
     <>
       <Swiper
-        slidesPerView={4}
-        spaceBetween={0}
+        slidesPerView={1}
+        spaceBetween={4}
         loop={true}
         autoplay={true}
         navigation={true}
@@ -109,7 +109,7 @@ const UsedCarsByBudgetSlider = () => {
             spaceBetween: 20,
           },
           768: {
-            slidesPerView: 3,
+            slidesPerView: 2,
             spaceBetween: 30,
           },
           1024: {
@@ -123,9 +123,9 @@ const UsedCarsByBudgetSlider = () => {
         {carsInfo.map((car) => (
           <SwiperSlide
             key={car.id}
-            className="ml-2 bg-base-100 border rounded-md p-4"
+            className="md:ml-2 bg-base-100 border rounded-md p-4"
           >
-            <img src={car.img} alt="car" className="w-full bg-cover" />
+            <img src={car.img} alt="car" className="w-full md:h-64 bg-cover" />
             <div className="text-black">
               <div className="flex items-center justify-between my-4">
                 {car?.icon?.map((icon, idx) => (
