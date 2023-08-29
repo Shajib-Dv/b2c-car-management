@@ -52,3 +52,11 @@
   margin-right: 10px;
   font-size: 20px;
 }
+
+.input:focus {
+  @apply border-none;
+}
+
+.otp-btn {
+  @apply bg-[#00A541] rounded-md py-4 text-white text-xl font-bold cursor-pointer;
+}
