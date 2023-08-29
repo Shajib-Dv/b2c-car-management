@@ -43,7 +43,7 @@
 }
 
 .btn-details {
-  @apply border-2 border-[#00a542c2] rounded-md px-4 py-2;
+  @apply border border-[#00a542c2] rounded-md px-4 py-2;
 }
 
 .used-ul > li::before {
