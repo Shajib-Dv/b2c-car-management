@@ -2,14 +2,27 @@
 
 import { useRef } from "react";
 import { FaTimes } from "react-icons/fa";
+import useAuth from "../../../hooks/useAuth";
 
 const SendOtp = ({ setOtp }) => {
+  const { sendOTP, user } = useAuth();
+  console.log(user);
   const otpRef = useRef(null);
-  const handleSendOTP = (e) => {
+
+  const handleSendOTP = async (e) => {
     e.preventDefault();
 
     const phone = otpRef?.current?.value;
-    console.log(phone);
+
+    if (phone === "" || phone === undefined) {
+      return alert("Wrong phone");
+    }
+    try {
+      const response = await sendOTP(phone);
+      console.log(response);
+    } catch (err) {
+      console.log(err.message);
+    }
 
     setOtp((prev) => {
       return { ...prev, phone: phone };
@@ -30,13 +43,17 @@ const SendOtp = ({ setOtp }) => {
         onSubmit={handleSendOTP}
         className="flex flex-col md:justify-between h-4/5 mt-10 space-y-6"
       >
-        <input
-          type="tel"
-          name="tel"
-          ref={otpRef}
-          placeholder="Enter mobile number"
-          className="input input-bordered mt-20 md:w-4/5"
-        />
+        <div>
+          <input
+            type="tel"
+            name="tel"
+            ref={otpRef}
+            placeholder="Enter mobile number"
+            className="input input-bordered mt-20 md:w-4/5"
+          />
+          <div id="recaptcha-container"></div>
+        </div>
+
         <input
           type="submit"
           value="Send OTP"
