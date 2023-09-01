@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Register = () => {
+const GoogleLogin = () => {
   const mailRef = useRef(null);
   const passwordRef = useRef(null);
   const [error, setError] = useState({});
@@ -12,7 +12,7 @@ const Register = () => {
   const email = mailRef?.current?.value;
   const password = passwordRef?.current?.value;
 
-  const handleGoogleSignin = (e) => {
+  const handleGoogleLogin = (e) => {
     e.preventDefault();
     setError("");
 
@@ -31,15 +31,15 @@ const Register = () => {
   return (
     <div className="md:w-1/2 mx-auto bg-base-100 rounded-md shadow-inner p-4 h-screen mt-10">
       <div className="flex items-center justify-between ">
-        <h1 className="title">Welcome register with your email</h1>
+        <h1 className="title">Welcome Back, Login with your email</h1>
         <span className="cursor-pointer">
-          <Link to="/login/google">
+          <Link to="/login">
             <FaTimes />
           </Link>
         </span>
       </div>
       <form
-        onSubmit={handleGoogleSignin}
+        onSubmit={handleGoogleLogin}
         className="flex flex-col md:justify-between h-4/5 mt-10 space-y-6"
       >
         <div>
@@ -76,16 +76,16 @@ const Register = () => {
 
         <div>
           <p className="text-green-600 font-bold">
-            Already have an account, please
-            <Link to="/login/google" className="hover:underline font-bold px-2">
-              Login
+            New Here, please
+            <Link to="/register" className="hover:underline font-bold px-2">
+              Register
             </Link>
           </p>
         </div>
 
         <input
           type="submit"
-          value="Register"
+          value="Login"
           className="md:w-1/2 w-4/5 mx-auto md:mx-0 otp-btn"
         />
       </form>
@@ -93,4 +93,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default GoogleLogin;

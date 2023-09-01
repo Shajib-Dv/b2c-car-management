@@ -20,28 +20,15 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   // create reCaptcha
-  const sendOTP = async (phoneNumber) => {
-    const recaptchaVerifier = new RecaptchaVerifier("recaptcha-container", {
-      size: "invisible", // or 'normal'
-      callback: (response) => {
-        // reCAPTCHA solved, proceed to send OTP
-        console.log(response);
-      },
-    });
-
-    try {
-      const confirmationResult = await signInWithPhoneNumber(
-        auth,
-        phoneNumber,
-        recaptchaVerifier
-      );
-      // Store the confirmationResult for later use
-      return confirmationResult;
-    } catch (error) {
-      console.error("Error sending OTP:", error);
-      throw error;
-    }
-  };
+  // const sendOTP = async (number) => {
+  //   const recaptchaVerifier = new RecaptchaVerifier(
+  //     "recaptcha-container",
+  //     {},
+  //     auth
+  //   );
+  //   recaptchaVerifier.render();
+  //   return signInWithPhoneNumber(auth, number, recaptchaVerifier);
+  // };
 
   // logout
   const logOut = () => {
@@ -52,7 +39,6 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     user,
     logOut,
-    sendOTP,
     loading,
   };
 
