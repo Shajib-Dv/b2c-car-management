@@ -8,6 +8,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPhoneNumber,
+  signOut,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
 

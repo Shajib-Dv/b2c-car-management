@@ -2,23 +2,46 @@
 
 import { useRef, useState } from "react";
 import { FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 
 const Register = () => {
   const [error, setError] = useState({});
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loader, setLoader] = useState(false);
+  const navigate = useNavigate();
   const { googleSignIn } = useAuth();
 
   const handleGoogleSignin = (e) => {
     e.preventDefault();
-
     setError({});
+    setLoader(false);
 
-    // googleSignIn(email, password)
-    //   .then(() => {
-    //     console.log("success");
-    //   })
-    //   .catch((err) => console.log(err.message));
+    if (!email) {
+      setError((prev) => {
+        return { ...prev, email: "Please provide an email !" };
+      });
+    }
+    if (!password) {
+      setError((prev) => {
+        return { ...prev, password: "Please set a password !" };
+      });
+    }
+
+    if (email && password) {
+      setLoader(true);
+      googleSignIn(email, password)
+        .then(() => {
+          navigate("/");
+        })
+        .catch((err) => {
+          setLoader(false);
+          setError((prev) => {
+            return { ...prev, firebase: err.message };
+          });
+        });
+    }
   };
 
   return (
@@ -40,6 +63,7 @@ const Register = () => {
             <input
               type="email"
               name="email"
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Your email"
               className="input input-bordered mt-20 md:w-4/5"
             />
@@ -54,12 +78,19 @@ const Register = () => {
             <input
               type="password"
               name="password"
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Your password"
               className="input input-bordered mt-10 md:w-4/5"
             />
             <div className="h-5">
-              {error?.password && !password && (
+              {error?.password && !password ? (
                 <p className="text-red-600 font-semibold">{error?.password}</p>
+              ) : (
+                error?.firebase && (
+                  <p className="text-red-600 font-semibold">
+                    {error?.firebase}
+                  </p>
+                )
               )}
             </div>
           </div>
@@ -74,11 +105,17 @@ const Register = () => {
           </p>
         </div>
 
-        <input
+        <button
           type="submit"
-          value="Register"
-          className="md:w-1/2 w-4/5 mx-auto md:mx-0 otp-btn"
-        />
+          disabled={loader}
+          className="md:w-1/2 w-4/5 mx-auto md:mx-0 otp-btn disabled:bg-opacity-40"
+        >
+          {loader ? (
+            <span className="loading loading-bars loading-sm text-green-700"></span>
+          ) : (
+            "Register"
+          )}
+        </button>
       </form>
     </div>
   );
