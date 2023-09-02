@@ -8,11 +8,12 @@ const Login = () => {
   const [otp, setOtp] = useState({});
   return (
     <>
-      {otp?.phone ? (
+      {/* {otp?.phone ? (
         <OtpCheck otp={otp} setOtp={setOtp} />
       ) : (
         <SendOtp setOtp={setOtp} />
-      )}
+      )} */}
+      <SendOtp setOtp={setOtp} />
     </>
   );
 };

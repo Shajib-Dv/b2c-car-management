@@ -1,18 +1,26 @@
 /** @format */
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const SendOtp = ({ setOtp }) => {
   const otpRef = useRef(null);
-  const handleSendOTP = (e) => {
+  const [error, setError] = useState("");
+  const [navigate, setNavigate] = useState("");
+
+  const handleSendOTP = async (e) => {
     e.preventDefault();
 
-    const phone = otpRef?.current?.value;
-    console.log(phone);
+    const number = otpRef?.current?.value;
 
+    setError("");
+    if (number === "" || number === undefined) {
+      return setError("Please enter a valid phone number!");
+    }
+    setNavigate("/login/google");
     setOtp((prev) => {
-      return { ...prev, phone: phone };
+      return { ...prev, phone: number };
     });
   };
 
@@ -30,13 +38,30 @@ const SendOtp = ({ setOtp }) => {
         onSubmit={handleSendOTP}
         className="flex flex-col md:justify-between h-4/5 mt-10 space-y-6"
       >
-        <input
-          type="tel"
-          name="tel"
-          ref={otpRef}
-          placeholder="Enter mobile number"
-          className="input input-bordered mt-20 md:w-4/5"
-        />
+        <div>
+          <input
+            type="tel"
+            name="tel"
+            ref={otpRef}
+            placeholder="Enter mobile number"
+            className="input input-bordered mt-20 md:w-4/5"
+          />
+          <div id="recaptcha-container"></div>
+          <div className="h6">
+            {error && (
+              <p className="text-red-600 font-semibold pt-4">{error}</p>
+            )}
+            {navigate && (
+              <p className="text-green-600 font-semibold pt-4">
+                Truble to phone sign in use{" "}
+                <Link to={navigate} className="font-bold hover:underline">
+                  Google
+                </Link>
+              </p>
+            )}
+          </div>
+        </div>
+
         <input
           type="submit"
           value="Send OTP"

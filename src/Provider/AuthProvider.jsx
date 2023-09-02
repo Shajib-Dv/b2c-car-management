@@ -1,7 +1,12 @@
 /** @format */
 
 import { createContext, useEffect, useState } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import {
+  RecaptchaVerifier,
+  getAuth,
+  onAuthStateChanged,
+  signInWithPhoneNumber,
+} from "firebase/auth";
 import app from "../firebase/firebase.config";
 
 export const AuthContext = createContext(null);
@@ -14,6 +19,17 @@ const AuthProvider = ({ children }) => {
   // set loading
   const [loading, setLoading] = useState(true);
 
+  // create reCaptcha
+  // const sendOTP = async (number) => {
+  //   const recaptchaVerifier = new RecaptchaVerifier(
+  //     "recaptcha-container",
+  //     {},
+  //     auth
+  //   );
+  //   recaptchaVerifier.render();
+  //   return signInWithPhoneNumber(auth, number, recaptchaVerifier);
+  // };
+
   // logout
   const logOut = () => {
     setLoading(true);
@@ -21,13 +37,15 @@ const AuthProvider = ({ children }) => {
   };
 
   const authInfo = {
+    user,
     logOut,
+    loading,
   };
 
   // private route
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
-      console.log("log", loggedUser);
+      // console.log("log", loggedUser);
       setUser(loggedUser);
       setLoading(false);
     });
