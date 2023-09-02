@@ -3,33 +3,26 @@
 import { useRef, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 const Register = () => {
-  const mailRef = useRef(null);
-  const passwordRef = useRef(null);
   const [error, setError] = useState({});
-
-  const email = mailRef?.current?.value;
-  const password = passwordRef?.current?.value;
+  const { googleSignIn } = useAuth();
 
   const handleGoogleSignin = (e) => {
     e.preventDefault();
-    setError("");
 
-    if (!email) {
-      setError((prev) => {
-        return { ...prev, email: "Please provide a valid email !" };
-      });
-    }
-    if (!password) {
-      setError((prev) => {
-        return { ...prev, password: "please provide a password !" };
-      });
-    }
+    setError({});
+
+    // googleSignIn(email, password)
+    //   .then(() => {
+    //     console.log("success");
+    //   })
+    //   .catch((err) => console.log(err.message));
   };
 
   return (
-    <div className="md:w-1/2 mx-auto bg-base-100 rounded-md shadow-inner p-4 h-screen mt-10">
+    <div className="md:w-1/2 mx-auto bg-base-100 rounded-md shadow-inner p-4 min-h-screen mt-10">
       <div className="flex items-center justify-between ">
         <h1 className="title">Welcome register with your email</h1>
         <span className="cursor-pointer">
@@ -47,7 +40,6 @@ const Register = () => {
             <input
               type="email"
               name="email"
-              ref={mailRef}
               placeholder="Your email"
               className="input input-bordered mt-20 md:w-4/5"
             />
@@ -62,7 +54,6 @@ const Register = () => {
             <input
               type="password"
               name="password"
-              ref={passwordRef}
               placeholder="Your password"
               className="input input-bordered mt-10 md:w-4/5"
             />

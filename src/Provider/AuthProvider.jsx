@@ -3,8 +3,10 @@
 import { createContext, useEffect, useState } from "react";
 import {
   RecaptchaVerifier,
+  createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPhoneNumber,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
@@ -30,6 +32,16 @@ const AuthProvider = ({ children }) => {
   //   return signInWithPhoneNumber(auth, number, recaptchaVerifier);
   // };
 
+  const googleSignUp = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const googleSignIn = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
   // logout
   const logOut = () => {
     setLoading(true);
@@ -40,6 +52,8 @@ const AuthProvider = ({ children }) => {
     user,
     logOut,
     loading,
+    googleSignUp,
+    googleSignIn,
   };
 
   // private route
