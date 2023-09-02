@@ -1,35 +1,51 @@
 /** @format */
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 const GoogleLogin = () => {
-  const mailRef = useRef(null);
-  const passwordRef = useRef(null);
   const [error, setError] = useState({});
-
-  const email = mailRef?.current?.value;
-  const password = passwordRef?.current?.value;
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loader, setLoader] = useState(false);
+  const navigate = useNavigate();
+  const { googleSignUp } = useAuth();
 
   const handleGoogleLogin = (e) => {
     e.preventDefault();
-    setError("");
+    setError({});
+    setLoader(false);
 
     if (!email) {
       setError((prev) => {
-        return { ...prev, email: "Please provide a valid email !" };
+        return { ...prev, email: "Please provide an email !" };
       });
     }
     if (!password) {
       setError((prev) => {
-        return { ...prev, password: "please provide a password !" };
+        return { ...prev, password: "Please set a password !" };
       });
+    }
+
+    if (email && password) {
+      setLoader(true);
+      googleSignUp(email, password)
+        .then(() => {
+          navigate("/");
+        })
+        .catch((err) => {
+          setLoader(false);
+          setError((prev) => {
+            return { ...prev, firebase: err.message };
+          });
+        });
     }
   };
 
   return (
-    <div className="md:w-1/2 mx-auto bg-base-100 rounded-md shadow-inner p-4 h-screen mt-10">
+    <div className="md:w-1/2 mx-auto bg-base-100 rounded-md shadow-inner p-4 min-h-screen mt-10">
       <div className="flex items-center justify-between ">
         <h1 className="title">Welcome Back, Login with your email</h1>
         <span className="cursor-pointer">
@@ -47,7 +63,7 @@ const GoogleLogin = () => {
             <input
               type="email"
               name="email"
-              ref={mailRef}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Your email"
               className="input input-bordered mt-20 md:w-4/5"
             />
@@ -62,13 +78,19 @@ const GoogleLogin = () => {
             <input
               type="password"
               name="password"
-              ref={passwordRef}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Your password"
               className="input input-bordered mt-10 md:w-4/5"
             />
             <div className="h-5">
-              {error?.password && !password && (
+              {error?.password && !password ? (
                 <p className="text-red-600 font-semibold">{error?.password}</p>
+              ) : (
+                error?.firebase && (
+                  <p className="text-red-600 font-semibold">
+                    {error?.firebase}
+                  </p>
+                )
               )}
             </div>
           </div>
@@ -83,11 +105,17 @@ const GoogleLogin = () => {
           </p>
         </div>
 
-        <input
+        <button
           type="submit"
-          value="Login"
-          className="md:w-1/2 w-4/5 mx-auto md:mx-0 otp-btn"
-        />
+          disabled={loader}
+          className="md:w-1/2 w-4/5 mx-auto md:mx-0 otp-btn disabled:bg-opacity-40"
+        >
+          {loader ? (
+            <span className="loading loading-bars loading-sm text-green-700"></span>
+          ) : (
+            "Login"
+          )}
+        </button>
       </form>
     </div>
   );
