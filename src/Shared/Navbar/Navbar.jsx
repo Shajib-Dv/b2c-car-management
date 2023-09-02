@@ -6,7 +6,7 @@ import './../css/custom.css'
 
 const Navbar = () => {
     return (
-        <div className='mt-5 '>
+        <div className='mt-5 bg-white'>
             <div className='lg:flex justify-between items-center mb-2 px-2 lg:px-0 '>
                 <div className='flex justify-center'>
                     <Link to="/home"><img src="https://cdn.discordapp.com/attachments/1094651413235253289/1143774205796692061/Group_560.png" alt="" /></Link>
