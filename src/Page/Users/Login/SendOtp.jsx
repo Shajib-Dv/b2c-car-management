@@ -15,13 +15,17 @@ const SendOtp = ({ setOtp }) => {
     const number = otpRef?.current?.value;
 
     setError("");
+    setNavigate("");
+
     if (number === "" || number === undefined) {
       return setError("Please enter a valid phone number!");
     }
+
+    // setOtp((prev) => {
+    //   return { ...prev, phone: number };
+    // });
+
     setNavigate("/login/google");
-    setOtp((prev) => {
-      return { ...prev, phone: number };
-    });
   };
 
   return (
@@ -53,7 +57,7 @@ const SendOtp = ({ setOtp }) => {
             )}
             {navigate && (
               <p className="text-green-600 font-semibold pt-4">
-                Truble to phone sign in use{" "}
+                Something went wrong, use{" "}
                 <Link to={navigate} className="font-bold hover:underline">
                   Google
                 </Link>
