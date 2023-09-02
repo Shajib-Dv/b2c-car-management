@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="mt-5 ">
+    <div className="mt-5 bg-white">
       <div className="lg:flex justify-between items-center mb-2 px-2 lg:px-0 ">
         <div className="flex justify-center">
           <Link to="/home">
@@ -38,13 +38,13 @@ const Navbar = () => {
               <input
                 type="search"
                 id="default-search"
-                className=" block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50  dark:text-white "
+                className=" block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50   "
                 placeholder="Search Cars or Brands eg. Swift, or Maruti."
                 required
               />
               <button
                 type="submit"
-                className="text-gray absolute right-2.5 bottom-2.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  px-4 py-1 text-2xl  "
+                className="text-gray absolute right-2.5 bottom-2.5    font-medium rounded-lg  px-4 py-1 text-2xl  "
               >
                 <BiSearch></BiSearch>
               </button>
