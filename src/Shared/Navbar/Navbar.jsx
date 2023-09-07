@@ -8,36 +8,83 @@ import "./../css/custom.css";
 import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
-    return (
-        <div className='mt-5 '>
-            <div className='lg:flex justify-between items-center mb-2 px-2 lg:px-0 '>
-                <div className='flex justify-center'>
-                    <Link to="/home"><img src="https://cdn.discordapp.com/attachments/1094651413235253289/1143774205796692061/Group_560.png" alt="" /></Link>
-                </div>
-                <div className=''>
+  const { user, logOut } = useAuth();
 
-                    <form className='lg:w-96 mb-2 mt-2 lg:mb-0 lg:mt-0'>
-                        <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                        <div className="relative">
-                            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+  const handleLogOut = () => {
+    logOut();
+  };
 
-                            </div>
-                            <input type="search" id="default-search" className=" block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50  dark:text-white " placeholder="Search Cars or Brands eg. Swift, or Maruti." required />
-                            <button type="submit" className="text-gray absolute right-2.5 bottom-2.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  px-4 py-1 text-2xl  "><BiSearch></BiSearch></button>
-                        </div>
-                    </form>
-
-                </div>
-                <div className='gap-3 items-center flex justify-center'>
-                    <img src="https://cdn.discordapp.com/attachments/1094651413235253289/1143777982188630077/Resting.png" alt="" />
-                    <div className='flex'>
-                        <Link to="/login">Login</Link>
-                        <p>/</p>
-                        <Link to="/register">Register</Link>
-                    </div>
-                </div>
+  return (
+    <div className="mt-5 bg-white">
+      <div className="lg:flex justify-between items-center mb-2 px-2 lg:px-0 ">
+        <div className="flex justify-center">
+          <Link to="/home">
+            <img
+              src="https://cdn.discordapp.com/attachments/1094651413235253289/1143774205796692061/Group_560.png"
+              alt=""
+            />
+          </Link>
+        </div>
+        <div className="">
+          <form className="lg:w-96 mb-2 mt-2 lg:mb-0 lg:mt-0">
+            <label
+              htmlFor="default-search"
+              className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+            >
+              Search
+            </label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"></div>
+              <input
+                type="text"
+                id="default-search"
+                className=" block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50   "
+                placeholder="Search Cars or Brands eg. Swift, or Maruti."
+                required
+              />
+              <button
+                type="submit"
+                className="text-gray absolute right-2.5 bottom-2.5    font-medium rounded-lg  px-4 py-1 text-2xl  "
+              >
+                <BiSearch></BiSearch>
+              </button>
             </div>
-            <hr />
+          </form>
+        </div>
+        <div className="gap-3 items-center flex justify-center">
+          {user ? (
+            <div>
+              {user?.photoURL ? (
+                <img src={user?.photoURL} alt="user_photo" />
+              ) : (
+                <p className="flex items-center justify-center h-12 w-12 rounded-full text-green-600 font-bold bg-base-200 text-3xl">
+                  {user?.email?.slice(0, 1)}
+                </p>
+              )}
+            </div>
+          ) : (
+            <img
+              src="https://cdn.discordapp.com/attachments/1094651413235253289/1143777982188630077/Resting.png"
+              alt="user_photo"
+            />
+          )}
+          <div>
+            {user ? (
+              <FaSignOutAlt
+                onClick={handleLogOut}
+                className="text-xl text-green-600 cursor-pointer"
+              />
+            ) : (
+              <div className="flex">
+                <Link to="/login">Login</Link>
+                <p>/</p>
+                <Link to="/register">Register</Link>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+      <hr />
 
       {/* <div className='flex gap-5 text-xl font-medium'>
                 <Link to="/newCar">NEW CAR <FaChevronDown></FaChevronDown></Link>

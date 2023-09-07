@@ -72,27 +72,26 @@ const router = createBrowserRouter([
     element: <HomeLayouts></HomeLayouts>,
   },
   {
-    path: 'userProfile',
+    path: "userProfile",
     element: <Profile></Profile>,
     children: [
       {
-        path:'myOrder',
-        element:<MyOrder></MyOrder>
+        path: "myOrder",
+        element: <MyOrder></MyOrder>,
       },
       {
-        path:'ShortlistedVehicles',
-        element:<ShortlistedVehicles></ShortlistedVehicles>
+        path: "ShortlistedVehicles",
+        element: <ShortlistedVehicles></ShortlistedVehicles>,
       },
       {
-        path:'MyVehicles',
-        element:<MyVehicles></MyVehicles>
+        path: "MyVehicles",
+        element: <MyVehicles></MyVehicles>,
       },
       {
-        path:'ProfileSettings',
-        element:<ProfileSettings></ProfileSettings>
+        path: "ProfileSettings",
+        element: <ProfileSettings></ProfileSettings>,
       },
-      
-    ]
-  }
+    ],
+  },
 ]);
 export default router;
