@@ -8,7 +8,7 @@ const KeySpec = () => {
     return (
         <div className='px-10 py-5 shadow-md rounded-lg'>
             <div><h1 className='font-bold text-xl mb-10'>Key Specifications of Maruti Baleno</h1></div>
-            <div className='flex justify-between'>
+            <div className='md:flex justify-between grid grid-cols-2'>
                 <div className='flex flex-col items-center'>
                     <div className='bg-[#9A9EA7] p-4 rounded-lg'>
                         <span className='text-xl text-white'><MdSpeed /></span>
@@ -52,7 +52,7 @@ const KeySpec = () => {
                     <p className='font-bold'>22.94 kmpl</p>
                 </div>
             </div>
-            <div className='flex justify-between px-24 mt-10 mb-10'>
+            <div className='md:flex justify-between lg:px-24 mt-10 mb-10 grid grid-cols-2'>
                 
                 <div className='flex flex-col items-center'>
                     <div className='bg-[#9A9EA7] p-4 rounded-lg'>
@@ -90,7 +90,7 @@ const KeySpec = () => {
                     <p className='font-bold'>22.94 kmpl</p>
                 </div>
             </div>
-            <center><button className='bg-[#00A541] text-white font-semibold px-5 py-2 rounded-md'>Features and Specs</button></center>
+            <center><button className='btn-act lg:mb-10'>Features and Specs</button></center>
         </div>
     );
 };
