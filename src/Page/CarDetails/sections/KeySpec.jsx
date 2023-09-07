@@ -6,7 +6,7 @@ import { BsFillCarFrontFill } from 'react-icons/bs';
 
 const KeySpec = () => {
     return (
-        <div className='px-10 py-5'>
+        <div className='px-10 py-5 shadow-md rounded-lg'>
             <div><h1 className='font-bold text-xl mb-10'>Key Specifications of Maruti Baleno</h1></div>
             <div className='flex justify-between'>
                 <div className='flex flex-col items-center'>
