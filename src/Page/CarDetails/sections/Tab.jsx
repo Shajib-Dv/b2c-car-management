@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { BiSearch } from "react-icons/bi";
-import { FaChevronDown, FaSignOutAlt } from "react-icons/fa";
 
 
 const Tab = () => {
