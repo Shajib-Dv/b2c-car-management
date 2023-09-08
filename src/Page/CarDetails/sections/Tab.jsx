@@ -1,13 +1,11 @@
-import React from 'react';
+/** @format */
+
+import React from "react";
 import { Link } from "react-router-dom";
 
-
 const Tab = () => {
-    return (
-        <div className="mt-5 bg-white border border-[#BFC2C8]">
-      
-      
-
+  return (
+    <div className="mt-5 bg-white border border-[#BFC2C8]">
       {/* <div className='flex gap-5 text-xl font-medium'>
                 <Link to="/newCar">NEW CAR <FaChevronDown></FaChevronDown></Link>
                 <Link to="/usedCar">USED CAR</Link>
@@ -62,8 +60,12 @@ const Tab = () => {
         </div>
         <div className="navbar-center hidden lg:flex  gap-5  ">
           <ul className="menu menu-horizontal p-0 text-sm font-medium gap-8">
-            <li><a><Link to="/newCar">Baleno</Link></a></li>
-            <li><a><Link to="/newCar">Price</Link></a></li>
+            <li>
+              <Link to="/newCar">Baleno</Link>
+            </li>
+            <li>
+              <Link to="/newCar">Price</Link>
+            </li>
             <li tabIndex={0}>
               <details>
                 <summary>
@@ -79,12 +81,24 @@ const Tab = () => {
                 </ul>
               </details>
             </li>
-            <li><a><Link to="/newCar">Specs</Link></a></li>
-            <li><a><Link to="/newCar">User Reviews</Link></a></li>
-            <li><a><Link to="/newCar">Images</Link></a></li>
-            <li><a><Link to="/newCar">Variants</Link></a></li>
-            <li><a><Link to="/newCar">Videos</Link></a></li>
-            <li><a><Link to="/newCar">Mileage</Link></a></li>
+            <li>
+              <Link to="/newCar">Specs</Link>
+            </li>
+            <li>
+              <Link to="/newCar">User Reviews</Link>
+            </li>
+            <li>
+              <Link to="/newCar">Images</Link>
+            </li>
+            <li>
+              <Link to="/newCar">Variants</Link>
+            </li>
+            <li>
+              <Link to="/newCar">Videos</Link>
+            </li>
+            <li>
+              <Link to="/newCar">Mileage</Link>
+            </li>
             <li tabIndex={0}>
               <details>
                 <summary>
@@ -100,7 +114,7 @@ const Tab = () => {
                 </ul>
               </details>
             </li>
-           
+
             {/* <li><a>Item 3</a></li> */}
           </ul>
         </div>
@@ -125,7 +139,7 @@ const Tab = () => {
         </div> */}
       </div>
     </div>
-    );
+  );
 };
 
 export default Tab;
