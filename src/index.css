@@ -75,5 +75,9 @@
 }
 
 .control-arrow {
-  @apply bg-transparent opacity-100 text-5xl;
+  opacity: 1 !important;
+  transform: scale(2);
+}
+.control-arrow:hover {
+  background: transparent !important;
 }
