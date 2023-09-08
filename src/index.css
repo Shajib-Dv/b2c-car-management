@@ -47,11 +47,22 @@
   @apply btn bg-transparent capitalize hover:bg-transparent text-gray-400 font-semibold;
 }
 .btn-act {
-  @apply btn hover:bg-[#00a542c2] bg-[#00a541] text-white;
+  @apply btn hover:bg-[#00a542c2] bg-[#00a541] text-white capitalize font-bold;
+}
+
+.btn-act-tab {
+  @apply btn hover:bg-[#00a541] bg-[#00a541] text-white capitalize font-bold rounded-none;
 }
 
 .btn-details {
   @apply border border-[#00a542c2] rounded-md px-4 py-2;
+}
+
+.btn-under {
+  @apply border-b-[#00a541] border-b-4;
+}
+.btn-under-b {
+  @apply capitalize font-bold;
 }
 
 .used-ul > li::before {
@@ -75,5 +86,9 @@
 }
 
 .control-arrow {
-  @apply bg-transparent opacity-100 text-5xl;
+  opacity: 1 !important;
+  transform: scale(2);
+}
+.control-arrow:hover {
+  background: transparent !important;
 }

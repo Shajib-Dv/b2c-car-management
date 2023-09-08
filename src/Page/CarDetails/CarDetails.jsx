@@ -6,6 +6,11 @@ import CarCover from "./sections/CarCover";
 import EmiBanner from "./sections/EmiBanner";
 import KeySpec from "./sections/KeySpec";
 import BalenoBanner from "./sections/BalenoBanner";
+import VehicleDetailTab from "./sections/VehicleDetailTab";
+import TrendingCarBanner from "./sections/TrendingCarBanner";
+import CarEquipment from "./sections/CarEquipment";
+import PriceCompare from "./sections/PriceCompare";
+import CalculateEMI from "./sections/CalculateEMI";
 
 const CarDetails = () => {
   return (
@@ -15,10 +20,15 @@ const CarDetails = () => {
         <div className="md:col-span-3">
           <CarCover />
           <KeySpec />
+          <VehicleDetailTab/>
+          <CarEquipment/>
+          <PriceCompare/>
+          <CalculateEMI/>
         </div>
         <div className="w-full">
           <EmiBanner />
           <BalenoBanner />
+          <TrendingCarBanner/>
         </div>
       </div>
     </div>
