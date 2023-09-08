@@ -31,23 +31,24 @@ const TrendingCarBanner = () => {
       <div className="center-itm justify-between mt-8">
         <button
           onClick={() => handleOptionSelect("A")}
-          className={`btn-under-b flex-1 pb-3 ${option === "A" && "btn-under"}`}
+          className={`pb-3 btn-under-b ${option === "A" && "btn-under"}`}
         >
           Popular
         </button>
         <button
           onClick={() => handleOptionSelect("B")}
-          className={`btn-under-b flex-1 pb-3 ${option === "B" && "btn-under"}`}
+          className={`pb-3 btn-under-b ${option === "B" && "btn-under"}`}
         >
           Upcoming
         </button>
         <button
           onClick={() => handleOptionSelect("C")}
-          className={`btn-under-b flex-1 pb-3 ${option === "C" && "btn-under"}`}
+          className={`pb-3 btn-under-b ${option === "C" && "btn-under"}`}
         >
           All cars
         </button>
       </div>
+      <hr className="border-2" />
       <div>
         {showMore.map((itm) => (
           <CarsLayout key={itm} />

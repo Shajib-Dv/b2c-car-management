@@ -62,7 +62,7 @@
   @apply border-b-[#00a541] border-b-4;
 }
 .btn-under-b {
-  @apply capitalize font-bold border-b-4;
+  @apply capitalize font-bold;
 }
 
 .used-ul > li::before {
