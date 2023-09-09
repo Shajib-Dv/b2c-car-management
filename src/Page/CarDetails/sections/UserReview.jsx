@@ -31,7 +31,7 @@ const UserReview = () => {
 
       <div className="center-itm my-10 md:w-3/5 justify-between">
         <div className="center-itm flex-col">
-          <div className="w-14">
+          <div className="w-8 md:w-14">
             <CircularProgressbar
               value={4.4}
               maxValue={5}
@@ -43,10 +43,10 @@ const UserReview = () => {
               })}
             />
           </div>
-          <p>Exterior</p>
+          <p className="text-xs md:text-sm">Exterior</p>
         </div>
         <div className="center-itm flex-col">
-          <div className="w-14">
+          <div className="w-8 md:w-14">
             <CircularProgressbar
               value={4.4}
               maxValue={5}
@@ -58,10 +58,10 @@ const UserReview = () => {
               })}
             />
           </div>
-          <p>Comfort</p>
+          <p className="text-xs md:text-sm">Comfort</p>
         </div>
         <div className="center-itm flex-col">
-          <div className="w-14">
+          <div className="w-8 md:w-14">
             <CircularProgressbar
               value={4.6}
               maxValue={5}
@@ -73,10 +73,10 @@ const UserReview = () => {
               })}
             />
           </div>
-          <p>Performance</p>
+          <p className="text-xs md:text-sm">Performance</p>
         </div>
         <div className="center-itm flex-col">
-          <div className="w-14">
+          <div className="w-8 md:w-14">
             <CircularProgressbar
               value={4}
               maxValue={5}
@@ -88,10 +88,10 @@ const UserReview = () => {
               })}
             />
           </div>
-          <p>Fuel Economy</p>
+          <p className="text-xs md:text-sm">Fuel Economy</p>
         </div>
         <div className="center-itm flex-col">
-          <div className="w-14">
+          <div className="w-8 md:w-14">
             <CircularProgressbar
               value={4.1}
               maxValue={5}
@@ -103,7 +103,7 @@ const UserReview = () => {
               })}
             />
           </div>
-          <p>Value For Money</p>
+          <p className="text-xs md:text-sm">Value For Money</p>
         </div>
       </div>
 
@@ -134,7 +134,7 @@ const UserReview = () => {
         </button>
       </div>
       <hr />
-      <div className="my-10 px-10">
+      <div className="my-10 md:px-10">
         <UserReviewSlider />
       </div>
     </div>

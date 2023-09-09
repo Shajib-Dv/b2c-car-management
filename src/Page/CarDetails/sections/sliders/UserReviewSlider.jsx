@@ -8,42 +8,24 @@ import { Autoplay, Navigation } from "swiper/modules";
 import { Rating, Star } from "@smastrom/react-rating";
 import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 
-const carsInfo = [
+const Array = [
   {
     id: 1,
-    img: "https://i.ibb.co/qrm9dTZ/recar1.png",
-    name: "Toyota Land Cruiser",
-    price: 12,
   },
   {
     id: 2,
-    img: "https://i.ibb.co/jM7FFdC/recar2.png",
-    name: "Hyundai Nexo",
-    price: 127,
   },
   {
     id: 3,
-    img: "https://i.ibb.co/wLWDpFL/recar3.png",
-    name: "Volkswagen Virtus",
-    price: 17,
   },
   {
     id: 4,
-    img: "https://i.ibb.co/qrm9dTZ/recar1.png",
-    name: "Toyota Land Cruiser",
-    price: 12,
   },
   {
     id: 6,
-    img: "https://i.ibb.co/wLWDpFL/recar3.png",
-    name: "Volkswagen Virtus",
-    price: 17,
   },
   {
     id: 5,
-    img: "https://i.ibb.co/jM7FFdC/recar2.png",
-    name: "Hyundai Nexo",
-    price: 127,
   },
 ];
 const UserReviewSlider = () => {
@@ -51,17 +33,17 @@ const UserReviewSlider = () => {
     <>
       <Swiper
         slidesPerView={1}
-        spaceBetween={0}
+        spaceBetween={40}
         loop={true}
         autoplay={true}
         navigation={true}
         modules={[Navigation, Autoplay]}
         className="mySwiper h-fit"
       >
-        {carsInfo.map((car) => (
+        {Array.map((itm) => (
           <SwiperSlide
-            key={car.id}
-            className="ml-2 bg-base-100 border rounded-md p-4"
+            key={itm.id}
+            className=" md:-ml-1  bg-base-100 border rounded-md p-4"
           >
             <h2 className="title pb-10">Overall A Very Good Car</h2>
             <div className="w-24">
