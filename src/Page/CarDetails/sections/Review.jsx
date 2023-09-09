@@ -3,7 +3,7 @@ import Accordion from './accordion/Accordion';
 
 const Review = () => {
 
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(0);
     const toggle = (index) => {
         if (open === index) {
             return setOpen(null)
