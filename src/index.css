@@ -64,12 +64,19 @@
 .btn-under-b {
   @apply capitalize font-bold;
 }
+<<<<<<< HEAD
 .select-btn {
   @apply border p-4 rounded-md w-full;
 }
 .select-btn:focus {
   @apply outline-none;
 }
+=======
+/* .btn-act-tbl{
+  @apply md:btn btn-xs hover:bg-[#00a542c2] bg-[#00a541] text-white md:text-xl capitalize font-bold ;
+  font-size: 8px !important;
+} */
+>>>>>>> 4cb0b214879759c84b4869de9ffa30e7ebf10f10
 
 .used-ul > li::before {
   content: "•";

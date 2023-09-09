@@ -11,6 +11,10 @@ import TrendingCarBanner from "./sections/TrendingCarBanner";
 import CarEquipment from "./sections/CarEquipment";
 import PriceCompare from "./sections/PriceCompare";
 import CalculateEMI from "./sections/CalculateEMI";
+import ProsCons from "./sections/ProsCons";
+import Spec from "./sections/spec";
+import Review from "./sections/Review";
+import UserReview from "./sections/UserReview";
 
 const CarDetails = () => {
   return (
@@ -24,6 +28,10 @@ const CarDetails = () => {
           <CarEquipment/>
           <PriceCompare/>
           <CalculateEMI/>
+          <ProsCons/>
+          <Spec/>
+          <Review/>
+          <UserReview/>
         </div>
         <div className="w-full">
           <EmiBanner />
