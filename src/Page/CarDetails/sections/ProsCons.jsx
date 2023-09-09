@@ -4,7 +4,7 @@ import { BsDot } from 'react-icons/bs';
 
 const ProsCons = () => {
     return (
-        <div className='px-5 py-10 md:px-10'>
+        <div className='px-5 py-10 md:px-10 rounded-lg shadow border'>
             <h1 className='title'>Pros & Cons of Maruti Baleno</h1>
             <div className='flex flex-col md:flex md:flex-row mt-10 gap-8'>
                 <div className='bg-[#ECF9F1] p-4 rounded-md md:w-6/12 h-96'>
