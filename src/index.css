@@ -39,6 +39,10 @@
   @apply text-2xl font-bold;
 }
 
+.line-title {
+  @apply center-itm justify-between md:text-2xl text-gray-400 font-bold my-4;
+}
+
 .btn-second {
   @apply btn bg-[#333333] md:text-xl capitalize text-white hover:bg-[#333333c7];
 }
@@ -82,7 +86,8 @@
   font-size: 20px;
 }
 
-.input:focus {
+.input:focus,
+.select:focus {
   @apply border-none;
 }
 
@@ -101,4 +106,10 @@
 }
 .control-arrow:hover {
   background: transparent !important;
+}
+
+input[type="radio"]:checked {
+  background: #00a541 !important;
+  color: white !important;
+  border: none !important;
 }
