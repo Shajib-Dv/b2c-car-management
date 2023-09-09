@@ -29,8 +29,8 @@ const PriceCompare = () => {
 
             </div>
             <hr />
-            <div className="overflow-x-auto px-10">
-                <table className="table">
+            <div className="overflow-x-auto lg:px-10">
+                <table className="table table-xs md:table-lg">
                     {/* head */}
                     <thead>
                         <tr>

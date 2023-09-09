@@ -39,19 +39,23 @@
   @apply text-2xl font-bold;
 }
 
+.line-title {
+  @apply center-itm justify-between md:text-2xl text-gray-400 font-bold my-4;
+}
+
 .btn-second {
-  @apply btn bg-[#333333] text-white hover:bg-[#333333c7];
+  @apply btn bg-[#333333] md:text-xl capitalize text-white hover:bg-[#333333c7];
 }
 
 .btn-cmn {
   @apply btn bg-transparent capitalize hover:bg-transparent text-gray-400 font-semibold;
 }
 .btn-act {
-  @apply btn hover:bg-[#00a542c2] bg-[#00a541] text-white capitalize font-bold;
+  @apply btn hover:bg-[#00a542c2] bg-[#00a541] text-white text-xs md:text-xl capitalize font-bold;
 }
 
 .btn-act-tab {
-  @apply btn hover:bg-[#00a541] bg-[#00a541] text-white capitalize font-bold rounded-none;
+  @apply btn hover:bg-[#00a541] bg-[#00a541] text-white capitalize font-bold rounded-none md:text-xl;
 }
 
 .btn-details {
@@ -64,6 +68,16 @@
 .btn-under-b {
   @apply capitalize font-bold;
 }
+.select-btn {
+  @apply border p-4 rounded-md w-full;
+}
+.select-btn:focus {
+  @apply outline-none;
+}
+/* .btn-act-tbl{
+  @apply md:btn btn-xs hover:bg-[#00a542c2] bg-[#00a541] text-white md:text-xl capitalize font-bold ;
+  font-size: 8px !important;
+} */
 
 .used-ul > li::before {
   content: "•";
@@ -72,7 +86,8 @@
   font-size: 20px;
 }
 
-.input:focus {
+.input:focus,
+.select:focus {
   @apply border-none;
 }
 
@@ -91,4 +106,53 @@
 }
 .control-arrow:hover {
   background: transparent !important;
+}
+
+.join-item {
+  color: black !important;
+}
+
+.join > input[type="radio"]:checked {
+  background: #00a541 !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* Range style */
+.range-itm {
+  width: 100%;
+  appearance: none;
+  height: 3px;
+  background: #e9e6e6;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.range-itm::-webkit-slider-thumb {
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  border: 2px solid #00a541;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.range-itm::-webkit-progress-bar {
+  background: #00a541; /* Set the progress bar color */
+}
+
+.progress {
+  max-width: 100vw;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 3px;
+  width: 140px;
+  background: #00a541;
+}
+.ReactCollapse--collapse {
+  transition: height 500ms;
 }

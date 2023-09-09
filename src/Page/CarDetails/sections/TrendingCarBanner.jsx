@@ -48,7 +48,7 @@ const TrendingCarBanner = () => {
           All cars
         </button>
       </div>
-      <hr className="border-2" />
+      <hr className="border-1 md:border-2" />
       <div>
         {showMore.map((itm) => (
           <CarsLayout key={itm} />
