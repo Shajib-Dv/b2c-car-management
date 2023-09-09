@@ -15,6 +15,7 @@ import ProsCons from "./sections/ProsCons";
 import Spec from "./sections/spec";
 import Review from "./sections/Review";
 import UserReview from "./sections/UserReview";
+import CompareCarsSlider from "../../sliders/CompareCars/CompareCarsSlider";
 
 const CarDetails = () => {
   return (
@@ -24,19 +25,22 @@ const CarDetails = () => {
         <div className="md:col-span-3 flex flex-col gap-10">
           <CarCover />
           <KeySpec />
-          <VehicleDetailTab/>
-          <CarEquipment/>
-          <PriceCompare/>
-          <CalculateEMI/>
-          <ProsCons/>
-          <Spec/>
-          <Review/>
-          <UserReview/>
+          <VehicleDetailTab />
+          <CarEquipment />
+          <PriceCompare />
+          <CalculateEMI />
+          <div>
+            <CompareCarsSlider />
+          </div>
+          <ProsCons />
+          <Spec />
+          <Review />
+          <UserReview />
         </div>
         <div className="w-full flex flex-col gap-10">
           <EmiBanner />
           <BalenoBanner />
-          <TrendingCarBanner/>
+          <TrendingCarBanner />
         </div>
       </div>
     </div>
