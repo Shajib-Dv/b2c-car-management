@@ -153,3 +153,6 @@
   width: 140px;
   background: #00a541;
 }
+.ReactCollapse--collapse {
+  transition: height 500ms;
+}

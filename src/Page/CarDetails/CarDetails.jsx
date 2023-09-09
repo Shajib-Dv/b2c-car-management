@@ -21,7 +21,7 @@ const CarDetails = () => {
     <div>
       <Tab></Tab>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-5 mt-5">
-        <div className="md:col-span-3">
+        <div className="md:col-span-3 flex flex-col gap-10">
           <CarCover />
           <KeySpec />
           <VehicleDetailTab/>
@@ -33,7 +33,7 @@ const CarDetails = () => {
           <Review/>
           <UserReview/>
         </div>
-        <div className="w-full">
+        <div className="w-full flex flex-col gap-10">
           <EmiBanner />
           <BalenoBanner />
           <TrendingCarBanner/>
