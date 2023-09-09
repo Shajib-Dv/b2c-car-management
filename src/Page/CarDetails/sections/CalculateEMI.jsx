@@ -1,6 +1,10 @@
 /** @format */
 
+import { useState } from "react";
+
 const CalculateEMI = () => {
+  const [rangeValue, setRangeValue] = useState({});
+
   return (
     <div className="my-5 border rounded-md p-10">
       <h2 className="title">Calculate your EMI</h2>
@@ -35,24 +39,57 @@ const CalculateEMI = () => {
           <p className="title text-gray-400 font-semibold">Down Payment</p>
           <p className="title">₹ 87,000</p>
         </div>
-
-        <input type="range" min={0} max={100} className="range my-4" />
+        <div className="relative">
+          <input
+            onChange={(e) =>
+              setRangeValue({ ...rangeValue, downPayment: e.target.value })
+            }
+            type="range"
+            min={0}
+            max={100000}
+            step={100}
+            defaultValue={rangeValue?.downPayment || 0}
+            className="range-itm my-4"
+          />
+          <div
+            className="progress"
+            style={{ width: `${rangeValue?.downPayment / 1000 || 0}%` }}
+          ></div>
+        </div>
 
         <div className="center-itm justify-between md:w-4/5 font-semibold">
-          <p>0</p>
+          <p>{rangeValue?.downPayment || 0}</p>
           <p>₹ 87,000</p>
         </div>
       </div>
       <div className="my-10">
         <div className="center-itm justify-between md:w-4/5">
-          <p className="title text-gray-400 font-semibold">Down Payment</p>
+          <p className="title text-gray-400 font-semibold">
+            Bank Interest Rate
+          </p>
           <p className="title">₹ 87,000</p>
         </div>
 
-        <input type="range" min={0} max={100} className="range my-4" />
+        <div className="relative overflow-hidden">
+          <input
+            onChange={(e) =>
+              setRangeValue({ ...rangeValue, bankRate: e.target.value })
+            }
+            type="range"
+            min={0}
+            max={100000}
+            step={100}
+            defaultValue={rangeValue?.bankRate || 0}
+            className="range-itm my-4"
+          />
+          <div
+            className="progress"
+            style={{ width: `${rangeValue?.bankRate / 1000 || 0}%` }}
+          ></div>
+        </div>
 
         <div className="center-itm justify-between md:w-4/5 font-semibold">
-          <p>0</p>
+          <p>{rangeValue?.bankRate || 0}</p>
           <p>₹ 87,000</p>
         </div>
       </div>

@@ -108,8 +108,48 @@
   background: transparent !important;
 }
 
-input[type="radio"]:checked {
+.join-item {
+  color: black !important;
+}
+
+.join > input[type="radio"]:checked {
   background: #00a541 !important;
   color: white !important;
   border: none !important;
+}
+
+/* Range style */
+.range-itm {
+  width: 100%;
+  appearance: none;
+  height: 3px;
+  background: #e9e6e6;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.range-itm::-webkit-slider-thumb {
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  border: 2px solid #00a541;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.range-itm::-webkit-progress-bar {
+  background: #00a541; /* Set the progress bar color */
+}
+
+.progress {
+  max-width: 100vw;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 3px;
+  width: 140px;
+  background: #00a541;
 }
