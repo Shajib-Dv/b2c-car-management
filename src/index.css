@@ -47,7 +47,7 @@
   @apply btn bg-transparent capitalize hover:bg-transparent text-gray-400 font-semibold;
 }
 .btn-act {
-  @apply btn hover:bg-[#00a542c2] bg-[#00a541] text-white md:text-xl capitalize font-bold;
+  @apply btn hover:bg-[#00a542c2] bg-[#00a541] text-white text-xs md:text-xl capitalize font-bold;
 }
 
 .btn-act-tab {
@@ -63,6 +63,12 @@
 }
 .btn-under-b {
   @apply capitalize font-bold;
+}
+.select-btn {
+  @apply border p-4 rounded-md w-full;
+}
+.select-btn:focus {
+  @apply outline-none;
 }
 
 .used-ul > li::before {
