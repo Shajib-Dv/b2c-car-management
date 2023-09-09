@@ -9,7 +9,7 @@ const VehicleDetailTab = () => {
   };
   return (
     <div className="border bg-base-100 rounded-md mt-10">
-      <div className="center-itm justify-between bg-base-300 px-10">
+      <div className="center-itm justify-between bg-base-300 md:px-10 text-xs md:text-xl">
         <button
           onClick={() => handleOptionSelect("A")}
           className={`flex-1 capitalize font-bold ${

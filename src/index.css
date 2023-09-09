@@ -40,18 +40,18 @@
 }
 
 .btn-second {
-  @apply btn bg-[#333333] text-white hover:bg-[#333333c7];
+  @apply btn bg-[#333333] md:text-xl capitalize text-white hover:bg-[#333333c7];
 }
 
 .btn-cmn {
   @apply btn bg-transparent capitalize hover:bg-transparent text-gray-400 font-semibold;
 }
 .btn-act {
-  @apply btn hover:bg-[#00a542c2] bg-[#00a541] text-white capitalize font-bold;
+  @apply btn hover:bg-[#00a542c2] bg-[#00a541] text-white md:text-xl capitalize font-bold;
 }
 
 .btn-act-tab {
-  @apply btn hover:bg-[#00a541] bg-[#00a541] text-white capitalize font-bold rounded-none;
+  @apply btn hover:bg-[#00a541] bg-[#00a541] text-white capitalize font-bold rounded-none md:text-xl;
 }
 
 .btn-details {
