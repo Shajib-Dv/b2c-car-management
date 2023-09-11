@@ -39,7 +39,8 @@ const CalculateEMI = () => {
           <p className="title text-gray-400 font-semibold">Down Payment</p>
           <p className="title">₹ 87,000</p>
         </div>
-        <div className="relative">
+
+        <div className="relative overflow-hidden">
           <input
             onChange={(e) =>
               setRangeValue({ ...rangeValue, downPayment: e.target.value })
@@ -48,17 +49,20 @@ const CalculateEMI = () => {
             min={0}
             max={100000}
             step={100}
-            defaultValue={rangeValue?.downPayment || 0}
+            defaultValue={rangeValue?.downPayment || 20000}
             className="range-itm my-4"
           />
           <div
             className="progress"
-            style={{ width: `${rangeValue?.downPayment / 1000 || 0}%` }}
+            style={{
+              width: `${rangeValue?.downPayment / 1000 || 20}%`,
+              height: "2px",
+            }}
           ></div>
         </div>
 
         <div className="center-itm justify-between md:w-4/5 font-semibold">
-          <p>{rangeValue?.downPayment || 0}</p>
+          <p>{rangeValue?.downPayment || 20000}</p>
           <p>₹ 87,000</p>
         </div>
       </div>
@@ -79,17 +83,17 @@ const CalculateEMI = () => {
             min={0}
             max={100000}
             step={100}
-            defaultValue={rangeValue?.bankRate || 0}
+            defaultValue={rangeValue?.bankRate || 10000}
             className="range-itm my-4"
           />
           <div
-            className="progress"
-            style={{ width: `${rangeValue?.bankRate / 1000 || 0}%` }}
+            className="progress h-[2px] md:h-[3px]"
+            style={{ width: `${rangeValue?.bankRate / 1000 || 10}%` }}
           ></div>
         </div>
 
         <div className="center-itm justify-between md:w-4/5 font-semibold">
-          <p>{rangeValue?.bankRate || 0}</p>
+          <p>{rangeValue?.bankRate || 10000}</p>
           <p>₹ 87,000</p>
         </div>
       </div>

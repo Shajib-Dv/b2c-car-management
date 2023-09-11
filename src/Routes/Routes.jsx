@@ -18,6 +18,7 @@ import MyOrder from "../Page/Users/Profile/userInfo/myOrder";
 import ShortlistedVehicles from "../Page/Users/Profile/userInfo/ShortlistedVehicles";
 import MyVehicles from "../Page/Users/Profile/userInfo/myVehicles";
 import ProfileSettings from "../Page/Users/Profile/userInfo/ProfileSettings";
+import UsedCarFilter from "../Page/UsedCar/UsedCarFilter/UsedCarFilter";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/usedCar",
         element: <UsedCar></UsedCar>,
+      },
+      {
+        path: "/usedCarFilter",
+        element: <UsedCarFilter/>
       },
       {
         path: "/sellCar",
