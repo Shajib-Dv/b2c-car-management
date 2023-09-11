@@ -5,6 +5,7 @@ import BrowseByBody from './Sections/BrowseByBody';
 import Ads from '../../Layouts/Sections/Ads';
 import Reviews from '../../Layouts/Sections/Reviews';
 import FooterCoaver from '../../Layouts/Sections/FooterCoaver';
+import UsedCardByCity from './Sections/UsedCardByCity';
 
 const UsedCar = () => {
     return (
@@ -12,6 +13,7 @@ const UsedCar = () => {
             <div className='mb-20'>
                 <UsedCarCover />
             </div>
+            <UsedCardByCity />
             <BrowseByMake />
             <BrowseByBody />
             <Ads />

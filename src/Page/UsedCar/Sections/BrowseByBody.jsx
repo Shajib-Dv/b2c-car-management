@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const BrowseByBody = () => {
     return (
         <div>
-            <div className="py-16 overflow-hidden">
+            <div className="py-16  overflow-hidden">
                 <div>
                     <div className="flex gap-7 items-center px-10 mb-5">
                         <h1 className="text-xl font-bold">Browse by Body Style</h1>
