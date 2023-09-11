@@ -6,6 +6,7 @@ import Ads from '../../Layouts/Sections/Ads';
 import Reviews from '../../Layouts/Sections/Reviews';
 import FooterCoaver from '../../Layouts/Sections/FooterCoaver';
 import UsedCardByCity from './Sections/UsedCardByCity';
+import TrustedUsedCarByFuel from './Sections/TrustedUsedCarByFuel';
 
 const UsedCar = () => {
     return (
@@ -15,6 +16,7 @@ const UsedCar = () => {
             </div>
             <UsedCardByCity />
             <BrowseByMake />
+            <TrustedUsedCarByFuel />
             <BrowseByBody />
             <Ads />
             <div className='mt-10'>
