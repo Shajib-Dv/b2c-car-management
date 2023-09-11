@@ -160,6 +160,31 @@
   width: auto;
   background: #00a541;
 }
+
+.range-slider {
+  height: 3px !important;
+  border: none !important;
+  outline: none !important;
+}
+.range-slider__range {
+  height: 3px !important;
+  background-color: #00a541 !important;
+}
+
+.range-slider__thumb {
+  background: none !important;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  border: 6px solid #00a541;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.price-plr {
+  transition: all 0.4s ease-in;
+}
+
 .ReactCollapse--collapse {
   transition: height 500ms;
 }
