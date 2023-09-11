@@ -94,6 +94,10 @@
   @apply border-none;
 }
 
+.input-src {
+  @apply w-full h-full bg-transparent focus:border-none focus:outline-none;
+}
+
 .otp-btn {
   @apply bg-[#00A541] rounded-md py-4 text-white text-xl font-bold cursor-pointer;
 }
