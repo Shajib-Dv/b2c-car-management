@@ -16,7 +16,7 @@ const Features = ["67,000 km", "Diesel", "1st owner"];
 const CarCollection = () => {
   const price = (Math.random() * 5).toFixed(2);
   return (
-    <div className="card w-full bg-base-100 border p-2">
+    <div className="card w-full bg-base-100 border p-2 overflow-hidden">
       <figure>
         <img
           src={CarsImg[Math.round(Math.random() * 1)]}
@@ -27,7 +27,7 @@ const CarCollection = () => {
       <div className="space-y-2">
         <h2 className="title">{CarName[Math.round(Math.random() * 3)]}</h2>
         <p className="text-gray-400">1.2 Revotron XZ Plus</p>
-        <div className="center-itm gap-4">
+        <div className="center-itm flex-wrap gap-4">
           {Features.map((fc, idx) => (
             <p
               key={idx}

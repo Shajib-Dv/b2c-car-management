@@ -44,11 +44,13 @@ const UsedCarFilter = () => {
           </SearchTopic>
         </div>
 
-        <div className="center-itm justify-between my-10">
-          <h2 className="title">9793 Sertified Used Cars in New Delhi</h2>
-          <div className="w-2/5 border center-itm rounded-md px-2 font-semibold">
-            <span className="w-1/3 text-gray-400">Soft by:</span>
-            <select class="select-btn select-no border-l-0 cursor-pointer">
+        <div className="center-itm justify-between flex-wrap gap-4 my-10">
+          <h2 className="text-xl md:text-2xl font-bold">
+            9793 Satisfied Used Cars in New Delhi
+          </h2>
+          <div className="md:w-2/5 w-full border center-itm rounded-md px-2 font-semibold">
+            <span className="md:w-1/3 w-full text-gray-400">Soft by:</span>
+            <select className="select-btn select-no cursor-pointer">
               <option>Relevance</option>
               <option>Homer</option>
               <option>Marge</option>
