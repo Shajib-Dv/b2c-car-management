@@ -1,13 +1,44 @@
 /** @format */
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FiMinusCircle } from "react-icons/fi";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
+
 const PriceRange = () => {
   const [searchText, setSearchText] = useState("");
-  const [rangeValue, setRangleValue] = useState([]);
+  const [rangeValue, setRangleValue] = useState([5000, 50000]);
+  const pillarRef = useRef(null);
+
+  const Divider = [];
+
+  const PillarHeight = [
+    10, 16, 20, 30, 15, 50, 70, 80, 25, 100, 66, 30, 55, 48, 16,
+  ];
+
+  let Pillars = [];
+
+  for (let i = 1; i < 16; i++) {
+    Pillars.push(i);
+    let Calculate = 6000 * i;
+
+    Divider.push(Calculate);
+  }
+
+  useEffect(() => {
+    const childList = pillarRef?.current?.childNodes;
+
+    for (let i = 0; i < childList.length; i++) {
+      if (Divider[i] <= rangeValue[0] || Divider[i] >= rangeValue[1]) {
+        childList[i].classList.add("bg-slate-300");
+        childList[i].classList.remove("bg-green-600");
+      } else {
+        childList[i].classList.remove("bg-slate-300");
+        childList[i].classList.add("bg-green-600");
+      }
+    }
+  }, [rangeValue]);
 
   return (
     <div className="my-5">
@@ -16,126 +47,18 @@ const PriceRange = () => {
         <FiMinusCircle className="text-xl text-gray-400" />
       </div>
 
-      <div className=" my-2 flex justify-start items-end gap-1 h-40 overflow-hidden">
-        <div
-          className={`w-full rounded-t-sm price-plr  ${
-            rangeValue[0] <= 1000 ? "bg-green-600" : "bg-slate-200"
-          }`}
-          style={{ height: `${10}%` }}
-        ></div>
-        <div
-          className={`w-full rounded-t-sm price-plr  ${
-            rangeValue[0] <= 10000 && rangeValue[0] < 10000
-              ? "bg-green-600"
-              : "bg-slate-200"
-          }`}
-          style={{ height: `${16}%` }}
-        ></div>
-        <div
-          className={`w-full rounded-t-sm price-plr  ${
-            rangeValue[0] <= 14000 || rangeValue[0] < 20000
-              ? "bg-green-600"
-              : "bg-slate-200"
-          }`}
-          style={{ height: `${20}%` }}
-        ></div>
-        <div
-          className={`w-full rounded-t-sm price-plr  ${
-            rangeValue[0] <= 21000 || rangeValue[0] < 28000
-              ? "bg-green-600"
-              : "bg-slate-200"
-          }`}
-          style={{ height: `${30}%` }}
-        ></div>
-        <div
-          className={`w-full rounded-t-sm price-plr  ${
-            rangeValue[0] <= 28000 || rangeValue[0] < 36000
-              ? "bg-green-600"
-              : "bg-slate-200"
-          }`}
-          style={{ height: `${15}%` }}
-        ></div>
-        <div
-          className={`w-full rounded-t-sm price-plr  ${
-            rangeValue[0] <= 36000 || rangeValue[0] < 42000
-              ? "bg-green-600"
-              : "bg-slate-200"
-          }`}
-          style={{ height: `${50}%` }}
-        ></div>
-        <div
-          className={`w-full rounded-t-sm price-plr  ${
-            rangeValue[0] <= 42000 || rangeValue[0] < 50000
-              ? "bg-green-600"
-              : "bg-slate-200"
-          }`}
-          style={{ height: `${70}%` }}
-        ></div>
-        <div
-          className={`w-full rounded-t-sm price-plr  ${
-            rangeValue[0] <= 50000 || rangeValue[0] < 55000
-              ? "bg-green-600"
-              : "bg-slate-200"
-          }`}
-          style={{ height: `${80}%` }}
-        ></div>
-        <div
-          className={`w-full rounded-t-sm price-plr  ${
-            rangeValue[0] <= 55000 || rangeValue[0] < 64000
-              ? "bg-green-600"
-              : "bg-slate-200"
-          }`}
-          style={{ height: `${25}%` }}
-        ></div>
-        <div
-          className={`w-full rounded-t-sm price-plr  ${
-            rangeValue[0] <= 64000 || rangeValue[0] < 72000
-              ? "bg-green-600"
-              : "bg-slate-200"
-          }`}
-          style={{ height: `${100}%` }}
-        ></div>
-        <div
-          className={`w-full rounded-t-sm price-plr  ${
-            rangeValue[0] <= 72000 || rangeValue[0] < 78000
-              ? "bg-green-600"
-              : "bg-slate-200"
-          }`}
-          style={{ height: `${66}%` }}
-        ></div>
-        <div
-          className={`w-full rounded-t-sm price-plr  ${
-            rangeValue[0] <= 78000 || rangeValue[0] < 85000
-              ? "bg-green-600"
-              : "bg-slate-200"
-          }`}
-          style={{ height: `${30}%` }}
-        ></div>
-        <div
-          className={`w-full rounded-t-sm price-plr  ${
-            rangeValue[0] <= 85000 || rangeValue[0] < 92000
-              ? "bg-green-600"
-              : "bg-slate-200"
-          }`}
-          style={{ height: `${55}%` }}
-        ></div>
-        <div
-          className={`w-full rounded-t-sm price-plr  ${
-            rangeValue[0] <= 92000 || rangeValue[0] < 95000
-              ? "bg-green-600"
-              : "bg-slate-200"
-          }`}
-          style={{ height: `${48}%` }}
-        ></div>
-        <div
-          className={`w-full rounded-t-sm price-plr  ${
-            rangeValue[0] >= 95000 ||
-            (rangeValue[1] <= 100000 && rangeValue[1] >= 95000)
-              ? "bg-green-600"
-              : "bg-slate-200"
-          }`}
-          style={{ height: `${16}%` }}
-        ></div>
+      <div
+        ref={pillarRef}
+        className=" my-2 flex justify-start items-end gap-1 h-40 overflow-hidden"
+      >
+        {Pillars.length >= 15 &&
+          Pillars.map((pl) => (
+            <div
+              key={pl}
+              className={`w-full rounded-t-sm price-plr bg-green-600`}
+              style={{ height: `${PillarHeight[pl - 1]}%` }}
+            ></div>
+          ))}
       </div>
 
       <div>
