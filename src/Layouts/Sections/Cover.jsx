@@ -35,7 +35,7 @@ const Cover = () => {
           </div>
         </div>
       </div>
-      <div className="border lg:px-10 lg:py-10 rounded-lg lg:flex lg:gap-9 lg:w-6/12 justify-center lg:absolute lg:-mt-20 bg-[#FAFAFA]">
+      <div className="border lg:px-10 lg:py-10 rounded-lg lg:flex lg:gap-9  justify-center lg:absolute lg:-mt-20 bg-[#FAFAFA]">
         <select className="select select-bordered lg:w-44 lg:max-w-xs">
           <option defaultValue="BMW">BMW</option>
           <option>Han Solo</option>
