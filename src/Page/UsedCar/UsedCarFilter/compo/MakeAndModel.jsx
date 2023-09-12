@@ -316,7 +316,7 @@ const MakeAndModel = () => {
           <div
             draggable
             key={idx}
-            className={`h-16 w-16 rounded-md border cursor-pointer`}
+            className={`h-16 w-16 rounded-md border cursor-pointer hover:border-2 hover:p-1 hover:border-red-600`}
             style={{ backgroundColor: color }}
           ></div>
         ))}
