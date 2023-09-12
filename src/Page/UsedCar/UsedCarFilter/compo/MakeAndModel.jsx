@@ -21,11 +21,14 @@ const Colors = [
 
 const MakeAndModel = () => {
   const [searchText, setSearchText] = useState("");
+  const [rtoSearchText, setRtoSearchText] = useState("");
   const [year, setYear] = useState([2000, 2023]);
   const [kilometer, setKilometer] = useState([1000, 2000]);
   const [fuel, setFuel] = useState({});
   const [seat, setSeat] = useState({});
   const [transmission, setTransmission] = useState({});
+  const [rto, setRto] = useState({});
+  const [owner, setOwner] = useState({});
 
   return (
     <>
@@ -320,6 +323,131 @@ const MakeAndModel = () => {
       </div>
 
       <hr />
+
+      <div className="center-itm justify-between my-5">
+        <p className="title">RTO</p>
+        <FiMinusCircle className="text-xl text-gray-400" />
+      </div>
+      <div className="center-itm border rounded-lg px-2 bg-base-300 mb-5">
+        <FaSearch className="text-gray-400 text-xl" />
+        <input
+          type="search"
+          onChange={(e) => setRtoSearchText(e.target.value)}
+          className="input-src p-3"
+          placeholder="e.d. Del"
+        />
+      </div>
+
+      <div className="form-control gap-2 mb-5">
+        <label className="cursor-pointer center-itm gap-2 font-semibold">
+          <input
+            onChange={(e) => setRto({ ...rto, rto1: e.target.checked })}
+            type="checkbox"
+            className="checkbox checkbox-accent"
+          />
+          <span
+            className={`label-text ${
+              rto?.rto1 ? "font-bold text-black" : "text-gray-400"
+            }`}
+          >
+            Delhi
+          </span>
+        </label>
+        <label className="cursor-pointer center-itm gap-2 font-semibold">
+          <input
+            onChange={(e) => setRto({ ...rto, rto2: e.target.checked })}
+            type="checkbox"
+            className="checkbox checkbox-accent"
+          />
+          <span
+            className={`label-text ${
+              rto?.rto2 ? "font-bold text-black" : "text-gray-400"
+            }`}
+          >
+            Haryana
+          </span>
+        </label>
+        <label className="cursor-pointer center-itm gap-2 font-semibold">
+          <input
+            onChange={(e) => setRto({ ...rto, rto3: e.target.checked })}
+            type="checkbox"
+            className="checkbox checkbox-accent"
+          />
+          <span
+            className={`label-text ${
+              rto?.rto3 ? "font-bold text-black" : "text-gray-400"
+            }`}
+          >
+            Uttar Pradesh
+          </span>
+        </label>
+        <label className="cursor-pointer center-itm gap-2 font-semibold">
+          <input
+            onChange={(e) => setRto({ ...rto, rto4: e.target.checked })}
+            type="checkbox"
+            className="checkbox checkbox-accent"
+          />
+          <span
+            className={`label-text ${
+              rto?.rto4 ? "font-bold text-black" : "text-gray-400"
+            }`}
+          >
+            Rajasthan
+          </span>
+        </label>
+        <label className="cursor-pointer center-itm gap-2 font-semibold">
+          <input
+            onChange={(e) => setRto({ ...rto, rto5: e.target.checked })}
+            type="checkbox"
+            className="checkbox checkbox-accent"
+          />
+          <span
+            className={`label-text ${
+              rto?.rto5 ? "font-bold text-black" : "text-gray-400"
+            }`}
+          >
+            Maharashtra
+          </span>
+        </label>
+      </div>
+
+      <hr />
+
+      <div className="center-itm justify-between my-5">
+        <p className="title">Owner</p>
+        <FiMinusCircle className="text-xl text-gray-400" />
+      </div>
+
+      <div className="form-control gap-2 mb-5">
+        <label className="cursor-pointer center-itm gap-2 font-semibold">
+          <input
+            onChange={(e) => setOwner({ ...owner, owner1: e.target.checked })}
+            type="checkbox"
+            className="checkbox checkbox-accent"
+          />
+          <span
+            className={`label-text ${
+              owner?.owner1 ? "font-bold text-black" : "text-gray-400"
+            }`}
+          >
+            First Owner
+          </span>
+        </label>
+        <label className="cursor-pointer center-itm gap-2 font-semibold">
+          <input
+            onChange={(e) => setOwner({ ...owner, owner2: e.target.checked })}
+            type="checkbox"
+            className="checkbox checkbox-accent"
+          />
+          <span
+            className={`label-text ${
+              owner?.owner2 ? "font-bold text-black" : "text-gray-400"
+            }`}
+          >
+            Second Owner
+          </span>
+        </label>
+      </div>
     </>
   );
 };
