@@ -2,9 +2,9 @@ import React from 'react';
 import { BsFillArrowRightSquareFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
-const UpcomingCar = () => {
+const NewCar = () => {
     return (
-        <div className='mb-16'>
+        <div>
             <div className="flex gap-7 items-center px-10 mb-8">
                 <h1 className="title">Upcoming Car</h1>
                 <Link>
@@ -19,6 +19,14 @@ const UpcomingCar = () => {
                 </Link>
             </div>
             <div className='flex flex-col gap-5 md:flex-row md:flex justify-between px-10'>
+                <div className='shadow border p-3 rounded-lg flex flex-col gap-2'>
+                    <img src="https://cdn.discordapp.com/attachments/1149991717647421440/1151030760984301599/Img_6.png" alt="" />
+                    <div>
+                        <h1 className='font-bold'>Renault KWID</h1>
+                        <p>Rs 4.49 - 5.83 Lakh*</p>
+                    </div>
+                    <button className='btn-details w-48'>Notify Me</button>
+                </div>
                 <div className='shadow border p-3 rounded-lg flex flex-col gap-2'>
                     <img src="https://cdn.discordapp.com/attachments/1149991717647421440/1151027545114935368/Img_3.png" alt="" />
                     <div>
@@ -43,17 +51,9 @@ const UpcomingCar = () => {
                     </div>
                     <button className='btn-details w-48'>Notify Me</button>
                 </div>
-                <div className='shadow border p-3 rounded-lg flex flex-col gap-2'>
-                    <img src="https://cdn.discordapp.com/attachments/1149991717647421440/1151030760984301599/Img_6.png" alt="" />
-                    <div>
-                        <h1 className='font-bold'>Renault KWID</h1>
-                        <p>Rs 4.49 - 5.83 Lakh*</p>
-                    </div>
-                    <button className='btn-details w-48'>Notify Me</button>
-                </div>
             </div>
         </div>
     );
 };
 
-export default UpcomingCar;
+export default NewCar;
