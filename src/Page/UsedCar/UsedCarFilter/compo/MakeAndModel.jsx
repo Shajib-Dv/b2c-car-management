@@ -6,6 +6,19 @@ import { FiMinusCircle } from "react-icons/fi";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 
+const Colors = [
+  "#F30000",
+  "#FFFFFF",
+  "#DFDFDF",
+  "#808080",
+  "#365672",
+  "#D06D4F",
+  "#23262B",
+  "#FB9400",
+  "#FFDC00",
+  "#00a541",
+];
+
 const MakeAndModel = () => {
   const [searchText, setSearchText] = useState("");
   const [year, setYear] = useState([2000, 2023]);
@@ -252,6 +265,7 @@ const MakeAndModel = () => {
         <p className="title">Transmission</p>
         <FiMinusCircle className="text-xl text-gray-400" />
       </div>
+
       <div className="form-control gap-2 mb-5">
         <label className="cursor-pointer center-itm gap-2 font-semibold">
           <input
@@ -285,6 +299,24 @@ const MakeAndModel = () => {
             Automatic
           </span>
         </label>
+      </div>
+
+      <hr />
+
+      <div className="center-itm justify-between my-5">
+        <p className="title">Color</p>
+        <FiMinusCircle className="text-xl text-gray-400" />
+      </div>
+
+      <div className="center-itm gap-2 flex-wrap mb-5">
+        {Colors.map((color, idx) => (
+          <div
+            draggable
+            key={idx}
+            className={`h-16 w-16 rounded-md border cursor-pointer`}
+            style={{ backgroundColor: color }}
+          ></div>
+        ))}
       </div>
 
       <hr />
