@@ -1,13 +1,11 @@
 /** @format */
 
 import { useEffect, useRef, useState } from "react";
-import { FaSearch } from "react-icons/fa";
 import { FiMinusCircle } from "react-icons/fi";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 
 const PriceRange = () => {
-  const [searchText, setSearchText] = useState("");
   const [rangeValue, setRangleValue] = useState([5000, 50000]);
   const pillarRef = useRef(null);
 
@@ -67,7 +65,7 @@ const PriceRange = () => {
           min={0}
           max={100000}
           step={1000}
-          defaultValue={[5000, 50000]}
+          defaultValue={[rangeValue[0], rangeValue[1]]}
           className="my-4"
         />
         <div className="center-itm justify-between py-4 font-bold">
@@ -82,22 +80,6 @@ const PriceRange = () => {
         <p className="bg-base-200 text-gray-400 p-1 rounded-md">5-8 Lakh</p>
         <p className="bg-base-200 text-gray-400 p-1 rounded-md">8-10 Lakh</p>
         <p className="bg-base-200 text-gray-400 p-1 rounded-md">10+ Lakh</p>
-      </div>
-
-      <hr />
-
-      <div className="center-itm justify-between my-2">
-        <p className="title">Make & Model</p>
-        <FiMinusCircle className="text-xl text-gray-400" />
-      </div>
-      <div className="center-itm border rounded-lg px-2 bg-base-300 mb-5">
-        <FaSearch className="text-gray-400 text-xl" />
-        <input
-          type="search"
-          onChange={(e) => setSearchText(e.target.value)}
-          className="input-src p-3"
-          placeholder="New Delhi"
-        />
       </div>
     </div>
   );

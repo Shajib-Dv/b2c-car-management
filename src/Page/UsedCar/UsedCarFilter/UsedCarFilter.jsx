@@ -9,6 +9,7 @@ import CarCollection from "./compo/CarCollection";
 import { useState } from "react";
 import CategoryType from "./compo/CategoryType";
 import PriceRange from "./compo/PriceRange";
+import MakeAndModel from "./compo/MakeAndModel";
 
 const UsedCarFilter = () => {
   const [searchText, setSearchText] = useState("");
@@ -35,6 +36,8 @@ const UsedCarFilter = () => {
         <CategoryType />
         <hr />
         <PriceRange />
+        <hr />
+        <MakeAndModel />
       </div>
 
       <div className="md:col-span-4">
