@@ -12,6 +12,7 @@ const MakeAndModel = () => {
   const [kilometer, setKilometer] = useState([1000, 2000]);
   const [fuel, setFuel] = useState({});
   const [seat, setSeat] = useState({});
+  const [transmission, setTransmission] = useState({});
 
   return (
     <>
@@ -244,6 +245,49 @@ const MakeAndModel = () => {
           </span>
         </label>
       </div>
+
+      <hr />
+
+      <div className="center-itm justify-between my-5">
+        <p className="title">Transmission</p>
+        <FiMinusCircle className="text-xl text-gray-400" />
+      </div>
+      <div className="form-control gap-2 mb-5">
+        <label className="cursor-pointer center-itm gap-2 font-semibold">
+          <input
+            onChange={(e) =>
+              setTransmission({ ...transmission, manual: e.target.checked })
+            }
+            type="checkbox"
+            className="checkbox checkbox-accent"
+          />
+          <span
+            className={`label-text ${
+              transmission?.manual ? "font-bold text-black" : "text-gray-400"
+            }`}
+          >
+            Manual
+          </span>
+        </label>
+        <label className="cursor-pointer center-itm gap-2 font-semibold">
+          <input
+            onChange={(e) =>
+              setTransmission({ ...transmission, automatic: e.target.checked })
+            }
+            type="checkbox"
+            className="checkbox checkbox-accent"
+          />
+          <span
+            className={`label-text ${
+              transmission?.automatic ? "font-bold text-black" : "text-gray-400"
+            }`}
+          >
+            Automatic
+          </span>
+        </label>
+      </div>
+
+      <hr />
     </>
   );
 };
