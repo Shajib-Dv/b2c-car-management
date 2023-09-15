@@ -1,8 +1,7 @@
 /** @format */
 
 import { useState } from "react";
-import { FaSearch } from "react-icons/fa";
-import { FiMinusCircle } from "react-icons/fi";
+import { FaCheck, FaSearch } from "react-icons/fa";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 import FilterAccordion from "../Accordion/FilterAccordion";
@@ -23,6 +22,7 @@ const Colors = [
 const MakeAndModel = () => {
   const [searchText, setSearchText] = useState("");
   const [rtoSearchText, setRtoSearchText] = useState("");
+  const [storeColor, setStoreColor] = useState({});
   const [year, setYear] = useState([2000, 2023]);
   const [kilometer, setKilometer] = useState([1000, 2000]);
   const [fuel, setFuel] = useState({});
@@ -31,6 +31,19 @@ const MakeAndModel = () => {
   const [rto, setRto] = useState({});
   const [owner, setOwner] = useState({});
   const [isOpen, setIsOpen] = useState({});
+
+  const handleStoreColor = (color) => {
+    if (storeColor[color]) {
+      setStoreColor((prev) => {
+        return { ...prev, [color]: false };
+      });
+
+      return;
+    }
+    setStoreColor((prev) => {
+      return { ...prev, [color]: true };
+    });
+  };
 
   return (
     <>
@@ -329,10 +342,21 @@ const MakeAndModel = () => {
           {Colors.map((color, idx) => (
             <div
               draggable
+              onClick={() => handleStoreColor(color)}
               key={idx}
-              className={`h-16 w-16 rounded-md border cursor-pointer hover:border-2 hover:p-1 hover:border-red-600`}
+              className={`h-16 w-16 rounded-md center-itm justify-center border cursor-pointer ${
+                storeColor[color] ? "scale-90 transition-all ease-out" : ""
+              }`}
               style={{ backgroundColor: color }}
-            ></div>
+            >
+              <p
+                className={`font-bold text-2xl ${
+                  storeColor[color] ? "" : "hidden text-base-content"
+                }`}
+              >
+                <FaCheck />
+              </p>
+            </div>
           ))}
         </div>
       </FilterAccordion>
