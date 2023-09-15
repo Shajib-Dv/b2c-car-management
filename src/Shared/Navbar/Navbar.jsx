@@ -42,12 +42,13 @@ const Navbar = () => {
                 placeholder="Search Cars or Brands eg. Swift, or Maruti."
                 required
               />
-              <button
+              <Link to="/usedCarFilter"><button
                 type="submit"
                 className="text-gray absolute right-2.5 bottom-2.5    font-medium rounded-lg  px-4 py-1 text-2xl  "
               >
                 <BiSearch></BiSearch>
-              </button>
+              </button></Link>
+              
             </div>
           </form>
         </div>
