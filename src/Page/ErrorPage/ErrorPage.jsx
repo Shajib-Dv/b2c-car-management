@@ -30,7 +30,7 @@ const ErrorPage = () => {
           alt="Salarput"
         />
         <div className="absolute bottom-0 md:w-1/2 text-center bg-pink-500 rounded-md p-2 text-white">
-          এতো চেষ্টার পরেও আর লুকায়ি থাকতে ফারলাম না, চোদানির ফোয়া
+          এতো চেষ্টার পরেও আর লুকায়ি থাকতে ফারলাম না
         </div>
       </div>
     </div>
