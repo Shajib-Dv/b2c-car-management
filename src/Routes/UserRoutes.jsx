@@ -1,13 +1,21 @@
 /** @format */
 
-import OrderHistory from "../Layouts/Dashboard/UserDashboard/Sections/OrderHistory";
-import UserDashboard from "../Layouts/Dashboard/UserDashboard/UserDashboard";
+import { Navigate } from "react-router-dom";
+import Dashboard from "../Layouts/Dashboard/Dashboard";
+import OrderSummary from "../Layouts/Dashboard/GroupDash/User/Sections/OrderSummary";
 
 const UserRoutes = {
   path: "/dashboard/user",
-  element: <UserDashboard />,
+  element: <Dashboard />,
   children: [
-    { path: "/dashboard/user/order_history", element: <OrderHistory /> },
+    {
+      path: "/dashboard/user",
+      element: <Navigate to="/dashboard/user/order_summary" />,
+    },
+    {
+      path: "/dashboard/user/order_summary",
+      element: <OrderSummary />,
+    },
   ],
 };
 

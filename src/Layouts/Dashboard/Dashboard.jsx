@@ -5,12 +5,12 @@ import {
   PiArrowFatLinesRightFill,
   PiArrowFatLinesLeftFill,
 } from "react-icons/pi";
-import { MdOutlineCarRepair, MdOutlineCarRental } from "react-icons/md";
 import { useState } from "react";
-import ActiveDashLink from "../ActiveDashLink";
-
-const AdminDashboard = () => {
+import AdminLinks from "./GroupDash/Admin/AdminLinks";
+import UserLinks from "./GroupDash/User/UserLinks";
+const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const user = { name: "Shajib", role: "admin" };
   return (
     <div className="drawer lg:drawer-open">
       <input id="admin_drawer" type="checkbox" className="drawer-toggle" />
@@ -29,12 +29,11 @@ const AdminDashboard = () => {
       <div className="drawer-side">
         <div className="menu w-80 min-h-full bg-base-200 relative">
           <div className="py-10 space-y-4 flex flex-col">
-            <ActiveDashLink to="/dashboard/admin/add_new_car">
-              <MdOutlineCarRepair className="text-2xl" /> Add New Car
-            </ActiveDashLink>
-            <ActiveDashLink to="/dashboard/admin/recently_added_car">
-              <MdOutlineCarRental className="text-2xl" /> Recently Added Car
-            </ActiveDashLink>
+            {user.role === "admin" ? (
+              <AdminLinks />
+            ) : (
+              user.role === "user" && <UserLinks />
+            )}
           </div>
           <label
             onClick={() => setIsOpen(false)}
@@ -53,4 +52,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;
+export default Dashboard;
