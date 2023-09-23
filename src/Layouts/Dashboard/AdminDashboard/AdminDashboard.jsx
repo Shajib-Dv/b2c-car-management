@@ -5,7 +5,9 @@ import {
   PiArrowFatLinesRightFill,
   PiArrowFatLinesLeftFill,
 } from "react-icons/pi";
+import { MdOutlineCarRepair, MdOutlineCarRental } from "react-icons/md";
 import { useState } from "react";
+import ActiveDashLink from "../ActiveDashLink";
 
 const AdminDashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,9 +28,13 @@ const AdminDashboard = () => {
       </div>
       <div className="drawer-side">
         <div className="menu w-80 min-h-full bg-base-200 relative">
-          <div className="p-2">
-            <p>Itm 1</p>
-            <p>Itm 2</p>
+          <div className="py-10 space-y-4 flex flex-col">
+            <ActiveDashLink to="/dashboard/admin/add_new_car">
+              <MdOutlineCarRepair className="text-2xl" /> Add New Car
+            </ActiveDashLink>
+            <ActiveDashLink to="/dashboard/admin/recently_added_car">
+              <MdOutlineCarRental className="text-2xl" /> Recently Added Car
+            </ActiveDashLink>
           </div>
           <label
             onClick={() => setIsOpen(false)}
