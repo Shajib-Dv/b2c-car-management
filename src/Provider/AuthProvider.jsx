@@ -17,9 +17,10 @@ export const AuthContext = createContext(null);
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
-  // private route
   const [user, setUser] = useState(null);
-  // set loading
+
+  const testRole = { name: "Shajib", role: "admin" };
+
   const [loading, setLoading] = useState(true);
 
   // create reCaptcha
@@ -43,7 +44,6 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  // logout
   const logOut = () => {
     setLoading(true);
     return signOut(auth);
@@ -55,6 +55,7 @@ const AuthProvider = ({ children }) => {
     loading,
     googleSignUp,
     googleSignIn,
+    testRole,
   };
 
   // private route

@@ -1,25 +1,27 @@
 /** @format */
 
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import {
   PiArrowFatLinesRightFill,
   PiArrowFatLinesLeftFill,
 } from "react-icons/pi";
+import { BiSolidHomeCircle } from "react-icons/bi";
 import { useState } from "react";
 import AdminLinks from "./GroupDash/Admin/AdminLinks";
 import UserLinks from "./GroupDash/User/UserLinks";
+import useAuth from "../../hooks/useAuth";
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const user = { name: "Shajib", role: "admin" };
+  const { testRole } = useAuth();
   return (
-    <div className="drawer lg:drawer-open">
+    <div className="drawer lg:drawer-open h-full">
       <input id="admin_drawer" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center justify-center min-h-screen">
+      <div className="drawer-content flex flex-col items-center justify-center">
         <Outlet />
         <label
           onClick={() => setIsOpen(true)}
           htmlFor="admin_drawer"
-          className="h-[100vh] lg:hidden center-itm justify-center border-l-4 border-l-green-600 absolute left-0"
+          className="h-[100vh] lg:hidden center-itm justify-center border-l-4 border-l-green-600 fixed left-0 top-0"
         >
           <span className="h-24 w-8  center-itm justify-center bg-green-600 btn-dr">
             <PiArrowFatLinesRightFill className="text-2xl text-white" />
@@ -27,14 +29,15 @@ const Dashboard = () => {
         </label>
       </div>
       <div className="drawer-side">
-        <div className="menu w-80 min-h-full bg-base-200 relative">
+        <div className="menu flex flex-col justify-between w-80 min-h-full bg-base-200 relative">
           <div className="py-10 space-y-4 flex flex-col">
-            {user.role === "admin" ? (
+            {testRole?.role === "admin" ? (
               <AdminLinks />
             ) : (
-              user.role === "user" && <UserLinks />
+              testRole?.role === "user" && <UserLinks />
             )}
           </div>
+
           <label
             onClick={() => setIsOpen(false)}
             htmlFor="admin_drawer"
@@ -46,6 +49,9 @@ const Dashboard = () => {
               <PiArrowFatLinesLeftFill className="text-2xl text-white" />
             </span>
           </label>
+          <Link to="/">
+            <BiSolidHomeCircle className="text-5xl text-green-600" />
+          </Link>
         </div>
       </div>
     </div>
