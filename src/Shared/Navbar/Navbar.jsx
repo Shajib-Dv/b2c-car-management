@@ -8,7 +8,7 @@ import "./../css/custom.css";
 import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
-  const { user, logOut } = useAuth();
+  const { user, logOut, testRole } = useAuth();
 
   const handleLogOut = () => {
     logOut();
@@ -42,25 +42,27 @@ const Navbar = () => {
                 placeholder="Search Cars or Brands eg. Swift, or Maruti."
                 required
               />
-              <Link to="/usedCarFilter"><button
-                type="submit"
-                className="text-gray absolute right-2.5 bottom-2.5    font-medium rounded-lg  px-4 py-1 text-2xl  "
-              >
-                <BiSearch></BiSearch>
-              </button></Link>
-              
+              <Link to="/usedCarFilter">
+                <button
+                  type="submit"
+                  className="text-gray absolute right-2.5 bottom-2.5    font-medium rounded-lg  px-4 py-1 text-2xl  "
+                >
+                  <BiSearch></BiSearch>
+                </button>
+              </Link>
             </div>
           </form>
         </div>
         <div className="gap-3 items-center flex justify-center">
           {user ? (
-            <div>
+            <div className="center-itm gap-3">
+              <Link to={`/dashboard/${testRole?.role}`} className="btn-details">
+                Dashboard
+              </Link>
               {user?.photoURL ? (
                 <img src={user?.photoURL} alt="user_photo" />
               ) : (
-                <p className="flex items-center justify-center h-12 w-12 rounded-full text-green-600 font-bold bg-base-200 text-3xl">
-                  {user?.email?.slice(0, 1)}
-                </p>
+                <p className="btn-details">{user?.email}</p>
               )}
             </div>
           ) : (
