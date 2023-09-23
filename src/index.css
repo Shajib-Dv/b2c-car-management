@@ -43,6 +43,11 @@
   @apply center-itm justify-between md:text-2xl text-gray-400 font-bold my-4;
 }
 
+.btn-dr {
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
 .btn-second {
   @apply btn bg-[#333333] md:text-xl capitalize text-white hover:bg-[#333333c7];
 }
