@@ -5,6 +5,7 @@ import { useState } from "react";
 import { forwardRef } from "react";
 
 const UpdateProfileModal = ({ open, close }, ref) => {
+  const [loader, setLoader] = useState(false);
   const avatarRef = useRef(null);
   const [userInfo, setUserInfo] = useState({});
 
@@ -26,6 +27,7 @@ const UpdateProfileModal = ({ open, close }, ref) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // setLoader(true) TODO: only when data set into DB
     e.target.reset();
     // setUserInfo({});
     close();
@@ -95,11 +97,36 @@ const UpdateProfileModal = ({ open, close }, ref) => {
                   />
                 </div>
               </div>
+              <h3 className="title">Address</h3>
+              <input
+                type="text"
+                placeholder="Your city"
+                className="data-input"
+                required
+                onChange={(e) =>
+                  setUserInfo({ ...userInfo, city: e.target.value })
+                }
+              />
+              <input
+                type="text"
+                placeholder="Your country"
+                className="data-input"
+                required
+                onChange={(e) =>
+                  setUserInfo({ ...userInfo, country: e.target.value })
+                }
+              />
+
               <button
                 type="submit"
-                className="btn-details font-bold hover:text-green-600"
+                disabled={loader}
+                className="btn-details font-bold hover:text-green-600 disabled:cursor-not-allowed"
               >
-                Update
+                {loader ? (
+                  <span className="loading loading-bars loading-sm text-green-700"></span>
+                ) : (
+                  "Update"
+                )}
               </button>
             </form>
             <button
