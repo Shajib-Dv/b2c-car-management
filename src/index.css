@@ -94,17 +94,12 @@
   font-size: 20px;
 }
 
-.file-input::-webkit-file-upload-button {
-  background-color: #00a541 !important;
-  border: none;
-  outline: none;
-  color: white;
-  text-transform: capitalize;
+.data-input {
+  @apply p-2 w-full bg-transparent rounded-md border border-gray-600 font-semibold;
 }
-
-.file-input {
-  outline: none !important;
-  border: 1px solid #00a541;
+.data-input:focus {
+  border-color: #00a541;
+  outline: none;
 }
 
 .input:focus,
