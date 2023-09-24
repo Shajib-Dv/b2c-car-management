@@ -8,16 +8,22 @@ import useAuth from "../../../hooks/useAuth";
 const Register = () => {
   const [error, setError] = useState({});
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
-  const { googleSignIn } = useAuth();
+  const { googleSignIn, updateUserProfile } = useAuth();
 
   const handleGoogleSignin = (e) => {
     e.preventDefault();
     setError({});
     setLoader(false);
 
+    if (!name) {
+      setError((prev) => {
+        return { ...prev, name: "Please enter your name !" };
+      });
+    }
     if (!email) {
       setError((prev) => {
         return { ...prev, email: "Please provide an email !" };
@@ -29,11 +35,11 @@ const Register = () => {
       });
     }
 
-    if (email && password) {
+    if (email && password && name) {
       setLoader(true);
       googleSignIn(email, password)
         .then(() => {
-          navigate("/");
+          updateUserProfile(name).then(() => navigate("/"));
         })
         .catch((err) => {
           setLoader(false);
@@ -61,11 +67,26 @@ const Register = () => {
         <div>
           <div>
             <input
+              type="text"
+              name="name"
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Your Name"
+              className="input input-bordered mt-4 md:w-4/5 w-full"
+            />
+            <div className="h-5">
+              {error?.name && !name && (
+                <p className="text-red-600 font-semibold">{error?.name}</p>
+              )}
+            </div>
+          </div>
+
+          <div>
+            <input
               type="email"
               name="email"
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Your email"
-              className="input input-bordered mt-20 md:w-4/5"
+              className="input input-bordered mt-4 md:w-4/5 w-full"
             />
             <div className="h-5">
               {error?.email && !email && (
@@ -80,7 +101,7 @@ const Register = () => {
               name="password"
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Your password"
-              className="input input-bordered mt-10 md:w-4/5"
+              className="input input-bordered mt-4 md:w-4/5 w-full"
             />
             <div className="h-5">
               {error?.password && !password ? (

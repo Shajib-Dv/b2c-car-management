@@ -94,6 +94,19 @@
   font-size: 20px;
 }
 
+.file-input::-webkit-file-upload-button {
+  background-color: #00a541 !important;
+  border: none;
+  outline: none;
+  color: white;
+  text-transform: capitalize;
+}
+
+.file-input {
+  outline: none !important;
+  border: 1px solid #00a541;
+}
+
 .input:focus,
 .select:focus {
   @apply border-none;
