@@ -3,7 +3,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
-import { FaChevronDown, FaSignOutAlt } from "react-icons/fa";
+import { FaSignOutAlt } from "react-icons/fa";
 import "./../css/custom.css";
 import useAuth from "../../hooks/useAuth";
 
@@ -62,7 +62,7 @@ const Navbar = () => {
               {user?.photoURL ? (
                 <img src={user?.photoURL} alt="user_photo" />
               ) : (
-                <p className="btn-details">{user?.email}</p>
+                <p className="btn-details">{user?.displayName}</p>
               )}
             </div>
           ) : (

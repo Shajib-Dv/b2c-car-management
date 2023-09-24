@@ -94,6 +94,14 @@
   font-size: 20px;
 }
 
+.data-input {
+  @apply p-2 w-full bg-transparent rounded-md border border-gray-600 font-semibold;
+}
+.data-input:focus {
+  border-color: #00a541;
+  outline: none;
+}
+
 .input:focus,
 .select:focus {
   @apply border-none;
