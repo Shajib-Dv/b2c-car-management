@@ -10,7 +10,7 @@ const ActiveDashLink = ({ to, children }) => {
         isActive ? "btn-details btn-under" : "btn-details"
       }
     >
-      <span className="text-xl font-bold center-itm gap-2 justify-center overflow-hidden">
+      <span className="text-xl font-bold center-itm gap-2 justify-start overflow-hidden hover:text-green-600">
         {children}
       </span>
     </NavLink>

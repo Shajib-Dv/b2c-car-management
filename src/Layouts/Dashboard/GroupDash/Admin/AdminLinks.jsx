@@ -31,17 +31,17 @@ const AdminLinks = () => {
         Added
       </ActiveDashLink>
 
-      <ActiveDashLink to="/dashboard/admin/recently_added_car">
+      <ActiveDashLink to="/dashboard/admin/manage_cars">
         <BsCardChecklist className="text-2xl text-green-600" /> Manage Cars
       </ActiveDashLink>
 
-      <ActiveDashLink to="/dashboard/admin/recently_added_car">
+      <button className="btn-details center-itm gap-3 font-bold text-xl">
         <BiSupport className="text-2xl text-green-600" /> Support
-      </ActiveDashLink>
+      </button>
 
-      <ActiveDashLink to="/dashboard/admin/recently_added_car">
+      <button className="btn-details center-itm gap-3 font-bold text-xl">
         <MdReport className="text-2xl text-green-600" /> Report
-      </ActiveDashLink>
+      </button>
     </>
   );
 };
