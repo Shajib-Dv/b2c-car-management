@@ -1,6 +1,21 @@
 /** @format */
 
+import { useState } from "react";
+
 const AddNewCar = () => {
+
+  const [isFocused, setIsFocused] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const toggleFocus = () => {
+    setIsFocused(!isFocused);
+  };
+
+
   return <div className="pt-10 w-full">
     <h1 className="mb-5 font-bold text-xl text-[#3AB86C] font-sans">Add New Car</h1>
     <div className="pb-10">
@@ -112,28 +127,63 @@ const AddNewCar = () => {
               </div>
             </div>
             <div>
-              <h1 className="font-bold text-[#3AB86C] font-sans mb-1">Verdict</h1>
+              <h1 className="font-bold text-[#3AB86C] font-sans py-3">Verdict</h1>
               <div className="md:flex md:flex-row flex flex-col gap-5 ">
-                <input type="text" placeholder='Max Torque (nm@rpm)' className='p-[10px] w-full bg-transparent rounded-md border-[1px] border-gray-600 font-semibold ' required />
+                <div className="relative md:mb-6 w-full" data-te-input-wrapper-init>
+                  <input type="text" placeholder='' className='inputCustom peer' required />
+                  <label htmlFor="" className="labelCustom">Max Torque (nm@rpm)</label>
+                </div>
                 <input type="file" className="file-input file-input-bordered file-input-success w-full max-w-xs" required />
-                <input type="text" placeholder='Fuel Tank Capacity' className='p-[10px] w-full bg-transparent rounded-md border-[1px] border-gray-600 font-semibold ' required />
+                <div className="relative md:mb-6 w-full" data-te-input-wrapper-init>
+                  <input type="text" placeholder='' className='inputCustom peer' required />
+                  <label htmlFor="" className="labelCustom">Max Torque (nm@rpm)</label>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <input type="text" placeholder='email' className='p-[10px] bg-transparent rounded-md border-[1px] border-gray-600 font-semibold ' required />
         <div className="relative md:mb-6" data-te-input-wrapper-init>
-          <input type="text" placeholder='' className='p-[10px] w-full bg-transparent rounded-md border-[1px] border-gray-600 font-semibold peer block focus:border-green-500 outline-none  placeholder:text-green-500 active:border-green-600' required />
-          <label htmlFor="" className="pointer-events-none absolute left-3 top-1 mb-0 max-w-[90%] origin-[0_0]  pt-[0.37rem] leading-[1.6] font-bold  transition-all duration-200 ease-out peer-focus:-translate-y-[1.7rem] peer-focus:scale-[0.8] dark:text-green-500 dark:peer-focus:text-green-500">Max Torque (nm@rpm)</label>
-          {/* <input
+          <input type="text" placeholder='' className='inputCustom peer' required />
+          <label htmlFor="" className="labelCustom">Max Torque (nm@rpm)</label>
+        </div>
+        <div className="relative md:mb-6 w-full" data-te-input-wrapper-init>
+          <input
             type="text"
-            className="peer block min-h-[auto] w-full rounded border-1 bg-transparent px-3 py-[0.32rem] leading-[1.6] text-black outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-green-500 dark:placeholder:text-green-500 [&:not  ([data-te-input-placeholder-active])]:placeholder:opacity-0"
-            
-            placeholder="Email address" />
+            placeholder=""
+            className={`inputCustom peer `}
+            required
+            value={inputValue}
+            onChange={handleInputChange}
+            onFocus={toggleFocus}
+            onBlur={toggleFocus}
+          />
           <label
-            className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-black transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-neutral-200 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-green-500 dark:peer-focus:text-green-500"
-          >Email address
-          </label> */}
+            htmlFor=""
+            className={`labelCustom ${isFocused || inputValue ? '-translate-y-[1.7rem] scale-[0.8] text-green-500 peer-focus:text-green-500' : ''
+              }`}
+          >
+            Max Torque (nm@rpm)
+          </label>
+        </div>
+        <div className="relative md:mb-6 w-full" data-te-input-wrapper-init>
+          <input
+            type="text"
+            placeholder=""
+            className={`inputCustom peer `}
+            required
+            value={inputValue}
+            onChange={handleInputChange}
+            onFocus={toggleFocus}
+            onBlur={toggleFocus}
+          />
+          <label
+            htmlFor=""
+            className={`labelCustom ${isFocused || inputValue ? '-translate-y-[1.7rem] scale-[0.8] text-green-500 peer-focus:text-green-500' : ''
+              }`}
+          >
+            Max Torque (nm@rpm)
+          </label>
         </div>
         <input
           type="text"

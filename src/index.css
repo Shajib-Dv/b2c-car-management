@@ -242,3 +242,10 @@ textarea:focus + label {
   font-size: 14px;
   color: #00a541;
 }
+
+.inputCustom {
+  @apply p-[10px] w-full bg-transparent rounded-md border-[1px] border-gray-600 font-semibold  block focus:border-green-500 outline-none  placeholder:text-green-500 active:border-green-600;
+}
+.labelCustom {
+  @apply pointer-events-none absolute left-3 top-1 mb-0 max-w-[90%] origin-[0_0]  pt-[0.37rem] leading-[1.6] font-bold  transition-all duration-200 ease-out peer-focus:-translate-y-[1.7rem] peer-focus:scale-[0.8] dark:text-green-500 dark:peer-focus:text-green-500;
+}
