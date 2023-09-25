@@ -29,36 +29,33 @@ const Dashboard = () => {
     <>
       <div className="drawer lg:drawer-open h-full">
         <input id="admin_drawer" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
+        <div className="drawer-content flex flex-col items-center justify-center px-10 bg-gradient-to-r from-[#F2F2F2] to-[#dbfde8]">
           <Outlet />
           <label
             onClick={() => setIsOpen(true)}
             htmlFor="admin_drawer"
             className="h-[100vh] lg:hidden center-itm justify-center border-l-4 border-l-green-600 fixed left-0 top-0"
           >
-            <span className="h-24 w-8  center-itm justify-center bg-green-600 btn-dr">
+            <span className="h-16 w-4  center-itm justify-center bg-green-600 btn-dr">
               <PiArrowFatLinesRightFill className="text-2xl text-white" />
             </span>
           </label>
         </div>
+        {/* link content */}
         <div className="drawer-side">
-          <div className="menu flex flex-col justify-between w-80 min-h-full bg-base-200 relative">
+          <div className="menu flex flex-col justify-between w-80 min-h-full bg-base-200 relative pl-8 pt-8">
             <div className="space-y-2 flex flex-col gap-3">
               <div className="center-itm justify-center flex-col gap-3">
                 <div className="w-40 h-40 rounded-full border border-green-500 relative">
-                  {user?.photoURL ? (
-                    <img
-                      src={user?.photoURL}
-                      alt="Avatar"
-                      className="w-full h-full rounded-full bg-cover"
-                    />
-                  ) : (
-                    <img
-                      src="https://i.ibb.co/kc20dsb/blank-profile-picture-973460-1280.png"
-                      alt="Avatar"
-                      className="w-full h-full rounded-full bg-cover"
-                    />
-                  )}
+                  <img
+                    src={
+                      user?.photoURL
+                        ? user?.photoURL
+                        : "https://i.ibb.co/kc20dsb/blank-profile-picture-973460-1280.png"
+                    }
+                    alt="Avatar"
+                    className="w-full h-full rounded-full bg-cover"
+                  />
 
                   <UpdateProfile openModal={openModal} />
                 </div>
@@ -84,8 +81,8 @@ const Dashboard = () => {
                 isOpen ? "mr-0" : "mr-32"
               }`}
             >
-              <span className="h-24 w-8  center-itm justify-center bg-green-600 btn-dr -mr-10">
-                <PiArrowFatLinesLeftFill className="text-2xl text-white" />
+              <span className="h-16 w-4  center-itm justify-center bg-green-600 btn-dr -mr-5">
+                <PiArrowFatLinesLeftFill className="text-white" />
               </span>
             </label>
             <Link to="/">
