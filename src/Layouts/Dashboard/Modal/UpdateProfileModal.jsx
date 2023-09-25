@@ -35,7 +35,7 @@ const UpdateProfileModal = ({ open, close }, ref) => {
 
   return (
     <>
-      <dialog className="modal" open={open} ref={ref}>
+      <dialog className={`${open ? "flex" : "hidden"}`} open={open} ref={ref}>
         <div className="modal-box md:w-1/2  border border-green-600">
           <h3 className="font-bold text-lg">
             Welcome <span className="text-green-600">{"User_name"}</span>.

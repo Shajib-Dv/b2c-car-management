@@ -201,3 +201,51 @@
 .ReactCollapse--collapse {
   transition: height 500ms;
 }
+
+/* scroll bar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00a542b7;
+  border-radius: 6px;
+}
+
+/* dialog */
+dialog {
+  @apply bg-transparent backdrop-blur-[2px] fixed top-0 h-full w-full items-center justify-center;
+}
+
+.modal-box {
+  @apply shadow-sm shadow-green-200;
+}
+
+.placeholder-txt {
+  position: relative;
+  width: auto;
+  margin-top: 20px;
+}
+
+.placeholder-txt > label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  transition: top 0.2s ease, font-size 0.2s ease;
+  pointer-events: none;
+  color: #ccc;
+}
+
+.placeholder-txt > input:focus + label,
+textarea:focus + label {
+  top: -20px;
+  font-size: 14px;
+  color: #00a541;
+}
+
+.inputCustom {
+  @apply p-[10px] w-full bg-transparent rounded-md border-[1px] border-gray-600 font-semibold  block focus:border-green-500 outline-none  placeholder:text-green-500 active:border-green-600;
+}
+.labelCustom {
+  @apply pointer-events-none absolute left-3 top-1 mb-0 max-w-[90%] origin-[0_0]  pt-[0.37rem] leading-[1.6] font-bold  transition-all duration-200 ease-out peer-focus:-translate-y-[1.7rem] peer-focus:scale-[0.8] dark:text-green-500 dark:peer-focus:text-green-500;
+}
