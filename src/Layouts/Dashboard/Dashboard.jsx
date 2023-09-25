@@ -36,7 +36,7 @@ const Dashboard = () => {
             htmlFor="admin_drawer"
             className="h-[100vh] lg:hidden center-itm justify-center border-l-4 border-l-green-600 fixed left-0 top-0"
           >
-            <span className="h-24 w-8  center-itm justify-center bg-green-600 btn-dr">
+            <span className="h-16 w-4  center-itm justify-center bg-green-600 btn-dr">
               <PiArrowFatLinesRightFill className="text-2xl text-white" />
             </span>
           </label>
@@ -84,8 +84,8 @@ const Dashboard = () => {
                 isOpen ? "mr-0" : "mr-32"
               }`}
             >
-              <span className="h-24 w-8  center-itm justify-center bg-green-600 btn-dr -mr-10">
-                <PiArrowFatLinesLeftFill className="text-2xl text-white" />
+              <span className="h-16 w-4  center-itm justify-center bg-green-600 btn-dr -mr-5">
+                <PiArrowFatLinesLeftFill className="text-white" />
               </span>
             </label>
             <Link to="/">
