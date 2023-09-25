@@ -11,6 +11,7 @@ const SendMsgModal = ({ open, close, title, action }) => {
     if (action === "support") {
       alert("Support send");
     } else if (action === "report") {
+      setReportMsg("");
       alert(reportMsg);
     }
 
@@ -30,15 +31,29 @@ const SendMsgModal = ({ open, close, title, action }) => {
               onSubmit={handleSubmit}
               className="flex flex-col mt-4 gap-2"
             >
-              <div className="placeholder-txt">
-                <textarea
-                  onChange={(e) => setReportMsg(e.target.value)}
-                  id="message"
-                  className="data-input min-h-[200px]"
-                ></textarea>
-                <label htmlFor="message">Write your issue here...</label>
-              </div>
-
+              {action === "report" && (
+                <div className="placeholder-txt">
+                  <textarea
+                    onChange={(e) => setReportMsg(e.target.value)}
+                    id="message"
+                    className="data-input min-h-[200px]"
+                  ></textarea>
+                  <label htmlFor="message">Write your issue here...</label>
+                </div>
+              )}
+              {action === "support" && (
+                <div className="my-10">
+                  <h2 className="title">
+                    Send a mail at{" "}
+                    <a
+                      className="text-green-600"
+                      href="mailto:mdsojeeb242@mail.com"
+                    >
+                      Support@mail.com
+                    </a>
+                  </h2>
+                </div>
+              )}
               <button
                 type="submit"
                 disabled={loader}
