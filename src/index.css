@@ -216,3 +216,29 @@
 dialog {
   @apply bg-transparent backdrop-blur-[2px] fixed top-0 h-full w-full items-center justify-center;
 }
+
+.modal-box {
+  @apply shadow-sm shadow-green-200;
+}
+
+.placeholder-txt {
+  position: relative;
+  width: auto;
+  margin-top: 20px;
+}
+
+.placeholder-txt > label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  transition: top 0.2s ease, font-size 0.2s ease;
+  pointer-events: none;
+  color: #ccc;
+}
+
+.placeholder-txt > input:focus + label,
+textarea:focus + label {
+  top: -20px;
+  font-size: 14px;
+  color: #00a541;
+}

@@ -11,7 +11,7 @@ import { BsCardChecklist } from "react-icons/bs";
 import { BiSupport } from "react-icons/bi";
 import ActiveDashLink from "../../ActiveDashLink";
 
-const AdminLinks = () => {
+const AdminLinks = ({ sendReport, sendSupport }) => {
   return (
     <>
       <ActiveDashLink to="/dashboard/admin/analytics">
@@ -35,11 +35,17 @@ const AdminLinks = () => {
         <BsCardChecklist className="text-2xl text-green-600" /> Manage Cars
       </ActiveDashLink>
 
-      <button className="btn-details center-itm gap-3 font-bold text-xl">
+      <button
+        onClick={() => sendSupport("support")}
+        className="btn-details center-itm gap-3 font-bold text-xl"
+      >
         <BiSupport className="text-2xl text-green-600" /> Support
       </button>
 
-      <button className="btn-details center-itm gap-3 font-bold text-xl">
+      <button
+        onClick={() => sendReport("report")}
+        className="btn-details center-itm gap-3 font-bold text-xl"
+      >
         <MdReport className="text-2xl text-green-600" /> Report
       </button>
     </>

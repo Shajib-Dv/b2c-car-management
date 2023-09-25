@@ -12,17 +12,34 @@ import UserLinks from "./GroupDash/User/UserLinks";
 import useAuth from "../../hooks/useAuth";
 import UpdateProfile from "./Modal/UpdateProfile";
 import UpdateProfileModal from "./Modal/UpdateProfileModal";
+import SendMsgModal from "./Modal/SendMsgModal";
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isReportModalOpen, setIsReportModalOpen] = useState(false);
+  const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
   const { testRole, user } = useAuth();
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  console.log(isReportModalOpen, isSupportModalOpen);
+
+  const openModal = (action) => {
+    if (action === "report") {
+      setIsReportModalOpen(true);
+    } else if (action === "support") {
+      setIsSupportModalOpen(true);
+    } else {
+      setIsModalOpen(true);
+    }
   };
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const closeModal = (action) => {
+    if (action === "report") {
+      setIsReportModalOpen(false);
+    } else if (action === "support") {
+      setIsSupportModalOpen(false);
+    } else {
+      setIsModalOpen(false);
+    }
   };
 
   return (
@@ -68,7 +85,7 @@ const Dashboard = () => {
               </div>
 
               {testRole?.role === "admin" ? (
-                <AdminLinks />
+                <AdminLinks sendReport={openModal} sendSupport={openModal} />
               ) : (
                 testRole?.role === "user" && <UserLinks />
               )}
@@ -95,6 +112,18 @@ const Dashboard = () => {
         ref={modalRef}
         close={closeModal}
         open={isModalOpen}
+      />
+      <SendMsgModal
+        title="Report your opinion here..."
+        open={isReportModalOpen}
+        action="report"
+        close={closeModal}
+      />
+      <SendMsgModal
+        title="Welcome to our support station."
+        open={isSupportModalOpen}
+        action="support"
+        close={closeModal}
       />
     </>
   );
