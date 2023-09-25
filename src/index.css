@@ -211,3 +211,8 @@
   background: #00a542b7;
   border-radius: 6px;
 }
+
+/* dialog */
+dialog {
+  @apply bg-transparent backdrop-blur-[2px] fixed top-0 h-full w-full items-center justify-center;
+}
