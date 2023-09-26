@@ -1,19 +1,23 @@
 /** @format */
 
 import { useState } from "react";
+import CustomInput from "../../../../../Shared/components/CustomInput";
+import CustomInput2 from "../../../../../Shared/components/CustomInput2";
 
 const AddNewCar = () => {
 
-  const [isFocused, setIsFocused] = useState(false);
-  const [inputValue, setInputValue] = useState('');
+  // const [isFocused, setIsFocused] = useState(false);
+  // const [inputValue, setInputValue] = useState('');
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
+  // const handleInputChange = (e) => {
+  //   setInputValue(e.target.value);
+  // };
 
-  const toggleFocus = () => {
-    setIsFocused(!isFocused);
-  };
+  // const toggleFocus = () => {
+  //   setIsFocused(!isFocused);
+  // };
+  const [inputValue1, setInputValue1] = useState('');
+  const [inputValue2, setInputValue2] = useState('');
 
 
   return <div className="pt-10 w-full">
@@ -147,7 +151,28 @@ const AddNewCar = () => {
           <input type="text" placeholder='' className='inputCustom peer' required />
           <label htmlFor="" className="labelCustom">Max Torque (nm@rpm)</label>
         </div>
-        <div className="relative md:mb-6 w-full" data-te-input-wrapper-init>
+
+
+        <div>
+          <CustomInput
+            label="Max Torque (nm@rpm)"
+            value={inputValue1}
+            onChange={(value) => setInputValue1(value)}
+          />
+
+          <CustomInput
+            label="Max Torque (nm@rpm)"
+            value={inputValue2}
+            onChange={(value) => setInputValue2(value)}
+          />
+        </div>
+
+        <div>
+          <CustomInput2 label="Max Torque (nm@rpm) 1" />
+          <CustomInput2 label="Max Torque (nm@rpm) " />
+        </div>
+
+        {/* <div className="relative md:mb-6 w-full" data-te-input-wrapper-init>
           <input
             type="text"
             placeholder=""
@@ -155,8 +180,7 @@ const AddNewCar = () => {
             required
             value={inputValue}
             onChange={handleInputChange}
-            onFocus={toggleFocus}
-            onBlur={toggleFocus}
+            
           />
           <label
             htmlFor=""
@@ -174,8 +198,7 @@ const AddNewCar = () => {
             required
             value={inputValue}
             onChange={handleInputChange}
-            onFocus={toggleFocus}
-            onBlur={toggleFocus}
+            
           />
           <label
             htmlFor=""
@@ -184,7 +207,7 @@ const AddNewCar = () => {
           >
             Max Torque (nm@rpm)
           </label>
-        </div>
+        </div> */}
         <input
           type="text"
           placeholder="password"
