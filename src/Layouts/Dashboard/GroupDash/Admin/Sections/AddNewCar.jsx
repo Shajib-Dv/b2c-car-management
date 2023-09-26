@@ -19,9 +19,9 @@ const AddNewCar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputValue);
-  };
 
+  };
+  console.log(inputValue);
   return (
     <div className="pt-10 w-full">
       <h1 className="mb-5 font-bold text-xl text-[#3AB86C] font-sans">
@@ -434,49 +434,31 @@ const AddNewCar = () => {
                 setInputValue({ ...inputValue, minTorque: value })
               }
             />
+
+          </div>
+          <div className="">
+            <CustomInput
+              type={`guu`}
+              label="Min Torque (nm@rpm)"
+              value={inputValue?.minTorque}
+              onChange={(value) =>
+                setInputValue({ ...inputValue, minTorque: value })
+              }
+            />
+            <CustomInput
+              type={`guu`}
+              label="Min Torque (nm@rpm)"
+              value={inputValue?.minTorque}
+              onChange={(value) =>
+                setInputValue({ ...inputValue, minTorque: value })
+              }
+            />
           </div>
 
-          <div>
+          {/* <div>
             <CustomInput2 label="Max Torque (nm@rpm) 1" name="maxnm" />
             <CustomInput2 label="Min Torque (nm@rpm) " name="minnm" />
-          </div>
-
-          {/* <div className="relative md:mb-6 w-full" data-te-input-wrapper-init>
-          <input
-            type="text"
-            placeholder=""
-            className={`inputCustom peer `}
-            required
-            value={inputValue}
-            onChange={handleInputChange}
-            
-          />
-          <label
-            htmlFor=""
-            className={`labelCustom ${isFocused || inputValue ? '-translate-y-[1.7rem] scale-[0.8] text-green-500 peer-focus:text-green-500' : ''
-              }`}
-          >
-            Max Torque (nm@rpm)
-          </label>
-        </div>
-        <div className="relative md:mb-6 w-full" data-te-input-wrapper-init>
-          <input
-            type="text"
-            placeholder=""
-            className={`inputCustom peer `}
-            required
-            value={inputValue}
-            onChange={handleInputChange}
-            
-          />
-          <label
-            htmlFor=""
-            className={`labelCustom ${isFocused || inputValue ? '-translate-y-[1.7rem] scale-[0.8] text-green-500 peer-focus:text-green-500' : ''
-              }`}
-          >
-            Max Torque (nm@rpm)
-          </label>
-        </div> */}
+          </div> */}
           <input
             type="text"
             placeholder="password"
