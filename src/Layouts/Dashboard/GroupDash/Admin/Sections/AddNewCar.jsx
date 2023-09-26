@@ -43,7 +43,7 @@ const AddNewCar = () => {
             <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
               <span><AiFillInfoCircle/></span>Basic Info
             </h1>
-            <div className="md:flex md:flex-row flex flex-col gap-5 mt-5">
+            <div className="mb-5 md:mb-0 md:flex md:flex-row flex flex-col gap-5 mt-5">
               <CustomInput
                 label="Car name"
                 value={inputValue?.carName}
@@ -68,10 +68,10 @@ const AddNewCar = () => {
             />
           </div>
           <div>
-            <h1 className="font-bold text-[#618264] font-sans mb-1 flex items-center gap-2">
+            <h1 className="font-bold text-[#618264] font-sans mt-5 md:mt-0 flex items-center gap-2">
               <span><BsFiletypeKey/></span>Key Specifications
             </h1>
-            <div className="md:flex md:flex-row flex flex-col gap-5 mt-5">
+            <div className="md:flex md:flex-row flex flex-col gap-5 mt-5 mb-5 md:mb-0">
               <CustomInput
                 label="Mileage"
                 value={inputValue?.mileage}
@@ -101,7 +101,7 @@ const AddNewCar = () => {
                 }
               />
             </div>
-            <div className="md:flex md:flex-row flex flex-col gap-5">
+            <div className="md:flex md:flex-row flex flex-col gap-5 mb-5 md:mb-0">
               <CustomInput
                 label="Seats"
                 value={inputValue?.Seats}
@@ -156,7 +156,7 @@ const AddNewCar = () => {
             </div>
           </div>
           <div>
-            <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2"> <span><BsFillPiggyBankFill/></span>EMI</h1>
+            <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2 mt-5 md:mt-0"> <span><BsFillPiggyBankFill/></span>EMI</h1>
             <div className="md:flex md:flex-row flex flex-col gap-5 mt-5">
               <CustomInput
                 label="Down Payment"
@@ -175,10 +175,10 @@ const AddNewCar = () => {
             </div>
           </div>
           <div>
-            <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
+            <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2 mt-5 md:mt-0">
               <span><FcInspection/></span>Specification
             </h1>
-            <div className="md:flex md:flex-row flex flex-col gap-5 mt-5">
+            <div className="md:flex md:flex-row flex flex-col gap-5 mt-5 mb-5 md:mb-0">
               <CustomInput
                 label="Spacious Interior"
                 value={inputValue?.SpaciousInterior}
@@ -194,7 +194,7 @@ const AddNewCar = () => {
                 }
               />
             </div>
-            <div className="md:flex md:flex-row flex flex-col gap-5">
+            <div className="md:flex md:flex-row flex flex-col gap-5 mb-5 md:mb-0">
               <CustomInput
                 label="Max Power (bhp@rpm)"
                 value={inputValue?.MaxPower}
@@ -210,7 +210,7 @@ const AddNewCar = () => {
                 }
               />
             </div>
-            <div className="md:flex md:flex-row flex flex-col gap-5">
+            <div className="md:flex md:flex-row flex flex-col gap-5 mb-5 md:mb-0">
               <CustomInput
                 label="Boot Space (Litres)"
                 value={inputValue?.BootSpace}
@@ -226,7 +226,7 @@ const AddNewCar = () => {
                 }
               />
             </div>
-            <div className="md:flex md:flex-row flex flex-col gap-5">
+            <div className="md:flex md:flex-row flex flex-col gap-5 mb-5 md:mb-0">
               <CustomInput
                 label="Fuel Type"
                 value={inputValue?.FuelType}
@@ -274,7 +274,7 @@ const AddNewCar = () => {
             </div>
           </div>
           <div>
-            <h1 className="font-bold text-[#618264] font-sans justify-center flex items-center gap-2">
+            <h1 className="font-bold text-[#618264] font-sans justify-center flex items-center gap-2 mt-5 md:mt-0">
               <span><BsCardChecklist/></span>Additional Info
             </h1>
             <div className="bg-gradient-to-r from-[#969595] to-[#dbfde8] py-[0.5px]"></div>
@@ -283,7 +283,7 @@ const AddNewCar = () => {
                 <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
                   <span><GoCodeReview/></span>Review
                 </h1>
-                <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 -mb-5">
+                <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 md:-mb-5">
                   <CustomInput
                     label="ReviewText1"
                     value={inputValue?.ReviewText1}
@@ -309,7 +309,7 @@ const AddNewCar = () => {
                 <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
                   <span><MdDesignServices/></span>Interior
                 </h1>
-                <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 -mb-5">
+                <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 md:-mb-5">
                   <CustomInput
                     label="Interior Text 1"
                     value={inputValue?.InteriorText1}
@@ -335,7 +335,7 @@ const AddNewCar = () => {
                 <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
                   <span><MdConveyorBelt/></span>Safety
                 </h1>
-                <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 -mb-5">
+                <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 md:-mb-5">
                   <CustomInput
                     label="Safety Text1"
                     value={inputValue?.SafetyText1}
@@ -361,7 +361,7 @@ const AddNewCar = () => {
                 <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
                   <span><CgPerformance/></span>Performance
                 </h1>
-                <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 -mb-5">
+                <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 md:-mb-5">
                   <CustomInput
                     label="PerformanceText1"
                     value={inputValue?.PerformanceText1}
@@ -387,7 +387,7 @@ const AddNewCar = () => {
                 <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
                   <span><PiSteeringWheelFill/></span>Ride and Handling
                 </h1>
-                <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 -mb-5">
+                <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 md:-mb-5">
                   <CustomInput
                     label="Ride and Handling Text 1"
                     value={inputValue?.RideAndHandlingText1}
