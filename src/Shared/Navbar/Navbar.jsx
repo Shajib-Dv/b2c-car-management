@@ -62,7 +62,9 @@ const Navbar = () => {
               {user?.photoURL ? (
                 <img src={user?.photoURL} alt="user_photo" />
               ) : (
-                <p className="btn-details">{user?.displayName}</p>
+                user?.displayName && (
+                  <p className="btn-details">{user?.displayName}</p>
+                )
               )}
             </div>
           ) : (

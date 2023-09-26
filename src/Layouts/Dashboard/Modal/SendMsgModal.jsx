@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { MdOutlineSupportAgent } from "react-icons/md";
+import CustomInput from "../../../Shared/components/CustomInput";
 
 const SendMsgModal = ({ open, close, title, action }) => {
   const [loader, setLoader] = useState(false);
@@ -32,13 +33,21 @@ const SendMsgModal = ({ open, close, title, action }) => {
               className="flex flex-col mt-4 gap-2"
             >
               {action === "report" && (
-                <div className="placeholder-txt">
-                  <textarea
-                    onChange={(e) => setReportMsg(e.target.value)}
-                    id="message"
-                    className="data-input min-h-[200px]"
-                  ></textarea>
-                  <label htmlFor="message">Write your issue here...</label>
+                // <div className="placeholder-txt">
+                //   <textarea
+                //     onChange={(e) => setReportMsg(e.target.value)}
+                //     id="message"
+                //     className="data-input min-h-[200px]"
+                //   ></textarea>
+                //   <label htmlFor="message">Write your issue here...</label>
+                // </div>
+                <div>
+                  <CustomInput
+                    label="Write Your Issue Here..."
+                    onChange={(value) => setReportMsg(value)}
+                    value={reportMsg}
+                    type={"textarea"}
+                  />
                 </div>
               )}
               {action === "support" && (

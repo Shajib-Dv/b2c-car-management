@@ -5,10 +5,11 @@ import {
   MdOutlineCarRental,
   MdReport,
 } from "react-icons/md";
-import { FaChartLine } from "react-icons/fa";
+import { FaChartLine, FaLuggageCart } from "react-icons/fa";
 import { TbReportMoney } from "react-icons/tb";
 import { BsCardChecklist } from "react-icons/bs";
 import { BiSupport } from "react-icons/bi";
+import { AiFillCar } from "react-icons/ai";
 import ActiveDashLink from "../../ActiveDashLink";
 
 const AdminLinks = ({ sendReport, sendSupport }) => {
@@ -20,6 +21,15 @@ const AdminLinks = ({ sendReport, sendSupport }) => {
 
       <ActiveDashLink to="/dashboard/admin/seller_update">
         <TbReportMoney className="text-2xl text-green-600" /> Seller Update
+      </ActiveDashLink>
+
+      <ActiveDashLink to="/dashboard/admin/upcoming_car">
+        <AiFillCar className="text-2xl text-green-600" /> Upcoming Car
+      </ActiveDashLink>
+
+      <ActiveDashLink to="/dashboard/admin/used_car">
+        <FaLuggageCart className="text-2xl text-green-600" />
+        Used Car
       </ActiveDashLink>
 
       <ActiveDashLink to="/dashboard/admin/add_new_car">
