@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+/** @format */
 
-function CustomInput2({ label }) {
-  const [inputValue, setInputValue] = useState('');
+import React, { useState } from "react";
+
+function CustomInput2({ label, name }) {
+  const [inputValue, setInputValue] = useState({});
   const [isFocused, setIsFocused] = useState(false);
 
   const handleInputChange = (e) => {
-    setInputValue(e.target.value);
+    setInputValue({ ...inputValue, [name]: e.target.value });
   };
 
   return (
@@ -15,15 +17,18 @@ function CustomInput2({ label }) {
         placeholder=""
         className={`inputCustom peer `}
         required
-        value={inputValue}
+        value={inputValue[name] || " "}
         onChange={handleInputChange}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
       />
       <label
         htmlFor=""
-        className={`labelCustom ${isFocused || inputValue ? '-translate-y-[1.7rem] scale-[0.8] text-green-500 peer-focus:text-green-500' : ''
-          }`}
+        className={`labelCustom ${
+          isFocused || inputValue[name]
+            ? "-translate-y-[1.7rem] scale-[0.8] text-green-500 peer-focus:text-green-500"
+            : ""
+        }`}
       >
         {label}
       </label>

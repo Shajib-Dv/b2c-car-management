@@ -21,8 +21,6 @@ const Dashboard = () => {
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
   const { testRole, user } = useAuth();
 
-  console.log(isReportModalOpen, isSupportModalOpen);
-
   const openModal = (action) => {
     if (action === "report") {
       setIsReportModalOpen(true);
