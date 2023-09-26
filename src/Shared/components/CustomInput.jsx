@@ -11,7 +11,7 @@ function CustomInput({ label, value, onChange, type }) {
 
     return (
         <>{ !type ?
-            <div className="relative md:mb-6 w-full" data-te-input-wrapper-init>
+            <div className="relative md:mb-5 w-full" data-te-input-wrapper-init>
                 <input
                     type="text"
                     placeholder=""
@@ -33,7 +33,7 @@ function CustomInput({ label, value, onChange, type }) {
                 </label>
             </div> :
 
-            <div className="relative md:mb-6 w-full" data-te-input-wrapper-init>
+            <div className="relative md:mb-5 w-full" data-te-input-wrapper-init>
                 <textarea
                     
                     placeholder=""
