@@ -2,7 +2,14 @@
 
 import { useState } from "react";
 import CustomInput from "../../../../../Shared/components/CustomInput";
-import CustomInput2 from "../../../../../Shared/components/CustomInput2";
+import { AiOutlineFileAdd, AiFillInfoCircle } from 'react-icons/ai';
+import { BsFillAwardFill, BsFiletypeKey, BsFillPiggyBankFill, BsCardChecklist } from 'react-icons/bs';
+import { FcInspection } from 'react-icons/fc';
+import { GoCodeReview } from 'react-icons/go';
+import { CgPerformance } from 'react-icons/cg';
+import { BiSolidAddToQueue } from 'react-icons/bi';
+import { PiSteeringWheelFill} from 'react-icons/pi';
+import { MdDesignServices, MdConveyorBelt } from 'react-icons/md';
 
 const AddNewCar = () => {
   // const [isFocused, setIsFocused] = useState(false);
@@ -24,8 +31,8 @@ const AddNewCar = () => {
   console.log(inputValue);
   return (
     <div className="pt-10 w-full">
-      <h1 className="mb-5 font-bold text-xl text-[#004225] font-sans">
-        Add New Car
+      <h1 className="mb-5 font-bold text-xl text-[#004225] font-sans flex items-center gap-2 justify-center">
+      <span><AiOutlineFileAdd/></span>Add New Car 
       </h1>
       <div className="pb-10">
         <form
@@ -33,8 +40,8 @@ const AddNewCar = () => {
           className="flex flex-col w-full text-green-400"
         >
           <div>
-            <h1 className="font-bold text-[#618264] font-sans">
-              Basic Info
+            <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
+              <span><AiFillInfoCircle/></span>Basic Info
             </h1>
             <div className="md:flex md:flex-row flex flex-col gap-5 mt-5">
               <CustomInput
@@ -61,8 +68,8 @@ const AddNewCar = () => {
             />
           </div>
           <div>
-            <h1 className="font-bold text-[#618264] font-sans mb-1">
-              Key Specifications
+            <h1 className="font-bold text-[#618264] font-sans mb-1 flex items-center gap-2">
+              <span><BsFiletypeKey/></span>Key Specifications
             </h1>
             <div className="md:flex md:flex-row flex flex-col gap-5 mt-5">
               <CustomInput
@@ -149,7 +156,7 @@ const AddNewCar = () => {
             </div>
           </div>
           <div>
-            <h1 className="font-bold text-[#618264] font-sans mb-1">EMI</h1>
+            <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2"> <span><BsFillPiggyBankFill/></span>EMI</h1>
             <div className="md:flex md:flex-row flex flex-col gap-5 mt-5">
               <CustomInput
                 label="Down Payment"
@@ -168,8 +175,8 @@ const AddNewCar = () => {
             </div>
           </div>
           <div>
-            <h1 className="font-bold text-[#618264] font-sans mb-1">
-              Specification
+            <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
+              <span><FcInspection/></span>Specification
             </h1>
             <div className="md:flex md:flex-row flex flex-col gap-5 mt-5">
               <CustomInput
@@ -267,14 +274,14 @@ const AddNewCar = () => {
             </div>
           </div>
           <div>
-            <h1 className="font-bold text-[#618264] font-sans text-center">
-              Additional Info
+            <h1 className="font-bold text-[#618264] font-sans justify-center flex items-center gap-2">
+              <span><BsCardChecklist/></span>Additional Info
             </h1>
             <div className="bg-gradient-to-r from-[#969595] to-[#dbfde8] py-[0.5px]"></div>
             <div>
               <div>
-                <h1 className="font-bold text-[#618264] font-sans mb-1">
-                  Review
+                <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
+                  <span><GoCodeReview/></span>Review
                 </h1>
                 <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 -mb-5">
                   <CustomInput
@@ -299,8 +306,8 @@ const AddNewCar = () => {
                 </div>
               </div>
               <div>
-                <h1 className="font-bold text-[#618264] font-sans">
-                  Interior
+                <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
+                  <span><MdDesignServices/></span>Interior
                 </h1>
                 <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 -mb-5">
                   <CustomInput
@@ -325,8 +332,8 @@ const AddNewCar = () => {
                 </div>
               </div>
               <div>
-                <h1 className="font-bold text-[#618264] font-sans mb-1">
-                  Safety
+                <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
+                  <span><MdConveyorBelt/></span>Safety
                 </h1>
                 <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 -mb-5">
                   <CustomInput
@@ -351,8 +358,8 @@ const AddNewCar = () => {
                 </div>
               </div>
               <div>
-                <h1 className="font-bold text-[#618264] font-sans ">
-                  Performance
+                <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
+                  <span><CgPerformance/></span>Performance
                 </h1>
                 <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 -mb-5">
                   <CustomInput
@@ -377,8 +384,8 @@ const AddNewCar = () => {
                 </div>
               </div>
               <div>
-                <h1 className="font-bold text-[#618264] font-sans">
-                  Ride and Handling
+                <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
+                  <span><PiSteeringWheelFill/></span>Ride and Handling
                 </h1>
                 <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 -mb-5">
                   <CustomInput
@@ -403,8 +410,8 @@ const AddNewCar = () => {
                 </div>
               </div>
               <div>
-                <h1 className="font-bold text-[#618264] font-sans">
-                  Verdict
+                <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
+                  <span><BsFillAwardFill/></span>Verdict
                 </h1>
                 <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 mb-5">
                   <CustomInput
@@ -484,7 +491,7 @@ const AddNewCar = () => {
             className="p-[10px] w-full bg-transparent rounded-md border-[1px] border-gray-600 font-semibold focus:border-green-500 outline-none"
             required
           /> */}
-          <button className="btn text-[#618264] font-bold">Add New Car</button>
+          <button className="btn text-[#618264] font-bold flex gap-1"><span><BiSolidAddToQueue/></span>Add New Car</button>
         </form>
       </div>
     </div>
