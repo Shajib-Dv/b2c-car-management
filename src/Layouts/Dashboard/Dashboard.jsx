@@ -75,9 +75,9 @@ const Dashboard = () => {
                   <UpdateProfile openModal={openModal} />
                 </div>
                 <div className="relative w-fit">
-                  <h2 className="title">{user?.displayName}</h2>
+                  <h2 className="title">{user?.displayName || "JOhn_Doe"}</h2>
                   <p className="absolute top-0 -right-10 text-green-600 font-semibold">
-                    {testRole?.role}
+                    {testRole?.role || ""}
                   </p>
                 </div>
               </div>
