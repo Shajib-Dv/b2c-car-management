@@ -13,6 +13,7 @@ import useAuth from "../../hooks/useAuth";
 import UpdateProfile from "./Modal/UpdateProfile";
 import UpdateProfileModal from "./Modal/UpdateProfileModal";
 import SendMsgModal from "./Modal/SendMsgModal";
+import WelcomeUser from "./WelcomeUser/WelcomeUser";
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef(null);
@@ -42,6 +43,7 @@ const Dashboard = () => {
 
   return (
     <>
+      <WelcomeUser />
       <div className="drawer lg:drawer-open h-full">
         <input id="admin_drawer" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center px-10 bg-gradient-to-r from-[#F2F2F2] to-[#dbfde8]">
