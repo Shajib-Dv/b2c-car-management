@@ -41,14 +41,12 @@ const SendMsgModal = ({ open, close, title, action }) => {
                 //   ></textarea>
                 //   <label htmlFor="message">Write your issue here...</label>
                 // </div>
-                <div>
-                  <CustomInput
-                    label="Write Your Issue Here..."
-                    onChange={(value) => setReportMsg(value)}
-                    value={reportMsg}
-                    type={"textarea"}
-                  />
-                </div>
+                <CustomInput
+                  label="Write Your Issue Here..."
+                  onChange={(value) => setReportMsg(value)}
+                  value={reportMsg}
+                  type={"textarea"}
+                />
               )}
               {action === "support" && (
                 <div className="my-10">
