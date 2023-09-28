@@ -18,22 +18,22 @@ const UserLinks = () => {
       <ActiveDashLink to="/dashboard/user/order_summary">
         <MdOutlineCarRental className="text-2xl" /> Order Summary
       </ActiveDashLink>
-      <ActiveDashLink to="/dashboard/user/MY_Bids_List">
+      <ActiveDashLink to="/dashboard/user/my_bids_list">
         <BiDetail className="text-2xl" />My Bids List
       </ActiveDashLink>
       <ActiveDashLink to="/dashboard/user/addresses">
         <FaAddressBook className="text-2xl" /> Addresses
       </ActiveDashLink>
-      <ActiveDashLink to="/dashboard/user/EMI_Calculator">
+      <ActiveDashLink to="/dashboard/user/emi_calculator">
         <HiOutlineBanknotes className="text-2xl" />EMI Calculator
       </ActiveDashLink>
-      <ActiveDashLink to="/dashboard/user/Wish_List">
+      <ActiveDashLink to="/dashboard/user/wish_list">
         <BsBookmarkHeart className="text-2xl" />Wish List
       </ActiveDashLink>
-      <ActiveDashLink to="/dashboard/user/Transaction">
+      <ActiveDashLink to="/dashboard/user/transaction">
         <AiOutlineTransaction className="text-2xl" />Your Transactions
       </ActiveDashLink>
-      <ActiveDashLink to="/dashboard/user/Compare_Car">
+      <ActiveDashLink to="/dashboard/user/compare_car">
         <IoGitCompare className="text-2xl" />Compare Car
       </ActiveDashLink>
     </>
