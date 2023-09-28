@@ -207,6 +207,10 @@
   width: 6px;
 }
 
+.hidden-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #00a542b7;
   border-radius: 6px;
