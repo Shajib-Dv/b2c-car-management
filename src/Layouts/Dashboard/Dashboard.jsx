@@ -1,11 +1,10 @@
 /** @format */
 
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import {
   PiArrowFatLinesRightFill,
   PiArrowFatLinesLeftFill,
 } from "react-icons/pi";
-import { BiSolidHomeCircle } from "react-icons/bi";
 import { useRef, useState } from "react";
 import AdminLinks from "./GroupDash/Admin/AdminLinks";
 import UserLinks from "./GroupDash/User/UserLinks";
@@ -60,10 +59,10 @@ const Dashboard = () => {
         </div>
         {/* link content */}
         <div className="drawer-side">
-          <div className="menu flex flex-col justify-between w-80 min-h-full bg-base-200 relative pl-8 pt-8">
+          <div className="menu flex flex-col justify-between w-80 min-h-full bg-base-200 relative md:px-8 px-4 pt-0">
             <div className="space-y-2 flex flex-col gap-3">
-              <div className="center-itm justify-center flex-col gap-3">
-                <div className="w-40 h-40 rounded-full border border-green-500 relative">
+              <div className="center-itm justify-center flex-col gap-3 pt-10">
+                <div className="w-2h-24 h-24 rounded-full border border-green-500 relative">
                   <img
                     src={
                       user?.photoURL
@@ -102,9 +101,6 @@ const Dashboard = () => {
                 <PiArrowFatLinesLeftFill className="text-white" />
               </span>
             </label>
-            <Link to="/">
-              <BiSolidHomeCircle className="text-5xl text-green-600" />
-            </Link>
           </div>
         </div>
       </div>
