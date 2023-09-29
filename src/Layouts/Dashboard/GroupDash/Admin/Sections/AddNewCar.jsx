@@ -107,7 +107,7 @@ const AddNewCar = () => {
                     basicInfoLength < 3 || Object.values(basicInfo).includes("")
                   }
                   onClick={() => handleNextRender("basicInfo")}
-                  className="btn-act md:w-32 w-full"
+                  className="btn-act md:w-32 w-full md:mt-0 mt-4"
                 >
                   Next
                 </button>
@@ -250,7 +250,7 @@ const AddNewCar = () => {
                     Object.values(keySpecifications).includes("")
                   }
                   onClick={() => handleNextRender("keySpecifications")}
-                  className="btn-act md:w-32 w-full"
+                  className="btn-act md:w-32 w-full md:mt-0 mt-4"
                 >
                   Next
                 </button>
@@ -294,7 +294,7 @@ const AddNewCar = () => {
                 <button
                   disabled={emiLength < 2 || Object.values(emi).includes("")}
                   onClick={() => handleNextRender("emi")}
-                  className="btn-act md:w-32 w-full"
+                  className="btn-act md:w-32 w-full md:mt-0 mt-4"
                 >
                   Next
                 </button>
@@ -434,7 +434,7 @@ const AddNewCar = () => {
                     Object.values(specification).includes("")
                   }
                   onClick={() => handleNextRender("specification")}
-                  className="btn-act md:w-32 w-full"
+                  className="btn-act md:w-32 w-full md:mt-0 mt-4"
                 >
                   Next
                 </button>
@@ -480,7 +480,7 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          required
+                          required={false}
                         />
                         <CustomInput
                           label="ReviewText2"
@@ -515,7 +515,7 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          required
+                          required={false}
                         />
                         <CustomInput
                           label="Interior Text 2"
@@ -550,7 +550,7 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          required
+                          required={false}
                         />
                         <CustomInput
                           label="Safety Text2"
@@ -585,7 +585,7 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          required
+                          required={false}
                         />
                         <CustomInput
                           label="Performance Text2"
@@ -620,7 +620,7 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          required
+                          required={false}
                         />
                         <CustomInput
                           label="Ride and Handling Text 2"
@@ -655,7 +655,7 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          required
+                          required={false}
                         />
                         <CustomInput
                           label="Verdict Text 2"
