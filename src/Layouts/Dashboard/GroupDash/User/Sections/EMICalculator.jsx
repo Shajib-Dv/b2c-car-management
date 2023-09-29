@@ -1,11 +1,7 @@
-import React from 'react';
+/** @format */
 
 const EMICalculator = () => {
-    return (
-        <div>
-            EMI Calculator
-        </div>
-    );
+  return <div>EMI Calculator</div>;
 };
 
 export default EMICalculator;

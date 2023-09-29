@@ -45,7 +45,7 @@ const Dashboard = () => {
       <WelcomeUser />
       <div className="drawer lg:drawer-open h-full">
         <input id="admin_drawer" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center px-10 bg-gradient-to-r from-[#F2F2F2] to-[#dbfde8]">
+        <div className="drawer-content flex flex-col items-center justify-start px-10 bg-gradient-to-r from-[#F2F2F2] to-[#dbfde8]">
           <Outlet />
           <label
             onClick={() => setIsOpen(true)}
