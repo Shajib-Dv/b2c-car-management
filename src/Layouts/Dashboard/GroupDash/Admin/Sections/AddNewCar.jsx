@@ -19,8 +19,13 @@ import {
   MdConveyorBelt,
   MdArrowCircleLeft,
 } from "react-icons/md";
+import { useContext } from "react";
+import { AuthContext } from "../../../../../Provider/AuthProvider";
 
 const AddNewCar = () => {
+  const { user } = useContext(AuthContext)
+  console.log(user)
+
   const [renderNext, setRenderNext] = useState({});
   const [basicInfo, setBasicInfo] = useState({});
   const [keySpecifications, setKeySpecifications] = useState({});
@@ -34,10 +39,21 @@ const AddNewCar = () => {
   const specificationLength = Object.keys(specification || {}).length;
   const additionalInfoLength = Object.keys(additionalInfo || {}).length;
 
+  const handleNextRender = (element) => {
+    setRenderNext({ ...renderNext, [element]: true });
+  };
+
+  const handlePreviewRender = (element) => {
+    setRenderNext({ ...renderNext, [element]: false });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const userData = user.email
+ 
 
     const storableData = {
+      userData,
       basicInfo,
       keySpecifications,
       emi,
@@ -46,15 +62,28 @@ const AddNewCar = () => {
     };
 
     console.log(storableData);
+
+
+    fetch('http://localhost:3000/add_new_car', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(storableData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                  alert('ok')
+                }
+            })
+
+
+
   };
 
-  const handleNextRender = (element) => {
-    setRenderNext({ ...renderNext, [element]: true });
-  };
 
-  const handlePreviewRender = (element) => {
-    setRenderNext({ ...renderNext, [element]: false });
-  };
   return (
     <>
       <h1 className="pt-10 font-bold text-xl text-[#004225] font-sans flex items-center gap-2 justify-center">
