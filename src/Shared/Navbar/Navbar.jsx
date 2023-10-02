@@ -6,9 +6,12 @@ import { BiSearch } from "react-icons/bi";
 import { FaSignOutAlt } from "react-icons/fa";
 import "./../css/custom.css";
 import useAuth from "../../hooks/useAuth";
+import useUserRole from "../../hooks/useUserRole";
 
 const Navbar = () => {
   const { user, logOut, testRole } = useAuth();
+
+  const role = useUserRole();
 
   const handleLogOut = () => {
     logOut();
@@ -56,7 +59,7 @@ const Navbar = () => {
         <div className="gap-3 items-center flex justify-center">
           {user ? (
             <div className="center-itm gap-3">
-              <Link to={`/dashboard/${testRole?.role}`} className="btn-details">
+              <Link to={`/dashboard/${role}`} className="btn-details">
                 Dashboard
               </Link>
               {user?.photoURL ? (
