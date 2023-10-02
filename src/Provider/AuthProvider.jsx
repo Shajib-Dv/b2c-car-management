@@ -20,8 +20,6 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  const testRole = { name: "Shajib", role: "user" }; //TODO: check role from DB
-
   const [loading, setLoading] = useState(true);
 
   // create reCaptcha
@@ -65,7 +63,6 @@ const AuthProvider = ({ children }) => {
     updateUserProfile,
     googleSignUp,
     googleSignIn,
-    testRole,
   };
 
   // private route

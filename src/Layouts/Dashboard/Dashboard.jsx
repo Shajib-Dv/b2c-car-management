@@ -13,13 +13,15 @@ import UpdateProfile from "./Modal/UpdateProfile";
 import UpdateProfileModal from "./Modal/UpdateProfileModal";
 import SendMsgModal from "./Modal/SendMsgModal";
 import WelcomeUser from "./WelcomeUser/WelcomeUser";
+import useUserRole from "../../hooks/useUserRole";
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
-  const { testRole, user } = useAuth();
+  const { user } = useAuth();
+  const role = useUserRole();
 
   const openModal = (action) => {
     if (action === "report") {
@@ -62,7 +64,7 @@ const Dashboard = () => {
           <div className="menu flex flex-col justify-between w-80 min-h-full bg-base-200 relative md:px-8 px-4 pt-0">
             <div className="space-y-2 flex flex-col gap-3">
               <div className="center-itm justify-center flex-col gap-3 pt-10">
-                <div className="w-2h-24 h-24 rounded-full border border-green-500 relative">
+                <div className="w-24 h-24 rounded-full border border-green-500 relative">
                   <img
                     src={
                       user?.photoURL
@@ -78,15 +80,15 @@ const Dashboard = () => {
                 <div className="relative w-fit">
                   <h2 className="title">{user?.displayName || "JOhn_Doe"}</h2>
                   <p className="absolute top-0 -right-10 text-green-600 font-semibold">
-                    {testRole?.role || ""}
+                    {role || ""}
                   </p>
                 </div>
               </div>
 
-              {testRole?.role === "admin" ? (
+              {role === "admin" ? (
                 <AdminLinks sendReport={openModal} sendSupport={openModal} />
               ) : (
-                testRole?.role === "user" && <UserLinks />
+                role === "user" && <UserLinks />
               )}
             </div>
 

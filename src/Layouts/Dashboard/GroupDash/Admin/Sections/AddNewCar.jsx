@@ -19,8 +19,16 @@ import {
   MdConveyorBelt,
   MdArrowCircleLeft,
 } from "react-icons/md";
+import { useContext } from "react";
+import { AuthContext } from "../../../../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+
+const img_hosting_token = import.meta.env.VITE_Image_Upload_Token
 
 const AddNewCar = () => {
+  const { user } = useContext(AuthContext)
+  console.log(user)
+
   const [renderNext, setRenderNext] = useState({});
   const [basicInfo, setBasicInfo] = useState({});
   const [keySpecifications, setKeySpecifications] = useState({});
@@ -34,10 +42,42 @@ const AddNewCar = () => {
   const specificationLength = Object.keys(specification || {}).length;
   const additionalInfoLength = Object.keys(additionalInfo || {}).length;
 
+  const handleNextRender = (element) => {
+    setRenderNext({ ...renderNext, [element]: true });
+  };
+
+  const handlePreviewRender = (element) => {
+    setRenderNext({ ...renderNext, [element]: false });
+  };
+  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
+
   const handleSubmit = (e) => {
+    Swal.fire({
+      title: 'Uploading please wait',
+      width: 600,
+      padding: '3em',
+      color: '#716add',
+      background: '#fff url(/images/trees.png)',
+      backdrop: `
+        rgba(0,0,123,0.4)
+        url("https://sweetalert2.github.io/images/nyan-cat.gif")
+        left top
+        no-repeat
+      `
+    })
     e.preventDefault();
+    const form = e.target;
+    const userData = user.email
+    const imageFile = form.querySelector('input[name="image"]').files[0];
+    const imageFile2 = form.querySelector('input[name="image1"]').files[0];
+    const imageFile3 = form.querySelector('input[name="image2"]').files[0];
+    const imageFile4 = form.querySelector('input[name="image3"]').files[0];
+    const imageFile5 = form.querySelector('input[name="image4"]').files[0];
+    const imageFile6 = form.querySelector('input[name="image5"]').files[0];
+
 
     const storableData = {
+      userData,
       basicInfo,
       keySpecifications,
       emi,
@@ -46,15 +86,133 @@ const AddNewCar = () => {
     };
 
     console.log(storableData);
+
+
+    const formData = new FormData()
+    formData.append('image', imageFile)
+
+    fetch(img_hosting_url, {
+      method: 'POST',
+      body: formData
+    })
+      .then(res => res.json())
+      .then(imgResponse => {
+        // console.log(imgResponse)
+        if (imgResponse.success) {
+          const imgURL = imgResponse.data.display_url;
+
+          const formData = new FormData()
+          formData.append('image', imageFile2)
+
+          fetch(img_hosting_url, {
+            method: 'POST',
+            body: formData
+          })
+            .then(res => res.json())
+            .then(imgResponse => {
+              // console.log(imgResponse)
+              if (imgResponse.success) {
+                const imgURL2 = imgResponse.data.display_url;
+                const formData = new FormData()
+                formData.append('image', imageFile3)
+
+                fetch(img_hosting_url, {
+                  method: 'POST',
+                  body: formData
+                })
+                  .then(res => res.json())
+                  .then(imgResponse => {
+                    // console.log(imgResponse)
+                    if (imgResponse.success) {
+                      const imgURL3 = imgResponse.data.display_url;
+                      const formData = new FormData()
+                      formData.append('image', imageFile4)
+
+                      fetch(img_hosting_url, {
+                        method: 'POST',
+                        body: formData
+                      })
+                        .then(res => res.json())
+                        .then(imgResponse => {
+                          // console.log(imgResponse)
+                          if (imgResponse.success) {
+                            const imgURL4 = imgResponse.data.display_url;
+                            const formData = new FormData()
+                            formData.append('image', imageFile5)
+
+                            fetch(img_hosting_url, {
+                              method: 'POST',
+                              body: formData
+                            })
+                              .then(res => res.json())
+                              .then(imgResponse => {
+                                // console.log(imgResponse)
+                                if (imgResponse.success) {
+                                  const imgURL5 = imgResponse.data.display_url;
+                                  const formData = new FormData()
+                                  formData.append('image', imageFile6)
+
+                                  fetch(img_hosting_url, {
+                                    method: 'POST',
+                                    body: formData
+                                  })
+                                    .then(res => res.json())
+                                    .then(imgResponse => {
+                                      // console.log(imgResponse)
+                                      if (imgResponse.success) {
+                                        const imgURL6 = imgResponse.data.display_url;
+                                        const additional = { ...additionalInfo, img: imgURL, img1: imgURL2, img3: imgURL3, img4: imgURL4, img5: imgURL5, img6: imgURL6 };
+                                        const storableData = {
+                                          userData,
+                                          basicInfo,
+                                          keySpecifications,
+                                          emi,
+                                          specification,
+                                          additional,
+
+                                        };
+                                        fetch('http://localhost:3000/add_new_car', {
+                                          method: 'POST',
+                                          headers: {
+                                            'content-type': 'application/json'
+                                          },
+                                          body: JSON.stringify(storableData)
+                                        })
+                                          .then(res => res.json())
+                                          .then(data => {
+                                            console.log(data);
+                                            if (data.insertedId) {
+                                              form.reset()
+                                              Swal.fire({
+                                                title: 'Success!',
+                                                text: 'Car added successfully',
+                                                icon: 'success',
+                                                confirmButtonText: 'OK!'
+                                              })
+                                            }
+                                          })
+                                      }
+                                    })
+                                }
+                              })
+                          }
+                        })
+                    }
+                  })
+              }
+            })
+
+
+        }
+      })
+
+
+
+
+
   };
 
-  const handleNextRender = (element) => {
-    setRenderNext({ ...renderNext, [element]: true });
-  };
 
-  const handlePreviewRender = (element) => {
-    setRenderNext({ ...renderNext, [element]: false });
-  };
   return (
     <>
       <h1 className="pt-10 font-bold text-xl text-[#004225] font-sans flex items-center gap-2 justify-center">
@@ -480,7 +638,8 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          required={false}
+                          name="image"
+                          required={true}
                         />
                         <CustomInput
                           label="ReviewText2"
@@ -515,7 +674,8 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          required={false}
+                          required={true}
+                          name="image1"
                         />
                         <CustomInput
                           label="Interior Text 2"
@@ -550,7 +710,8 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          required={false}
+                          required={true}
+                          name="image2"
                         />
                         <CustomInput
                           label="Safety Text2"
@@ -585,7 +746,8 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          required={false}
+                          required={true}
+                          name="image3"
                         />
                         <CustomInput
                           label="Performance Text2"
@@ -620,7 +782,8 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          required={false}
+                          required={true}
+                          name="image4"
                         />
                         <CustomInput
                           label="Ride and Handling Text 2"
@@ -655,7 +818,8 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          required={false}
+                          required={true}
+                          name="image5"
                         />
                         <CustomInput
                           label="Verdict Text 2"
