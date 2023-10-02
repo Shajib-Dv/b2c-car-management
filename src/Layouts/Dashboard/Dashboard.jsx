@@ -64,7 +64,7 @@ const Dashboard = () => {
           <div className="menu flex flex-col justify-between w-80 min-h-full bg-base-200 relative md:px-8 px-4 pt-0">
             <div className="space-y-2 flex flex-col gap-3">
               <div className="center-itm justify-center flex-col gap-3 pt-10">
-                <div className="w-2h-24 h-24 rounded-full border border-green-500 relative">
+                <div className="w-24 h-24 rounded-full border border-green-500 relative">
                   <img
                     src={
                       user?.photoURL

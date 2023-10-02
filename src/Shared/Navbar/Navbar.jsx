@@ -9,7 +9,7 @@ import useAuth from "../../hooks/useAuth";
 import useUserRole from "../../hooks/useUserRole";
 
 const Navbar = () => {
-  const { user, logOut, testRole } = useAuth();
+  const { user, logOut } = useAuth();
 
   const role = useUserRole();
 
@@ -63,7 +63,11 @@ const Navbar = () => {
                 Dashboard
               </Link>
               {user?.photoURL ? (
-                <img src={user?.photoURL} alt="user_photo" />
+                <img
+                  src={user?.photoURL}
+                  alt="user_photo"
+                  className="w-12 h-12 rounded-full"
+                />
               ) : (
                 user?.displayName && (
                   <p className="btn-details">{user?.displayName}</p>
