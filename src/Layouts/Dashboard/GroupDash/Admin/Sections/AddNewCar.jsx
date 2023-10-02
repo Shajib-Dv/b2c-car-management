@@ -52,6 +52,19 @@ const AddNewCar = () => {
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
 
   const handleSubmit = (e) => {
+    Swal.fire({
+      title: 'Uploading please wait',
+      width: 600,
+      padding: '3em',
+      color: '#716add',
+      background: '#fff url(/images/trees.png)',
+      backdrop: `
+        rgba(0,0,123,0.4)
+        url("https://sweetalert2.github.io/images/nyan-cat.gif")
+        left top
+        no-repeat
+      `
+    })
     e.preventDefault();
     const form = e.target;
     const userData = user.email
@@ -172,7 +185,7 @@ const AddNewCar = () => {
                                               form.reset()
                                               Swal.fire({
                                                 title: 'Success!',
-                                                text: 'Toys Added successfully',
+                                                text: 'Car added successfully',
                                                 icon: 'success',
                                                 confirmButtonText: 'OK!'
                                               })
@@ -626,7 +639,7 @@ const AddNewCar = () => {
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
                           name="image"
-                          required={false}
+                          required={true}
                         />
                         <CustomInput
                           label="ReviewText2"
@@ -661,7 +674,7 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          required={false}
+                          required={true}
                           name="image1"
                         />
                         <CustomInput
@@ -697,7 +710,7 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          // required={false}
+                          required={true}
                           name="image2"
                         />
                         <CustomInput
@@ -733,7 +746,7 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          // required={false}
+                          required={true}
                           name="image3"
                         />
                         <CustomInput
@@ -769,7 +782,7 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          // required={false}
+                          required={true}
                           name="image4"
                         />
                         <CustomInput
@@ -805,7 +818,7 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          // required={false}
+                          required={true}
                           name="image5"
                         />
                         <CustomInput
