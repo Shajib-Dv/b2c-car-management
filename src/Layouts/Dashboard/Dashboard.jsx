@@ -13,13 +13,15 @@ import UpdateProfile from "./Modal/UpdateProfile";
 import UpdateProfileModal from "./Modal/UpdateProfileModal";
 import SendMsgModal from "./Modal/SendMsgModal";
 import WelcomeUser from "./WelcomeUser/WelcomeUser";
+import useUserRole from "../../hooks/useUserRole";
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
-  const { testRole, user } = useAuth();
+  const { user } = useAuth();
+  const role = useUserRole();
 
   const openModal = (action) => {
     if (action === "report") {
@@ -78,15 +80,15 @@ const Dashboard = () => {
                 <div className="relative w-fit">
                   <h2 className="title">{user?.displayName || "JOhn_Doe"}</h2>
                   <p className="absolute top-0 -right-10 text-green-600 font-semibold">
-                    {testRole?.role || ""}
+                    {role || ""}
                   </p>
                 </div>
               </div>
 
-              {testRole?.role === "admin" ? (
+              {role === "admin" ? (
                 <AdminLinks sendReport={openModal} sendSupport={openModal} />
               ) : (
-                testRole?.role === "user" && <UserLinks />
+                role === "user" && <UserLinks />
               )}
             </div>
 
