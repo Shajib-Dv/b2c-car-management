@@ -21,6 +21,7 @@ import {
 } from "react-icons/md";
 import { useContext } from "react";
 import { AuthContext } from "../../../../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddNewCar = () => {
   const { user } = useContext(AuthContext)
@@ -49,8 +50,9 @@ const AddNewCar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const form = e.target;
     const userData = user.email
- 
+    
 
     const storableData = {
       userData,
@@ -63,22 +65,26 @@ const AddNewCar = () => {
 
     console.log(storableData);
 
-
     fetch('http://localhost:3000/add_new_car', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(storableData)
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(storableData)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data.insertedId) {
+          form.reset()
+          Swal.fire({
+            title: 'Success!',
+            text: 'Toys Added successfully',
+            icon: 'success',
+            confirmButtonText: 'OK!'
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.insertedId) {
-                  alert('ok')
-                }
-            })
-
+        }
+      })
 
 
   };
@@ -509,7 +515,7 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          required={false}
+                          // required={false}
                         />
                         <CustomInput
                           label="ReviewText2"
@@ -544,7 +550,7 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          required={false}
+                          // required={false}
                         />
                         <CustomInput
                           label="Interior Text 2"
@@ -579,7 +585,7 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          required={false}
+                          // required={false}
                         />
                         <CustomInput
                           label="Safety Text2"
@@ -614,7 +620,7 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          required={false}
+                          // required={false}
                         />
                         <CustomInput
                           label="Performance Text2"
@@ -649,7 +655,7 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          required={false}
+                          // required={false}
                         />
                         <CustomInput
                           label="Ride and Handling Text 2"
@@ -684,7 +690,7 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          required={false}
+                          // required={false}
                         />
                         <CustomInput
                           label="Verdict Text 2"
