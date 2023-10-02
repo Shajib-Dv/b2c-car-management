@@ -57,6 +57,10 @@ const AddNewCar = () => {
     const userData = user.email
     const imageFile = form.querySelector('input[name="image"]').files[0];
     const imageFile2 = form.querySelector('input[name="image1"]').files[0];
+    const imageFile3 = form.querySelector('input[name="image2"]').files[0];
+    const imageFile4 = form.querySelector('input[name="image3"]').files[0];
+    const imageFile5 = form.querySelector('input[name="image4"]').files[0];
+    const imageFile6 = form.querySelector('input[name="image5"]').files[0];
 
 
     const storableData = {
@@ -81,37 +85,111 @@ const AddNewCar = () => {
       .then(res => res.json())
       .then(imgResponse => {
         // console.log(imgResponse)
-        if(imgResponse.success){
+        if (imgResponse.success) {
           const imgURL = imgResponse.data.display_url;
-          const storableData = {
-            userData,
-            basicInfo,
-            keySpecifications,
-            emi,
-            specification,
-            additionalInfo,
-            imgURL
-          };
-          fetch('http://localhost:3000/add_new_car', {
+
+          const formData = new FormData()
+          formData.append('image', imageFile2)
+
+          fetch(img_hosting_url, {
             method: 'POST',
-            headers: {
-              'content-type': 'application/json'
-            },
-            body: JSON.stringify(storableData)
+            body: formData
           })
             .then(res => res.json())
-            .then(data => {
-              console.log(data);
-              if (data.insertedId) {
-                form.reset()
-                Swal.fire({
-                  title: 'Success!',
-                  text: 'Toys Added successfully',
-                  icon: 'success',
-                  confirmButtonText: 'OK!'
-              })
+            .then(imgResponse => {
+              // console.log(imgResponse)
+              if (imgResponse.success) {
+                const imgURL2 = imgResponse.data.display_url;
+                const formData = new FormData()
+                formData.append('image', imageFile3)
+
+                fetch(img_hosting_url, {
+                  method: 'POST',
+                  body: formData
+                })
+                  .then(res => res.json())
+                  .then(imgResponse => {
+                    // console.log(imgResponse)
+                    if (imgResponse.success) {
+                      const imgURL3 = imgResponse.data.display_url;
+                      const formData = new FormData()
+                      formData.append('image', imageFile4)
+
+                      fetch(img_hosting_url, {
+                        method: 'POST',
+                        body: formData
+                      })
+                        .then(res => res.json())
+                        .then(imgResponse => {
+                          // console.log(imgResponse)
+                          if (imgResponse.success) {
+                            const imgURL4 = imgResponse.data.display_url;
+                            const formData = new FormData()
+                            formData.append('image', imageFile5)
+
+                            fetch(img_hosting_url, {
+                              method: 'POST',
+                              body: formData
+                            })
+                              .then(res => res.json())
+                              .then(imgResponse => {
+                                // console.log(imgResponse)
+                                if (imgResponse.success) {
+                                  const imgURL5 = imgResponse.data.display_url;
+                                  const formData = new FormData()
+                                  formData.append('image', imageFile6)
+
+                                  fetch(img_hosting_url, {
+                                    method: 'POST',
+                                    body: formData
+                                  })
+                                    .then(res => res.json())
+                                    .then(imgResponse => {
+                                      // console.log(imgResponse)
+                                      if (imgResponse.success) {
+                                        const imgURL6 = imgResponse.data.display_url;
+                                        const additional = { ...additionalInfo, img: imgURL, img1: imgURL2, img3: imgURL3, img4: imgURL4, img5: imgURL5, img6: imgURL6 };
+                                        const storableData = {
+                                          userData,
+                                          basicInfo,
+                                          keySpecifications,
+                                          emi,
+                                          specification,
+                                          additional,
+
+                                        };
+                                        fetch('http://localhost:3000/add_new_car', {
+                                          method: 'POST',
+                                          headers: {
+                                            'content-type': 'application/json'
+                                          },
+                                          body: JSON.stringify(storableData)
+                                        })
+                                          .then(res => res.json())
+                                          .then(data => {
+                                            console.log(data);
+                                            if (data.insertedId) {
+                                              form.reset()
+                                              Swal.fire({
+                                                title: 'Success!',
+                                                text: 'Toys Added successfully',
+                                                icon: 'success',
+                                                confirmButtonText: 'OK!'
+                                              })
+                                            }
+                                          })
+                                      }
+                                    })
+                                }
+                              })
+                          }
+                        })
+                    }
+                  })
               }
             })
+
+
         }
       })
 
@@ -548,7 +626,7 @@ const AddNewCar = () => {
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
                           name="image"
-                        // required={false}
+                          required={false}
                         />
                         <CustomInput
                           label="ReviewText2"
@@ -583,7 +661,7 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                          // required={false}
+                          required={false}
                           name="image1"
                         />
                         <CustomInput
@@ -619,7 +697,8 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                        // required={false}
+                          // required={false}
+                          name="image2"
                         />
                         <CustomInput
                           label="Safety Text2"
@@ -654,7 +733,8 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                        // required={false}
+                          // required={false}
+                          name="image3"
                         />
                         <CustomInput
                           label="Performance Text2"
@@ -689,7 +769,8 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                        // required={false}
+                          // required={false}
+                          name="image4"
                         />
                         <CustomInput
                           label="Ride and Handling Text 2"
@@ -724,7 +805,8 @@ const AddNewCar = () => {
                         <input
                           type="file"
                           className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                        // required={false}
+                          // required={false}
+                          name="image5"
                         />
                         <CustomInput
                           label="Verdict Text 2"
