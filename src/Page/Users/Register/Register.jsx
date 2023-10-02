@@ -14,8 +14,43 @@ const Register = () => {
   const navigate = useNavigate();
   const { googleSignIn, updateUserProfile } = useAuth();
 
+  const userInfo = { name, email };
+
+  const storeUserInGoogle = (email, password) => {
+    googleSignIn(email, password)
+      .then(() => {
+        updateUserProfile(name).then(() => {
+          storeUserInDB(userInfo)
+            .then((res) => {
+              if (res.ok) {
+                setLoader(false);
+                navigate("/");
+              }
+            })
+            .catch((err) => console.log(err.message));
+        });
+      })
+      .catch((err) => {
+        setLoader(false);
+        setError((prev) => {
+          return { ...prev, firebase: err.message };
+        });
+      });
+  };
+
+  const storeUserInDB = async (userInfo) => {
+    const res = await fetch(`http://localhost:3000/user`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(userInfo),
+    });
+
+    return res;
+  };
+
   const handleGoogleSignin = (e) => {
     e.preventDefault();
+
     setError({});
     setLoader(false);
 
@@ -37,16 +72,7 @@ const Register = () => {
 
     if (email && password && name) {
       setLoader(true);
-      googleSignIn(email, password)
-        .then(() => {
-          updateUserProfile(name).then(() => navigate("/"));
-        })
-        .catch((err) => {
-          setLoader(false);
-          setError((prev) => {
-            return { ...prev, firebase: err.message };
-          });
-        });
+      storeUserInGoogle(email, password);
     }
   };
 
