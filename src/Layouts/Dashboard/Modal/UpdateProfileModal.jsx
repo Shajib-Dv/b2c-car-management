@@ -14,7 +14,11 @@ const UpdateProfileModal = ({ open, close }, ref) => {
   const [avatar, setAvatar] = useState(null);
   const [userInfo, setUserInfo] = useState({});
   const [photo, setPhoto] = useState("");
-  const [next, setNext] = useState(false);
+
+  const updatedUser = {
+    ...userInfo,
+    photo: photo || user?.photoURL || null,
+  };
 
   const img_host_url = `https://api.imgbb.com/1/upload?key=${
     import.meta.env.VITE_IMG_HOST_KEY
@@ -54,11 +58,12 @@ const UpdateProfileModal = ({ open, close }, ref) => {
             setPhoto(imgURL);
             setLoader(false);
             updateUserProfile(user?.displayName, imgURL);
-            setNext(true);
+
+            updateDbUser(updatedUser);
           }
         });
     } else {
-      setNext(true);
+      updateDbUser(updatedUser);
       setLoader(false);
     }
   };
@@ -82,14 +87,10 @@ const UpdateProfileModal = ({ open, close }, ref) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const updatedUser = { ...userInfo, photo: photo || user?.photoURL };
+
     setLoader(true);
 
     uploadImg(imgUrl);
-
-    if (next) {
-      updateDbUser(updatedUser);
-    }
 
     e.target.reset();
   };

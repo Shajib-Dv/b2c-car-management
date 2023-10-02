@@ -7,7 +7,7 @@ const useUserRole = () => {
   const [role, setRole] = useState("");
   const { user } = useAuth();
   if (user) {
-    fetch(`http://localhost:3000/user_role/${user?.email}`)
+    fetch(`http://localhost:3000/user/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         if (user) {
