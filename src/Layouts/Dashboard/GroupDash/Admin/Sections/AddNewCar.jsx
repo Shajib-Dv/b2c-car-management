@@ -49,32 +49,232 @@ const AddNewCar = () => {
   const handlePreviewRender = (element) => {
     setRenderNext({ ...renderNext, [element]: false });
   };
-  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
+  // const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   Swal.fire({
+  //     title: 'Uploading please wait',
+  //     width: 600,
+  //     padding: '3em',
+  //     color: '#716add',
+  //     background: '#fff url(/images/trees.png)',
+  //     backdrop: `
+  //       rgba(0,0,123,0.4)
+  //       url("https://sweetalert2.github.io/images/nyan-cat.gif")
+  //       left top
+  //       no-repeat
+  //     `
+  //   })
+  //   e.preventDefault();
+  //   const form = e.target;
+  //   const userData = user.email
+  //   const imageFile = form.querySelector('input[name="image"]').files[0];
+  //   const imageFile2 = form.querySelector('input[name="image1"]').files[0];
+  //   const imageFile3 = form.querySelector('input[name="image2"]').files[0];
+  //   const imageFile4 = form.querySelector('input[name="image3"]').files[0];
+  //   const imageFile5 = form.querySelector('input[name="image4"]').files[0];
+  //   const imageFile6 = form.querySelector('input[name="image5"]').files[0];
+
+
+  //   const storableData = {
+  //     userData,
+  //     basicInfo,
+  //     keySpecifications,
+  //     emi,
+  //     specification,
+  //     additionalInfo,
+  //   };
+
+  //   console.log(storableData);
+
+
+  //   const formData = new FormData()
+  //   formData.append('image', imageFile)
+
+  //   fetch(img_hosting_url, {
+  //     method: 'POST',
+  //     body: formData
+  //   })
+  //     .then(res => res.json())
+  //     .then(imgResponse => {
+  //       // console.log(imgResponse)
+  //       if (imgResponse.success) {
+  //         const imgURL = imgResponse.data.display_url;
+
+  //         const formData = new FormData()
+  //         formData.append('image', imageFile2)
+
+  //         fetch(img_hosting_url, {
+  //           method: 'POST',
+  //           body: formData
+  //         })
+  //           .then(res => res.json())
+  //           .then(imgResponse => {
+  //             // console.log(imgResponse)
+  //             if (imgResponse.success) {
+  //               const imgURL2 = imgResponse.data.display_url;
+  //               const formData = new FormData()
+  //               formData.append('image', imageFile3)
+
+  //               fetch(img_hosting_url, {
+  //                 method: 'POST',
+  //                 body: formData
+  //               })
+  //                 .then(res => res.json())
+  //                 .then(imgResponse => {
+  //                   // console.log(imgResponse)
+  //                   if (imgResponse.success) {
+  //                     const imgURL3 = imgResponse.data.display_url;
+  //                     const formData = new FormData()
+  //                     formData.append('image', imageFile4)
+
+  //                     fetch(img_hosting_url, {
+  //                       method: 'POST',
+  //                       body: formData
+  //                     })
+  //                       .then(res => res.json())
+  //                       .then(imgResponse => {
+  //                         // console.log(imgResponse)
+  //                         if (imgResponse.success) {
+  //                           const imgURL4 = imgResponse.data.display_url;
+  //                           const formData = new FormData()
+  //                           formData.append('image', imageFile5)
+
+  //                           fetch(img_hosting_url, {
+  //                             method: 'POST',
+  //                             body: formData
+  //                           })
+  //                             .then(res => res.json())
+  //                             .then(imgResponse => {
+  //                               // console.log(imgResponse)
+  //                               if (imgResponse.success) {
+  //                                 const imgURL5 = imgResponse.data.display_url;
+  //                                 const formData = new FormData()
+  //                                 formData.append('image', imageFile6)
+
+  //                                 fetch(img_hosting_url, {
+  //                                   method: 'POST',
+  //                                   body: formData
+  //                                 })
+  //                                   .then(res => res.json())
+  //                                   .then(imgResponse => {
+  //                                     // console.log(imgResponse)
+  //                                     if (imgResponse.success) {
+  //                                       const imgURL6 = imgResponse.data.display_url;
+  //                                       const additional = { ...additionalInfo, img: imgURL, img1: imgURL2, img3: imgURL3, img4: imgURL4, img5: imgURL5, img6: imgURL6 };
+  //                                       const storableData = {
+  //                                         userData,
+  //                                         basicInfo,
+  //                                         keySpecifications,
+  //                                         emi,
+  //                                         specification,
+  //                                         additional,
+
+  //                                       };
+  //                                       fetch('http://localhost:3000/add_new_car', {
+  //                                         method: 'POST',
+  //                                         headers: {
+  //                                           'content-type': 'application/json'
+  //                                         },
+  //                                         body: JSON.stringify(storableData)
+  //                                       })
+  //                                         .then(res => res.json())
+  //                                         .then(data => {
+  //                                           console.log(data);
+  //                                           if (data.insertedId) {
+
+  //                                             Swal.fire({
+  //                                               title: 'Success!',
+  //                                               text: 'Car added successfully',
+  //                                               icon: 'success',
+  //                                               confirmButtonText: 'OK!'
+  //                                             })
+  //                                           }
+  //                                         })
+  //                                     }
+  //                                   })
+  //                               }
+  //                             })
+  //                         }
+  //                       })
+  //                   }
+  //                 })
+  //             }
+  //           })
+
+
+  //       }
+  //       e.target.reset()
+  //       form.reset()
+  //     })
+
+
+
+
+  // };
+
+
+  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
+
+  const uploadImage = async (imageFile) => {
+    const formData = new FormData();
+    formData.append('image', imageFile);
+
+    const res = await fetch(img_hosting_url, {
+      method: 'POST',
+      body: formData,
+    });
+    const imgResponse = await res.json();
+
+    if (imgResponse.success) {
+      return imgResponse.data.display_url;
+    }
+    return null;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     Swal.fire({
-      title: 'Uploading please wait',
+      title: 'Uploading please wait...',
       width: 600,
       padding: '3em',
       color: '#716add',
       background: '#fff url(/images/trees.png)',
+      confirmButtonText: 'Do not close window',
       backdrop: `
-        rgba(0,0,123,0.4)
-        url("https://sweetalert2.github.io/images/nyan-cat.gif")
-        left top
-        no-repeat
-      `
-    })
-    e.preventDefault();
-    const form = e.target;
-    const userData = user.email
-    const imageFile = form.querySelector('input[name="image"]').files[0];
-    const imageFile2 = form.querySelector('input[name="image1"]').files[0];
-    const imageFile3 = form.querySelector('input[name="image2"]').files[0];
-    const imageFile4 = form.querySelector('input[name="image3"]').files[0];
-    const imageFile5 = form.querySelector('input[name="image4"]').files[0];
-    const imageFile6 = form.querySelector('input[name="image5"]').files[0];
+      rgba(0,0,123,0.4)
+      url("https://sweetalert2.github.io/images/nyan-cat.gif")
+      left top
+      no-repeat
+    `,
+    });
 
+    const form = e.target;
+    const userData = user.email;
+    const imageFiles = [
+      form.querySelector('input[name="image"]').files[0],
+      form.querySelector('input[name="image1"]').files[0],
+      form.querySelector('input[name="image2"]').files[0],
+      form.querySelector('input[name="image3"]').files[0],
+      form.querySelector('input[name="image4"]').files[0],
+      form.querySelector('input[name="image5"]').files[0],
+    ];
+
+    const imgURLs = await Promise.all(imageFiles.map(async (imageFile) => {
+      if (imageFile) {
+        return await uploadImage(imageFile);
+      }
+      return null;
+    }));
+
+    const additional = {
+      img: imgURLs[0],
+      img1: imgURLs[1],
+      img3: imgURLs[2],
+      img4: imgURLs[3],
+      img5: imgURLs[4],
+      img6: imgURLs[5],
+    };
 
     const storableData = {
       userData,
@@ -82,135 +282,33 @@ const AddNewCar = () => {
       keySpecifications,
       emi,
       specification,
-      additionalInfo,
+      additional,
     };
 
-    console.log(storableData);
-
-
-    const formData = new FormData()
-    formData.append('image', imageFile)
-
-    fetch(img_hosting_url, {
+    const response = await fetch('http://localhost:3000/add_new_car', {
       method: 'POST',
-      body: formData
-    })
-      .then(res => res.json())
-      .then(imgResponse => {
-        // console.log(imgResponse)
-        if (imgResponse.success) {
-          const imgURL = imgResponse.data.display_url;
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(storableData),
+    });
 
-          const formData = new FormData()
-          formData.append('image', imageFile2)
+    const data = await response.json();
 
-          fetch(img_hosting_url, {
-            method: 'POST',
-            body: formData
-          })
-            .then(res => res.json())
-            .then(imgResponse => {
-              // console.log(imgResponse)
-              if (imgResponse.success) {
-                const imgURL2 = imgResponse.data.display_url;
-                const formData = new FormData()
-                formData.append('image', imageFile3)
+    if (data.insertedId) {
+      Swal.fire({
+        title: 'Success!',
+        text: 'Car added successfully',
+        icon: 'success',
+        confirmButtonText: 'OK!',
+      });
+      form.reset();
+    }
 
-                fetch(img_hosting_url, {
-                  method: 'POST',
-                  body: formData
-                })
-                  .then(res => res.json())
-                  .then(imgResponse => {
-                    // console.log(imgResponse)
-                    if (imgResponse.success) {
-                      const imgURL3 = imgResponse.data.display_url;
-                      const formData = new FormData()
-                      formData.append('image', imageFile4)
-
-                      fetch(img_hosting_url, {
-                        method: 'POST',
-                        body: formData
-                      })
-                        .then(res => res.json())
-                        .then(imgResponse => {
-                          // console.log(imgResponse)
-                          if (imgResponse.success) {
-                            const imgURL4 = imgResponse.data.display_url;
-                            const formData = new FormData()
-                            formData.append('image', imageFile5)
-
-                            fetch(img_hosting_url, {
-                              method: 'POST',
-                              body: formData
-                            })
-                              .then(res => res.json())
-                              .then(imgResponse => {
-                                // console.log(imgResponse)
-                                if (imgResponse.success) {
-                                  const imgURL5 = imgResponse.data.display_url;
-                                  const formData = new FormData()
-                                  formData.append('image', imageFile6)
-
-                                  fetch(img_hosting_url, {
-                                    method: 'POST',
-                                    body: formData
-                                  })
-                                    .then(res => res.json())
-                                    .then(imgResponse => {
-                                      // console.log(imgResponse)
-                                      if (imgResponse.success) {
-                                        const imgURL6 = imgResponse.data.display_url;
-                                        const additional = { ...additionalInfo, img: imgURL, img1: imgURL2, img3: imgURL3, img4: imgURL4, img5: imgURL5, img6: imgURL6 };
-                                        const storableData = {
-                                          userData,
-                                          basicInfo,
-                                          keySpecifications,
-                                          emi,
-                                          specification,
-                                          additional,
-
-                                        };
-                                        fetch('http://localhost:3000/add_new_car', {
-                                          method: 'POST',
-                                          headers: {
-                                            'content-type': 'application/json'
-                                          },
-                                          body: JSON.stringify(storableData)
-                                        })
-                                          .then(res => res.json())
-                                          .then(data => {
-                                            console.log(data);
-                                            if (data.insertedId) {
-                                              form.reset()
-                                              Swal.fire({
-                                                title: 'Success!',
-                                                text: 'Car added successfully',
-                                                icon: 'success',
-                                                confirmButtonText: 'OK!'
-                                              })
-                                            }
-                                          })
-                                      }
-                                    })
-                                }
-                              })
-                          }
-                        })
-                    }
-                  })
-              }
-            })
-
-
-        }
-      })
-
-
-
-
-
+    
+    
   };
+
 
 
   return (
