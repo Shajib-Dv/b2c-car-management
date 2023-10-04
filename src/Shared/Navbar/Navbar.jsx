@@ -12,7 +12,6 @@ const Navbar = () => {
   const { user, logOut } = useAuth();
 
   const { role } = useCurrentUser();
-  console.log(role);
 
   const handleLogOut = () => {
     logOut();

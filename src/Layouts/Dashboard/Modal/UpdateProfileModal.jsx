@@ -6,19 +6,13 @@ import { forwardRef } from "react";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 
-const UpdateProfileModal = ({ open, close }, ref) => {
+const UpdateProfileModal = ({ open, close, currentUser }, ref) => {
   const { user, updateUserProfile } = useAuth();
   const [loader, setLoader] = useState(false);
   const avatarRef = useRef(null);
   const [imgUrl, setImgUrl] = useState(null);
   const [avatar, setAvatar] = useState(null);
   const [userInfo, setUserInfo] = useState({});
-  const [photo, setPhoto] = useState("");
-
-  const updatedUser = {
-    ...userInfo,
-    photo: photo || user?.photoURL || null,
-  };
 
   const img_host_url = `https://api.imgbb.com/1/upload?key=${
     import.meta.env.VITE_IMG_HOST_KEY
@@ -43,6 +37,7 @@ const UpdateProfileModal = ({ open, close }, ref) => {
   };
 
   const uploadImg = (file) => {
+    setLoader(true);
     if (imgUrl) {
       const imageData = new FormData();
       imageData.append("image", file);
@@ -54,8 +49,9 @@ const UpdateProfileModal = ({ open, close }, ref) => {
         .then((imageRes) => {
           if (imageRes.success) {
             const imgURL = imageRes.data.display_url;
-            setPhoto(imgURL);
             updateUserProfile(user?.displayName, imgURL);
+            const userInfoImg = { ...userInfo, photo: imgURL };
+            updateDbUser(userInfoImg);
           }
         });
     }
@@ -74,14 +70,18 @@ const UpdateProfileModal = ({ open, close }, ref) => {
           Swal.fire("Profile Updated !", "success");
         }
         setLoader(false);
+        setImgUrl(null);
         close();
       });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(userInfo);
-
+    if (imgUrl) {
+      uploadImg(imgUrl);
+    } else {
+      updateDbUser(userInfo);
+    }
     e.target.reset();
   };
 
@@ -132,6 +132,7 @@ const UpdateProfileModal = ({ open, close }, ref) => {
                   <input
                     type="text"
                     placeholder="Your full name"
+                    defaultValue={currentUser?.name}
                     className="data-input"
                     required
                     onChange={(e) =>
@@ -141,6 +142,7 @@ const UpdateProfileModal = ({ open, close }, ref) => {
                   <input
                     type="tel"
                     placeholder="Your Phone"
+                    defaultValue={currentUser?.phone}
                     className="data-input"
                     required
                     onChange={(e) =>
@@ -153,6 +155,7 @@ const UpdateProfileModal = ({ open, close }, ref) => {
               <input
                 type="text"
                 placeholder="Your city"
+                defaultValue={currentUser?.city}
                 className="data-input"
                 required
                 onChange={(e) =>
@@ -162,6 +165,7 @@ const UpdateProfileModal = ({ open, close }, ref) => {
               <input
                 type="text"
                 placeholder="Your country"
+                defaultValue={currentUser?.country}
                 className="data-input"
                 required
                 onChange={(e) =>
