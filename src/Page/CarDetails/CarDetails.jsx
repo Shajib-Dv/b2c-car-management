@@ -12,7 +12,7 @@ import CarEquipment from "./sections/CarEquipment";
 import PriceCompare from "./sections/PriceCompare";
 import CalculateEMI from "./sections/CalculateEMI";
 import ProsCons from "./sections/ProsCons";
-import Spec from "./sections/spec";
+import Spec from "./sections/Spec";
 import Review from "./sections/Review";
 import UserReview from "./sections/UserReview";
 import CompareCarsSlider from "../../sliders/CompareCars/CompareCarsSlider";

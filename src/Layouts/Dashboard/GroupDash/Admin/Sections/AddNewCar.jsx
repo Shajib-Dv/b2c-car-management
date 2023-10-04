@@ -319,7 +319,7 @@ const AddNewCar = () => {
         </span>
         Add New Car
       </h1>
-      <div className="pt-10 w-full h-full center-itm justify-center">
+      <div className="md:-mt-28 w-full h-full center-itm justify-center">
         <div className="w-full">
           <form
             onSubmit={handleSubmit}

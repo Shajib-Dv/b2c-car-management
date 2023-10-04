@@ -13,7 +13,7 @@ import UpdateProfile from "./Modal/UpdateProfile";
 import UpdateProfileModal from "./Modal/UpdateProfileModal";
 import SendMsgModal from "./Modal/SendMsgModal";
 import WelcomeUser from "./WelcomeUser/WelcomeUser";
-import useUserRole from "../../hooks/useUserRole";
+import useCurrentUser from "../../hooks/useCurrentUser";
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef(null);
@@ -21,7 +21,8 @@ const Dashboard = () => {
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
   const { user } = useAuth();
-  const role = useUserRole();
+  const { currentUser, refetch } = useCurrentUser();
+  const { role } = currentUser;
 
   const openModal = (action) => {
     if (action === "report") {
@@ -78,7 +79,7 @@ const Dashboard = () => {
                   <UpdateProfile openModal={openModal} />
                 </div>
                 <div className="relative w-fit">
-                  <h2 className="title">{user?.displayName || "JOhn_Doe"}</h2>
+                  <h2 className="title">{currentUser?.name || "JOhn_Doe"}</h2>
                   <p className="absolute top-0 -right-10 text-green-600 font-semibold">
                     {role || ""}
                   </p>
@@ -110,6 +111,8 @@ const Dashboard = () => {
         ref={modalRef}
         close={closeModal}
         open={isModalOpen}
+        currentUser={currentUser}
+        refetch={refetch}
       />
       <SendMsgModal
         title="Report your opinion here..."

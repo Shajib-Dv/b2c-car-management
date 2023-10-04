@@ -17,7 +17,7 @@ const UserRoutes = {
   children: [
     {
       path: "/dashboard/user",
-      element: <Navigate to="/dashboard/user/order_summary" />,
+      element: <Navigate to="/dashboard/user/home" />,
     },
     {
       path: "/dashboard/user/home",
