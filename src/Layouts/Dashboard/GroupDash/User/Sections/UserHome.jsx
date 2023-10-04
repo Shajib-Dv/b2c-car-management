@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 import { AiFillDollarCircle, AiFillEye } from 'react-icons/ai';
 import { RiCopperCoinFill } from 'react-icons/ri';
 import { IoIosNotifications } from 'react-icons/io';
-import RecommendedCarsSection from '../../../../../sliders/RecommendedCars/RecommendedCarsSection';
-import MostSearchedCarSection from '../../../../../sliders/MostSearchedCar/MostSearchedCarSection';
-import CompareCarsSlider from '../../../../../sliders/CompareCars/CompareCarsSlider';
 
 const UserHome = () => {
     return (
