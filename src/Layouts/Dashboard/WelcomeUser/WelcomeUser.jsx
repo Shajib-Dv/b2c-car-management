@@ -1,7 +1,7 @@
 /** @format */
 
 import { BiSolidHomeCircle } from "react-icons/bi";
-import GetCurrentTime from "../../../Shared/components/getCurrentTime";
+import GetCurrentTime from "../../../Shared/components/GetCurrentTime";
 import { Link } from "react-router-dom";
 
 const WelcomeUser = () => {
