@@ -13,7 +13,7 @@ import UpdateProfile from "./Modal/UpdateProfile";
 import UpdateProfileModal from "./Modal/UpdateProfileModal";
 import SendMsgModal from "./Modal/SendMsgModal";
 import WelcomeUser from "./WelcomeUser/WelcomeUser";
-import useUserRole from "../../hooks/useUserRole";
+import useCurrentUser from "../../hooks/useCurrentUser";
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef(null);
@@ -21,7 +21,7 @@ const Dashboard = () => {
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
   const { user } = useAuth();
-  const role = useUserRole();
+  const { role } = useCurrentUser();
 
   const openModal = (action) => {
     if (action === "report") {

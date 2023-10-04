@@ -6,12 +6,13 @@ import { BiSearch } from "react-icons/bi";
 import { FaSignOutAlt } from "react-icons/fa";
 import "./../css/custom.css";
 import useAuth from "../../hooks/useAuth";
-import useUserRole from "../../hooks/useUserRole";
+import useCurrentUser from "../../hooks/useCurrentUser";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
 
-  const role = useUserRole();
+  const { role } = useCurrentUser();
+  console.log(role);
 
   const handleLogOut = () => {
     logOut();

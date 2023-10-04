@@ -43,7 +43,6 @@ const UpdateProfileModal = ({ open, close }, ref) => {
   };
 
   const uploadImg = (file) => {
-    setLoader(true);
     if (imgUrl) {
       const imageData = new FormData();
       imageData.append("image", file);
@@ -56,15 +55,9 @@ const UpdateProfileModal = ({ open, close }, ref) => {
           if (imageRes.success) {
             const imgURL = imageRes.data.display_url;
             setPhoto(imgURL);
-            setLoader(false);
             updateUserProfile(user?.displayName, imgURL);
-
-            updateDbUser(updatedUser);
           }
         });
-    } else {
-      updateDbUser(updatedUser);
-      setLoader(false);
     }
   };
 
@@ -87,10 +80,7 @@ const UpdateProfileModal = ({ open, close }, ref) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    setLoader(true);
-
-    uploadImg(imgUrl);
+    console.log(userInfo);
 
     e.target.reset();
   };
