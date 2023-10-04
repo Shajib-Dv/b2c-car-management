@@ -12,7 +12,7 @@ const AdminRoutes = {
   children: [
     {
       path: "/dashboard/admin",
-      element: <Navigate to="/dashboard/admin/add_new_car" />,
+      element: <Navigate to="/dashboard/admin/analytics" />,
     },
     { path: "/dashboard/admin/add_new_car", element: <AddNewCar /> },
     {
