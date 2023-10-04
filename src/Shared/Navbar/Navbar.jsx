@@ -11,7 +11,7 @@ import useCurrentUser from "../../hooks/useCurrentUser";
 const Navbar = () => {
   const { user, logOut } = useAuth();
 
-  const { role } = useCurrentUser();
+  const { currentUser } = useCurrentUser();
 
   const handleLogOut = () => {
     logOut();
@@ -59,7 +59,10 @@ const Navbar = () => {
         <div className="gap-3 items-center flex justify-center">
           {user ? (
             <div className="center-itm gap-3">
-              <Link to={`/dashboard/${role}`} className="btn-details">
+              <Link
+                to={`/dashboard/${currentUser?.role}`}
+                className="btn-details"
+              >
                 Dashboard
               </Link>
               {user?.photoURL ? (
@@ -69,8 +72,10 @@ const Navbar = () => {
                   className="w-12 h-12 rounded-full"
                 />
               ) : (
-                user?.displayName && (
-                  <p className="btn-details">{user?.displayName}</p>
+                user && (
+                  <p className="btn-details">
+                    {user?.displayName ? user?.displayName : currentUser?.name}
+                  </p>
                 )
               )}
             </div>

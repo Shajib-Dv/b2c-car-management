@@ -21,7 +21,8 @@ const Dashboard = () => {
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
   const { user } = useAuth();
-  const { role, ...currentUser } = useCurrentUser();
+  const { currentUser, refetch } = useCurrentUser();
+  const { role } = currentUser;
 
   const openModal = (action) => {
     if (action === "report") {
@@ -111,6 +112,7 @@ const Dashboard = () => {
         close={closeModal}
         open={isModalOpen}
         currentUser={currentUser}
+        refetch={refetch}
       />
       <SendMsgModal
         title="Report your opinion here..."

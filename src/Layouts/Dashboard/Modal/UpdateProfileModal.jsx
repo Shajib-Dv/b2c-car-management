@@ -6,7 +6,7 @@ import { forwardRef } from "react";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 
-const UpdateProfileModal = ({ open, close, currentUser }, ref) => {
+const UpdateProfileModal = ({ open, close, currentUser, refetch }, ref) => {
   const { user, updateUserProfile } = useAuth();
   const [loader, setLoader] = useState(false);
   const avatarRef = useRef(null);
@@ -69,6 +69,7 @@ const UpdateProfileModal = ({ open, close, currentUser }, ref) => {
         if (data.modifiedCount) {
           Swal.fire("Profile Updated !", "success");
         }
+        refetch();
         setLoader(false);
         setImgUrl(null);
         close();
