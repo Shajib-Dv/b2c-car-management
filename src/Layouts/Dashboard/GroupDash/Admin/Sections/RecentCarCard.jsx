@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const RecentCarCard = ({ car }) => {
   const { _id, images, basicInfo } = car;
   return (
-    <Link to={`/dashboard/admin/add_new_car/${_id}`}>
+    <Link to={`/dashboard/admin/recently_added_car/${_id}`}>
       <div className="w-full bg-transparent shadow-md rounded-md relative group">
         <div className="md:h-64 h-40 overflow-hidden rounded-md relative">
           <img
