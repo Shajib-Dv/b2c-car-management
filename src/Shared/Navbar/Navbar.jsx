@@ -59,12 +59,14 @@ const Navbar = () => {
         <div className="gap-3 items-center flex justify-center">
           {user ? (
             <div className="center-itm gap-3">
-              <Link
-                to={`/dashboard/${currentUser?.role}`}
-                className="btn-details"
-              >
-                Dashboard
-              </Link>
+              {currentUser?.role && (
+                <Link
+                  to={`/dashboard/${currentUser?.role}`}
+                  className="btn-details"
+                >
+                  Dashboard
+                </Link>
+              )}
               {user?.photoURL ? (
                 <img
                   src={user?.photoURL}
