@@ -74,9 +74,10 @@ const Navbar = () => {
                   className="w-12 h-12 rounded-full"
                 />
               ) : (
-                user && (
+                user &&
+                currentUser?.name && (
                   <p className="btn-details">
-                    {user?.displayName ? user?.displayName : currentUser?.name}
+                    {currentUser?.name || user?.displayName}
                   </p>
                 )
               )}

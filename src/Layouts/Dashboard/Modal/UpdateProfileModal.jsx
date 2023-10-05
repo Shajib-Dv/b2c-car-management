@@ -91,8 +91,11 @@ const UpdateProfileModal = ({ open, close, currentUser, refetch }, ref) => {
       <dialog className={`${open ? "flex" : "hidden"}`} open={open} ref={ref}>
         <div className="modal-box md:w-1/2 text-green-500 border border-green-600">
           <h3 className="font-bold text-lg">
-            Welcome <span className="font-serif">{user?.displayName}</span>.
-            Update your information here...
+            Welcome{" "}
+            <span className="font-serif">
+              {currentUser?.name || user?.displayName}
+            </span>
+            . Update your information here...
           </h3>
 
           <div>
