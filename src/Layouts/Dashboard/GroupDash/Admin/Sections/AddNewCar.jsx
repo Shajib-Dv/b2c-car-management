@@ -23,11 +23,10 @@ import { useContext } from "react";
 import { AuthContext } from "../../../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
-const img_hosting_token = import.meta.env.VITE_Image_Upload_Token
+const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
 const AddNewCar = () => {
-  const { user } = useContext(AuthContext)
-  console.log(user)
+  const { user } = useContext(AuthContext);
 
   const [renderNext, setRenderNext] = useState({});
   const [basicInfo, setBasicInfo] = useState({});
@@ -49,6 +48,7 @@ const AddNewCar = () => {
   const handlePreviewRender = (element) => {
     setRenderNext({ ...renderNext, [element]: false });
   };
+
   // const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
 
   // const handleSubmit = (e) => {
@@ -75,7 +75,6 @@ const AddNewCar = () => {
   //   const imageFile5 = form.querySelector('input[name="image4"]').files[0];
   //   const imageFile6 = form.querySelector('input[name="image5"]').files[0];
 
-
   //   const storableData = {
   //     userData,
   //     basicInfo,
@@ -86,7 +85,6 @@ const AddNewCar = () => {
   //   };
 
   //   console.log(storableData);
-
 
   //   const formData = new FormData()
   //   formData.append('image', imageFile)
@@ -202,26 +200,21 @@ const AddNewCar = () => {
   //             }
   //           })
 
-
   //       }
   //       e.target.reset()
   //       form.reset()
   //     })
 
-
-
-
   // };
-
 
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
   const uploadImage = async (imageFile) => {
     const formData = new FormData();
-    formData.append('image', imageFile);
+    formData.append("image", imageFile);
 
     const res = await fetch(img_hosting_url, {
-      method: 'POST',
+      method: "POST",
       body: formData,
     });
     const imgResponse = await res.json();
@@ -235,12 +228,12 @@ const AddNewCar = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     Swal.fire({
-      title: 'Uploading please wait...',
+      title: "Uploading please wait...",
       width: 600,
-      padding: '3em',
-      color: '#716add',
-      background: '#fff url(/images/trees.png)',
-      confirmButtonText: 'Do not close window',
+      padding: "3em",
+      color: "#716add",
+      background: "#fff url(/images/trees.png)",
+      confirmButtonText: "Do not close window",
       backdrop: `
       rgba(0,0,123,0.4)
       url("https://sweetalert2.github.io/images/nyan-cat.gif")
@@ -250,7 +243,6 @@ const AddNewCar = () => {
     });
 
     const form = e.target;
-    const userData = user.email;
     const imageFiles = [
       form.querySelector('input[name="image"]').files[0],
       form.querySelector('input[name="image1"]').files[0],
@@ -260,35 +252,39 @@ const AddNewCar = () => {
       form.querySelector('input[name="image5"]').files[0],
     ];
 
-    const imgURLs = await Promise.all(imageFiles.map(async (imageFile) => {
-      if (imageFile) {
-        return await uploadImage(imageFile);
-      }
-      return null;
-    }));
+    const imgURLs = await Promise.all(
+      imageFiles.map(async (imageFile) => {
+        if (imageFile) {
+          return await uploadImage(imageFile);
+        }
+        return null;
+      })
+    );
 
-    const additional = {
-      img: imgURLs[0],
-      img1: imgURLs[1],
-      img3: imgURLs[2],
-      img4: imgURLs[3],
-      img5: imgURLs[4],
-      img6: imgURLs[5],
-    };
+    // const additional = {
+    //   img: imgURLs[0],
+    //   img1: imgURLs[1],
+    //   img2: imgURLs[2],
+    //   img3: imgURLs[3],
+    //   img4: imgURLs[4],
+    //   img5: imgURLs[5],
+    // };
 
     const storableData = {
-      userData,
+      email: user?.email,
       basicInfo,
       keySpecifications,
       emi,
       specification,
-      additional,
+      images: imgURLs,
+      additionalInfo,
+      date: new Date(),
     };
 
-    const response = await fetch('http://localhost:3000/add_new_car', {
-      method: 'POST',
+    const response = await fetch("http://localhost:3000/add_new_car", {
+      method: "POST",
       headers: {
-        'content-type': 'application/json',
+        "content-type": "application/json",
       },
       body: JSON.stringify(storableData),
     });
@@ -297,19 +293,14 @@ const AddNewCar = () => {
 
     if (data.insertedId) {
       Swal.fire({
-        title: 'Success!',
-        text: 'Car added successfully',
-        icon: 'success',
-        confirmButtonText: 'OK!',
+        title: "Success!",
+        text: "Car added successfully",
+        icon: "success",
+        confirmButtonText: "OK!",
       });
       form.reset();
     }
-
-    
-    
   };
-
-
 
   return (
     <>

@@ -59,12 +59,14 @@ const Navbar = () => {
         <div className="gap-3 items-center flex justify-center">
           {user ? (
             <div className="center-itm gap-3">
-              <Link
-                to={`/dashboard/${currentUser?.role}`}
-                className="btn-details"
-              >
-                Dashboard
-              </Link>
+              {currentUser?.role && (
+                <Link
+                  to={`/dashboard/${currentUser?.role}`}
+                  className="btn-details"
+                >
+                  Dashboard
+                </Link>
+              )}
               {user?.photoURL ? (
                 <img
                   src={user?.photoURL}
@@ -72,9 +74,10 @@ const Navbar = () => {
                   className="w-12 h-12 rounded-full"
                 />
               ) : (
-                user && (
+                user &&
+                currentUser?.name && (
                   <p className="btn-details">
-                    {user?.displayName ? user?.displayName : currentUser?.name}
+                    {currentUser?.name || user?.displayName}
                   </p>
                 )
               )}

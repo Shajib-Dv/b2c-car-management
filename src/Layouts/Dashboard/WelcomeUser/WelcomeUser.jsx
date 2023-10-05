@@ -1,6 +1,7 @@
 /** @format */
 
 import { BiSolidHomeCircle } from "react-icons/bi";
+import { GiHomeGarage } from "react-icons/gi";
 import GetCurrentTime from "../../../Shared/components/GetCurrentTime";
 import { Link } from "react-router-dom";
 
@@ -20,7 +21,7 @@ const WelcomeUser = () => {
       </div>
       <div className="flex-1 justify-end center-itm gap-4">
         <Link to="/">
-          <BiSolidHomeCircle className="text-5xl text-green-600" />
+          <GiHomeGarage className="text-3xl text-green-800" />
         </Link>
       </div>
     </div>

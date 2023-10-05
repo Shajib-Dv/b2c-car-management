@@ -10,7 +10,7 @@ const UpdateProfile = ({ openModal }) => {
         className="absolute bottom-0 left-1/2 -translate-x-1/2"
         title="Edit your profile"
       >
-        <LiaUserEditSolid className="text-3xl text-green-600 cursor-pointer" />
+        <LiaUserEditSolid className="text-2xl text-green-600 cursor-pointer" />
       </button>
     </>
   );

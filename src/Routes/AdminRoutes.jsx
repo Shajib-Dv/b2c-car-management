@@ -5,6 +5,7 @@ import Dashboard from "../Layouts/Dashboard/Dashboard";
 import AddNewCar from "../Layouts/Dashboard/GroupDash/Admin/Sections/AddNewCar";
 import RecentlyAddedCar from "../Layouts/Dashboard/GroupDash/Admin/Sections/RecentlyAddedCar";
 import Analytics from "../Layouts/Dashboard/GroupDash/Admin/Sections/Analytics";
+import RecentCarDetails from "../Layouts/Dashboard/GroupDash/Admin/Sections/RecentCarDetails";
 
 const AdminRoutes = {
   path: "/dashboard/admin",
@@ -18,6 +19,10 @@ const AdminRoutes = {
     {
       path: "/dashboard/admin/recently_added_car",
       element: <RecentlyAddedCar />,
+    },
+    {
+      path: "/dashboard/admin/recently_added_car/:id",
+      element: <RecentCarDetails />,
     },
     {
       path: "/dashboard/admin/analytics",
