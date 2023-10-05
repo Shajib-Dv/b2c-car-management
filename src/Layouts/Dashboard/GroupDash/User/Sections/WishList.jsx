@@ -5,7 +5,7 @@ const WishList = () => {
     return (
         <div className='mt-10 md:mt-[200px] w-full'>
             <h1 className='text-2xl font-bold mb-5 flex justify-center items-center gap-2'><span className='text-green-600 text-3xl'><MdOutlinePlaylistAddCheck /></span>My Wish List</h1>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto md:w-full w-[300px]">
                 <table className="table">
                     {/* head */}
 
