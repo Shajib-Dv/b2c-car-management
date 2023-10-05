@@ -3,6 +3,7 @@ import useCurrentUser from '../../../../../hooks/useCurrentUser';
 import { CiEdit } from 'react-icons/ci';
 import { MdDeleteOutline } from 'react-icons/md';
 import { BiSolidBookAdd } from 'react-icons/bi';
+import { FaAddressBook } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Addresses = () => {
@@ -10,7 +11,7 @@ const Addresses = () => {
     console.log(user)
     return (
         <div className='mt-10 md:mt-[200px] w-full'>
-            <h1 className='text-center text-2xl font-bold mb-5'>My Addresses Book</h1>
+            <h1 className='text-2xl font-bold mb-5 flex gap-2 justify-center items-center'> <span className='text-green-600'><FaAddressBook/></span> My Address Book </h1>
             <div className='flex flex-col gap-5'>
                 <div className='border border-green-300 p-5 rounded-md hover:shadow-green-200 hover:shadow-md flex justify-between'>
                     <div className='flex gap-2'>
