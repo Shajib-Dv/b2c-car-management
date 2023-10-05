@@ -1,8 +1,10 @@
 import React from 'react';
+import { BiDetail } from 'react-icons/bi';
 
 const YourTransactions = () => {
     return (
         <div className='mt-10 md:mt-[200px] w-full'>
+            <h1 className='text-2xl font-bold mb-5 flex justify-center items-center gap-2'><span className='text-green-600 text-3xl'><BiDetail /></span>Your Transactions</h1>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

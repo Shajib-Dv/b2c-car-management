@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import { AiFillDollarCircle, AiFillEye } from 'react-icons/ai';
 import { RiCopperCoinFill } from 'react-icons/ri';
 import { IoIosNotifications } from 'react-icons/io';
+import { FaHome} from 'react-icons/fa';
 
 const UserHome = () => {
     return (
         <div className='mt-10 md:mt-[200px] w-full'>
-            <div className='flex justify-between text-center md:px-20'>
+            <h1 className='text-2xl font-bold mb-5 flex justify-center items-center gap-2'><span className='text-green-600 text-3xl'><FaHome /></span>Home</h1>
+            <div className='flex justify-between text-center md:px-20 mt-10'>
                 <div>
                     <h1 className='font-bold'>Your Total spend</h1>
                     <h1 className='flex gap-1 items-center justify-center'>500.00<AiFillDollarCircle /></h1>

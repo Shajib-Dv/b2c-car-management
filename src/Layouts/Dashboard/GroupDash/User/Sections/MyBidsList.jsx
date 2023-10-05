@@ -1,8 +1,9 @@
 import React from 'react';
-
+import { BsReverseListColumnsReverse } from 'react-icons/bs';
 const MyBidsList = () => {
     return (
         <div className='mt-10 md:mt-[200px] w-full'>
+            <h1 className='text-2xl font-bold mb-5 flex justify-center items-center gap-2'><span className='text-green-600 text-2xl'><BsReverseListColumnsReverse /></span>My Bids List</h1>
             <div className="overflow-x-auto">
                 <table className="table table-xs">
                     <thead>
