@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState } from "react";
 
 function CustomInput2({ label, name }) {

@@ -1,5 +1,3 @@
-/** @format */
-
 import { useRef } from "react";
 import { FaPen, FaTimes } from "react-icons/fa";
 

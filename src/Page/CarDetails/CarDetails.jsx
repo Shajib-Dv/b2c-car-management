@@ -1,5 +1,3 @@
-/** @format */
-
 import React from "react";
 import Tab from "./sections/Tab";
 import CarCover from "./sections/CarCover";

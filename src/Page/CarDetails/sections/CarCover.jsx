@@ -1,5 +1,3 @@
-/** @format */
-
 import { FaPen, FaShareAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Rating, Star } from "@smastrom/react-rating";

@@ -1,5 +1,3 @@
-/** @format */
-
 import { LiaUserEditSolid } from "react-icons/lia";
 
 const UpdateProfile = ({ openModal }) => {

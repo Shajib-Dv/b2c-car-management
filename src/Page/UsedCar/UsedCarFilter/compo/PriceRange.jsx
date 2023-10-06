@@ -1,11 +1,9 @@
-/** @format */
-
 import { useEffect, useRef, useState } from "react";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 import FilterAccordion from "../Accordion/FilterAccordion";
 
-const PriceRange = () => {
+const PriceRange = ({ filteringTextSet }) => {
   const [rangeValue, setRangleValue] = useState([5000, 50000]);
   const pillarRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -37,6 +35,8 @@ const PriceRange = () => {
         childList[i].classList.add("bg-green-600");
       }
     }
+
+    filteringTextSet("price", rangeValue);
   }, [rangeValue]);
 
   return (

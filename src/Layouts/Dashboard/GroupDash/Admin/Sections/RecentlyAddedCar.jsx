@@ -1,5 +1,3 @@
-/** @format */
-
 import EmptyData from "../../../../../Shared/components/EmptyData";
 import Loader from "../../../../../Shared/components/Loader";
 import getCarsByUser from "../../../../../utils/getCarsByUser";

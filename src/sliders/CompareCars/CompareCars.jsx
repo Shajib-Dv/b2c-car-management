@@ -1,5 +1,3 @@
-/** @format */
-
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import CompareCarsSlider from "./CompareCarsSlider";

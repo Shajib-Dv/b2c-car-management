@@ -1,5 +1,3 @@
-/** @format */
-
 import React from "react";
 import { BsDot, BsFillArrowRightSquareFill } from "react-icons/bs";
 import { Link } from "react-router-dom";

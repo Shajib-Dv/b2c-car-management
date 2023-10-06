@@ -1,5 +1,3 @@
-/** @format */
-
 import { NavLink } from "react-router-dom";
 
 const ActiveDashLink = ({ to, children }) => {

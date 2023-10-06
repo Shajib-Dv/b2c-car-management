@@ -1,5 +1,3 @@
-/** @format */
-
 import { useState } from "react";
 import RecommendedCarsSlider from "./RecommendedCarsSlider";
 

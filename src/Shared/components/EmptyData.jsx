@@ -1,5 +1,3 @@
-/** @format */
-
 import { Link } from "react-router-dom";
 
 const EmptyData = ({ message, reason, to, go }) => {

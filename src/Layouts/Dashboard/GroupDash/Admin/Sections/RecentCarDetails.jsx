@@ -1,5 +1,3 @@
-/** @format */
-
 import { useParams } from "react-router-dom";
 import getCarsById from "../../../../../utils/getCarsById";
 import Loader from "../../../../../Shared/components/Loader";

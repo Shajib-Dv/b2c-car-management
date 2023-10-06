@@ -1,5 +1,3 @@
-/** @format */
-
 import { useState } from "react";
 import { MdOutlineSupportAgent } from "react-icons/md";
 import CustomInput from "../../../Shared/components/CustomInput";

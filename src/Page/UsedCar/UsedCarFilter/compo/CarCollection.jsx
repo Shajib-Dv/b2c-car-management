@@ -1,5 +1,3 @@
-/** @format */
-
 const CarsImg = [
   "https://i.ibb.co/PQXG7TY/Rectangle-178.png",
   "https://i.ibb.co/wLWDpFL/recar3.png",
