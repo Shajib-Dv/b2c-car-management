@@ -1,13 +1,15 @@
-/** @format */
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import FilterAccordion from "../Accordion/FilterAccordion";
 
-const CategoryType = () => {
+const CategoryType = ({ filteringTextSet }) => {
   const [category, setCategory] = useState("All");
 
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    filteringTextSet("category", category);
+  }, [category]);
 
   return (
     <>

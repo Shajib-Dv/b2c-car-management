@@ -1,5 +1,3 @@
-/** @format */
-
 import { BiSolidHomeCircle } from "react-icons/bi";
 import { GiHomeGarage } from "react-icons/gi";
 import GetCurrentTime from "../../../Shared/components/GetCurrentTime";

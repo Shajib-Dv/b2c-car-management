@@ -1,6 +1,4 @@
-/** @format */
-
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FaCheck, FaSearch } from "react-icons/fa";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
@@ -19,9 +17,7 @@ const Colors = [
   "#00a541",
 ];
 
-const MakeAndModel = () => {
-  const [searchText, setSearchText] = useState("");
-  const [rtoSearchText, setRtoSearchText] = useState("");
+const MakeAndModel = ({ filteringTextSet }) => {
   const [storeColor, setStoreColor] = useState({});
   const [year, setYear] = useState([2000, 2023]);
   const [kilometer, setKilometer] = useState([1000, 2000]);
@@ -37,13 +33,40 @@ const MakeAndModel = () => {
       setStoreColor((prev) => {
         return { ...prev, [color]: false };
       });
-
       return;
+    } else {
+      setStoreColor((prev) => {
+        return { ...prev, [color]: true };
+      });
     }
-    setStoreColor((prev) => {
-      return { ...prev, [color]: true };
-    });
   };
+
+  const dependency = [
+    storeColor,
+    year,
+    kilometer,
+    fuel,
+    seat,
+    transmission,
+    rto,
+    owner,
+    isOpen,
+  ];
+
+  const filterData = [
+    { type: "color", data: Object.keys(storeColor) },
+    { type: "year", data: year },
+    { type: "milage", data: kilometer },
+    { type: "fuel", data: Object.keys(fuel) },
+    { type: "seat", data: Object.keys(seat) },
+    { type: "transmission", data: Object.keys(transmission) },
+    { type: "rto", data: Object.keys(rto) },
+    { type: "owner", data: Object.keys(owner) },
+  ];
+
+  useEffect(() => {
+    filterData.forEach(({ type, data }) => filteringTextSet(type, data));
+  }, dependency);
 
   return (
     <>
@@ -52,16 +75,6 @@ const MakeAndModel = () => {
         open={isOpen?.makeYear}
         toggle={() => setIsOpen({ ...isOpen, makeYear: !isOpen?.makeYear })}
       >
-        <div className="center-itm border rounded-lg px-2 bg-base-300 my-5">
-          <FaSearch className="text-gray-400 text-xl" />
-          <input
-            type="search"
-            onChange={(e) => setSearchText(e.target.value)}
-            className="input-src p-3"
-            placeholder="New Delhi"
-          />
-        </div>
-        <hr />
         {/* Year */}
         <div className="my-10">
           <h2 className="title pt-2">Year</h2>
@@ -211,13 +224,13 @@ const MakeAndModel = () => {
         <div className="form-control gap-2 mb-5">
           <label className="cursor-pointer center-itm gap-2 font-semibold">
             <input
-              onChange={(e) => setSeat({ ...seat, s4: e.target.checked })}
+              onChange={(e) => setSeat({ ...seat, 4: e.target.checked })}
               type="checkbox"
               className="checkbox checkbox-accent"
             />
             <span
               className={`label-text ${
-                seat?.s4 ? "font-bold text-black" : "text-gray-400"
+                seat?.["4"] ? "font-bold text-black" : "text-gray-400"
               }`}
             >
               4 Seater
@@ -225,13 +238,13 @@ const MakeAndModel = () => {
           </label>
           <label className="cursor-pointer center-itm gap-2 font-semibold">
             <input
-              onChange={(e) => setSeat({ ...seat, s5: e.target.checked })}
+              onChange={(e) => setSeat({ ...seat, 5: e.target.checked })}
               type="checkbox"
               className="checkbox checkbox-accent"
             />
             <span
               className={`label-text ${
-                seat?.s5 ? "font-bold text-black" : "text-gray-400"
+                seat?.["5"] ? "font-bold text-black" : "text-gray-400"
               }`}
             >
               5 Seater
@@ -239,13 +252,13 @@ const MakeAndModel = () => {
           </label>
           <label className="cursor-pointer center-itm gap-2 font-semibold">
             <input
-              onChange={(e) => setSeat({ ...seat, s6: e.target.checked })}
+              onChange={(e) => setSeat({ ...seat, 6: e.target.checked })}
               type="checkbox"
               className="checkbox checkbox-accent"
             />
             <span
               className={`label-text ${
-                seat?.s6 ? "font-bold text-black" : "text-gray-400"
+                seat?.["6"] ? "font-bold text-black" : "text-gray-400"
               }`}
             >
               6 Seater
@@ -253,13 +266,13 @@ const MakeAndModel = () => {
           </label>
           <label className="cursor-pointer center-itm gap-2 font-semibold">
             <input
-              onChange={(e) => setSeat({ ...seat, s7: e.target.checked })}
+              onChange={(e) => setSeat({ ...seat, 7: e.target.checked })}
               type="checkbox"
               className="checkbox checkbox-accent"
             />
             <span
               className={`label-text ${
-                seat?.s7 ? "font-bold text-black" : "text-gray-400"
+                seat?.["7"] ? "font-bold text-black" : "text-gray-400"
               }`}
             >
               7 Seater
@@ -267,13 +280,13 @@ const MakeAndModel = () => {
           </label>
           <label className="cursor-pointer center-itm gap-2 font-semibold">
             <input
-              onChange={(e) => setSeat({ ...seat, s8: e.target.checked })}
+              onChange={(e) => setSeat({ ...seat, 8: e.target.checked })}
               type="checkbox"
               className="checkbox checkbox-accent"
             />
             <span
               className={`label-text ${
-                seat?.s8 ? "font-bold text-black" : "text-gray-400"
+                seat?.["8"] ? "font-bold text-black" : "text-gray-400"
               }`}
             >
               8 Seater
@@ -368,16 +381,6 @@ const MakeAndModel = () => {
         open={isOpen?.rto}
         toggle={() => setIsOpen({ ...isOpen, rto: !isOpen?.rto })}
       >
-        <div className="center-itm border rounded-lg px-2 bg-base-300 my-5">
-          <FaSearch className="text-gray-400 text-xl" />
-          <input
-            type="search"
-            onChange={(e) => setRtoSearchText(e.target.value)}
-            className="input-src p-3"
-            placeholder="e.d. Del"
-          />
-        </div>
-
         <div className="form-control gap-2 mb-5">
           <label className="cursor-pointer center-itm gap-2 font-semibold">
             <input

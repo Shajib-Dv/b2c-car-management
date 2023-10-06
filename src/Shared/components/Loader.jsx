@@ -1,5 +1,3 @@
-/** @format */
-
 const Loader = () => {
   return (
     <div className="min-h-full w-full center-itm justify-center bg-transparent">

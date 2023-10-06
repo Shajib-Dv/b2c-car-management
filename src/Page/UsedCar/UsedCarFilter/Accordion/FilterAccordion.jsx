@@ -1,5 +1,3 @@
-/** @format */
-
 import { Collapse } from "react-collapse";
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
 const FilterAccordion = ({ open, toggle, title, children }) => {

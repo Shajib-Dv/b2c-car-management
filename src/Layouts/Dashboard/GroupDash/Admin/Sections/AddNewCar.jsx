@@ -1,5 +1,3 @@
-/** @format */
-
 import { useState } from "react";
 import CustomInput from "../../../../../Shared/components/CustomInput";
 import { AiOutlineFileAdd, AiFillInfoCircle } from "react-icons/ai";

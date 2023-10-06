@@ -1,5 +1,3 @@
-/** @format */
-
 import { Navigate } from "react-router-dom";
 import Dashboard from "../Layouts/Dashboard/Dashboard";
 import AddNewCar from "../Layouts/Dashboard/GroupDash/Admin/Sections/AddNewCar";

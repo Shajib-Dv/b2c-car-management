@@ -1,5 +1,3 @@
-/** @format */
-
 const SearchTopic = ({ children, icon }) => {
   return (
     <div className="center-itm gap-3">

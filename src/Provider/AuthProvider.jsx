@@ -1,5 +1,3 @@
-/** @format */
-
 import { createContext, useEffect, useState } from "react";
 import {
   RecaptchaVerifier,

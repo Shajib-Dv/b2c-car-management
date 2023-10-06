@@ -1,5 +1,3 @@
-/** @format */
-
 import { Navigate } from "react-router-dom";
 import Dashboard from "../Layouts/Dashboard/Dashboard";
 import OrderSummary from "../Layouts/Dashboard/GroupDash/User/Sections/OrderSummary";
