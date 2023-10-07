@@ -98,19 +98,6 @@ const UpcomingCar = () => {
         }
     }
 
-    // const [data, setData] = useState([]);
-    // const [Loading, setLoading] = useState(true);
-    // useEffect(() =>{
-    //     fetch('http://localhost:3000/add_upcoming_car')
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         setData(data)
-    //         setLoading(false)
-    //     })
-    // })
-
-    console.log(carData)
-
 
     return (
         <div className='w-full mt-10 md:mt-[200px]'>
