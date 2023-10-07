@@ -88,7 +88,7 @@ const UsedCarFilter = () => {
           </h2>
           <div className="md:w-2/5 w-full border center-itm rounded-md px-2 font-semibold">
             <span className="md:w-1/3 w-full text-gray-400">Soft by:</span>
-            <select className="select-btn select-no cursor-pointer bg-none">
+            <select className="select-btn select-no cursor-pointer bg-transparent">
               <option>Relevance</option>
               <option>Homer</option>
               <option>Marge</option>
