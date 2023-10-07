@@ -1,5 +1,3 @@
-/** @format */
-
 import React from "react";
 import "./custom.css";
 import { BiSearch } from "react-icons/bi";

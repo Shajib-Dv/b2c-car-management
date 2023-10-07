@@ -1,7 +1,5 @@
-/** @format */
 import { FaSearch, FaSearchengin } from "react-icons/fa";
 import { LuContact } from "react-icons/lu";
-import { FiMinusCircle } from "react-icons/fi";
 import { SiSpringsecurity } from "react-icons/si";
 import { GiPoliceCar, GiReceiveMoney } from "react-icons/gi";
 import SearchTopic from "./compo/SearchTopic";
@@ -13,12 +11,27 @@ import MakeAndModel from "./compo/MakeAndModel";
 
 const UsedCarFilter = () => {
   const [searchText, setSearchText] = useState("");
+  const [filteringText, setFilteringText] = useState({});
+
+  let url = "http://localhost:3000/cars/search?";
+
+  if (searchText) {
+    url += "&carName=" + searchText;
+  }
 
   let CarsArray = [];
 
   for (let i = 0; i < 16; i++) {
     CarsArray.push(i);
   }
+
+  const filteringTextSet = (element, val) => {
+    setFilteringText((prev) => {
+      return { ...prev, [element]: val };
+    });
+  };
+
+  console.log(url, filteringText);
   return (
     <div className="grid grig-cols-1 md:grid-cols-6 gap-5 md:p-10 p-5">
       <div className="md:col-span-2 bg-base-100 rounded-md md:p-10">
@@ -33,11 +46,11 @@ const UsedCarFilter = () => {
           />
         </div>
         <hr />
-        <CategoryType />
+        <CategoryType filteringTextSet={filteringTextSet} />
         <hr />
-        <PriceRange />
+        <PriceRange filteringTextSet={filteringTextSet} />
         <hr />
-        <MakeAndModel />
+        <MakeAndModel filteringTextSet={filteringTextSet} />
       </div>
 
       <div className="md:col-span-4">
@@ -75,7 +88,7 @@ const UsedCarFilter = () => {
           </h2>
           <div className="md:w-2/5 w-full border center-itm rounded-md px-2 font-semibold">
             <span className="md:w-1/3 w-full text-gray-400">Soft by:</span>
-            <select className="select-btn select-no cursor-pointer">
+            <select className="select-btn select-no cursor-pointer bg-transparent">
               <option>Relevance</option>
               <option>Homer</option>
               <option>Marge</option>

@@ -1,5 +1,3 @@
-/** @format */
-
 import { useState } from "react";
 import SendOtp from "./SendOtp";
 import OtpCheck from "./OtpCheck";

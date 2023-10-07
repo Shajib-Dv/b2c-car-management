@@ -1,5 +1,3 @@
-/** @format */
-
 const EmiBanner = () => {
   return (
     <div className="rounded-md shadow-md border-x-2 p-4 space-y-3 w-full">

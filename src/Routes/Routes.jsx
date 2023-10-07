@@ -1,5 +1,3 @@
-/** @format */
-
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import HomeLayouts from "../Layouts/HomeLayouts";
 import ErrorPage from "../Page/ErrorPage/ErrorPage";
