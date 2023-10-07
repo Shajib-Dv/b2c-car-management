@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
 
 const getUpComingCarData = () => {
     const {data: carData = [], isLoading: loading, refetch} = useQuery({

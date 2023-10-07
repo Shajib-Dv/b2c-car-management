@@ -4,8 +4,9 @@ import AddNewCar from "../Layouts/Dashboard/GroupDash/Admin/Sections/AddNewCar";
 import RecentlyAddedCar from "../Layouts/Dashboard/GroupDash/Admin/Sections/RecentlyAddedCar";
 import Analytics from "../Layouts/Dashboard/GroupDash/Admin/Sections/Analytics";
 import RecentCarDetails from "../Layouts/Dashboard/GroupDash/Admin/Sections/RecentCarDetails";
-import UpcomingCar from "../Layouts/Dashboard/GroupDash/Admin/Sections/upcomingCar";
+import UpcomingCar from "../Layouts/Dashboard/GroupDash/Admin/Sections/UpcomingCar";
 import UsedCar from "../Layouts/Dashboard/GroupDash/Admin/Sections/UsedCar";
+import ManageCar from "../Layouts/Dashboard/GroupDash/Admin/Sections/ManageCar";
 
 const AdminRoutes = {
   path: "/dashboard/admin",
@@ -34,16 +35,16 @@ const AdminRoutes = {
     },
     {
       path: "/dashboard/admin/manage_cars",
-      element: <Analytics />,
+      element: <ManageCar/>,
     },
     {
-      path:"/dashboard/admin/upcoming_car",
-      element: <UpcomingCar></UpcomingCar>
+      path: "/dashboard/admin/upcoming_car",
+      element: <UpcomingCar></UpcomingCar>,
     },
     {
-      path:"/dashboard/admin/used_car",
-      element: <UsedCar/>
-    }
+      path: "/dashboard/admin/used_car",
+      element: <UsedCar />,
+    },
   ],
 };
 
