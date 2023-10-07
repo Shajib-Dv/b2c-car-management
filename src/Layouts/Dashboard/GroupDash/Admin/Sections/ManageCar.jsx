@@ -17,9 +17,31 @@ const ManageCar = () => {
     if (isLoading) {
         return <Loader />;
     }
+
+    const handleDelete = id => {
+        const proceed = confirm('Delete?');
+        if (proceed) {
+            fetch(`http://localhost:3000/add_new_car/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    //console.log(data);
+                    if (data.deletedCount > 0) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Toys Deleted successfully',
+                            icon: 'success',
+                            confirmButtonText: 'Cool'
+                        })
+                        refetch()
+                    }
+                })
+        }
+    }
     return (
         <div className='mt-10 md:mt-[200px] w-full'>
-            <h1 className='text-2xl font-bold mb-5 flex gap-2 justify-center items-center'> <span className='text-green-600'><LiaListAlt/></span> Manage Cars </h1>
+            <h1 className='text-2xl font-bold mb-5 flex gap-2 justify-center items-center'> <span className='text-green-600'><LiaListAlt /></span> Manage Cars </h1>
 
             <div className='flex flex-col gap-3'>
                 {
@@ -31,7 +53,7 @@ const ManageCar = () => {
 
                                 </div>
                                 <div className='flex gap-3 text-lg justify-center '>
-                                    <button className='hover:text-green-700'><CiEdit /></button> <button className='hover:text-red-700'><MdDeleteOutline /></button>
+                                    <button  className='hover:text-green-700'><CiEdit /></button> <button onClick={() => handleDelete(car._id)} className='hover:text-red-700'><MdDeleteOutline /></button>
                                 </div>
                             </div>
                         </div>
