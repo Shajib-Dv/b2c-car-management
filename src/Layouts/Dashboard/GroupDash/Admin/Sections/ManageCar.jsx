@@ -47,14 +47,14 @@ const ManageCar = () => {
                     })
             }
         })
-        
+
     }
     return (
         <div className='mt-10 md:mt-[200px] w-full'>
             <h1 className='text-2xl font-bold mb-5 flex gap-2 justify-center items-center'> <span className='text-green-600'><LiaListAlt /></span> Manage Cars </h1>
 
             <div className='flex flex-col gap-3'>
-                { isLoading ? <Loader /> :
+                {isLoading ? <Loader /> :
                     recentCars.map((car) => (
                         <div className='flex flex-col gap-5'>
                             <div className='border border-green-400 p-5 rounded-md hover:shadow-green-200 hover:shadow-md flex flex-col md:flex-row justify-between'>
@@ -63,7 +63,22 @@ const ManageCar = () => {
 
                                 </div>
                                 <div className='flex gap-3 text-lg justify-center '>
-                                    <button className='hover:text-green-700'><CiEdit /></button> <button onClick={() => handleDelete(car._id)} className='hover:text-red-700'><MdDeleteOutline /></button>
+                                    <button className='hover:text-green-700'><CiEdit /></button>
+                                    <button className="hover:text-green-700" onClick={() => document.getElementById('my_modal_4').showModal()}><CiEdit /></button>
+                                    <dialog id="my_modal_4" className="modal">
+                                        <div className="modal-box w-full max-w-5xl border border-green-600">
+                                            <h3 className="font-bold text-lg">Hello!</h3>
+                                            <p className="py-4">Click the button below to close Click the button below to close</p>
+                                            <div className="modal-action">
+                                                <form method="dialog">
+                                                    {/* if there is a button, it will close the modal */}
+                                                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </dialog>
+
+                                    <button onClick={() => handleDelete(car._id)} className='hover:text-red-700'><MdDeleteOutline /></button>
                                 </div>
                             </div>
                         </div>
