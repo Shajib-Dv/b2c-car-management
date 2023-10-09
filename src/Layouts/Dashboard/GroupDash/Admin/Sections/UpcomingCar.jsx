@@ -4,13 +4,12 @@ import { BiSolidAddToQueue } from "react-icons/bi";
 import { AuthContext } from '../../../../../Provider/AuthProvider';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
-import { useEffect } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import getUpComingCarData from '../../../../../utils/getUpComingCarData';
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 import { BiSkipNextCircle } from 'react-icons/bi';
 import { TbPlayerTrackNext } from 'react-icons/tb';
 import { IoLogoUsd } from 'react-icons/io';
+import Loader from '../../../../../Shared/components/Loader';
 
 const UpcomingCar = () => {
     const { carData, loading, refetch } = getUpComingCarData()
@@ -151,7 +150,7 @@ const UpcomingCar = () => {
                 <div className='col-span-3'>
                     <h1 className='text-lg font-bold mb-5 flex gap-2 justify-center items-center'> <span className='text-green-600'><TbPlayerTrackNext /></span>Upcoming Car List</h1>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-                        {
+                        { loading? <Loader/> :
                             [...carData].reverse().map((data) => (
                                 <div key={data?._id} className='p-5 border border-green-300 rounded-md hover:shadow-green-400 hover:shadow-md'>
                                     <div className='flex justify-center'>

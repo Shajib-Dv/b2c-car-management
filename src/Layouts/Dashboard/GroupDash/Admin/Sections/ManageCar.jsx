@@ -14,10 +14,10 @@ const ManageCar = () => {
         const randomIndex = Math.floor(Math.random() * images.length);
         return images[randomIndex];
     };
-    console.log(recentCars)
-    if (isLoading) {
-        return <Loader />;
-    }
+    // console.log(recentCars)
+    // if (isLoading) {
+    //     return <Loader />;
+    // }
 
     const handleDelete = id => {
         Swal.fire({
@@ -54,7 +54,7 @@ const ManageCar = () => {
             <h1 className='text-2xl font-bold mb-5 flex gap-2 justify-center items-center'> <span className='text-green-600'><LiaListAlt /></span> Manage Cars </h1>
 
             <div className='flex flex-col gap-3'>
-                {
+                { isLoading ? <Loader /> :
                     recentCars.map((car) => (
                         <div className='flex flex-col gap-5'>
                             <div className='border border-green-400 p-5 rounded-md hover:shadow-green-200 hover:shadow-md flex flex-col md:flex-row justify-between'>
