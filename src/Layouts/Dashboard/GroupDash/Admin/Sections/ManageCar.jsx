@@ -5,6 +5,7 @@ import { BiSolidBookAdd } from 'react-icons/bi';
 import { MdDeleteOutline } from 'react-icons/md';
 import { LiaListAlt } from 'react-icons/lia';
 import Loader from '../../../../../Shared/components/Loader';
+import Swal from 'sweetalert2';
 
 
 const ManageCar = () => {
@@ -19,25 +20,34 @@ const ManageCar = () => {
     }
 
     const handleDelete = id => {
-        const proceed = confirm('Delete?');
-        if (proceed) {
-            fetch(`http://localhost:3000/add_new_car/${id}`, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    //console.log(data);
-                    if (data.deletedCount > 0) {
-                        Swal.fire({
-                            title: 'Success!',
-                            text: 'Toys Deleted successfully',
-                            icon: 'success',
-                            confirmButtonText: 'Cool'
-                        })
-                        refetch()
-                    }
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:3000/add_new_car/${id}`, {
+                    method: 'DELETE'
                 })
-        }
+                    .then(res => res.json())
+                    .then(data => {
+                        //console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            refetch()
+                        }
+                    })
+            }
+        })
+        
     }
     return (
         <div className='mt-10 md:mt-[200px] w-full'>
@@ -53,7 +63,7 @@ const ManageCar = () => {
 
                                 </div>
                                 <div className='flex gap-3 text-lg justify-center '>
-                                    <button  className='hover:text-green-700'><CiEdit /></button> <button onClick={() => handleDelete(car._id)} className='hover:text-red-700'><MdDeleteOutline /></button>
+                                    <button className='hover:text-green-700'><CiEdit /></button> <button onClick={() => handleDelete(car._id)} className='hover:text-red-700'><MdDeleteOutline /></button>
                                 </div>
                             </div>
                         </div>
