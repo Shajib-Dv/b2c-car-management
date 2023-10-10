@@ -6,6 +6,8 @@ import { MdDeleteOutline } from 'react-icons/md';
 import { LiaListAlt } from 'react-icons/lia';
 import Loader from '../../../../../Shared/components/Loader';
 import Swal from 'sweetalert2';
+import ModalUpdateCar from '../../../Modal/ModalUpdateCar';
+
 
 
 const ManageCar = () => {
@@ -14,7 +16,7 @@ const ManageCar = () => {
         const randomIndex = Math.floor(Math.random() * images.length);
         return images[randomIndex];
     };
-    // console.log(recentCars)
+    console.log(recentCars)
     // if (isLoading) {
     //     return <Loader />;
     // }
@@ -49,6 +51,12 @@ const ManageCar = () => {
         })
 
     }
+
+    const modal = id =>{
+        document.getElementById('my_modal_4').showModal()
+    }
+
+
     return (
         <div className='mt-10 md:mt-[200px] w-full'>
             <h1 className='text-2xl font-bold mb-5 flex gap-2 justify-center items-center'> <span className='text-green-600'><LiaListAlt /></span> Manage Cars </h1>
@@ -63,19 +71,13 @@ const ManageCar = () => {
 
                                 </div>
                                 <div className='flex gap-3 text-lg justify-center '>
-                                    <button className='hover:text-green-700'><CiEdit /></button>
-                                    <button className="hover:text-green-700" onClick={() => document.getElementById('my_modal_4').showModal()}><CiEdit /></button>
+                                    
+                                    <button className="hover:text-green-700" onClick={() => modal(car._id)}><CiEdit /></button>
                                     <dialog id="my_modal_4" className="modal">
-                                        <div className="modal-box w-full max-w-5xl border border-green-600">
-                                            <h3 className="font-bold text-lg">Hello!</h3>
-                                            <p className="py-4">Click the button below to close Click the button below to close</p>
-                                            <div className="modal-action">
-                                                <form method="dialog">
-                                                    {/* if there is a button, it will close the modal */}
-                                                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                                                </form>
-                                            </div>
-                                        </div>
+                                        <ModalUpdateCar
+                                        key={car._id}
+                                        car={car}
+                                        />
                                     </dialog>
 
                                     <button onClick={() => handleDelete(car._id)} className='hover:text-red-700'><MdDeleteOutline /></button>
