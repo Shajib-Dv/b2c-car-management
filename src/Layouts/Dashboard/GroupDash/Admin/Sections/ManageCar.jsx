@@ -1,12 +1,11 @@
 import React from 'react';
 import getCarsByUser from '../../../../../utils/getCarsByUser';
-import { CiEdit } from 'react-icons/ci';
-import { BiSolidBookAdd } from 'react-icons/bi';
 import { MdDeleteOutline } from 'react-icons/md';
 import { LiaListAlt } from 'react-icons/lia';
 import Loader from '../../../../../Shared/components/Loader';
 import Swal from 'sweetalert2';
-import ModalUpdateCar from '../../../Modal/ModalUpdateCar';
+import { useState } from 'react';
+import UpdateCarData from '../../../Modal/UpdateCarData';
 
 
 
@@ -16,10 +15,23 @@ const ManageCar = () => {
         const randomIndex = Math.floor(Math.random() * images.length);
         return images[randomIndex];
     };
-    console.log(recentCars)
-    // if (isLoading) {
-    //     return <Loader />;
-    // }
+    //console.log(recentCars)
+    //const [showModal, setShowModal] = useState(false);
+    const [openModal, setOpenModal] = useState(null);
+    const handleOpenModal = (id) => {
+        // Close the currently open modal (if any)
+        if (openModal === id) {
+            setOpenModal(null);
+        } else {
+            setOpenModal(id); // Set the modal state for the clicked car by its ID
+        }
+    };
+    // const handleCloseModal = (id) => {
+    //     setShowModal((prevShowModals) => ({
+    //         ...prevShowModals,
+    //         [id]: false, // Close the modal for this specific car by its ID
+    //     }));
+    // };
 
     const handleDelete = id => {
         Swal.fire({
@@ -52,9 +64,6 @@ const ManageCar = () => {
 
     }
 
-    const modal = id =>{
-        document.getElementById('my_modal_4').showModal()
-    }
 
 
     return (
@@ -72,21 +81,20 @@ const ManageCar = () => {
                                 </div>
                                 <div className='flex gap-3 text-lg justify-center '>
                                     
-                                    <button className="hover:text-green-700" onClick={() => modal(car._id)}><CiEdit /></button>
-                                    <dialog id="my_modal_4" className="modal">
-                                        <ModalUpdateCar
-                                        key={car._id}
-                                        car={car}
-                                        />
-                                    </dialog>
-
+                                    <button onClick={() => handleOpenModal(car._id)}>Open</button>
                                     <button onClick={() => handleDelete(car._id)} className='hover:text-red-700'><MdDeleteOutline /></button>
                                 </div>
+                                
                             </div>
+                            {openModal === car._id && (
+                                <UpdateCarData car={car} modal={() => setOpenModal(null)} />
+                            )}
                         </div>
+                        
                     ))
                 }
             </div>
+            
 
         </div>
     );
