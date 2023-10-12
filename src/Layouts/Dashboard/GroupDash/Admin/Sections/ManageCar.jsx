@@ -2,6 +2,7 @@ import React from 'react';
 import getCarsByUser from '../../../../../utils/getCarsByUser';
 import { MdDeleteOutline } from 'react-icons/md';
 import { LiaListAlt } from 'react-icons/lia';
+import { CiEdit } from 'react-icons/ci';
 import Loader from '../../../../../Shared/components/Loader';
 import Swal from 'sweetalert2';
 import { useState } from 'react';
@@ -16,22 +17,6 @@ const ManageCar = () => {
         return images[randomIndex];
     };
     //console.log(recentCars)
-    //const [showModal, setShowModal] = useState(false);
-    const [openModal, setOpenModal] = useState(null);
-    const handleOpenModal = (id) => {
-        // Close the currently open modal (if any)
-        if (openModal === id) {
-            setOpenModal(null);
-        } else {
-            setOpenModal(id); // Set the modal state for the clicked car by its ID
-        }
-    };
-    // const handleCloseModal = (id) => {
-    //     setShowModal((prevShowModals) => ({
-    //         ...prevShowModals,
-    //         [id]: false, // Close the modal for this specific car by its ID
-    //     }));
-    // };
 
     const handleDelete = id => {
         Swal.fire({
@@ -64,6 +49,25 @@ const ManageCar = () => {
 
     }
 
+    //const [showModal, setShowModal] = useState(false);
+    const [openModal, setOpenModal] = useState(null);
+    const handleOpenModal = (id) => {
+        // Close the currently open modal (if any)
+        if (openModal === id) {
+            setOpenModal(null);
+        } else {
+            setOpenModal(id); // Set the modal state for the clicked car by its ID
+        }
+    };
+    // const handleCloseModal = (id) => {
+    //     setShowModal((prevShowModals) => ({
+    //         ...prevShowModals,
+    //         [id]: false, // Close the modal for this specific car by its ID
+    //     }));
+    // };
+
+
+
 
 
     return (
@@ -80,21 +84,21 @@ const ManageCar = () => {
 
                                 </div>
                                 <div className='flex gap-3 text-lg justify-center '>
-                                    
-                                    <button onClick={() => handleOpenModal(car._id)}>Open</button>
+
+                                    <button onClick={() => handleOpenModal(car._id)}><CiEdit/></button>
                                     <button onClick={() => handleDelete(car._id)} className='hover:text-red-700'><MdDeleteOutline /></button>
                                 </div>
-                                
+
                             </div>
                             {openModal === car._id && (
                                 <UpdateCarData car={car} modal={() => setOpenModal(null)} />
                             )}
                         </div>
-                        
+
                     ))
                 }
             </div>
-            
+
 
         </div>
     );
