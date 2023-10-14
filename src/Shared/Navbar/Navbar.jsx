@@ -162,17 +162,11 @@ const Navbar = () => {
             <li tabIndex={0}>
               <details>
                 <summary>
-                  <Link to="/newCar">NEW CAR</Link>
+                  <Link to="/new_car">NEW CAR</Link>
                 </summary>
-                <ul className="p-2">
+                <ul className="p-2 min-w-[200px]">
                   <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
+                    <Link to="/upcoming">Upcoming</Link>
                   </li>
                 </ul>
               </details>
@@ -180,14 +174,11 @@ const Navbar = () => {
             <li tabIndex={0}>
               <details>
                 <summary>
-                  <Link to="/usedCar">USED CAR</Link>
+                  <Link to="/used_car">USED CAR</Link>
                 </summary>
                 <ul className="p-2">
                   <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
+                   <Link to="/used_car_filter">Filter car</Link>
                   </li>
                 </ul>
               </details>
@@ -195,7 +186,7 @@ const Navbar = () => {
             <li tabIndex={0}>
               <details>
                 <summary>
-                  <Link to="/sellCar">SELL CAR</Link>
+                  <Link to="/sell_car">SELL CAR</Link>
                 </summary>
                 <ul className="p-2">
                   <li>
@@ -210,7 +201,7 @@ const Navbar = () => {
             <li tabIndex={0}>
               <details>
                 <summary>
-                  <Link to="/compareCar">COMPARE CAR</Link>
+                  <Link to="/compare_car">COMPARE CAR</Link>
                 </summary>
                 <ul className="p-2">
                   <li>
@@ -225,7 +216,7 @@ const Navbar = () => {
             <li tabIndex={0}>
               <details>
                 <summary>
-                  <Link to="/newsAndReview">NEWS AND CAR</Link>
+                  <Link to="/news_and_review">NEWS AND CAR</Link>
                 </summary>
                 <ul className="p-2">
                   <li>

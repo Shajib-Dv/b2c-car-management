@@ -1,10 +1,14 @@
-import React from 'react';
+import React from "react";
 
-const Spec = () => {
-    return (
-        <div className='rounded-lg shadow border px-5 py-10 md:px-10'>
-            <div className='title mb-10'>Specification of Maruti Baleno</div>
-            <div className='md:flex md:pl-5 gap-8'>
+const Spec = ({specification,carName}) => {
+
+
+  const specification_key = Object.keys(specification || {});
+
+  return (
+    <div className='rounded-lg shadow border px-5 py-10 md:px-10'>
+      <div className='title mb-10'>Specification of {carName || 'unknown'}</div>
+      {/* <div className='md:flex md:pl-5 gap-8'>
                 <div className='md:w-5/12 '>
                     <div className='flex justify-between py-3'>
                         <h1>Spacious interior</h1>
@@ -66,9 +70,27 @@ const Spec = () => {
                     
                 </div>
 
-            </div>
+            </div> */}
+
+      <div className='mt-10'>
+        <div className='space-y-2'>
+          {specification_key && specification_key.length > 0 ? (
+            specification_key.map((key) => (
+              <div
+                key={key}
+                className='center-itm justify-between border-y border-opacity-30 border-green-400 py-2 md:pr-10 pr-0'
+              >
+                <p className='uppercase'>{key}</p>
+                <p>{specification[key] || "unknown"}</p>
+              </div>
+            ))
+          ) : (
+            <h2 className='text-red-500'>No specification data found !</h2>
+          )}
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Spec;

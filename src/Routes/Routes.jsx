@@ -14,6 +14,7 @@ import GoogleLogin from "../Page/Users/Login/GoogleLogin";
 import UsedCarFilter from "../Page/UsedCar/UsedCarFilter/UsedCarFilter";
 import AdminRoutes from "./AdminRoutes";
 import UserRoutes from "./UserRoutes";
+import UpcomingCar from "../Page/UsedCar/Sections/UpcomingCar";
 
 const router = createBrowserRouter([
   {
@@ -26,27 +27,31 @@ const router = createBrowserRouter([
         element: <Navigate to="/home"></Navigate>,
       },
       {
-        path: "/newCar",
+        path: "/new_car",
         element: <NewCar></NewCar>,
       },
       {
-        path: "/usedCar",
+        path: "/upcoming",
+        element: <UpcomingCar/>,
+      },
+      {
+        path: "/used_car",
         element: <UsedCar></UsedCar>,
       },
       {
-        path: "/usedCarFilter",
+        path: "/used_car_filter",
         element: <UsedCarFilter />,
       },
       {
-        path: "/sellCar",
+        path: "/sell_car",
         element: <SellCar></SellCar>,
       },
       {
-        path: "/compareCar",
+        path: "/compare_car",
         element: <CompareCars></CompareCars>,
       },
       {
-        path: "/newsAndReview",
+        path: "/news_and_review",
         element: <NewsAndReview></NewsAndReview>,
       },
       {

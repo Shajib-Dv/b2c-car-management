@@ -5,9 +5,9 @@ const Tab = () => {
   return (
     <div className="mt-5 bg-white border border-[#BFC2C8]">
       {/* <div className='flex gap-5 text-xl font-medium'>
-                <Link to="/newCar">NEW CAR <FaChevronDown></FaChevronDown></Link>
+                <Link to="">NEW CAR <FaChevronDown></FaChevronDown></Link>
                 <Link to="/usedCar">USED CAR</Link>
-                <Link to="/sellCar">SELL CAR</Link>
+                <Link to="/sell_car">SELL CAR</Link>
                 <Link to="/compareCar">COMPARE CAR</Link>
                 <Link to="/newsAndReview">NEWS AND CAR</Link>
                 <Link to="/more">MORE CAR</Link>
@@ -34,7 +34,7 @@ const Tab = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
                 <a>Item 1</a>
@@ -59,15 +59,15 @@ const Tab = () => {
         <div className="navbar-center hidden lg:flex  gap-5  ">
           <ul className="menu menu-horizontal p-0 text-sm font-medium gap-8">
             <li>
-              <Link to="/newCar">Baleno</Link>
+              <Link to="">Baleno</Link>
             </li>
             <li>
-              <Link to="/newCar">Price</Link>
+              <Link to="">Price</Link>
             </li>
             <li tabIndex={0}>
               <details>
                 <summary>
-                  <Link to="/usedCar">Compare</Link>
+                  <Link to="/used_car">Compare</Link>
                 </summary>
                 <ul className="p-2">
                   <li>
@@ -80,27 +80,27 @@ const Tab = () => {
               </details>
             </li>
             <li>
-              <Link to="/newCar">Specs</Link>
+              <Link to="">Specs</Link>
             </li>
             <li>
-              <Link to="/newCar">User Reviews</Link>
+              <Link to="">User Reviews</Link>
             </li>
             <li>
-              <Link to="/newCar">Images</Link>
+              <Link to="">Images</Link>
             </li>
             <li>
-              <Link to="/newCar">Variants</Link>
+              <Link to="">Variants</Link>
             </li>
             <li>
-              <Link to="/newCar">Videos</Link>
+              <Link to="">Videos</Link>
             </li>
             <li>
-              <Link to="/newCar">Mileage</Link>
+              <Link to="">Mileage</Link>
             </li>
             <li tabIndex={0}>
               <details>
                 <summary>
-                  <Link to="/sellCar">More</Link>
+                  <Link to="">More</Link>
                 </summary>
                 <ul className="p-2">
                   <li>
