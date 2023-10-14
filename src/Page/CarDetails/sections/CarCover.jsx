@@ -4,17 +4,18 @@ import { Rating, Star } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import CarCoverSlider from "./sliders/CarCoverSlider";
 
-const CarCover = () => {
+const CarCover = ({carInfo,images}) => {
+  const {carName,price,location} = carInfo;
   return (
     <div className="rounded-lg shadow-md border-r-2 md:flex gap-10 items-start p-6">
-      <div className="flex-1">
-        <CarCoverSlider />
+      <div className="flex-1 w-full md:w-1/2">
+        <CarCoverSlider images={images}/>
       </div>
       <div className="flex-1 space-y-5">
         <div className="center-itm justify-between">
-          <h2 className="title">Maruti Baleno</h2>
+          <h2 className="title">{carName || 'unknown'}</h2>
           <div className="center-itm gap-4">
-            <Link to="/">
+            <Link to="/dashboard/admin/recently_added_car">
               <p className="text-green-600">Change Car</p>
             </Link>
             <FaShareAlt className="text-gray-400 cursor-pointer" />
@@ -28,7 +29,7 @@ const CarCover = () => {
               itemStyles={{
                 itemShapes: Star,
                 activeFillColor: "#ffb700",
-                inactiveFillColor: "#fbf1a9",
+                inactiveFillColor: "#f8f3cc",
               }}
             />
           </div>
@@ -36,13 +37,13 @@ const CarCover = () => {
           <p>Rate this car {">"}</p>
         </div>
         <div className="center-itm justify-between">
-          <h2 className="title">₹ 6.35 - 9.49 Lakh*</h2>
-          <p className="text-green-600 cursor-pointer">Get OnRoad Price</p>
+          <h2 className="title">₹  { price || 'unknown' }  Lakh*</h2>
+          <p className="text-green-600 cursor-pointer">Get On Road Price</p>
         </div>
         <div className="center-itm gap-5">
           <p>*Ex-showroom Price in</p>
           <p className="center-itm gap-2 text-green-600">
-            New Delhi <FaPen className="cursor-pointer" />
+            {location || 'unknown'} <FaPen className="cursor-pointer" />
           </p>
         </div>
         <button className="btn-act">Check April Offers</button>
