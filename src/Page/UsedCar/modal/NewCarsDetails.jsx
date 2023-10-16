@@ -6,7 +6,7 @@ import {
 } from "react-icons/bs";
 import { FcInspection } from "react-icons/fc";
 
-const NewCarsDetails = ({ open = false, car, close }) => {
+const NewCarsDetails = ({ open = false, car={}, close }) => {
   const {
     basicInfo,
     keySpecifications,

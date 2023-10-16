@@ -14,8 +14,15 @@ import Spec from "./sections/Spec";
 import Review from "./sections/Review";
 import UserReview from "./sections/UserReview";
 import CompareCarsSlider from "../../sliders/CompareCars/CompareCarsSlider";
+import { useParams } from "react-router-dom";
+import getCarsById from "../../utils/getCarsById";
+import Loader from "../../Shared/components/Loader";
 
-const CarDetails = ({ car }) => {
+const CarDetails = () => {
+
+  const { id } = useParams();
+  const { car, isLoading } = getCarsById(id);
+
   const {
     basicInfo,
     keySpecifications,
@@ -30,6 +37,10 @@ const CarDetails = ({ car }) => {
   // const specification_key = Object.keys(specification || {});
   // const emi_key = Object.keys(emi || {});
   // const additionalInfo_key = Object.keys(additionalInfo || {});
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div>

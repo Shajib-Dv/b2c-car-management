@@ -15,6 +15,7 @@ import UsedCarFilter from "../Page/UsedCar/UsedCarFilter/UsedCarFilter";
 import AdminRoutes from "./AdminRoutes";
 import UserRoutes from "./UserRoutes";
 import UpcomingCar from "../Page/UsedCar/Sections/UpcomingCar";
+import CarDetails from "../Page/CarDetails/CarDetails";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/new_car",
         element: <AllNewCars/>
+      },
+      {
+        path: "/new_car/details/:id",
+        element: <CarDetails/>
       },
       {
         path: "/upcoming",

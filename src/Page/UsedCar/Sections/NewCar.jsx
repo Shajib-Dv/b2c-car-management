@@ -4,48 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import getAllNewCars from "../../../utils/getAllNewCars";
 import Loader from "../../../Shared/components/Loader";
 import EmptyData from "../../../Shared/components/EmptyData";
-import NewCarsDetails from "../modal/NewCarsDetails";
-import Swal from "sweetalert2";
-import useAuth from "../../../hooks/useAuth";
 
 const NewCar = ({ limit, show_menu, show_loader = false }) => {
-  const { user } = useAuth();
-  const [openModal, setOpenModal] = useState(false);
-  const [car, setCar] = useState({});
-  const navigate = useNavigate();
   const { allCars, isLoading, refetch } = getAllNewCars(limit);
 
   const randomImg = (images) =>
     images[Math.floor(Math.random() * (images.length - 1))];
-
-  const redirectLogin = () => {
-    Swal.fire({
-      title: "Please login to see car details",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#05690e",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Log in",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        navigate("/login/google");
-      }
-    });
-  };
-
-  const handleOpenModal = (car) => {
-    if (user?.email) {
-      setOpenModal(true);
-      setCar(car);
-    } else {
-      redirectLogin();
-    }
-  };
-
-  const closeModal = () => {
-    setOpenModal(false);
-    setCar({});
-  };
 
   if (isLoading && show_loader) {
     return <Loader />;
@@ -88,13 +52,13 @@ const NewCar = ({ limit, show_menu, show_loader = false }) => {
                   <h1 className='font-bold'>
                     {car?.basicInfo?.carName || "unknown"}
                   </h1>
-                  <p>Rs {car?.basicInfo?.price} Lakh*</p>
-                  <button
-                    onClick={() => handleOpenModal(car)}
-                    className='btn-details w-48 mt-2'
+                  <p className=' mb-4'>Rs {car?.basicInfo?.price} Lakh*</p>
+                  <Link
+                    to={`/new_car/details/${car?._id}`}
+                    className='btn-details w-48'
                   >
                     show details
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -105,9 +69,6 @@ const NewCar = ({ limit, show_menu, show_loader = false }) => {
           )
         )}
       </div>
-      {user?.email && (
-        <NewCarsDetails open={openModal} close={closeModal} car={car} />
-      )}
     </>
   );
 };
