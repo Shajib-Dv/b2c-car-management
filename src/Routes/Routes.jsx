@@ -1,7 +1,7 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import HomeLayouts from "../Layouts/HomeLayouts";
 import ErrorPage from "../Page/ErrorPage/ErrorPage";
-import NewCar from "../Page/NewCar/NewCar";
+import AllNewCars from "../Page/NewCar/AllNewCars";
 import UsedCar from "../Page/UsedCar/UsedCar";
 import SellCar from "../Page/SellCar/SellCar";
 import CompareCars from "../Page/CompareCars/CompareCars";
@@ -15,6 +15,7 @@ import UsedCarFilter from "../Page/UsedCar/UsedCarFilter/UsedCarFilter";
 import AdminRoutes from "./AdminRoutes";
 import UserRoutes from "./UserRoutes";
 import UpcomingCar from "../Page/UsedCar/Sections/UpcomingCar";
+import CarDetails from "../Page/CarDetails/CarDetails";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/new_car",
-        element: <NewCar></NewCar>,
+        element: <AllNewCars/>
+      },
+      {
+        path: "/new_car/details/:id",
+        element: <CarDetails/>
       },
       {
         path: "/upcoming",

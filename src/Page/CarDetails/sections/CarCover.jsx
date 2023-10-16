@@ -15,7 +15,7 @@ const CarCover = ({carInfo,images}) => {
         <div className="center-itm justify-between">
           <h2 className="title">{carName || 'unknown'}</h2>
           <div className="center-itm gap-4">
-            <Link to="/dashboard/admin/recently_added_car">
+            <Link to="/new_car">
               <p className="text-green-600">Change Car</p>
             </Link>
             <FaShareAlt className="text-gray-400 cursor-pointer" />

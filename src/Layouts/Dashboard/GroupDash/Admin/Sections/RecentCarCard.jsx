@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-const RecentCarCard = ({ car }) => {
-  const { _id, images, basicInfo } = car;
+const RecentCarCard = ({ car, handleModalOpen}) => {
+  const { images, basicInfo } = car;
   return (
-    <Link to={`/dashboard/admin/recently_added_car/${_id}`}>
+    <button onClick={()=> handleModalOpen(car)}>
       <div className="w-full bg-transparent shadow-md rounded-md relative group">
         <div className="md:h-64 h-40 overflow-hidden rounded-md relative">
           <img
@@ -19,7 +19,7 @@ const RecentCarCard = ({ car }) => {
           </h2>
         </div>
       </div>
-    </Link>
+    </button>
   );
 };
 

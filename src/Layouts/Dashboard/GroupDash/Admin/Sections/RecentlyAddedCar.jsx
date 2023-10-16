@@ -1,10 +1,24 @@
+import { useState } from "react";
+import NewCarsDetails from "../../../../../Page/UsedCar/modal/NewCarsDetails";
 import EmptyData from "../../../../../Shared/components/EmptyData";
 import Loader from "../../../../../Shared/components/Loader";
 import getCarsByUser from "../../../../../utils/getCarsByUser";
 import RecentCarCard from "./RecentCarCard";
 
 const RecentlyAddedCar = () => {
+  const [modalOpen,setModalOpen] = useState(false);
+  const [car,setCar] = useState({});
   const { recentCars, isLoading } = getCarsByUser();
+
+  const handleModalOpen = (car) =>{
+    setModalOpen(true);
+    setCar(car);
+  }
+
+  const handleModalClose = () =>{
+    setModalOpen(false);
+    setCar({});
+  }
 
   if (isLoading) {
     return <Loader />;
@@ -16,7 +30,7 @@ const RecentlyAddedCar = () => {
           <div className="w-full grid grid-cols-2 md:grid-cols-3 lg-grid-cols-4 gap-8 ">
             {recentCars &&
               recentCars?.map((car) => (
-                <RecentCarCard key={car?._id} car={car} />
+                <RecentCarCard key={car?._id} car={car} handleModalOpen={handleModalOpen} />
               ))}
           </div>
         </div>
@@ -28,6 +42,8 @@ const RecentlyAddedCar = () => {
           to="/dashboard/admin/add_new_car"
         />
       )}
+
+      <NewCarsDetails  close={handleModalClose} car={car} open={modalOpen} />
     </>
   );
 };
