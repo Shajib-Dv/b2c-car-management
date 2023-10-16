@@ -15,7 +15,7 @@ import Review from "./sections/Review";
 import UserReview from "./sections/UserReview";
 import CompareCarsSlider from "../../sliders/CompareCars/CompareCarsSlider";
 
-const CarDetails = ({car}) => {
+const CarDetails = ({ car }) => {
   const {
     basicInfo,
     keySpecifications,
