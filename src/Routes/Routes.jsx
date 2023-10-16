@@ -1,7 +1,7 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import HomeLayouts from "../Layouts/HomeLayouts";
 import ErrorPage from "../Page/ErrorPage/ErrorPage";
-import NewCar from "../Page/NewCar/NewCar";
+import AllNewCars from "../Page/NewCar/AllNewCars";
 import UsedCar from "../Page/UsedCar/UsedCar";
 import SellCar from "../Page/SellCar/SellCar";
 import CompareCars from "../Page/CompareCars/CompareCars";
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/new_car",
-        element: <NewCar></NewCar>,
+        element: <AllNewCars/>
       },
       {
         path: "/upcoming",
