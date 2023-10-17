@@ -2,12 +2,41 @@ import { useState } from "react";
 import CustomInput from "../../../Shared/components/CustomInput";
 import useAuth from "../../../hooks/useAuth";
 import { Rating, RoundedStar } from "@smastrom/react-rating";
+import Swal from "sweetalert2";
 
 const UserReviewModal = ({ open, close, title, carName = null }) => {
   const [reviewText, setReviewText] = useState({});
   const [rating, setRating] = useState(0);
   const [loading, setLoading] = useState(false);
   const { user } = useAuth();
+
+  const storeReviewInDb = async (data) => {
+    try {
+      setLoading(true);
+      const res = await fetch("http://localhost:3000/reviews", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const resData = await res.json();
+      if (resData?.insertedId) {
+        setLoading(false);
+        close();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your review has been updated",
+          showConfirmButton: false,
+          timer: 1200,
+        });
+      }
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+    }
+  };
 
   const handleReviewSubmit = (e) => {
     e.preventDefault();
@@ -19,6 +48,10 @@ const UserReviewModal = ({ open, close, title, carName = null }) => {
       carName,
       rating,
     };
+
+    storeReviewInDb(storedReview);
+
+    e.target.reset();
   };
 
   const handleReviewText = (element, val) => {
