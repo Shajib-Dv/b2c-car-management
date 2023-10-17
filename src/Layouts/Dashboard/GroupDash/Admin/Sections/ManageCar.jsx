@@ -6,7 +6,6 @@ import { CiEdit } from "react-icons/ci";
 import Loader from "../../../../../Shared/components/Loader";
 import Swal from "sweetalert2";
 import { useState } from "react";
-import UpdateCarData from "../../../Modal/UpdateCarData";
 import UpdateSingleCarDataModal from "../../../Modal/UpdateSingleCarDataModal";
 
 const ManageCar = () => {
@@ -94,9 +93,7 @@ const ManageCar = () => {
                     </button>
                   </div>
                 </div>
-                {openModal === car._id && (
-                  <UpdateCarData car={car} modal={() => setOpenModal(null)} />
-                )}
+              
               </div>
             ))
           )}
