@@ -48,8 +48,8 @@ const TrendingCarBanner = () => {
       </div>
       <hr className="border-1" />
       <div>
-        {showMore.map((itm) => (
-          <CarsLayout key={itm} />
+        {showMore.map((itm,idx) => (
+          <CarsLayout key={idx} />
         ))}
       </div>
       <hr className="border-2 my-4" />

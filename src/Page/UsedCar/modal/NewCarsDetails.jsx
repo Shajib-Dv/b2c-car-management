@@ -25,9 +25,8 @@ const NewCarsDetails = ({ open = false, car={}, close }) => {
   return (
     <div>
       <dialog className={`${open ? "flex z-50" : "hidden"}`} open={open}>
-        <div className='modal-box max-w-7xl w-11/12  border border-black border-opacity-40 p-4 hidden-scroll'>
+        <div className='modal-box max-w-7xl w-full  border border-black border-opacity-40 p-10 hidden-scroll'>
           <div>
-            <div className='my-20 w-full overflow-hidden'>
               <div className='center-itm justify-center'>
                 <h2 className='title'>
                   Details For
@@ -37,8 +36,9 @@ const NewCarsDetails = ({ open = false, car={}, close }) => {
                   </span>
                 </h2>
               </div>
+            <div className=' w-full h-80 overflow-y-auto'>
               {/* basic info */}
-              <div>
+              <div className="my-20">
                 <h1 className='font-bold text-[#618264] font-sans flex items-center gap-2'>
                   <span>
                     <AiFillInfoCircle />

@@ -58,8 +58,8 @@ const CarDetails = () => {
           </div>
           <ProsCons />
           <Spec specification={specification} carName={basicInfo?.carName} />
-          <Review />
-          <UserReview />
+          <Review carName={basicInfo?.carName} images={images}/>
+          <UserReview carName={basicInfo?.carName}/>
         </div>
         <div className='w-full flex flex-col gap-10'>
           <EmiBanner />

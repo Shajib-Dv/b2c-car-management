@@ -27,16 +27,16 @@ const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
 const UpdateCarData = ({ car, modal }) => {
 
-  const {basicInfo, keySpecifications, emi, specification, additionalInfo} = car
+  const {_id, basicInfo, keySpecifications, emi, specification, additionalInfo} = car
 
   const { user } = useContext(AuthContext);
 
   const [renderNext, setRenderNext] = useState({});
-  //const [basicInfo, setBasicInfo] = useState({});
-  // const [keySpecifications, setKeySpecifications] = useState({});
-  // const [emi, setEmi] = useState({});
-  // const [specification, setSpecification] = useState({});
-  // const [additionalInfo, setAdditionalInfo] = useState({});
+  const [basicInfos, setBasicInfo] = useState({});
+  const [keySpecification, setKeySpecifications] = useState({});
+  const [getEmi, setEmi] = useState({});
+  const [specifications, setSpecification] = useState({});
+  const [additionalInfos, setAdditionalInfo] = useState({});
 
   const basicInfoLength = Object.keys(basicInfo || {}).length;
   const keySpecificationsLength = Object.keys(keySpecifications || {}).length;
@@ -70,23 +70,16 @@ const UpdateCarData = ({ car, modal }) => {
     }
     return null;
   };
+  
 
   const handleSubmit = async (e) => {
+  
+    const basicInfo = basicInfos;
+    const keySpecifications = keySpecification
+    const emi = getEmi
+    const specification = specifications
+    const additionalInfo = additionalInfos
     e.preventDefault();
-    Swal.fire({
-      title: "Uploading please wait...",
-      width: 600,
-      padding: "3em",
-      color: "#716add",
-      background: "#fff url(/images/trees.png)",
-      confirmButtonText: "Do not close window",
-      backdrop: `
-      rgba(0,0,123,0.4)
-      url("https://sweetalert2.github.io/images/nyan-cat.gif")
-      left top
-      no-repeat
-    `,
-    });
 
     const form = e.target;
     const imageFiles = [
@@ -115,6 +108,7 @@ const UpdateCarData = ({ car, modal }) => {
     //   img4: imgURLs[4],
     //   img5: imgURLs[5],
     // };
+    
 
     const storableData = {
       email: user?.email,
@@ -126,29 +120,30 @@ const UpdateCarData = ({ car, modal }) => {
       additionalInfo,
       date: new Date(),
     };
+    console.log(storableData)
 
-    const response = await fetch("http://localhost:3000/add_new_car", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(storableData),
-    });
-
-    const data = await response.json();
-
-    if (data.insertedId) {
-      Swal.fire({
-        title: "Success!",
-        text: "Car added successfully",
-        icon: "success",
-        confirmButtonText: "OK!",
-      });
-      form.reset();
-    }
+    // fetch(`https://ex/car/${_id}`, {
+    //         method: 'PUT',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(storableData)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data);
+    //             if (data.modifiedCount > 0) {
+    //                 Swal.fire({
+    //                     title: 'Success!',
+    //                     text: 'Coffee Updated Successfully',
+    //                     icon: 'success',
+    //                     confirmButtonText: 'OK!'
+    //                 })
+    //             }
+    //         })
   };
 
-  console.log(car)
+  //console.log(car)
   return (
     <div className="pb-5">
       <div className='flex justify-between mb-5'>
@@ -180,14 +175,14 @@ const UpdateCarData = ({ car, modal }) => {
                         label="Car name"
                         value={basicInfo?.carName}
                         onChange={(value) =>
-                          setBasicInfo({ ...basicInfo, carName: value })
+                          setBasicInfo({ ...basicInfos, carName: value })
                         }
                       />
                       <CustomInput
                         label="Price"
                         value={basicInfo?.price}
                         onChange={(value) =>
-                          setBasicInfo({ ...basicInfo, price: value })
+                          setBasicInfo({ ...basicInfos, price: value })
                         }
                       />
                     </div>
@@ -195,7 +190,7 @@ const UpdateCarData = ({ car, modal }) => {
                       label="Locations"
                       value={basicInfo?.locations}
                       onChange={(value) =>
-                        setBasicInfo({ ...basicInfo, locations: value })
+                        setBasicInfo({ ...basicInfos, locations: value })
                       }
                     />
                   </div>
@@ -230,7 +225,7 @@ const UpdateCarData = ({ car, modal }) => {
                         value={keySpecifications?.mileage}
                         onChange={(value) =>
                           setKeySpecifications({
-                            ...keySpecifications,
+                            ...keySpecification,
                             mileage: value,
                           })
                         }
@@ -240,7 +235,7 @@ const UpdateCarData = ({ car, modal }) => {
                         value={keySpecifications?.Engine}
                         onChange={(value) =>
                           setKeySpecifications({
-                            ...keySpecifications,
+                            ...keySpecification,
                             Engine: value,
                           })
                         }
@@ -250,7 +245,7 @@ const UpdateCarData = ({ car, modal }) => {
                         value={keySpecifications?.BHP}
                         onChange={(value) =>
                           setKeySpecifications({
-                            ...keySpecifications,
+                            ...keySpecification,
                             BHP: value,
                           })
                         }
@@ -260,7 +255,7 @@ const UpdateCarData = ({ car, modal }) => {
                         value={keySpecifications?.Transmission}
                         onChange={(value) =>
                           setKeySpecifications({
-                            ...keySpecifications,
+                            ...keySpecification,
                             Transmission: value,
                           })
                         }
@@ -272,7 +267,7 @@ const UpdateCarData = ({ car, modal }) => {
                         value={keySpecifications?.Seats}
                         onChange={(value) =>
                           setKeySpecifications({
-                            ...keySpecifications,
+                            ...keySpecification,
                             Seats: value,
                           })
                         }
@@ -282,7 +277,7 @@ const UpdateCarData = ({ car, modal }) => {
                         value={keySpecifications?.BootSpace}
                         onChange={(value) =>
                           setKeySpecifications({
-                            ...keySpecifications,
+                            ...keySpecification,
                             BootSpace: value,
                           })
                         }
@@ -292,7 +287,7 @@ const UpdateCarData = ({ car, modal }) => {
                         value={keySpecifications?.Aribags}
                         onChange={(value) =>
                           setKeySpecifications({
-                            ...keySpecifications,
+                            ...keySpecification,
                             Aribags: value,
                           })
                         }
@@ -302,7 +297,7 @@ const UpdateCarData = ({ car, modal }) => {
                         value={keySpecifications?.NumberOfCylinder}
                         onChange={(value) =>
                           setKeySpecifications({
-                            ...keySpecifications,
+                            ...keySpecification,
                             NumberOfCylinder: value,
                           })
                         }
@@ -314,7 +309,7 @@ const UpdateCarData = ({ car, modal }) => {
                         value={keySpecifications?.EmissionNorms}
                         onChange={(value) =>
                           setKeySpecifications({
-                            ...keySpecifications,
+                            ...keySpecification,
                             EmissionNorms: value,
                           })
                         }
@@ -324,7 +319,7 @@ const UpdateCarData = ({ car, modal }) => {
                         value={keySpecifications?.WheelDrive}
                         onChange={(value) =>
                           setKeySpecifications({
-                            ...keySpecifications,
+                            ...keySpecification,
                             WheelDrive: value,
                           })
                         }
@@ -334,7 +329,7 @@ const UpdateCarData = ({ car, modal }) => {
                         value={keySpecifications?.Wheel}
                         onChange={(value) =>
                           setKeySpecifications({
-                            ...keySpecifications,
+                            ...keySpecification,
                             Wheel: value,
                           })
                         }
@@ -376,14 +371,14 @@ const UpdateCarData = ({ car, modal }) => {
                         label="Down Payment"
                         value={emi?.DownPayment}
                         onChange={(value) =>
-                          setEmi({ ...emi, DownPayment: value })
+                          setEmi({ ...getEmi, DownPayment: value })
                         }
                       />
                       <CustomInput
                         label="Bank Interest Rate"
                         value={emi?.BankInterestRate}
                         onChange={(value) =>
-                          setEmi({ ...emi, BankInterestRate: value })
+                          setEmi({ ...getEmi, BankInterestRate: value })
                         }
                       />
                     </div>
@@ -418,7 +413,7 @@ const UpdateCarData = ({ car, modal }) => {
                         value={specification?.SpaciousInterior}
                         onChange={(value) =>
                           setSpecification({
-                            ...specification,
+                            ...specifications,
                             SpaciousInterior: value,
                           })
                         }
@@ -428,7 +423,7 @@ const UpdateCarData = ({ car, modal }) => {
                         value={specification?.EngineDisplacement}
                         onChange={(value) =>
                           setSpecification({
-                            ...specification,
+                            ...specifications,
                             EngineDisplacement: value,
                           })
                         }
@@ -439,7 +434,7 @@ const UpdateCarData = ({ car, modal }) => {
                         label="Max Power (bhp@rpm)"
                         value={specification?.MaxPower}
                         onChange={(value) =>
-                          setSpecification({ ...specification, MaxPower: value })
+                          setSpecification({ ...specifications, MaxPower: value })
                         }
                       />
                       <CustomInput
@@ -447,7 +442,7 @@ const UpdateCarData = ({ car, modal }) => {
                         value={specification?.SeatingCapacity}
                         onChange={(value) =>
                           setSpecification({
-                            ...specification,
+                            ...specifications,
                             SeatingCapacity: value,
                           })
                         }
@@ -458,14 +453,14 @@ const UpdateCarData = ({ car, modal }) => {
                         label="Boot Space (Litres)"
                         value={specification?.BootSpace}
                         onChange={(value) =>
-                          setSpecification({ ...specification, BootSpace: value })
+                          setSpecification({ ...specifications, BootSpace: value })
                         }
                       />
                       <CustomInput
                         label="Body Type"
                         value={specification?.BodyType}
                         onChange={(value) =>
-                          setSpecification({ ...specification, BodyType: value })
+                          setSpecification({ ...specifications, BodyType: value })
                         }
                       />
                     </div>
@@ -474,7 +469,7 @@ const UpdateCarData = ({ car, modal }) => {
                         label="Fuel Type"
                         value={specification?.FuelType}
                         onChange={(value) =>
-                          setSpecification({ ...specification, FuelType: value })
+                          setSpecification({ ...specifications, FuelType: value })
                         }
                       />
                       <CustomInput
@@ -482,7 +477,7 @@ const UpdateCarData = ({ car, modal }) => {
                         value={specification?.NoOfCylinder}
                         onChange={(value) =>
                           setSpecification({
-                            ...specification,
+                            ...specifications,
                             NoOfCylinder: value,
                           })
                         }
@@ -493,7 +488,7 @@ const UpdateCarData = ({ car, modal }) => {
                         label="Max Torque (nm@rpm)"
                         value={specification?.MaxTorque}
                         onChange={(value) =>
-                          setSpecification({ ...specification, MaxTorque: value })
+                          setSpecification({ ...specifications, MaxTorque: value })
                         }
                       />
                       <CustomInput
@@ -501,7 +496,7 @@ const UpdateCarData = ({ car, modal }) => {
                         value={specification?.TransmissionType}
                         onChange={(value) =>
                           setSpecification({
-                            ...specification,
+                            ...specifications,
                             TransmissionType: value,
                           })
                         }
@@ -511,7 +506,7 @@ const UpdateCarData = ({ car, modal }) => {
                         value={specification?.FuelTankCapacity}
                         onChange={(value) =>
                           setSpecification({
-                            ...specification,
+                            ...specifications,
                             FuelTankCapacity: value,
                           })
                         }
@@ -520,7 +515,7 @@ const UpdateCarData = ({ car, modal }) => {
                         label="Wheel"
                         value={specification?.Wheel}
                         onChange={(value) =>
-                          setSpecification({ ...specification, Wheel: value })
+                          setSpecification({ ...specifications, Wheel: value })
                         }
                       />
                     </div>
@@ -569,7 +564,7 @@ const UpdateCarData = ({ car, modal }) => {
                             value={additionalInfo?.ReviewText1}
                             onChange={(value) =>
                               setAdditionalInfo({
-                                ...additionalInfo,
+                                ...additionalInfos,
                                 ReviewText1: value,
                               })
                             }
@@ -578,14 +573,14 @@ const UpdateCarData = ({ car, modal }) => {
                             type="file"
                             className="file-input file-input-bordered file-input-success w-full max-w-xs"
                             name="image"
-                            required={true}
+                            required={false}
                           />
                           <CustomInput
                             label="ReviewText2"
                             value={additionalInfo?.ReviewText2}
                             onChange={(value) =>
                               setAdditionalInfo({
-                                ...additionalInfo,
+                                ...additionalInfos,
                                 ReviewText2: value,
                               })
                             }
@@ -605,7 +600,7 @@ const UpdateCarData = ({ car, modal }) => {
                             value={additionalInfo?.InteriorText1}
                             onChange={(value) =>
                               setAdditionalInfo({
-                                ...additionalInfo,
+                                ...additionalInfos,
                                 InteriorText1: value,
                               })
                             }
@@ -613,7 +608,7 @@ const UpdateCarData = ({ car, modal }) => {
                           <input
                             type="file"
                             className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                            required={true}
+                            required={false}
                             name="image1"
                           />
                           <CustomInput
@@ -621,7 +616,7 @@ const UpdateCarData = ({ car, modal }) => {
                             value={additionalInfo?.InteriorText2}
                             onChange={(value) =>
                               setAdditionalInfo({
-                                ...additionalInfo,
+                                ...additionalInfos,
                                 InteriorText2: value,
                               })
                             }
@@ -641,7 +636,7 @@ const UpdateCarData = ({ car, modal }) => {
                             value={additionalInfo?.SafetyText1}
                             onChange={(value) =>
                               setAdditionalInfo({
-                                ...additionalInfo,
+                                ...additionalInfos,
                                 SafetyText1: value,
                               })
                             }
@@ -649,7 +644,7 @@ const UpdateCarData = ({ car, modal }) => {
                           <input
                             type="file"
                             className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                            required={true}
+                            required={false}
                             name="image2"
                           />
                           <CustomInput
@@ -657,7 +652,7 @@ const UpdateCarData = ({ car, modal }) => {
                             value={additionalInfo?.SafetyText2}
                             onChange={(value) =>
                               setAdditionalInfo({
-                                ...additionalInfo,
+                                ...additionalInfos,
                                 SafetyText2: value,
                               })
                             }
@@ -677,7 +672,7 @@ const UpdateCarData = ({ car, modal }) => {
                             value={additionalInfo?.PerformanceText1}
                             onChange={(value) =>
                               setAdditionalInfo({
-                                ...additionalInfo,
+                                ...additionalInfos,
                                 PerformanceText1: value,
                               })
                             }
@@ -685,7 +680,7 @@ const UpdateCarData = ({ car, modal }) => {
                           <input
                             type="file"
                             className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                            required={true}
+                            required={false}
                             name="image3"
                           />
                           <CustomInput
@@ -693,7 +688,7 @@ const UpdateCarData = ({ car, modal }) => {
                             value={additionalInfo?.PerformanceText2}
                             onChange={(value) =>
                               setAdditionalInfo({
-                                ...additionalInfo,
+                                ...additionalInfos,
                                 PerformanceText2: value,
                               })
                             }
@@ -713,7 +708,7 @@ const UpdateCarData = ({ car, modal }) => {
                             value={additionalInfo?.RideAndHandlingText1}
                             onChange={(value) =>
                               setAdditionalInfo({
-                                ...additionalInfo,
+                                ...additionalInfos,
                                 RideAndHandlingText1: value,
                               })
                             }
@@ -721,7 +716,7 @@ const UpdateCarData = ({ car, modal }) => {
                           <input
                             type="file"
                             className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                            required={true}
+                            required={false}
                             name="image4"
                           />
                           <CustomInput
@@ -729,7 +724,7 @@ const UpdateCarData = ({ car, modal }) => {
                             value={additionalInfo?.RideAndHandlingText2}
                             onChange={(value) =>
                               setAdditionalInfo({
-                                ...additionalInfo,
+                                ...additionalInfos,
                                 RideAndHandlingText2: value,
                               })
                             }
@@ -749,7 +744,7 @@ const UpdateCarData = ({ car, modal }) => {
                             value={additionalInfo?.VerdictText1}
                             onChange={(value) =>
                               setAdditionalInfo({
-                                ...additionalInfo,
+                                ...additionalInfos,
                                 VerdictText1: value,
                               })
                             }
@@ -757,7 +752,7 @@ const UpdateCarData = ({ car, modal }) => {
                           <input
                             type="file"
                             className="file-input file-input-bordered file-input-success w-full max-w-xs"
-                            required={true}
+                            required={false}
                             name="image5"
                           />
                           <CustomInput
@@ -765,7 +760,7 @@ const UpdateCarData = ({ car, modal }) => {
                             value={additionalInfo?.VerdictText2}
                             onChange={(value) =>
                               setAdditionalInfo({
-                                ...additionalInfo,
+                                ...additionalInfos,
                                 VerdictText2: value,
                               })
                             }

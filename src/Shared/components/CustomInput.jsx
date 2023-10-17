@@ -16,7 +16,7 @@ function CustomInput({ label, value, onChange, type }) {
             placeholder=""
             className={`inputCustom peer `}
             required
-            value={value}
+            defaultValue={value}
             onChange={handleInputChange}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
