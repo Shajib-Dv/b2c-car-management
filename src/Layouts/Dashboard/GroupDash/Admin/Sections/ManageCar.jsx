@@ -7,6 +7,7 @@ import Loader from "../../../../../Shared/components/Loader";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import UpdateSingleCarDataModal from "../../../Modal/UpdateSingleCarDataModal";
+import EmptyData from "../../../../../Shared/components/EmptyData";
 
 const ManageCar = () => {
   const [openModal, setOpenModal] = useState(null);
@@ -16,6 +17,7 @@ const ManageCar = () => {
     const randomIndex = Math.floor(Math.random() * images.length);
     return images[randomIndex];
   };
+
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -53,6 +55,11 @@ const ManageCar = () => {
     setCar({});
   };
 
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <>
       <div className='mt-10 md:mt-[200px] w-full'>
@@ -64,10 +71,8 @@ const ManageCar = () => {
           Manage Cars{" "}
         </h1>
 
-        <div className='flex flex-col gap-3'>
-          {isLoading ? (
-            <Loader />
-          ) : (
+        {recentCars && Array.isArray(recentCars) && recentCars.length > 0 ? (<div className='flex flex-col gap-3'>
+          {
             recentCars.map((car) => (
               <div className='flex flex-col gap-5' key={car?._id}>
                 <div className='border border-green-400 p-5 rounded-md hover:shadow-green-200 hover:shadow-md flex flex-col md:flex-row justify-between'>
@@ -93,11 +98,13 @@ const ManageCar = () => {
                     </button>
                   </div>
                 </div>
-              
+
               </div>
             ))
-          )}
-        </div>
+          }
+        </div>) : (<Loader /> && (<EmptyData message={"No cars found"} go={"Add some cars"} to={"/dashboard/admin/add_new_car"}/>))}
+
+
       </div>
       <UpdateSingleCarDataModal
         open={openModal}
