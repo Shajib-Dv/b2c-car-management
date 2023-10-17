@@ -25,14 +25,14 @@ import CustomInput from "../../../Shared/components/CustomInput";
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
-const UpdateCarData = ({ car }) => {
-  const { basicInfo, keySpecifications, emi, specification, additionalInfo } =
-    car;
+const UpdateCarData = ({ car, modal }) => {
+
+  const {basicInfo, keySpecifications, emi, specification, additionalInfo} = car
 
   const { user } = useContext(AuthContext);
 
   const [renderNext, setRenderNext] = useState({});
-  //const [basicInfo, setBasicInfo] = useState({});
+  //const [basicInfos, setBasicInfos] = useState({});
   // const [keySpecifications, setKeySpecifications] = useState({});
   // const [emi, setEmi] = useState({});
   // const [specification, setSpecification] = useState({});
@@ -51,6 +51,7 @@ const UpdateCarData = ({ car }) => {
   const handlePreviewRender = (element) => {
     setRenderNext({ ...renderNext, [element]: false });
   };
+
 
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
@@ -125,88 +126,85 @@ const UpdateCarData = ({ car }) => {
       additionalInfo,
       date: new Date(),
     };
+    console.log(storableData)
+    // const response = await fetch("http://localhost:3000/add_new_car", {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(storableData),
+    // });
 
-    const response = await fetch("http://localhost:3000/add_new_car", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(storableData),
-    });
+    // const data = await response.json();
 
-    const data = await response.json();
-
-    if (data.insertedId) {
-      Swal.fire({
-        title: "Success!",
-        text: "Car added successfully",
-        icon: "success",
-        confirmButtonText: "OK!",
-      });
-      form.reset();
-    }
+    // if (data.insertedId) {
+    //   Swal.fire({
+    //     title: "Success!",
+    //     text: "Car added successfully",
+    //     icon: "success",
+    //     confirmButtonText: "OK!",
+    //   });
+    //   form.reset();
+    // }
   };
 
-  // console.log(car);
+  console.log(car)
   return (
-    <div className='pb-5'>
+    <div className="pb-5">
       <div className='flex justify-between mb-5'>
-        <div className='flex items-center gap-2'>
-          <img
-            className='w-8 rounded-full'
-            src='https://lordicon.com/icons/wired/flat/245-edit-document.gif'
-            alt=''
-          />
-          <h1 className='font-bold'>{car.basicInfo?.carName}</h1>
+        <div className="flex items-center gap-2">
+          <img className="w-8 rounded-full" src="https://lordicon.com/icons/wired/flat/245-edit-document.gif" alt="" />
+          <h1 className="font-bold">{car.basicInfo?.carName}</h1>
         </div>
+        <button className="font-bold" onClick={modal}>✕</button>
       </div>
       <>
-        <div className=' w-full h-full center-itm justify-center'>
-          <div className='w-full'>
+
+        <div className=" w-full h-full center-itm justify-center">
+          <div className="w-full">
             <form
               onSubmit={handleSubmit}
-              className='flex flex-col w-full text-green-400'
+              className="flex flex-col w-full text-green-400"
             >
               {!renderNext?.basicInfo && (
                 <>
                   <div>
-                    <h1 className='font-bold text-[#618264] font-sans flex items-center gap-2'>
+                    <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
                       <span>
                         <AiFillInfoCircle />
                       </span>
                       Basic Info
                     </h1>
-                    <div className='mb-5 md:mb-0 md:flex md:flex-row flex flex-col gap-5 mt-5'>
+                    <div className="mb-5 md:mb-0 md:flex md:flex-row flex flex-col gap-5 mt-5">
                       <CustomInput
-                        label='Car name'
+                        label="Car name"
                         value={basicInfo?.carName}
                         onChange={(value) =>
-                          setBasicInfo({ ...basicInfo, carName: value })
+                          setBasicInfos({ ...basicInfos, carName: value })
                         }
                       />
                       <CustomInput
-                        label='Price'
+                        label="Price"
                         value={basicInfo?.price}
                         onChange={(value) =>
-                          setBasicInfo({ ...basicInfo, price: value })
+                          setBasicInfos({ ...basicInfos, price: value })
                         }
                       />
                     </div>
                     <CustomInput
-                      label='Locations'
+                      label="Locations"
                       value={basicInfo?.locations}
                       onChange={(value) =>
-                        setBasicInfo({ ...basicInfo, locations: value })
+                        setBasicInfos({ ...basicInfos, locations: value })
                       }
                     />
                   </div>
                   <button
                     disabled={
-                      basicInfoLength < 3 ||
-                      Object.values(basicInfo).includes("")
+                      basicInfoLength < 3 || Object.values(basicInfo).includes("")
                     }
                     onClick={() => handleNextRender("basicInfo")}
-                    className='btn-act md:w-32 w-full md:mt-0 mt-4'
+                    className="btn-act md:w-32 w-full md:mt-0 mt-4"
                   >
                     Next
                   </button>
@@ -215,20 +213,20 @@ const UpdateCarData = ({ car }) => {
               {renderNext?.basicInfo && !renderNext?.keySpecifications && (
                 <>
                   <div>
-                    <div className='center-itm justify-between'>
-                      <h1 className='font-bold text-[#618264] font-sans mt-5 md:mt-0 flex items-center gap-2'>
+                    <div className="center-itm justify-between">
+                      <h1 className="font-bold text-[#618264] font-sans mt-5 md:mt-0 flex items-center gap-2">
                         <span>
                           <BsFiletypeKey />
                         </span>
                         Key Specifications
                       </h1>
                       <button onClick={() => handlePreviewRender("basicInfo")}>
-                        <MdArrowCircleLeft className='text-3xl' />
+                        <MdArrowCircleLeft className="text-3xl" />
                       </button>
                     </div>
-                    <div className='md:flex md:flex-row flex flex-col gap-5 mt-5 mb-5 md:mb-0'>
+                    <div className="md:flex md:flex-row flex flex-col gap-5 mt-5 mb-5 md:mb-0">
                       <CustomInput
-                        label='Mileage'
+                        label="Mileage"
                         value={keySpecifications?.mileage}
                         onChange={(value) =>
                           setKeySpecifications({
@@ -238,7 +236,7 @@ const UpdateCarData = ({ car }) => {
                         }
                       />
                       <CustomInput
-                        label='Engine'
+                        label="Engine"
                         value={keySpecifications?.Engine}
                         onChange={(value) =>
                           setKeySpecifications({
@@ -248,7 +246,7 @@ const UpdateCarData = ({ car }) => {
                         }
                       />
                       <CustomInput
-                        label='BHP'
+                        label="BHP"
                         value={keySpecifications?.BHP}
                         onChange={(value) =>
                           setKeySpecifications({
@@ -258,7 +256,7 @@ const UpdateCarData = ({ car }) => {
                         }
                       />
                       <CustomInput
-                        label='Transmission'
+                        label="Transmission"
                         value={keySpecifications?.Transmission}
                         onChange={(value) =>
                           setKeySpecifications({
@@ -268,9 +266,9 @@ const UpdateCarData = ({ car }) => {
                         }
                       />
                     </div>
-                    <div className='md:flex md:flex-row flex flex-col gap-5 mb-5 md:mb-0'>
+                    <div className="md:flex md:flex-row flex flex-col gap-5 mb-5 md:mb-0">
                       <CustomInput
-                        label='Seats'
+                        label="Seats"
                         value={keySpecifications?.Seats}
                         onChange={(value) =>
                           setKeySpecifications({
@@ -280,7 +278,7 @@ const UpdateCarData = ({ car }) => {
                         }
                       />
                       <CustomInput
-                        label='Boot Space'
+                        label="Boot Space"
                         value={keySpecifications?.BootSpace}
                         onChange={(value) =>
                           setKeySpecifications({
@@ -290,7 +288,7 @@ const UpdateCarData = ({ car }) => {
                         }
                       />
                       <CustomInput
-                        label='Aribags'
+                        label="Aribags"
                         value={keySpecifications?.Aribags}
                         onChange={(value) =>
                           setKeySpecifications({
@@ -300,7 +298,7 @@ const UpdateCarData = ({ car }) => {
                         }
                       />
                       <CustomInput
-                        label='Number Of Cylinder'
+                        label="Number Of Cylinder"
                         value={keySpecifications?.NumberOfCylinder}
                         onChange={(value) =>
                           setKeySpecifications({
@@ -310,9 +308,9 @@ const UpdateCarData = ({ car }) => {
                         }
                       />
                     </div>
-                    <div className='md:flex md:flex-row flex flex-col gap-5'>
+                    <div className="md:flex md:flex-row flex flex-col gap-5">
                       <CustomInput
-                        label='Emission Norms'
+                        label="Emission Norms"
                         value={keySpecifications?.EmissionNorms}
                         onChange={(value) =>
                           setKeySpecifications({
@@ -322,7 +320,7 @@ const UpdateCarData = ({ car }) => {
                         }
                       />
                       <CustomInput
-                        label='Wheel Drive'
+                        label="Wheel Drive"
                         value={keySpecifications?.WheelDrive}
                         onChange={(value) =>
                           setKeySpecifications({
@@ -332,7 +330,7 @@ const UpdateCarData = ({ car }) => {
                         }
                       />
                       <CustomInput
-                        label='Wheel'
+                        label="Wheel"
                         value={keySpecifications?.Wheel}
                         onChange={(value) =>
                           setKeySpecifications({
@@ -349,7 +347,7 @@ const UpdateCarData = ({ car }) => {
                       Object.values(keySpecifications).includes("")
                     }
                     onClick={() => handleNextRender("keySpecifications")}
-                    className='btn-act md:w-32 w-full md:mt-0 mt-4'
+                    className="btn-act md:w-32 w-full md:mt-0 mt-4"
                   >
                     Next
                   </button>
@@ -358,8 +356,8 @@ const UpdateCarData = ({ car }) => {
               {renderNext?.keySpecifications && !renderNext?.emi && (
                 <>
                   <div>
-                    <div className='center-itm justify-between'>
-                      <h1 className='font-bold text-[#618264] font-sans flex items-center gap-2 mt-5 md:mt-0'>
+                    <div className="center-itm justify-between">
+                      <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2 mt-5 md:mt-0">
                         {" "}
                         <span>
                           <BsFillPiggyBankFill />
@@ -370,19 +368,19 @@ const UpdateCarData = ({ car }) => {
                       <button
                         onClick={() => handlePreviewRender("keySpecifications")}
                       >
-                        <MdArrowCircleLeft className='text-3xl' />
+                        <MdArrowCircleLeft className="text-3xl" />
                       </button>
                     </div>
-                    <div className='md:flex md:flex-row flex flex-col gap-5 mt-5'>
+                    <div className="md:flex md:flex-row flex flex-col gap-5 mt-5">
                       <CustomInput
-                        label='Down Payment'
+                        label="Down Payment"
                         value={emi?.DownPayment}
                         onChange={(value) =>
                           setEmi({ ...emi, DownPayment: value })
                         }
                       />
                       <CustomInput
-                        label='Bank Interest Rate'
+                        label="Bank Interest Rate"
                         value={emi?.BankInterestRate}
                         onChange={(value) =>
                           setEmi({ ...emi, BankInterestRate: value })
@@ -393,7 +391,7 @@ const UpdateCarData = ({ car }) => {
                   <button
                     disabled={emiLength < 2 || Object.values(emi).includes("")}
                     onClick={() => handleNextRender("emi")}
-                    className='btn-act md:w-32 w-full md:mt-0 mt-4'
+                    className="btn-act md:w-32 w-full md:mt-0 mt-4"
                   >
                     Next
                   </button>
@@ -402,8 +400,8 @@ const UpdateCarData = ({ car }) => {
               {renderNext?.emi && !renderNext?.specification && (
                 <>
                   <div>
-                    <div className='center-itm justify-between'>
-                      <h1 className='font-bold text-[#618264] font-sans flex items-center gap-2 mt-5 md:mt-0'>
+                    <div className="center-itm justify-between">
+                      <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2 mt-5 md:mt-0">
                         <span>
                           <FcInspection />
                         </span>
@@ -411,12 +409,12 @@ const UpdateCarData = ({ car }) => {
                       </h1>
 
                       <button onClick={() => handlePreviewRender("emi")}>
-                        <MdArrowCircleLeft className='text-3xl' />
+                        <MdArrowCircleLeft className="text-3xl" />
                       </button>
                     </div>
-                    <div className='md:flex md:flex-row flex flex-col gap-5 mt-5 mb-5 md:mb-0'>
+                    <div className="md:flex md:flex-row flex flex-col gap-5 mt-5 mb-5 md:mb-0">
                       <CustomInput
-                        label='Spacious Interior'
+                        label="Spacious Interior"
                         value={specification?.SpaciousInterior}
                         onChange={(value) =>
                           setSpecification({
@@ -426,7 +424,7 @@ const UpdateCarData = ({ car }) => {
                         }
                       />
                       <CustomInput
-                        label='Engine Displacement (cc)'
+                        label="Engine Displacement (cc)"
                         value={specification?.EngineDisplacement}
                         onChange={(value) =>
                           setSpecification({
@@ -436,19 +434,16 @@ const UpdateCarData = ({ car }) => {
                         }
                       />
                     </div>
-                    <div className='md:flex md:flex-row flex flex-col gap-5 mb-5 md:mb-0'>
+                    <div className="md:flex md:flex-row flex flex-col gap-5 mb-5 md:mb-0">
                       <CustomInput
-                        label='Max Power (bhp@rpm)'
+                        label="Max Power (bhp@rpm)"
                         value={specification?.MaxPower}
                         onChange={(value) =>
-                          setSpecification({
-                            ...specification,
-                            MaxPower: value,
-                          })
+                          setSpecification({ ...specification, MaxPower: value })
                         }
                       />
                       <CustomInput
-                        label='Seating Capacity'
+                        label="Seating Capacity"
                         value={specification?.SeatingCapacity}
                         onChange={(value) =>
                           setSpecification({
@@ -458,41 +453,32 @@ const UpdateCarData = ({ car }) => {
                         }
                       />
                     </div>
-                    <div className='md:flex md:flex-row flex flex-col gap-5 mb-5 md:mb-0'>
+                    <div className="md:flex md:flex-row flex flex-col gap-5 mb-5 md:mb-0">
                       <CustomInput
-                        label='Boot Space (Litres)'
+                        label="Boot Space (Litres)"
                         value={specification?.BootSpace}
                         onChange={(value) =>
-                          setSpecification({
-                            ...specification,
-                            BootSpace: value,
-                          })
+                          setSpecification({ ...specification, BootSpace: value })
                         }
                       />
                       <CustomInput
-                        label='Body Type'
+                        label="Body Type"
                         value={specification?.BodyType}
                         onChange={(value) =>
-                          setSpecification({
-                            ...specification,
-                            BodyType: value,
-                          })
+                          setSpecification({ ...specification, BodyType: value })
                         }
                       />
                     </div>
-                    <div className='md:flex md:flex-row flex flex-col gap-5 mb-5 md:mb-0'>
+                    <div className="md:flex md:flex-row flex flex-col gap-5 mb-5 md:mb-0">
                       <CustomInput
-                        label='Fuel Type'
+                        label="Fuel Type"
                         value={specification?.FuelType}
                         onChange={(value) =>
-                          setSpecification({
-                            ...specification,
-                            FuelType: value,
-                          })
+                          setSpecification({ ...specification, FuelType: value })
                         }
                       />
                       <CustomInput
-                        label='No. of cylinder'
+                        label="No. of cylinder"
                         value={specification?.NoOfCylinder}
                         onChange={(value) =>
                           setSpecification({
@@ -502,19 +488,16 @@ const UpdateCarData = ({ car }) => {
                         }
                       />
                     </div>
-                    <div className='md:flex md:flex-row flex flex-col gap-5 '>
+                    <div className="md:flex md:flex-row flex flex-col gap-5 ">
                       <CustomInput
-                        label='Max Torque (nm@rpm)'
+                        label="Max Torque (nm@rpm)"
                         value={specification?.MaxTorque}
                         onChange={(value) =>
-                          setSpecification({
-                            ...specification,
-                            MaxTorque: value,
-                          })
+                          setSpecification({ ...specification, MaxTorque: value })
                         }
                       />
                       <CustomInput
-                        label='Transmission Type'
+                        label="Transmission Type"
                         value={specification?.TransmissionType}
                         onChange={(value) =>
                           setSpecification({
@@ -524,7 +507,7 @@ const UpdateCarData = ({ car }) => {
                         }
                       />
                       <CustomInput
-                        label='Fuel Tank Capacity'
+                        label="Fuel Tank Capacity"
                         value={specification?.FuelTankCapacity}
                         onChange={(value) =>
                           setSpecification({
@@ -534,7 +517,7 @@ const UpdateCarData = ({ car }) => {
                         }
                       />
                       <CustomInput
-                        label='Wheel'
+                        label="Wheel"
                         value={specification?.Wheel}
                         onChange={(value) =>
                           setSpecification({ ...specification, Wheel: value })
@@ -548,7 +531,7 @@ const UpdateCarData = ({ car }) => {
                       Object.values(specification).includes("")
                     }
                     onClick={() => handleNextRender("specification")}
-                    className='btn-act md:w-32 w-full md:mt-0 mt-4'
+                    className="btn-act md:w-32 w-full md:mt-0 mt-4"
                   >
                     Next
                   </button>
@@ -557,8 +540,8 @@ const UpdateCarData = ({ car }) => {
               {renderNext?.specification && (
                 <>
                   <div>
-                    <div className='center-itm justify-between'>
-                      <h1 className='font-bold text-[#618264] font-sans justify-center flex items-center gap-2 mt-5 md:mt-0'>
+                    <div className="center-itm justify-between">
+                      <h1 className="font-bold text-[#618264] font-sans justify-center flex items-center gap-2 mt-5 md:mt-0">
                         <span>
                           <BsCardChecklist />
                         </span>
@@ -568,21 +551,21 @@ const UpdateCarData = ({ car }) => {
                       <button
                         onClick={() => handlePreviewRender("specification")}
                       >
-                        <MdArrowCircleLeft className='text-3xl' />
+                        <MdArrowCircleLeft className="text-3xl" />
                       </button>
                     </div>
-                    <div className='bg-gradient-to-r from-[#969595] to-[#dbfde8] py-[0.5px]'></div>
+                    <div className="bg-gradient-to-r from-[#969595] to-[#dbfde8] py-[0.5px]"></div>
                     <div>
                       <div>
-                        <h1 className='font-bold text-[#618264] font-sans flex items-center gap-2'>
+                        <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
                           <span>
                             <GoCodeReview />
                           </span>
                           Review
                         </h1>
-                        <div className='md:flex md:flex-row flex flex-col gap-5 mt-3 md:-mb-5'>
+                        <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 md:-mb-5">
                           <CustomInput
-                            label='ReviewText1'
+                            label="ReviewText1"
                             value={additionalInfo?.ReviewText1}
                             onChange={(value) =>
                               setAdditionalInfo({
@@ -592,13 +575,13 @@ const UpdateCarData = ({ car }) => {
                             }
                           />
                           <input
-                            type='file'
-                            className='file-input file-input-bordered file-input-success w-full max-w-xs'
-                            name='image'
-                            required={true}
+                            type="file"
+                            className="file-input file-input-bordered file-input-success w-full max-w-xs"
+                            name="image"
+                            required={false}
                           />
                           <CustomInput
-                            label='ReviewText2'
+                            label="ReviewText2"
                             value={additionalInfo?.ReviewText2}
                             onChange={(value) =>
                               setAdditionalInfo({
@@ -610,15 +593,15 @@ const UpdateCarData = ({ car }) => {
                         </div>
                       </div>
                       <div>
-                        <h1 className='font-bold text-[#618264] font-sans flex items-center gap-2'>
+                        <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
                           <span>
                             <MdDesignServices />
                           </span>
                           Interior
                         </h1>
-                        <div className='md:flex md:flex-row flex flex-col gap-5 mt-3 md:-mb-5'>
+                        <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 md:-mb-5">
                           <CustomInput
-                            label='Interior Text 1'
+                            label="Interior Text 1"
                             value={additionalInfo?.InteriorText1}
                             onChange={(value) =>
                               setAdditionalInfo({
@@ -628,13 +611,13 @@ const UpdateCarData = ({ car }) => {
                             }
                           />
                           <input
-                            type='file'
-                            className='file-input file-input-bordered file-input-success w-full max-w-xs'
-                            required={true}
-                            name='image1'
+                            type="file"
+                            className="file-input file-input-bordered file-input-success w-full max-w-xs"
+                            required={false}
+                            name="image1"
                           />
                           <CustomInput
-                            label='Interior Text 2'
+                            label="Interior Text 2"
                             value={additionalInfo?.InteriorText2}
                             onChange={(value) =>
                               setAdditionalInfo({
@@ -646,15 +629,15 @@ const UpdateCarData = ({ car }) => {
                         </div>
                       </div>
                       <div>
-                        <h1 className='font-bold text-[#618264] font-sans flex items-center gap-2'>
+                        <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
                           <span>
                             <MdConveyorBelt />
                           </span>
                           Safety
                         </h1>
-                        <div className='md:flex md:flex-row flex flex-col gap-5 mt-3 md:-mb-5'>
+                        <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 md:-mb-5">
                           <CustomInput
-                            label='Safety Text1'
+                            label="Safety Text1"
                             value={additionalInfo?.SafetyText1}
                             onChange={(value) =>
                               setAdditionalInfo({
@@ -664,13 +647,13 @@ const UpdateCarData = ({ car }) => {
                             }
                           />
                           <input
-                            type='file'
-                            className='file-input file-input-bordered file-input-success w-full max-w-xs'
-                            required={true}
-                            name='image2'
+                            type="file"
+                            className="file-input file-input-bordered file-input-success w-full max-w-xs"
+                            required={false}
+                            name="image2"
                           />
                           <CustomInput
-                            label='Safety Text2'
+                            label="Safety Text2"
                             value={additionalInfo?.SafetyText2}
                             onChange={(value) =>
                               setAdditionalInfo({
@@ -682,15 +665,15 @@ const UpdateCarData = ({ car }) => {
                         </div>
                       </div>
                       <div>
-                        <h1 className='font-bold text-[#618264] font-sans flex items-center gap-2'>
+                        <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
                           <span>
                             <CgPerformance />
                           </span>
                           Performance
                         </h1>
-                        <div className='md:flex md:flex-row flex flex-col gap-5 mt-3 md:-mb-5'>
+                        <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 md:-mb-5">
                           <CustomInput
-                            label='PerformanceText1'
+                            label="PerformanceText1"
                             value={additionalInfo?.PerformanceText1}
                             onChange={(value) =>
                               setAdditionalInfo({
@@ -700,13 +683,13 @@ const UpdateCarData = ({ car }) => {
                             }
                           />
                           <input
-                            type='file'
-                            className='file-input file-input-bordered file-input-success w-full max-w-xs'
-                            required={true}
-                            name='image3'
+                            type="file"
+                            className="file-input file-input-bordered file-input-success w-full max-w-xs"
+                            required={false}
+                            name="image3"
                           />
                           <CustomInput
-                            label='Performance Text2'
+                            label="Performance Text2"
                             value={additionalInfo?.PerformanceText2}
                             onChange={(value) =>
                               setAdditionalInfo({
@@ -718,15 +701,15 @@ const UpdateCarData = ({ car }) => {
                         </div>
                       </div>
                       <div>
-                        <h1 className='font-bold text-[#618264] font-sans flex items-center gap-2'>
+                        <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
                           <span>
                             <PiSteeringWheelFill />
                           </span>
                           Ride and Handling
                         </h1>
-                        <div className='md:flex md:flex-row flex flex-col gap-5 mt-3 md:-mb-5'>
+                        <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 md:-mb-5">
                           <CustomInput
-                            label='Ride and Handling Text 1'
+                            label="Ride and Handling Text 1"
                             value={additionalInfo?.RideAndHandlingText1}
                             onChange={(value) =>
                               setAdditionalInfo({
@@ -736,13 +719,13 @@ const UpdateCarData = ({ car }) => {
                             }
                           />
                           <input
-                            type='file'
-                            className='file-input file-input-bordered file-input-success w-full max-w-xs'
-                            required={true}
-                            name='image4'
+                            type="file"
+                            className="file-input file-input-bordered file-input-success w-full max-w-xs"
+                            required={false}
+                            name="image4"
                           />
                           <CustomInput
-                            label='Ride and Handling Text 2'
+                            label="Ride and Handling Text 2"
                             value={additionalInfo?.RideAndHandlingText2}
                             onChange={(value) =>
                               setAdditionalInfo({
@@ -754,15 +737,15 @@ const UpdateCarData = ({ car }) => {
                         </div>
                       </div>
                       <div>
-                        <h1 className='font-bold text-[#618264] font-sans flex items-center gap-2'>
+                        <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
                           <span>
                             <BsFillAwardFill />
                           </span>
                           Verdict
                         </h1>
-                        <div className='md:flex md:flex-row flex flex-col gap-5 mt-3 mb-5'>
+                        <div className="md:flex md:flex-row flex flex-col gap-5 mt-3 mb-5">
                           <CustomInput
-                            label='Verdict Text 1'
+                            label="Verdict Text 1"
                             value={additionalInfo?.VerdictText1}
                             onChange={(value) =>
                               setAdditionalInfo({
@@ -772,13 +755,13 @@ const UpdateCarData = ({ car }) => {
                             }
                           />
                           <input
-                            type='file'
-                            className='file-input file-input-bordered file-input-success w-full max-w-xs'
-                            required={true}
-                            name='image5'
+                            type="file"
+                            className="file-input file-input-bordered file-input-success w-full max-w-xs"
+                            required={false}
+                            name="image5"
                           />
                           <CustomInput
-                            label='Verdict Text 2'
+                            label="Verdict Text 2"
                             value={additionalInfo?.VerdictText2}
                             onChange={(value) =>
                               setAdditionalInfo({
@@ -797,7 +780,7 @@ const UpdateCarData = ({ car }) => {
                       Object.values(additionalInfo).includes("")
                     }
                     onClick={() => handleNextRender("additionalInfo")}
-                    className='btn text-[#618264] font-bold flex gap-1 disabled:text-red-400'
+                    className="btn text-[#618264] font-bold flex gap-1 disabled:text-red-400"
                   >
                     <span>
                       <BiSolidAddToQueue />
@@ -810,6 +793,7 @@ const UpdateCarData = ({ car }) => {
           </div>
         </div>
       </>
+
     </div>
   );
 };
