@@ -50,8 +50,6 @@ const UserReviewModal = ({ open, close, title, carName = null }) => {
     };
 
     storeReviewInDb(storedReview);
-
-    e.target.reset();
   };
 
   const handleReviewText = (element, val) => {
@@ -60,6 +58,8 @@ const UserReviewModal = ({ open, close, title, carName = null }) => {
       [element]: val,
     });
   };
+
+
 
   const myStyles = {
     itemShapes: RoundedStar,

@@ -18,7 +18,6 @@ const ManageCar = () => {
     return images[randomIndex];
   };
 
-
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -55,14 +54,9 @@ const ManageCar = () => {
     setCar({});
   };
 
-
-  if (isLoading) {
-    return <Loader />;
-  }
-
   return (
     <>
-      <div className='mt-10 md:mt-[200px] w-full'>
+      <div className='my-20 w-full'>
         <h1 className='text-2xl font-bold mb-5 flex gap-2 justify-center items-center'>
           {" "}
           <span className='text-green-600'>
@@ -71,9 +65,11 @@ const ManageCar = () => {
           Manage Cars{" "}
         </h1>
 
-        {recentCars && Array.isArray(recentCars) && recentCars.length > 0 ? (<div className='flex flex-col gap-3'>
-          {
-            recentCars.map((car) => (
+        {isLoading && <Loader />}
+
+        {recentCars && Array.isArray(recentCars) && recentCars.length > 0 ? (
+          <div className='flex flex-col gap-3'>
+            {recentCars.map((car) => (
               <div className='flex flex-col gap-5' key={car?._id}>
                 <div className='border border-green-400 p-5 rounded-md hover:shadow-green-200 hover:shadow-md flex flex-col md:flex-row justify-between'>
                   <div className='flex gap-2 flex-col md:flex-row '>
@@ -98,19 +94,20 @@ const ManageCar = () => {
                     </button>
                   </div>
                 </div>
-
               </div>
-            ))
-          }
-        </div>) : (<Loader /> && (<EmptyData message={"No cars found"} go={"Add some cars"} to={"/dashboard/admin/add_new_car"}/>))}
-
-
+            ))}
+          </div>
+        ) : (
+          !isLoading && (
+            <EmptyData
+              message={"No cars found"}
+              go={"Add some cars"}
+              to={"/dashboard/admin/add_new_car"}
+            />
+          )
+        )}
       </div>
-      <UpdateSingleCarDataModal
-        open={openModal}
-        close={closeModal}
-        car={car}
-      />
+      <UpdateSingleCarDataModal open={openModal} close={closeModal} car={car} />
     </>
   );
 };
