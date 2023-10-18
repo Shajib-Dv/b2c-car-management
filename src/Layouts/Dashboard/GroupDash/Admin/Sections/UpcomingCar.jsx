@@ -12,9 +12,10 @@ import { IoLogoUsd } from 'react-icons/io';
 import Loader from '../../../../../Shared/components/Loader';
 
 const UpcomingCar = () => {
-    const { carData, loading, refetch } = getUpComingCarData()
-    const [basicData, setBasicData] = useState({});
     const { user } = useContext(AuthContext);
+    const { carData, loading, refetch } = getUpComingCarData(user?.email)
+    const [basicData, setBasicData] = useState({});
+    
 
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
