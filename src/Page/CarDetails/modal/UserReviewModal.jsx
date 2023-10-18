@@ -1,5 +1,4 @@
 import { useState } from "react";
-import CustomInput from "../../../Shared/components/CustomInput";
 import useAuth from "../../../hooks/useAuth";
 import { Rating, RoundedStar } from "@smastrom/react-rating";
 import Swal from "sweetalert2";
@@ -23,6 +22,8 @@ const UserReviewModal = ({ open, close, title, carName = null }) => {
       const resData = await res.json();
       if (resData?.insertedId) {
         setLoading(false);
+        setRating(0);
+        setReviewText({});
         close();
         Swal.fire({
           position: "center",
@@ -38,7 +39,7 @@ const UserReviewModal = ({ open, close, title, carName = null }) => {
     }
   };
 
-  const handleReviewSubmit = (e) => {
+  const handleReviewSubmit = async (e) => {
     e.preventDefault();
 
     const storedReview = {
@@ -49,7 +50,9 @@ const UserReviewModal = ({ open, close, title, carName = null }) => {
       rating,
     };
 
-    storeReviewInDb(storedReview);
+    await storeReviewInDb(storedReview);
+
+    e.target.reset();
   };
 
   const handleReviewText = (element, val) => {
@@ -59,13 +62,6 @@ const UserReviewModal = ({ open, close, title, carName = null }) => {
     });
   };
 
-
-
-  const myStyles = {
-    itemShapes: RoundedStar,
-    activeFillColor: "#ffb700",
-    inactiveFillColor: "#a19e82c7",
-  };
   return (
     <>
       <dialog className={`${open ? "flex z-50" : "hidden"}`} open={open}>
@@ -80,7 +76,6 @@ const UserReviewModal = ({ open, close, title, carName = null }) => {
                 style={{ maxWidth: 150 }}
                 value={rating}
                 onChange={setRating}
-                itemStyles={myStyles}
               />
             </div>
             <div>
@@ -89,17 +84,17 @@ const UserReviewModal = ({ open, close, title, carName = null }) => {
           </div>
 
           <form onSubmit={handleReviewSubmit}>
-            <div className='my-6'>
-              <CustomInput
-                label={"How was your experience"}
-                onChange={(value) => handleReviewText("title", value)}
-                value={reviewText?.title}
+            <div className='my-6 flex flex-col gap-4'>
+              <input
+                type='text'
+                className='data-input '
+                placeholder={"How was your experience"}
+                onChange={(e) => handleReviewText("title", e.target.value)}
               />
-              <CustomInput
-                label={"Write your review here..."}
-                type={"textArea"}
-                onChange={(value) => handleReviewText("review", value)}
-                value={reviewText?.review}
+              <textarea
+                className='data-input'
+                placeholder={"Write your review here..."}
+                onChange={(e) => handleReviewText("review", e.target.value)}
               />
             </div>
 
