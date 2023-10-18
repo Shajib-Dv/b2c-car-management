@@ -4,7 +4,7 @@ import "react-circular-progressbar/dist/styles.css";
 import { useState } from "react";
 import UserReviewSlider from "./sliders/UserReviewSlider";
 import UserReviewModal from "../modal/UserReviewModal";
-const UserReview = ({ carName }) => {
+const UserReview = ({ carName, carId }) => {
   const [open, setOpen] = useState(false);
   const [option, setOption] = useState("A");
   const handleOptionSelect = (op) => {
@@ -154,6 +154,7 @@ const UserReview = ({ carName }) => {
         open={open}
         title={`Add your review for ${carName}`}
         carName={carName}
+        carId={carId}
       />
     </>
   );

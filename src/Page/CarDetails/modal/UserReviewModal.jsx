@@ -1,13 +1,25 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
-import { Rating, RoundedStar } from "@smastrom/react-rating";
+import { Rating } from "@smastrom/react-rating";
 import Swal from "sweetalert2";
+import getReviewByCarId from "../../../utils/getReviewByCarId";
 
-const UserReviewModal = ({ open, close, title, carName = null }) => {
+const UserReviewModal = ({
+  open,
+  close,
+  title,
+  carName = null,
+  carId = null,
+}) => {
   const [reviewText, setReviewText] = useState({});
   const [rating, setRating] = useState(0);
   const [loading, setLoading] = useState(false);
+  const formRef = useRef(null);
   const { user } = useAuth();
+
+  const { review, isLoading, refetch } = getReviewByCarId(carId);
+
+  console.log(review?.title);
 
   const storeReviewInDb = async (data) => {
     try {
@@ -48,11 +60,13 @@ const UserReviewModal = ({ open, close, title, carName = null }) => {
       email: user?.email,
       carName,
       rating,
+      carId,
     };
 
-    await storeReviewInDb(storedReview);
+    // await storeReviewInDb(storedReview);
+    console.log(storedReview);
 
-    e.target.reset();
+    formRef?.current?.reset();
   };
 
   const handleReviewText = (element, val) => {
@@ -61,6 +75,17 @@ const UserReviewModal = ({ open, close, title, carName = null }) => {
       [element]: val,
     });
   };
+
+  const handleModalClose = () => {
+    setRating(0);
+    setReviewText({});
+    close();
+    formRef?.current?.reset();
+  };
+
+  useEffect(() => {
+    refetch();
+  }, [carId]);
 
   return (
     <>
@@ -83,18 +108,22 @@ const UserReviewModal = ({ open, close, title, carName = null }) => {
             </div>
           </div>
 
-          <form onSubmit={handleReviewSubmit}>
+          <form onSubmit={handleReviewSubmit} ref={formRef}>
             <div className='my-6 flex flex-col gap-4'>
               <input
                 type='text'
                 className='data-input '
                 placeholder={"How was your experience"}
                 onChange={(e) => handleReviewText("title", e.target.value)}
+                defaultValue={review?.title}
+                required
               />
               <textarea
                 className='data-input'
                 placeholder={"Write your review here..."}
                 onChange={(e) => handleReviewText("review", e.target.value)}
+                defaultValue={review?.review}
+                required
               />
             </div>
 
@@ -113,7 +142,7 @@ const UserReviewModal = ({ open, close, title, carName = null }) => {
 
           <div>
             <button
-              onClick={() => close()}
+              onClick={handleModalClose}
               className='btn btn-sm btn-circle btn-ghost text-2xl text-error absolute right-0 top-0'
             >
               ✕
