@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
+import useAuth from "../hooks/useAuth";
 
 const getReviewByCarId = (carId) => {
+  const { user } = useAuth();
   const {
     data: review = {},
     isLoading,
@@ -9,13 +11,14 @@ const getReviewByCarId = (carId) => {
     queryKey: ["review-car-name"],
     enabled: !!carId,
     queryFn: async () => {
-      const res = await fetch(`http://localhost:3000/reviews?carId=${carId}`, {
+      const res = await fetch(`http://localhost:3000/reviews?carId=${carId}&email=${user?.email}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
       });
       const resData = await res.json();
+
       return resData;
     },
   });

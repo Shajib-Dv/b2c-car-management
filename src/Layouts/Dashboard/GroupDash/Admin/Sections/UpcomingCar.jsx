@@ -168,9 +168,10 @@ const UpcomingCar = () => {
             Upcoming Car List
           </h1>
           {loading && <Loader />}
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-            {carData && Array.isArray(carData) && carData.length > 0
-              ? carData.map((data) => (
+          <>
+            {carData && Array.isArray(carData) && carData.length > 0 ? (
+              <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+                {carData.map((data) => (
                   <div
                     key={data?._id}
                     className='p-5 border border-green-300 rounded-md hover:shadow-green-400 hover:shadow-md'
@@ -192,14 +193,18 @@ const UpcomingCar = () => {
                       </span>{" "}
                     </p>
                   </div>
-                ))
-              : !loading && (
-                  <EmptyData
-                    message={"Please add your upcoming car here"}
-                    reason={`You haven't added any cars yet !`}
-                  />
-                )}
-          </div>
+                ))}{" "}
+              </div>
+            ) : (
+              !loading && (
+                <EmptyData
+                  message={"Please add your upcoming car here"}
+                  reason={`You haven't added any cars yet !`}
+                  go={"add upcoming car"}
+                />
+              )
+            )}
+          </>
         </div>
       </div>
     </div>
