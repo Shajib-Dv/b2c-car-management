@@ -6,6 +6,7 @@ import { HiOutlineBanknotes } from "react-icons/hi2";
 import { BsBookmarkHeart } from "react-icons/bs";
 import { AiOutlineTransaction } from "react-icons/ai";
 import { IoGitCompare } from "react-icons/io5";
+import { MdOutlineSell } from 'react-icons/md';
 
 const UserLinks = () => {
   return (
@@ -38,6 +39,10 @@ const UserLinks = () => {
       <ActiveDashLink to="/dashboard/user/compare_car">
         <IoGitCompare className="text-2xl" />
         Compare Car
+      </ActiveDashLink>
+      <ActiveDashLink to="/dashboard/user/user_sell_car">
+        <MdOutlineSell className="text-2xl" />
+        Sell A Car
       </ActiveDashLink>
     </>
   );
