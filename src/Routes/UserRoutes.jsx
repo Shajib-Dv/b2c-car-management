@@ -9,6 +9,7 @@ import MyBidsList from "../Layouts/Dashboard/GroupDash/User/Sections/MyBidsList"
 import EMICalculator from "../Layouts/Dashboard/GroupDash/User/Sections/EMICalculator";
 import UserHome from "../Layouts/Dashboard/GroupDash/User/Sections/UserHome";
 import UserSellCar from "../Layouts/Dashboard/GroupDash/User/Sections/UserSellCar";
+import UserListing from "../Layouts/Dashboard/GroupDash/User/Sections/UserListing";
 
 const UserRoutes = {
   path: "/dashboard/user",
@@ -53,6 +54,10 @@ const UserRoutes = {
     {
       path: "/dashboard/user/user_sell_car",
       element: <UserSellCar />,
+    },
+    {
+      path: "/dashboard/user/user_listing",
+      element: <UserListing />,
     },
   ],
 };

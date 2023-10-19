@@ -44,6 +44,10 @@ const UserLinks = () => {
         <MdOutlineSell className="text-2xl" />
         Sell A Car
       </ActiveDashLink>
+      <ActiveDashLink to="/dashboard/user/user_listing">
+        <MdOutlineSell className="text-2xl" />
+        My listing
+      </ActiveDashLink>
     </>
   );
 };

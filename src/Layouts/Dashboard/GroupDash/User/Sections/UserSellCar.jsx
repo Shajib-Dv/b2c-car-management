@@ -26,6 +26,7 @@ const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
 const UserSellCar = () => {
     const { user } = useContext(AuthContext);
+
     const [renderNext, setRenderNext] = useState({});
     const [basicInfo, setBasicInfo] = useState({});
     const [keySpecifications, setKeySpecifications] = useState({});
@@ -40,7 +41,7 @@ const UserSellCar = () => {
     const additionalInfoLength = Object.keys(additionalInfo || {}).length;
 
     const handleNextRender = (element) => {
-        setRenderNext({ ...renderNext, [element]: false });
+        setRenderNext({ ...renderNext, [element]: true });
     };
 
     const handlePreviewRender = (element) => {
@@ -89,7 +90,7 @@ const UserSellCar = () => {
             form.querySelector('input[name="image2"]').files[0],
             form.querySelector('input[name="image3"]').files[0],
             form.querySelector('input[name="image4"]').files[0],
-            
+
         ];
 
         const imgURLs = await Promise.all(
@@ -532,7 +533,7 @@ const UserSellCar = () => {
                                     </div>
                                     <div className="bg-gradient-to-r from-[#969595] to-[#dbfde8] py-[0.5px]"></div>
                                     <div>
-                                    <div>
+                                        <div>
                                             <h1 className="font-bold text-[#618264] font-sans flex items-center gap-2">
                                                 <span>
                                                     <BsFillAwardFill />
@@ -752,7 +753,7 @@ const UserSellCar = () => {
                                                 />
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <button
