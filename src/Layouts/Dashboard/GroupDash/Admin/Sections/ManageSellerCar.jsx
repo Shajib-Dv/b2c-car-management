@@ -31,7 +31,7 @@ const ManageSellerCar = () => {
                     .then((data) => {
                         //console.log(data);
                         if (data.deletedCount > 0) {
-                            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+                            Swal.fire("Deleted!", "Car has been deleted.", "success");
                             refetch();
                         }
                     });
@@ -87,8 +87,8 @@ const ManageSellerCar = () => {
                                         </div>
                                     </div>
                                     <div className='flex gap-3 text-lg justify-center items-center'>
-                                        {car.status === 'approved' ? (<div className='text-green-600 tooltip tooltip-success'data-tip="Status: Approved"><MdDoneAll /></div>): (<button onClick={() => handleApprove(car)}>
-                                            <MdOutlinePending/>
+                                        {car.status === 'approved' ? (<div className='text-green-600 tooltip tooltip-success'data-tip="Status: Approved"><MdDoneAll /></div>): (<button onClick={() => handleApprove(car)} className='text-xs btn btn-xs btn-outline btn-info'>
+                                            Approve
                                         </button>)}
                                         
                                         <button
