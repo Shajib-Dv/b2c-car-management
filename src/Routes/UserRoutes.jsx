@@ -10,6 +10,7 @@ import EMICalculator from "../Layouts/Dashboard/GroupDash/User/Sections/EMICalcu
 import UserHome from "../Layouts/Dashboard/GroupDash/User/Sections/UserHome";
 import UserSellCar from "../Layouts/Dashboard/GroupDash/User/Sections/UserSellCar";
 import UserListing from "../Layouts/Dashboard/GroupDash/User/Sections/UserListing";
+import PrivateRoute from "./PrivateRoute";
 
 const UserRoutes = {
   path: "/dashboard/user",
@@ -53,7 +54,7 @@ const UserRoutes = {
     },
     {
       path: "/dashboard/user/user_sell_car",
-      element: <UserSellCar />,
+      element: <PrivateRoute><UserSellCar /></PrivateRoute>,
     },
     {
       path: "/dashboard/user/user_listing",
