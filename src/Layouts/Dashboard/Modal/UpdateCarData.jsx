@@ -25,7 +25,7 @@ import CustomInput from "../../../Shared/components/CustomInput";
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
-const UpdateCarData = ({ car, modal }) => {
+const UpdateCarData = ({ car, modal, refetch, close }) => {
 
   const {_id, basicInfo, keySpecifications, emi, specification, additionalInfo} = car
 
@@ -132,14 +132,18 @@ const UpdateCarData = ({ car, modal }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if (data.modifiedCount > 0) {
+                if ({message: 'ok'}) {
                     Swal.fire({
                         title: 'Success!',
-                        text: 'Coffee Updated Successfully',
+                        text: 'Car Updated Successfully',
                         icon: 'success',
                         confirmButtonText: 'OK!'
                     })
+                    refetch()
+                    close()
+                    setRenderNext(0)
                 }
+                
             })
   };
 

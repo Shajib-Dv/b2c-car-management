@@ -107,7 +107,7 @@ const ManageCar = () => {
           )
         )}
       </div>
-      <UpdateSingleCarDataModal open={openModal} close={closeModal} car={car} />
+      <UpdateSingleCarDataModal open={openModal} close={closeModal} car={car} refetch={refetch}/>
     </>
   );
 };
