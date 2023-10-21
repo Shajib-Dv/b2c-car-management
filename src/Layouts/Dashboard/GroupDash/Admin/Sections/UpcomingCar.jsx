@@ -2,22 +2,16 @@ import CustomInput from "../../../../../Shared/components/CustomInput";
 import { BiSolidAddToQueue } from "react-icons/bi";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import getUpComingCarData from "../../../../../utils/getUpComingCarData";
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 import { BiSkipNextCircle } from "react-icons/bi";
 import { TbPlayerTrackNext } from "react-icons/tb";
 import { IoLogoUsd } from "react-icons/io";
 import Loader from "../../../../../Shared/components/Loader";
-import useAuth from "../../../../../hooks/useAuth";
 import EmptyData from "../../../../../Shared/components/EmptyData";
+import getUpcomingCarByUser from "../../../../../utils/getUpcomingCarByUser";
 
 const UpcomingCar = () => {
-  const { user } = useAuth();
-  let enable = user?.email ? true : false;
-  const { carData, loading, refetch } = getUpComingCarData(
-    user?.email || null,
-    enable
-  );
+  const { carData, loading, refetch } = getUpcomingCarByUser();
 
   const [basicData, setBasicData] = useState({});
 

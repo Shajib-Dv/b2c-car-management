@@ -1,21 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 
-const getUpComingCarData = () => {
-  let url = `http://localhost:3000/add_upcoming_car`;
+const getAllSellCar = () => {
+  let url = `http://localhost:3000/sell_car`;
 
   const {
-    data: carData = [],
+    data: sellCarData = [],
     isLoading: loading,
     refetch,
   } = useQuery({
-    queryKey: ["carData"],
+    queryKey: ["sell_car_data"],
     enabled: true,
     queryFn: async () => {
       const res = await fetch(url);
       return res.json();
     },
   });
-  return { carData, loading, refetch };
+  return { sellCarData, loading, refetch };
 };
 
-export default getUpComingCarData;
+export default getAllSellCar;

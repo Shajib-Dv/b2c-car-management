@@ -116,17 +116,28 @@ const UserReviewModal = ({
   };
 
   const deleteReview = async (id) => {
-    const res = await fetch(`http://localhost:3000/reviews/${id}`, {
-      method: "DELETE",
+    Swal.fire({
+      title: "Your review will be deleted !",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#057d19",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Delete",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await fetch(`http://localhost:3000/reviews/${id}`, {
+          method: "DELETE",
+        });
+
+        const resData = await res.json();
+
+        if (resData.deletedCount > 0) {
+          swalMessage("Your review has been deleted");
+        }
+
+        refetch();
+      }
     });
-
-    const resData = await res.json();
-
-    if (resData.deletedCount > 0) {
-      swalMessage("Your review has been deleted");
-    }
-
-    refetch();
   };
 
   return (
