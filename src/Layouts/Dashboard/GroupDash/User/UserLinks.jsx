@@ -7,6 +7,7 @@ import { BsBookmarkHeart } from "react-icons/bs";
 import { AiOutlineTransaction } from "react-icons/ai";
 import { IoGitCompare } from "react-icons/io5";
 import { MdOutlineSell } from 'react-icons/md';
+import { BsFillBookmarkCheckFill } from 'react-icons/bs';
 
 const UserLinks = () => {
   return (
@@ -45,7 +46,7 @@ const UserLinks = () => {
         Sell A Car
       </ActiveDashLink>
       <ActiveDashLink to="/dashboard/user/user_listing">
-        <MdOutlineSell className="text-2xl" />
+        <BsFillBookmarkCheckFill className="text-2xl" />
         My listing
       </ActiveDashLink>
     </>

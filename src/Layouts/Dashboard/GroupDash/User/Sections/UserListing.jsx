@@ -123,6 +123,7 @@ const UserListing = () => {
         open={openModal}
         close={closeModal}
         car={car}
+        refetch={refetch}
       />
     </>
   );
