@@ -6,6 +6,7 @@ import Analytics from "../Layouts/Dashboard/GroupDash/Admin/Sections/Analytics";
 import UpcomingCar from "../Layouts/Dashboard/GroupDash/Admin/Sections/UpcomingCar";
 import UsedCar from "../Layouts/Dashboard/GroupDash/Admin/Sections/UsedCar";
 import ManageCar from "../Layouts/Dashboard/GroupDash/Admin/Sections/ManageCar";
+import ManageSellerCar from "../Layouts/Dashboard/GroupDash/Admin/Sections/ManageSellerCar";
 
 const AdminRoutes = {
   path: "/dashboard/admin",
@@ -39,6 +40,10 @@ const AdminRoutes = {
     {
       path: "/dashboard/admin/used_car",
       element: <UsedCar />,
+    },
+    {
+      path: "/dashboard/admin/manage_seller_car",
+      element: <ManageSellerCar />,
     },
   ],
 };

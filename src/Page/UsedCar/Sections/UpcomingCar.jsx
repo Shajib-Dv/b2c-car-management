@@ -2,13 +2,16 @@ import React from "react";
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import getUpComingCarData from "../../../utils/getUpComingCarData";
+import Loader from "../../../Shared/components/Loader";
 
-const UpcomingCar = ({limit,show_menu}) => {
+const UpcomingCar = ({limit,show_menu,loader=false}) => {
   const { carData, loading } = getUpComingCarData();
 
   const randomImg = (images) => images[Math.floor(Math.random() *(images.length - 1))];
 
-
+if(loading && loader){
+  return <Loader/>
+}
 
 
   return (

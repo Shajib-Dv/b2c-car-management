@@ -19,7 +19,7 @@ const UsedCar = () => {
       <UsedCardByCity />
       <BrowseByMake />
       <TrustedUsedCarByFuel />
-      <UpcomingCar limit={4} show_menu={true} />
+      <UpcomingCar limit={4} show_menu={true}  />
       <NewCar limit={4} show_menu={true} />
       <BrowseByBody />
       <Ads />

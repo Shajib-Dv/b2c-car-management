@@ -8,6 +8,7 @@ import { TbReportMoney } from "react-icons/tb";
 import { BsCardChecklist } from "react-icons/bs";
 import { BiSupport } from "react-icons/bi";
 import { AiFillCar } from "react-icons/ai";
+import { FiSettings } from "react-icons/fi";
 import ActiveDashLink from "../../ActiveDashLink";
 
 const AdminLinks = ({ sendReport, sendSupport }) => {
@@ -19,6 +20,9 @@ const AdminLinks = ({ sendReport, sendSupport }) => {
 
       <ActiveDashLink to="/dashboard/admin/seller_update">
         <TbReportMoney className="text-2xl text-green-600" /> Seller Update
+      </ActiveDashLink>
+      <ActiveDashLink to="/dashboard/admin/manage_seller_car">
+        <FiSettings className="text-2xl text-green-600" /> Manage Seller Car
       </ActiveDashLink>
 
       <ActiveDashLink to="/dashboard/admin/upcoming_car">

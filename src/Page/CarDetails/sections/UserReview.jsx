@@ -4,15 +4,28 @@ import "react-circular-progressbar/dist/styles.css";
 import { useState } from "react";
 import UserReviewSlider from "./sliders/UserReviewSlider";
 import UserReviewModal from "../modal/UserReviewModal";
-const UserReview = ({ carName }) => {
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
+const UserReview = ({ carName, carId }) => {
+  const { user } = useAuth();
   const [open, setOpen] = useState(false);
   const [option, setOption] = useState("A");
+
   const handleOptionSelect = (op) => {
     setOption(op);
   };
 
   const handleModalOpen = () => {
-    setOpen(true);
+    if (user?.email) {
+      setOpen(true);
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "You need to be logged in",
+        showConfirmButton: false,
+        timer: 1200,
+      });
+    }
   };
 
   const handleModalClose = () => {
@@ -149,12 +162,15 @@ const UserReview = ({ carName }) => {
           <UserReviewSlider />
         </div>
       </div>
-      <UserReviewModal
-        close={handleModalClose}
-        open={open}
-        title={`Add your review for ${carName}`}
-        carName={carName}
-      />
+      {user?.email && (
+        <UserReviewModal
+          close={handleModalClose}
+          open={open}
+          title={`Add your review for ${carName}`}
+          carName={carName}
+          carId={carId}
+        />
+      )}
     </>
   );
 };

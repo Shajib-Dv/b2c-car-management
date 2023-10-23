@@ -24,6 +24,7 @@ const CarDetails = () => {
   const { car, isLoading } = getCarsById(id);
 
   const {
+    _id,
     basicInfo,
     keySpecifications,
     emi,
@@ -59,7 +60,7 @@ const CarDetails = () => {
           <ProsCons />
           <Spec specification={specification} carName={basicInfo?.carName} />
           <Review carName={basicInfo?.carName} images={images}/>
-          <UserReview carName={basicInfo?.carName}/>
+          <UserReview carName={basicInfo?.carName} carId={_id}  />
         </div>
         <div className='w-full flex flex-col gap-10'>
           <EmiBanner />

@@ -37,7 +37,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/upcoming",
-        element: <UpcomingCar/>,
+        element: <UpcomingCar loader={true}/>,
       },
       {
         path: "/used_car",

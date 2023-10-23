@@ -25,7 +25,7 @@ import CustomInput from "../../../Shared/components/CustomInput";
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
-const UpdateCarData = ({ car, modal }) => {
+const UpdateCarData = ({ car, modal, refetch, close }) => {
 
   const {_id, basicInfo, keySpecifications, emi, specification, additionalInfo} = car
 
@@ -111,36 +111,40 @@ const UpdateCarData = ({ car, modal }) => {
     
 
     const storableData = {
-      email: user?.email,
+      // email: user?.email,
       basicInfo,
       keySpecifications,
       emi,
       specification,
-      images: imgURLs,
+      // images: imgURLs,
       additionalInfo,
       date: new Date(),
     };
     console.log(storableData)
 
-    // fetch(`https://ex/car/${_id}`, {
-    //         method: 'PUT',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(storableData)
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //             if (data.modifiedCount > 0) {
-    //                 Swal.fire({
-    //                     title: 'Success!',
-    //                     text: 'Coffee Updated Successfully',
-    //                     icon: 'success',
-    //                     confirmButtonText: 'OK!'
-    //                 })
-    //             }
-    //         })
+    fetch(`http://localhost:3000/add_new_car/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(storableData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if ({message: 'ok'}) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Car Updated Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'OK!'
+                    })
+                    refetch()
+                    close()
+                    setRenderNext(0)
+                }
+                
+            })
   };
 
   //console.log(car)
@@ -151,7 +155,7 @@ const UpdateCarData = ({ car, modal }) => {
           <img className="w-8 rounded-full" src="https://lordicon.com/icons/wired/flat/245-edit-document.gif" alt="" />
           <h1 className="font-bold">{car.basicInfo?.carName}</h1>
         </div>
-        <button className="font-bold" onClick={modal}>✕</button>
+        <button className="font-bold" onClick={modal}></button>
       </div>
       <>
 

@@ -1,13 +1,14 @@
 import UpdateCarData from "./UpdateCarData";
 
-const UpdateSingleCarDataModal = ({ open, close ,car}) => {
+const UpdateSingleCarDataModal = ({ open, close ,car , refetch}) => {
+  
   return (
     <div>
       <dialog className={`${open ? "flex z-50" : "hidden"}`} open={open}>
         <div className='modal-box  max-w-5xl text-green-500 border border-green-600 hidden-scroll'>
           <div>
             <div>
-                <UpdateCarData car={car}/>
+                <UpdateCarData car={car} refetch={refetch} close={close}/>
             </div>
             <button
               onClick={() => close()}
