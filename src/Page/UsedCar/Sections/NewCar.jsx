@@ -6,12 +6,14 @@ import Loader from "../../../Shared/components/Loader";
 import EmptyData from "../../../Shared/components/EmptyData";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import getMyCart from "../../../utils/getMyCart";
 
 const NewCar = ({ limit, show_menu, show_loader = false }) => {
-  const { allCars, isLoading, refetch } = getAllNewCars(limit);
+  const { allCars, isLoading} = getAllNewCars(limit);
   const {user} = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
+  const { myCart, loading, refetch } = getMyCart()
   const randomImg = (images) =>
     images[Math.floor(Math.random() * (images.length - 1))];
 
@@ -20,6 +22,7 @@ const NewCar = ({ limit, show_menu, show_loader = false }) => {
   }
   // console.log(allCars)
   // console.log(user)
+  //console.log(myCart)
   const handleAddToCart = (id , price, carName, images , locations) => {
     if (user && user.email) {
       const orderItem = { carId: id, email: user.email, price:price, carName:carName, images:images, locations:locations}

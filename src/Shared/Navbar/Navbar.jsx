@@ -6,6 +6,7 @@ import { FaShoppingCart, FaSignOutAlt, FaTimesCircle } from "react-icons/fa";
 import "./../css/custom.css";
 import useAuth from "../../hooks/useAuth";
 import useCurrentUser from "../../hooks/useCurrentUser";
+import getMyCart from "../../utils/getMyCart";
 
 const NavLinks = ({ openOrClose }) => {
   return (
@@ -117,11 +118,12 @@ const NavLinks = ({ openOrClose }) => {
 };
 
 const Navbar = () => {
+  
   const { user, logOut } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { currentUser } = useCurrentUser();
-
+  const { myCart } = getMyCart()
   const handleLogOut = () => {
     logOut();
   };
@@ -191,7 +193,7 @@ const Navbar = () => {
           <div className='w-fit relative md:mr-4'>
             <FaShoppingCart className='text-xl text-green-600' />
             <span className='absolute bottom-3 left-3 btn btn-circle bg-base-200 btn-xs btn-ghost text-green-600'>
-              0
+              {myCart.length || 0}
             </span>
           </div>
           <div className='flex items-center gap-3'>
