@@ -8,7 +8,7 @@ import { SiLitiengine } from "react-icons/si";
 import { ImLocation } from "react-icons/im";
 import { BsFillCarFrontFill } from "react-icons/bs";
 
-const KeySpec = ({ KeySpec }) => {
+const KeySpec = ({ KeySpec,carName }) => {
   const {
     mileage,
     Engine,
@@ -26,7 +26,7 @@ const KeySpec = ({ KeySpec }) => {
     <div className='px-10 py-5 shadow-md rounded-lg'>
       <div>
         <h1 className='font-bold text-xl mb-10'>
-          Key Specifications of Maruti Baleno
+          Key Specifications of {carName}
         </h1>
       </div>
       <div className='md:flex justify-between grid grid-cols-2'>

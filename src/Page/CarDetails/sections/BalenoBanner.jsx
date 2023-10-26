@@ -1,11 +1,11 @@
 import React from "react";
 import { GrLocation } from "react-icons/gr";
 
-const BalenoBanner = () => {
+const BalenoBanner = ({carName}) => {
   return (
     <div className='shadow-md rounded-lg px-3 py-5'>
       <h1 className='text-2xl font-bold'>
-        Baleno price in <br />
+        {carName} price in <br />
         nearby cities
       </h1>
       <div className='overflow-x-auto w-full'>

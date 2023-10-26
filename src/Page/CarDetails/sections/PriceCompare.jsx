@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 
-const PriceCompare = () => {
+const PriceCompare = ({carName}) => {
   const [option, setOption] = useState("A");
   const handleOptionSelect = (option) => {
     setOption(option);
@@ -10,11 +10,11 @@ const PriceCompare = () => {
   return (
     <div className='rounded-lg shadow border '>
       <div className='px-10 py-10'>
-        <h1 className='text-xl font-bold mb-3'>Maruti Baleno Price</h1>
+        <h1 className='text-xl font-bold mb-3'>{carName} Price</h1>
         <p>
-          The price of Maruti Baleno starts at Rs. 6.35 Lakh and goes upto Rs.
-          9.49 Lakh. Maruti Baleno is offered in 7 variants - the base model of
-          Baleno is Sigma and the top variant Maruti Baleno Alpha AMT which
+          The price of {carName} starts at Rs. 6.35 Lakh and goes upto Rs.
+          9.49 Lakh. {carName} is offered in 7 variants - the base model of
+          Baleno is Sigma and the top variant {carName} Alpha AMT which
           comes at a price tag of Rs. 9.49 Lakh
         </p>
       </div>
