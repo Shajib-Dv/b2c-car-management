@@ -9,11 +9,11 @@ import Swal from "sweetalert2";
 import getMyCart from "../../../utils/getMyCart";
 
 const NewCar = ({ limit, show_menu, show_loader = false }) => {
-  const { allCars, isLoading} = getAllNewCars(limit);
-  const {user} = useAuth()
-  const navigate = useNavigate()
-  const location = useLocation()
-  const { myCart, loading, refetch } = getMyCart()
+  const { allCars, isLoading } = getAllNewCars(limit);
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { myCart, loading, refetch } = getMyCart();
   const randomImg = (images) =>
     images[Math.floor(Math.random() * (images.length - 1))];
 
@@ -23,45 +23,51 @@ const NewCar = ({ limit, show_menu, show_loader = false }) => {
   // console.log(allCars)
   // console.log(user)
   //console.log(myCart)
-  const handleAddToCart = (id , price, carName, images , locations) => {
+  const handleAddToCart = (id, price, carName, images, locations) => {
     if (user && user.email) {
-      const orderItem = { carId: id, email: user.email, price:price, carName:carName, images:images, locations:locations}
-      fetch('http://localhost:3000/carts', {
-        method: 'POST',
+      const orderItem = {
+        carId: id,
+        email: user.email,
+        price: price,
+        carName: carName,
+        images: images,
+        locations: locations,
+      };
+      fetch("http://localhost:3000/carts", {
+        method: "POST",
         headers: {
-          'content-type': 'application/json'
+          "content-type": "application/json",
         },
-        body: JSON.stringify(orderItem)
+        body: JSON.stringify(orderItem),
       })
-        .then(res => res.json())
-        .then(data => {
+        .then((res) => res.json())
+        .then((data) => {
           if (data.insertedId) {
-            refetch()
+            refetch();
             Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Car added on the cart.',
+              position: "top-end",
+              icon: "success",
+              title: "Car added on the cart.",
               showConfirmButton: false,
-              timer: 1500
-            })
+              timer: 1500,
+            });
           }
-        })
-    }
-    else {
+        });
+    } else {
       Swal.fire({
-        title: 'Please login to order the car',
-        icon: 'warning',
+        title: "Please login to order the car",
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Login now!'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Login now!",
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate('/login', { state: { from: location } })
+          navigate("/login", { state: { from: location } });
         }
-      })
+      });
     }
-  }
+  };
 
   return (
     <>
@@ -83,7 +89,7 @@ const NewCar = ({ limit, show_menu, show_loader = false }) => {
         )}
 
         {allCars && Array.isArray(allCars) && allCars.length > 0 ? (
-          <div className='grid grid-cols-1 md:grid-cols-4 gap-6 px-10'>
+          <div className='grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6 px-10'>
             {allCars?.map((car) => (
               <div
                 className='shadow border p-3 rounded-lg flex flex-col justify-between group'
@@ -101,14 +107,27 @@ const NewCar = ({ limit, show_menu, show_loader = false }) => {
                     {car?.basicInfo?.carName || "unknown"}
                   </h1>
                   <p className=' mb-4'>Rs {car?.basicInfo?.price} Lakh*</p>
-                  <div className="flex justify-between">
+                  <div className='flex justify-between items-center flex-wrap gap-2'>
                     <Link
                       to={`/new_car/details/${car?._id}`}
-                      className='btn-details w-32'
+                      className='btn-details'
                     >
                       show details
                     </Link>
-                    <button className="btn-details w-32" onClick={() => handleAddToCart(car?._id, car?.basicInfo?.price, car?.basicInfo?.carName, car?.images, car?.basicInfo?.locations)}>add to cart</button>
+                    <button
+                      className='btn-details'
+                      onClick={() =>
+                        handleAddToCart(
+                          car?._id,
+                          car?.basicInfo?.price,
+                          car?.basicInfo?.carName,
+                          car?.images,
+                          car?.basicInfo?.locations
+                        )
+                      }
+                    >
+                      add to cart
+                    </button>
                   </div>
                 </div>
               </div>
