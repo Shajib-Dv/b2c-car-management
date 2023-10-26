@@ -11,6 +11,7 @@ import UserHome from "../Layouts/Dashboard/GroupDash/User/Sections/UserHome";
 import UserSellCar from "../Layouts/Dashboard/GroupDash/User/Sections/UserSellCar";
 import UserListing from "../Layouts/Dashboard/GroupDash/User/Sections/UserListing";
 import PrivateRoute from "./PrivateRoute";
+import MyCart from "../Layouts/Dashboard/GroupDash/User/Sections/Mycart";
 
 const UserRoutes = {
   path: "/dashboard/user",
@@ -59,6 +60,10 @@ const UserRoutes = {
     {
       path: "/dashboard/user/user_listing",
       element: <UserListing />,
+    },
+    {
+      path: "/dashboard/user/my_cart",
+      element: <MyCart/>,
     },
   ],
 };
