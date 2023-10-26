@@ -1,18 +1,63 @@
 import React, { useState } from "react";
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import getAllNewCars from "../../../utils/getAllNewCars";
 import Loader from "../../../Shared/components/Loader";
 import EmptyData from "../../../Shared/components/EmptyData";
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const NewCar = ({ limit, show_menu, show_loader = false }) => {
   const { allCars, isLoading, refetch } = getAllNewCars(limit);
-
+  const {user} = useAuth()
+  const navigate = useNavigate()
+  const location = useLocation()
   const randomImg = (images) =>
     images[Math.floor(Math.random() * (images.length - 1))];
 
   if (isLoading && show_loader) {
     return <Loader />;
+  }
+  // console.log(allCars)
+  // console.log(user)
+  const handleAddToCart = (id , price, carName, images , locations) => {
+    if (user && user.email) {
+      const orderItem = { carId: id, email: user.email, price:price, carName:carName, images:images, locations:locations}
+      fetch('http://localhost:3000/carts', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(orderItem)
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.insertedId) {
+            refetch()
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Car added on the cart.',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
+        })
+    }
+    else {
+      Swal.fire({
+        title: 'Please login to order the car',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Login now!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/login', { state: { from: location } })
+        }
+      })
+    }
   }
 
   return (
@@ -53,12 +98,15 @@ const NewCar = ({ limit, show_menu, show_loader = false }) => {
                     {car?.basicInfo?.carName || "unknown"}
                   </h1>
                   <p className=' mb-4'>Rs {car?.basicInfo?.price} Lakh*</p>
-                  <Link
-                    to={`/new_car/details/${car?._id}`}
-                    className='btn-details w-48'
-                  >
-                    show details
-                  </Link>
+                  <div className="flex justify-between">
+                    <Link
+                      to={`/new_car/details/${car?._id}`}
+                      className='btn-details w-32'
+                    >
+                      show details
+                    </Link>
+                    <button className="btn-details w-32" onClick={() => handleAddToCart(car?._id, car?.basicInfo?.price, car?.basicInfo?.carName, car?.images, car?.basicInfo?.locations)}>add to cart</button>
+                  </div>
                 </div>
               </div>
             ))}
