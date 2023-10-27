@@ -192,7 +192,7 @@ const Navbar = () => {
           <div className='w-fit relative md:mr-4'>
             <Link to={'/dashboard/user/my_cart'}><FaShoppingCart className='text-xl text-green-600' />
               <span className='absolute bottom-3 left-3 btn btn-circle bg-base-200 btn-xs btn-ghost text-green-600'>
-                {myCart.length || 0}
+                {!!user?.email && myCart.length || 0}
               </span></Link>
           </div>
           <div className='flex items-center gap-3'>
@@ -235,7 +235,7 @@ const Navbar = () => {
                 />
               ) : (
                 <div className='flex'>
-                  <Link to='/login'>Login</Link>
+                  <Link to='/login/google'>Login</Link>
                   <p>/</p>
                   <Link to='/register'>Register</Link>
                 </div>
