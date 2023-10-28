@@ -1,7 +1,10 @@
 import { GiConfirmed } from "react-icons/gi";
 import { FaClipboardList } from "react-icons/fa";
+import getOrderList from "../../../../../utils/getOrderList";
 
 const OrderSummary = () => {
+  const { orderList, loading, refetch } = getOrderList()
+  console.log(orderList)
   return (
     <div className="mt-10 md:mt-[200px] w-full flex flex-col gap-5">
       <h1 className="text-2xl font-bold mb-5 flex justify-center items-center gap-2">
