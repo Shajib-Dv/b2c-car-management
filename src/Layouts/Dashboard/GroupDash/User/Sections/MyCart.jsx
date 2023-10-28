@@ -4,20 +4,22 @@ import { FaCartFlatbedSuitcase } from "react-icons/fa6";
 import getMyCart from "../../../../../utils/getMyCart";
 import Loader from "../../../../../Shared/components/Loader";
 import EmptyData from "../../../../../Shared/components/EmptyData";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { MdDeleteOutline, MdDeleteSweep } from "react-icons/md";
+import { useState } from "react";
 
 const MyCart = () => {
     const { myCart, loading, refetch } = getMyCart()
     const { user } = useAuth()
+    const navigate = useNavigate();
     const UID = user?.uid.slice(-3)
-    console.log(UID)
+    //console.log(UID)
     const generateRandomOrderId = () => {
         const randomOrderId = UID + (Math.floor(Math.random() * 900000) + 100000);
-        const shortenedOrderId = randomOrderId.slice(0, -1);
-        return shortenedOrderId;
+        const orderId = randomOrderId.slice(0, -1);
+        return orderId;
     }
     const generateOrderDate = () => {
         const currentDate = new Date();
@@ -26,6 +28,8 @@ const MyCart = () => {
 
         return formattedDate;
     }
+    const [orderId, setOrderId] = useState(generateRandomOrderId());
+    const [formattedDate, setFormattedDate] = useState(generateOrderDate());
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -53,6 +57,51 @@ const MyCart = () => {
         });
     };
 
+    const handleConfirm = () => {
+
+        const order = [myCart]
+        const modifyOrder = { order, orderId: orderId, date: formattedDate }
+        console.log(modifyOrder)
+
+        fetch("http://localhost:3000/order", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(modifyOrder),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.insertedId) {
+                    const idsToDelete = myCart.map((item) => item._id);
+                    deleteDocuments(idsToDelete);
+                    refetch();
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Order Successfully Placed",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                    navigate("/dashboard/user/order_summary") 
+                }
+            });
+    }
+
+    const deleteDocuments = (ids) => {
+        ids.forEach((id) => {
+          fetch(`http://localhost:3000/delete_item/${id}`, {
+            method: "DELETE",
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.deletedCount > 0) {
+               
+              }
+            });
+        });
+      };
+
     console.log(myCart)
     return (
         <div className="mt-10 md:mt-[200px] w-full flex flex-col gap-5">
@@ -66,8 +115,8 @@ const MyCart = () => {
             {myCart && Array.isArray(myCart) && myCart.length > 0 ? (<div className="hover:shadow-lg">
                 <div className="flex justify-between bg-slate-100 border-[1px] p-4 items-center rounded-t-md">
                     <div>
-                        <h1 className="font-bold">Order# {generateRandomOrderId()}</h1>
-                        <h1 className="text-sm">Date Added: {generateOrderDate()}</h1>
+                        <h1 className="font-bold">Order# {orderId}</h1>
+                        <h1 className="text-sm">Date Added: {formattedDate}</h1>
                     </div>
                     <div>
                         <button className="btn btn-sm bg-green-300 ">
@@ -109,7 +158,7 @@ const MyCart = () => {
                         <h1>{myCart.reduce((total, cart) => total + (parseFloat(cart?.price) || 0), 0).toFixed(2)} RS.</h1>
                     </div>
                     <div className="flex justify-end">
-                        <button className="btn-act">Confirm Order</button>
+                        <button onClick={() => handleConfirm()} className="btn-act">Confirm Order</button>
                     </div>
 
                 </div>
