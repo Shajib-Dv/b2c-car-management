@@ -9,13 +9,15 @@ import useAuth from "../../../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { MdDeleteOutline, MdDeleteSweep } from "react-icons/md";
 import { useState } from "react";
+import useCurrentUser from "../../../../../hooks/useCurrentUser";
 
 const MyCart = () => {
     const { myCart, loading, refetch } = getMyCart()
-    const { user } = useAuth()
+    const { user} = useAuth()
+    const {currentUser} = useCurrentUser()
     const navigate = useNavigate();
     const UID = user?.uid.slice(-3)
-    //console.log(UID)
+    console.log(currentUser)
     const generateRandomOrderId = () => {
         const randomOrderId = UID + (Math.floor(Math.random() * 900000) + 100000);
         const orderId = randomOrderId.slice(0, -1);
@@ -56,11 +58,14 @@ const MyCart = () => {
             }
         });
     };
+    const total = myCart.reduce((total, cart) => total + (parseFloat(cart?.price) || 0), 0).toFixed(2)
 
     const handleConfirm = () => {
-
+        const processing = 'processing'
         const order = [myCart]
-        const modifyOrder = { order, orderId: orderId, date: formattedDate }
+        const orderInfo = {orderId: orderId, date: formattedDate, status: processing, username: user.displayName, name: currentUser.name, email: user.email, city: currentUser.city,location: currentUser.country, phone: currentUser.phone, totalPrice: total}
+
+        const modifyOrder = {orderInfo, order}
         console.log(modifyOrder)
 
         fetch("http://localhost:3000/order", {
@@ -155,7 +160,7 @@ const MyCart = () => {
                     }
                     <div className="flex justify-end gap-4 font-bold text-green-600">
                         <h1>Total Price: </h1>
-                        <h1>{myCart.reduce((total, cart) => total + (parseFloat(cart?.price) || 0), 0).toFixed(2)} RS.</h1>
+                        <h1>{total} RS.</h1>
                     </div>
                     <div className="flex justify-end">
                         <button onClick={() => handleConfirm()} className="btn-act">Confirm Order</button>
