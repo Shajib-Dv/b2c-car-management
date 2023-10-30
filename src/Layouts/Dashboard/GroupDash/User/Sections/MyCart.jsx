@@ -62,7 +62,7 @@ const MyCart = () => {
 
     const handleConfirm = () => {
         const processing = 'processing'
-        const order = [myCart]
+        const order = myCart
         const orderInfo = {orderId: orderId, date: formattedDate, status: processing, username: user.displayName, name: currentUser.name, email: user.email, city: currentUser.city,location: currentUser.country, phone: currentUser.phone, totalPrice: total}
         const modifyOrder = {orderInfo, order}
         //console.log(modifyOrder)
