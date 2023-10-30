@@ -5,7 +5,7 @@ import {
 } from "react-icons/md";
 import { FaChartLine, FaLuggageCart } from "react-icons/fa";
 import { TbReportMoney } from "react-icons/tb";
-import { BsCardChecklist } from "react-icons/bs";
+import { BsCardChecklist, BsMinecartLoaded } from "react-icons/bs";
 import { BiSupport } from "react-icons/bi";
 import { AiFillCar } from "react-icons/ai";
 import { FiSettings } from "react-icons/fi";
@@ -16,6 +16,9 @@ const AdminLinks = ({ sendReport, sendSupport }) => {
     <>
       <ActiveDashLink to="/dashboard/admin/analytics">
         <FaChartLine className="text-2xl text-green-600" /> Analytics
+      </ActiveDashLink>
+      <ActiveDashLink to="/dashboard/admin/order_management">
+        <BsMinecartLoaded className="text-2xl text-green-600" />Manage Order
       </ActiveDashLink>
 
       <ActiveDashLink to="/dashboard/admin/seller_update">

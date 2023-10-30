@@ -35,7 +35,7 @@ const OrderSummary = () => {
 
         {orderList && Array.isArray(orderList) && orderList.length > 0 ? (
           <>
-            {orderList.map((order, index) => (
+            {orderList.reverse().map((order, index) => (
               <div className="hover:shadow-lg" key={index}>
                 <div className="flex justify-between bg-slate-100 border-[1px] p-4 items-center rounded-t-md">
                   <div>
