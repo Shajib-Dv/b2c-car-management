@@ -1,3 +1,5 @@
+/** @format */
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -102,7 +104,11 @@ const CompareCarsSlider = () => {
             key={car.id}
             className="md:ml-2 bg-base-100 border rounded-md p-4"
           >
-            <img src={car.img} alt="car" className="w-full md:h-64 bg-cover" />
+            <img
+              src={car.img}
+              alt="car"
+              className="w-full md:h-64 object-cover"
+            />
             <div className="text-black flex items-center justify-between mt-2">
               <div className="flex-1">
                 <p>{car.model1}</p>

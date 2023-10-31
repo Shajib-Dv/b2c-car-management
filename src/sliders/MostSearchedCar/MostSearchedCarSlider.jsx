@@ -1,3 +1,5 @@
+/** @format */
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -63,7 +65,7 @@ const MostSearchedCarSlider = () => {
             spaceBetween: 30,
           },
           1024: {
-            slidesPerView: 5,
+            slidesPerView: 3,
             spaceBetween: 20,
           },
         }}
@@ -75,7 +77,11 @@ const MostSearchedCarSlider = () => {
             key={car.id}
             className="md:ml-2 bg-base-100 border rounded-md p-4"
           >
-            <img src={car.img} alt="car" className="w-full md:h-64 bg-cover" />
+            <img
+              src={car.img}
+              alt="car"
+              className="w-full md:h-64 object-cover rounded-md"
+            />
             <div className="text-black">
               <h1 className="font-bold text-xl">{car.name}</h1>
               <p className="text-xl font-light">
