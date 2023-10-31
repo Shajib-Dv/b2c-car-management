@@ -21,9 +21,9 @@ const AdminLinks = ({ sendReport, sendSupport }) => {
         <BsMinecartLoaded className="text-2xl text-green-600" />Manage Order
       </ActiveDashLink>
 
-      <ActiveDashLink to="/dashboard/admin/seller_update">
+      {/* <ActiveDashLink to="/dashboard/admin/seller_update">
         <TbReportMoney className="text-2xl text-green-600" /> Seller Update
-      </ActiveDashLink>
+      </ActiveDashLink> */}
       <ActiveDashLink to="/dashboard/admin/manage_seller_car">
         <FiSettings className="text-2xl text-green-600" /> Manage Seller Car
       </ActiveDashLink>
