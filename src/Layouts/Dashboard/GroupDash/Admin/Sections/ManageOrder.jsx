@@ -7,6 +7,8 @@ import { MdCancelPresentation, MdPendingActions } from "react-icons/md";
 import { RxCrossCircled } from "react-icons/rx";
 import EmptyData from '../../../../../Shared/components/EmptyData';
 import Swal from 'sweetalert2';
+import UserOrderSummary from '../../../Modal/UserOrderSummary';
+import Loader from '../../../../../Shared/components/Loader';
 
 const ManageOrder = () => {
     const { orderList, loading, refetch } = getOrderListAdmin()
@@ -68,7 +70,7 @@ const ManageOrder = () => {
                     Manage Order
                 </h1>
 
-
+                {loading && <Loader />}
                 {orderList && Array.isArray(orderList) && orderList.length > 0 ? (
                     <>
                         {orderList.map((order, index) => (
@@ -124,11 +126,11 @@ const ManageOrder = () => {
                     )
                 )}
             </div>
-            {/* <UserOrderSummary
+            <UserOrderSummary
           open={openModal}
           close={closeModal}
           order={order}
-        /> */}
+        />
         </>
     );
 };

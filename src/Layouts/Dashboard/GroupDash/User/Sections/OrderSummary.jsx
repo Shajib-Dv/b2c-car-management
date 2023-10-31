@@ -7,6 +7,7 @@ import { RxCrossCircled } from "react-icons/rx";
 import UserOrderSummary from "../../../Modal/UserOrderSummary";
 import { useState } from "react";
 import EmptyData from "../../../../../Shared/components/EmptyData";
+import Loader from "../../../../../Shared/components/Loader";
 
 const OrderSummary = () => {
   const { orderList, loading, refetch } = getOrderList()
@@ -32,7 +33,7 @@ const OrderSummary = () => {
           Order Summary
         </h1>
 
-
+        {loading && <Loader />}
         {orderList && Array.isArray(orderList) && orderList.length > 0 ? (
           <>
             {orderList.reverse().map((order, index) => (
