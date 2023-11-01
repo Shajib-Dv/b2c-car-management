@@ -50,7 +50,7 @@ const CarAddedByDateCount = () => {
                     <XAxis dataKey="date" />
                     <YAxis />
                     <Tooltip />
-                    <Area type="monotone" dataKey="CarCount" stroke="#8884d8" fill="#8884d8" />
+                    <Area type="monotone" dataKey="CarCount" stroke="#8884d8" fill="green" />
                 </AreaChart>
             </div>
         </div>
