@@ -1,10 +1,9 @@
-import React, { PureComponent } from 'react';
-import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
-import getAllNewCars from '../../../../../../utils/getAllNewCars';
-import getAllSellCar from '../../../../../../utils/getAllSellCar';
-import { useState } from 'react';
+import React from 'react';
 import Loader from '../../../../../../Shared/components/Loader';
-
+import getOrderListAdmin from '../../../../../../utils/getOrderListAdmin';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
 
 const renderActiveShape = (props) => {
     const RADIAN = Math.PI / 180;
@@ -44,7 +43,7 @@ const renderActiveShape = (props) => {
             />
             <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
             <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-            <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`Car ${value}`}</text>
+            <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{` ${value} Items`}</text>
             <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">
                 {`(Rate ${(percent * 100).toFixed(2)}%)`}
             </text>
@@ -52,26 +51,45 @@ const renderActiveShape = (props) => {
     );
 };
 
+const CartOrders = () => {
+    const { orderList } = getOrderListAdmin()
+    const [cartData, setCartData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-const OldCarNewCar = () => {
-    const { allCars, isLoading } = getAllNewCars()
-    const { sellCarData, loading } = getAllSellCar()
+    let orderTotalItemCount = 0;
+    orderList.forEach(order => {
+        orderTotalItemCount += order.order.length;
+    });
+    //console.log(orderTotalItemCount);
+    useEffect(() => {
 
+        fetch('http://localhost:3000/my_carts')
+            .then((response) => response.json())
+            .then((data) => {
+                setCartData(data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+                setLoading(false);
+            });
+    }, []);
+
+    //console.log(cartData)
 
     const [activeIndex, setActiveIndex] = useState(0);
 
     const data = [
-        { name: 'New Car', value: allCars.length },
-        { name: 'Old Car', value: sellCarData.length },
+        { name: 'Ordered', value: orderTotalItemCount },
+        { name: 'In Cart', value: cartData.length },
     ];
 
     const onPieEnter = (_, index) => {
         setActiveIndex(index);
     };
-
     return (
         <div className='w-1/2'>
-            <h1 className='text-center font-bold text-green-600'>Old Car & New Car</h1>
+            <h1 className='text-center font-bold text-green-600'>Cart & Order Items</h1>
             {loading && <Loader />}
             <PieChart width={580} height={400}>
                 <Pie
@@ -91,4 +109,4 @@ const OldCarNewCar = () => {
     );
 };
 
-export default OldCarNewCar;
+export default CartOrders;
