@@ -1,29 +1,42 @@
+/** @format */
+
 import { FaSearch, FaSearchengin } from "react-icons/fa";
 import { LuContact } from "react-icons/lu";
 import { SiSpringsecurity } from "react-icons/si";
 import { GiPoliceCar, GiReceiveMoney } from "react-icons/gi";
 import SearchTopic from "./compo/SearchTopic";
 import CarCollection from "./compo/CarCollection";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CategoryType from "./compo/CategoryType";
 import PriceRange from "./compo/PriceRange";
 import MakeAndModel from "./compo/MakeAndModel";
+import useAuth from "../../../hooks/useAuth";
+import getFillteredCarsBySearch from "../../../utils/getFillteredCarsBySearch";
+import EmptyData from "../../../Shared/components/EmptyData";
+import Loader from "../../../Shared/components/Loader";
 
 const UsedCarFilter = () => {
+  const { searchCarName } = useAuth();
   const [searchText, setSearchText] = useState("");
   const [filteringText, setFilteringText] = useState({});
 
-  let url = "http://localhost:3000/cars/search?";
+  let url = "http://localhost:3000/cars/search";
+
+  if (searchCarName) {
+    url += "?carName=" + searchCarName;
+  }
 
   if (searchText) {
-    url += "&carName=" + searchText;
+    url += `${searchCarName ? "&" : "?"}` + "location=" + searchText;
   }
 
-  let CarsArray = [];
+  const { filteredCars, isLoading, refetch } = getFillteredCarsBySearch(url);
 
-  for (let i = 0; i < 16; i++) {
-    CarsArray.push(i);
-  }
+  useEffect(() => {
+    refetch();
+  }, [searchCarName, searchText, isLoading]);
+
+  console.log(url);
 
   const filteringTextSet = (element, val) => {
     setFilteringText((prev) => {
@@ -31,7 +44,6 @@ const UsedCarFilter = () => {
     });
   };
 
-  console.log(url, filteringText);
   return (
     <div className="grid grig-cols-1 md:grid-cols-6 gap-5 md:p-10 p-5">
       <div className="md:col-span-2 bg-base-100 rounded-md md:p-10">
@@ -99,10 +111,29 @@ const UsedCarFilter = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-          {CarsArray.length >= 16 &&
-            CarsArray.map((car) => <CarCollection key={car} />)}
-        </div>
+        {isLoading && (
+          <div>
+            <Loader />
+          </div>
+        )}
+
+        {filteredCars && !isLoading && Array.isArray(filteredCars) ? (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+            {filteredCars.map((car) => (
+              <CarCollection key={car._id} car={car} />
+            ))}
+          </div>
+        ) : (
+          !isLoading && (
+            <div className="h-80">
+              <EmptyData
+                message={"No cars found !"}
+                reason={"Please search another car"}
+                go={"search"}
+              />
+            </div>
+          )
+        )}
       </div>
     </div>
   );

@@ -1,43 +1,30 @@
-const CarsImg = [
-  "https://i.ibb.co/PQXG7TY/Rectangle-178.png",
-  "https://i.ibb.co/wLWDpFL/recar3.png",
-];
+/** @format */
 
-const CarName = [
-  "Renault KWID",
-  "Maruti Baleno",
-  "Maruti Swift",
-  "Tata Altroz",
-];
+const CarCollection = ({ car }) => {
+  const { basicInfo, keySpecifications, images } = car;
 
-const Features = ["67,000 km", "Diesel", "1st owner"];
-const CarCollection = () => {
-  const price = (Math.random() * 5).toFixed(2);
+  const Features = Object.keys(keySpecifications).slice(0, 3);
   return (
-    <div className="card w-full bg-base-100 border p-2 overflow-hidden">
-      <figure>
-        <img
-          src={CarsImg[Math.round(Math.random() * 1)]}
-          alt="car"
-          className="h-40 rounded-lg"
-        />
+    <div className="card justify-between w-full bg-base-100 border p-2 overflow-hidden">
+      <figure className="h-40 rounded-lg object-cover">
+        <img src={images[0]} alt="car" />
       </figure>
       <div className="space-y-2">
-        <h2 className="title">{CarName[Math.round(Math.random() * 3)]}</h2>
-        <p className="text-gray-400">1.2 Revotron XZ Plus</p>
+        <h2 className="title">{basicInfo.carName}</h2>
+        <p className="text-gray-400">{basicInfo.locations}</p>
         <div className="center-itm flex-wrap gap-4">
           {Features.map((fc, idx) => (
             <p
               key={idx}
               className="text-xs bg-base-200 rounded-md p-1 text-gray-400"
             >
-              {fc}
+              {fc} : {keySpecifications[fc]}
             </p>
           ))}
         </div>
-        <h2 className="title">Rs {price < 1 ? `1.00` : price} Lakh*</h2>
-        <button className="btn-details">View All Offers</button>
+        <h2 className="title">Rs {basicInfo.price} Lakh*</h2>
       </div>
+      <button className="btn-details">View All Offers</button>
     </div>
   );
 };
