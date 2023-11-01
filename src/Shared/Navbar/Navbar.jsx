@@ -133,7 +133,7 @@ const Locations = [
 ];
 
 const Navbar = () => {
-  const { user, logOut } = useAuth();
+  const { user, logOut, setSearchCarName } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { currentUser } = useCurrentUser();
@@ -166,6 +166,7 @@ const Navbar = () => {
               <input
                 type="text"
                 id="default-search"
+                onChange={(e) => setSearchCarName(e.target.value)}
                 className=" block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50   "
                 placeholder="Search Cars or Brands eg. Swift, or Maruti."
                 required
