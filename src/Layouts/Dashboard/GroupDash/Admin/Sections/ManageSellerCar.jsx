@@ -61,7 +61,7 @@ const ManageSellerCar = () => {
 
   return (
     <>
-      <div className='mt-10 md:mt-[200px] w-full'>
+      <div className='w-full my-20'>
         <h1 className='text-2xl font-bold mb-5 flex gap-2 justify-center items-center'>
           <span className='text-green-600'>
             <LiaListAlt />

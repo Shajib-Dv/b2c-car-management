@@ -56,7 +56,7 @@ const ManageCar = () => {
 
   return (
     <>
-      <div className='my-10 md:mt-[200px] w-full flex flex-col gap-5'>
+      <div className='w-full my-20 flex flex-col gap-5'>
         <h1 className='text-2xl font-bold mb-5 flex gap-2 justify-center items-center'>
           {" "}
           <span className='text-green-600'>

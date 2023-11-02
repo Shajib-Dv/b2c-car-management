@@ -32,10 +32,10 @@ const AdminLinks = ({ sendReport, sendSupport }) => {
         <AiFillCar className="text-2xl text-green-600" /> Upcoming Car
       </ActiveDashLink>
 
-      <ActiveDashLink to="/dashboard/admin/used_car">
+      {/* <ActiveDashLink to="/dashboard/admin/used_car">
         <FaLuggageCart className="text-2xl text-green-600" />
         Used Car
-      </ActiveDashLink>
+      </ActiveDashLink> */}
 
       <ActiveDashLink to="/dashboard/admin/add_new_car">
         <MdOutlineCarRepair className="text-2xl text-green-600" /> Add New Car
