@@ -1,7 +1,60 @@
 /** @format */
 
+import { Link } from "react-router-dom";
+import useAuth from "../../../../hooks/useAuth";
+import getMyCart from "../../../../utils/getMyCart";
+import Swal from "sweetalert2";
+
 const CarCollection = ({ car }) => {
+  const { user } = useAuth();
+  const { refetch } = getMyCart();
   const { basicInfo, keySpecifications, images } = car;
+
+  const handleAddToCart = (id, price, carName, images, locations) => {
+    if (user && user.email) {
+      const orderItem = {
+        carId: id,
+        email: user.email,
+        price: price,
+        carName: carName,
+        images: images,
+        locations: locations,
+      };
+      fetch("http://localhost:3000/carts", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(orderItem),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            refetch();
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Car added on the cart.",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+    } else {
+      Swal.fire({
+        title: "Please login to order the car",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Login now!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login", { state: { from: location } });
+        }
+      });
+    }
+  };
 
   const Features = Object.keys(keySpecifications).slice(0, 3);
   return (
@@ -24,7 +77,25 @@ const CarCollection = ({ car }) => {
         </div>
         <h2 className="title">Rs {basicInfo.price} Lakh*</h2>
       </div>
-      <button className="btn-details">View All Offers</button>
+      <div className="flex justify-between items-center flex-wrap gap-2">
+        <Link to={`/new_car/details/${car?._id}`} className="btn-details">
+          show details
+        </Link>
+        <button
+          className="btn-details"
+          onClick={() =>
+            handleAddToCart(
+              car?._id,
+              car?.basicInfo?.price,
+              car?.basicInfo?.carName,
+              car?.images,
+              car?.basicInfo?.locations
+            )
+          }
+        >
+          add to cart
+        </button>
+      </div>
     </div>
   );
 };
