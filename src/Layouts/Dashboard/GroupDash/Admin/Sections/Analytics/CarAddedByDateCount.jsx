@@ -25,6 +25,8 @@ const CarAddedByDateCount = () => {
             });
     }, []);
 
+    console.log(data)
+
     return (
         <div className=''>
 

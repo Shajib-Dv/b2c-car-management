@@ -3,6 +3,7 @@ import CarAddedByDateCount from './Analytics/CarAddedByDateCount';
 import OldCarNewCar from './Analytics/OldCarNewCar';
 import CartOrders from './Analytics/CartOrders';
 import { TbDeviceAnalytics } from 'react-icons/tb';
+import Visit from './Analytics/Visit';
 
 
 const Analytics = () => {
@@ -13,6 +14,7 @@ const Analytics = () => {
           <TbDeviceAnalytics/>
         </span>
         Analytics</h1>
+        <Visit/>
       <div className='flex'>
         <OldCarNewCar />
         <CartOrders />

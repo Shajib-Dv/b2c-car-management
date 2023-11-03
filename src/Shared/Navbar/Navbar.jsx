@@ -9,6 +9,7 @@ import "./../css/custom.css";
 import useAuth from "../../hooks/useAuth";
 import useCurrentUser from "../../hooks/useCurrentUser";
 import getMyCart from "../../utils/getMyCart";
+import TestWork from "../../utils/TestWork";
 
 const NavLinks = ({ openOrClose }) => {
   return (
@@ -133,6 +134,7 @@ const Locations = [
 ];
 
 const Navbar = () => {
+  TestWork()
   const { user, logOut, setSearchCarName } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

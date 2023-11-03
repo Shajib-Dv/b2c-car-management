@@ -16,6 +16,7 @@ import AdminRoutes from "./AdminRoutes";
 import UserRoutes from "./UserRoutes";
 import UpcomingCar from "../Page/UsedCar/Sections/UpcomingCar";
 import CarDetails from "../Page/CarDetails/CarDetails";
+import TestWork from "../utils/TestWork";
 
 const router = createBrowserRouter([
   {
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/test",
+        element: <TestWork></TestWork>,
       },
     ],
   },
