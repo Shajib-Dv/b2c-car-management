@@ -20,7 +20,7 @@ const UsedCarFilter = () => {
   const [searchText, setSearchText] = useState("");
   const [filteringText, setFilteringText] = useState({});
 
-  let url = "http://localhost:3000/cars/search";
+  let url = "https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/cars/search";
 
   if (searchCarName) {
     url += "?carName=" + searchCarName;

@@ -63,7 +63,7 @@ const CartOrders = () => {
     //console.log(orderTotalItemCount);
     useEffect(() => {
 
-        fetch('http://localhost:3000/my_carts')
+        fetch('https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/my_carts')
             .then((response) => response.json())
             .then((data) => {
                 setCartData(data);

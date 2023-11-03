@@ -4,7 +4,7 @@ import useAuth from "../hooks/useAuth";
 const getSellCarByUser = () => {
   const { user } = useAuth();
 
-  let url = `http://localhost:3000/sell_car?email=${user.email}`;
+  let url = `https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/sell_car?email=${user.email}`;
 
   const {
     data: sellCarData = [],

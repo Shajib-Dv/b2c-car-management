@@ -71,7 +71,7 @@ const UpcomingCar = () => {
     };
     console.log(upcomingCarData);
 
-    const response = await fetch("http://localhost:3000/add_upcoming_car", {
+    const response = await fetch("https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/add_upcoming_car", {
       method: "POST",
       headers: {
         "content-type": "application/json",

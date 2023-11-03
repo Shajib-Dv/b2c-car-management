@@ -4,7 +4,7 @@ import useAuth from "../hooks/useAuth";
 const getMyCart = () => {
     const { user } = useAuth();
 
-    let url = `http://localhost:3000/my_carts?email=${user?.email}`;
+    let url = `https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/my_carts?email=${user?.email}`;
 
     const {
         data: myCart = [],

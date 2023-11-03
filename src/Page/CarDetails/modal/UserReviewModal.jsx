@@ -38,7 +38,7 @@ const UserReviewModal = ({
   const storeReviewInDb = async (data) => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:3000/reviews", {
+      const res = await fetch("https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/reviews", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -96,7 +96,7 @@ const UserReviewModal = ({
 
   const handleReviewUpdate = async (id) => {
     setLoading(true);
-    const res = await fetch(`http://localhost:3000/reviews/${id}`, {
+    const res = await fetch(`https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/reviews/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -125,7 +125,7 @@ const UserReviewModal = ({
       confirmButtonText: "Delete",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const res = await fetch(`http://localhost:3000/reviews/${id}`, {
+        const res = await fetch(`https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/reviews/${id}`, {
           method: "DELETE",
         });
 

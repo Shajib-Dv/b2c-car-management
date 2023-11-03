@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 
 const getOrderListAdmin = () => {
-    const url = "http://localhost:3000/order_list";
+    const url = "https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/order_list";
     const {
         data: orderList = [],
         isLoading: loading,

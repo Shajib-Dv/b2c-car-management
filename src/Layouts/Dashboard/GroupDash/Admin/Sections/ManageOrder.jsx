@@ -32,7 +32,7 @@ const ManageOrder = () => {
             return;
         }
 
-        fetch(`http://localhost:3000/order_list/${id}`, {
+        fetch(`https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/order_list/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

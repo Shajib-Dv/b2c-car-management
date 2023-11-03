@@ -4,7 +4,7 @@ import useAuth from "../hooks/useAuth";
 const getOrderList = () => {
     const { user } = useAuth();
 
-    let url = `http://localhost:3000/order_list?email=${user?.email}`;
+    let url = `https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/order_list?email=${user?.email}`;
 
     const {
         data: orderList = [],

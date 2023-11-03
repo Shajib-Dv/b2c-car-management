@@ -11,7 +11,7 @@ const getReviewByCarId = (carId) => {
     queryKey: ["review-car-name"],
     enabled: !!carId,
     queryFn: async () => {
-      const res = await fetch(`http://localhost:3000/reviews?carId=${carId}&email=${user?.email}`, {
+      const res = await fetch(`https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/reviews?carId=${carId}&email=${user?.email}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

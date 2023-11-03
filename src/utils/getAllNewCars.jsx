@@ -9,7 +9,7 @@ const getAllNewCars = (limit = null) => {
     queryKey: ["all_new_cars"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:3000/all_new_cars?limit=${limit}`
+        `https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/all_new_cars?limit=${limit}`
       );
       return res.json();
     },

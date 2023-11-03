@@ -13,7 +13,7 @@ const getCarsById = (id) => {
     queryFn: async () => {
       try {
         if (id) {
-          const res = await fetch(`http://localhost:3000/new_car?id=${id}`);
+          const res = await fetch(`https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/new_car?id=${id}`);
           return res.json();
         }
       } catch (error) {

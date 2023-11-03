@@ -28,7 +28,7 @@ const UserListing = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/sell_car/${id}`, {
+        fetch(`https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/sell_car/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

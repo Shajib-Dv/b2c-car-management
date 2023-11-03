@@ -44,7 +44,7 @@ const MyCart = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/delete_item/${id}`, {
+                fetch(`https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/delete_item/${id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())
@@ -67,7 +67,7 @@ const MyCart = () => {
         const modifyOrder = {orderInfo, order}
         //console.log(modifyOrder)
 
-        fetch("http://localhost:3000/order", {
+        fetch("https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/order", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -94,7 +94,7 @@ const MyCart = () => {
 
     const deleteDocuments = (ids) => {
         ids.forEach((id) => {
-          fetch(`http://localhost:3000/delete_item/${id}`, {
+          fetch(`https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/delete_item/${id}`, {
             method: "DELETE",
           })
             .then((res) => res.json())

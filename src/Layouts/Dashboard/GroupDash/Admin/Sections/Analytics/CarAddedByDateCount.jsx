@@ -12,7 +12,7 @@ const CarAddedByDateCount = () => {
     const [loading, setLoading] = useState(true);
     useEffect(() => {
 
-        fetch('http://localhost:3000/api/carCountByDate')
+        fetch('https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/api/carCountByDate')
             .then((response) => response.json())
             .then((data) => {
                 const reversedData = data.slice(0, 10);

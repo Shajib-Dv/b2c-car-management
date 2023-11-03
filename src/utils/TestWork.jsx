@@ -6,10 +6,10 @@ const TestWork = () => {
     const [visitCounts, setVisitCounts] = useState([]);
 
     const loadVisitCounts = async () => {
-        const response = await fetch('http://localhost:3000/increment-visit', { method: 'POST' });
+        const response = await fetch('https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/increment-visit', { method: 'POST' });
         const data = await response.json();
         if (data.success) {
-            const countsResponse = await fetch('http://localhost:3000/get-visit-counts');
+            const countsResponse = await fetch('https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/get-visit-counts');
             const countsData = await countsResponse.json();
             setVisitCounts(countsData);
         }

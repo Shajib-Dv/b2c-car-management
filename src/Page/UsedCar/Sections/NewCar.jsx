@@ -35,7 +35,7 @@ const NewCar = ({ limit, show_menu, show_loader = false }) => {
         images: images,
         locations: locations,
       };
-      fetch("http://localhost:3000/carts", {
+      fetch("https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/carts", {
         method: "POST",
         headers: {
           "content-type": "application/json",
