@@ -25,8 +25,6 @@ const CarAddedByDateCount = () => {
             });
     }, []);
 
-    console.log(data)
-
     return (
         <div className=''>
 
@@ -52,7 +50,7 @@ const CarAddedByDateCount = () => {
                     <XAxis dataKey="date" />
                     <YAxis />
                     <Tooltip />
-                    <Area type="monotone" dataKey="CarCount" stroke="#8884d8" fill="green" />
+                    <Area type="monotone" dataKey="carCount" stroke="#8884d8" fill="green" />
                 </AreaChart>
             </div>
         </div>
