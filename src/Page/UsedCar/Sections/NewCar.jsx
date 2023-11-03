@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState } from "react";
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -73,14 +75,14 @@ const NewCar = ({ limit, show_menu, show_loader = false }) => {
     <>
       <div>
         {show_menu && (
-          <div className='flex gap-7 items-center px-10 mb-8'>
-            <h1 className='title'>New Car</h1>
-            <Link to='/new_car'>
-              <div className='flex gap-2'>
-                <h1 className='text-sm mt-1 font-bold text-[#00A541]'>
+          <div className="flex gap-7 items-center px-10 mb-8">
+            <h1 className="title">New Car</h1>
+            <Link to="/new_car">
+              <div className="flex gap-2">
+                <h1 className="text-sm mt-1 font-bold text-[#00A541]">
                   View All
                 </h1>
-                <span className='text-[#00A541] text-2xl '>
+                <span className="text-[#00A541] text-2xl ">
                   <BsFillArrowRightSquareFill></BsFillArrowRightSquareFill>
                 </span>
               </div>
@@ -89,33 +91,33 @@ const NewCar = ({ limit, show_menu, show_loader = false }) => {
         )}
 
         {allCars && Array.isArray(allCars) && allCars.length > 0 ? (
-          <div className='grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6 px-10'>
+          <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6 px-10">
             {allCars?.map((car) => (
               <div
-                className='shadow border p-3 rounded-lg flex flex-col justify-between group'
+                className="shadow border p-3 rounded-lg flex flex-col justify-between group"
                 key={car?._id}
               >
-                <div className='h-40 w-full overflow-hidden rounded-md'>
+                <div className="h-40 w-full overflow-hidden rounded-md">
                   <img
                     src={randomImg(car?.images)}
-                    alt='car'
-                    className='w-full h-full object-cover group-hover:scale-105 transition-all duration-700'
+                    alt="car"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
                   />
                 </div>
                 <div>
-                  <h1 className='font-bold'>
+                  <h1 className="font-bold">
                     {car?.basicInfo?.carName || "unknown"}
                   </h1>
-                  <p className=' mb-4'>Rs {car?.basicInfo?.price} Lakh*</p>
-                  <div className='flex justify-between items-center flex-wrap gap-2'>
+                  <p className=" mb-4">Rs {car?.basicInfo?.price} Lakh*</p>
+                  <div className="flex justify-between items-center flex-wrap gap-2">
                     <Link
                       to={`/new_car/details/${car?._id}`}
-                      className='btn-details'
+                      className="btn-details"
                     >
                       show details
                     </Link>
                     <button
-                      className='btn-details'
+                      className="btn-details"
                       onClick={() =>
                         handleAddToCart(
                           car?._id,
@@ -134,7 +136,8 @@ const NewCar = ({ limit, show_menu, show_loader = false }) => {
             ))}
           </div>
         ) : (
-          show_loader && (
+          show_loader &&
+          !isLoading && (
             <EmptyData message={"No cars found"} go={"back to home"} to={"/"} />
           )
         )}
