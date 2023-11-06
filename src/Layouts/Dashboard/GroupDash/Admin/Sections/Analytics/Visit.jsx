@@ -11,7 +11,7 @@ const Visit = () => {
         fetch('https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/get-visit-counts')
             .then((response) => response.json())
             .then((data) => {
-                const reversedData = data.slice(0, 10);
+                const reversedData = data.slice(-10);
                 setData(reversedData);
                 setLoading(false);
             })
