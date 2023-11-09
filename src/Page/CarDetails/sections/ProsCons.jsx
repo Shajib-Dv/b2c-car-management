@@ -2,10 +2,10 @@ import React from 'react';
 import { AiOutlineLike, AiOutlineDislike } from 'react-icons/ai';
 import { BsDot } from 'react-icons/bs';
 
-const ProsCons = () => {
+const ProsCons = ({carName}) => {
     return (
         <div className='px-5 py-10 md:px-10 rounded-lg shadow border'>
-            <h1 className='title'>Pros & Cons of Maruti Baleno</h1>
+            <h1 className='title'>Pros & Cons of {carName}</h1>
             <div className='flex flex-col md:flex md:flex-row mt-10 gap-8'>
                 <div className='bg-[#ECF9F1] p-4 rounded-md md:w-6/12 h-96'>
                     <h1 className='font-bold '>Things We Like</h1>

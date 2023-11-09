@@ -114,7 +114,7 @@ const UserSellCar = () => {
         };
         console.log(storableData)
 
-        const response = await fetch("http://localhost:3000/sell_car", {
+        const response = await fetch("https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/sell_car", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

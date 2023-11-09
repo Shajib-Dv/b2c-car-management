@@ -14,7 +14,7 @@ const getCarsByUser = () => {
     queryFn: async () => {
       if (user?.email) {
         const res = await fetch(
-          `http://localhost:3000/new_car?email=${user?.email}`
+          `https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/new_car?email=${user?.email}`
         );
         return res.json();
       }

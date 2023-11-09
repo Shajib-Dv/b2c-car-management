@@ -29,7 +29,7 @@ const ManageCar = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/add_new_car/${id}`, {
+        fetch(`https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/add_new_car/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -56,7 +56,7 @@ const ManageCar = () => {
 
   return (
     <>
-      <div className='my-20 w-full'>
+      <div className='w-full my-20 flex flex-col gap-5'>
         <h1 className='text-2xl font-bold mb-5 flex gap-2 justify-center items-center'>
           {" "}
           <span className='text-green-600'>

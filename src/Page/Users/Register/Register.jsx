@@ -37,7 +37,7 @@ const Register = () => {
   };
 
   const storeUserInDB = async (userInfo) => {
-    const res = await fetch(`http://localhost:3000/user`, {
+    const res = await fetch(`https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/user`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(userInfo),

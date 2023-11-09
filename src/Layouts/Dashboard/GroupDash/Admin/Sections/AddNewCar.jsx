@@ -167,7 +167,7 @@ const AddNewCar = () => {
   //                                         additional,
 
   //                                       };
-  //                                       fetch('http://localhost:3000/add_new_car', {
+  //                                       fetch('https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/add_new_car', {
   //                                         method: 'POST',
   //                                         headers: {
   //                                           'content-type': 'application/json'
@@ -279,7 +279,7 @@ const AddNewCar = () => {
       date: new Date(),
     };
 
-    const response = await fetch("http://localhost:3000/add_new_car", {
+    const response = await fetch("https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/add_new_car", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -302,13 +302,13 @@ const AddNewCar = () => {
 
   return (
     <>
-      <h1 className="pt-10 font-bold text-xl text-[#004225] font-sans flex items-center gap-2 justify-center">
+      <h1 className="w-full my-20 font-bold text-xl text-[#004225] font-sans flex items-center gap-2 justify-center">
         <span>
           <AiOutlineFileAdd />
         </span>
         Add New Car
       </h1>
-      <div className="md:-mt-28 w-full h-full center-itm justify-center">
+      <div className="md:-mt-48 w-full h-full center-itm justify-center">
         <div className="w-full">
           <form
             onSubmit={handleSubmit}

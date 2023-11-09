@@ -1,4 +1,4 @@
-const EmiBanner = () => {
+const EmiBanner = ({carName}) => {
   return (
     <div className="rounded-md shadow-md border-x-2 p-4 space-y-3 w-full">
       <h1 className="title text-gray-400">EMI Starts</h1>
@@ -6,7 +6,7 @@ const EmiBanner = () => {
       <p>Interest calculated at 9.8% for 60 months</p>
       <button className="btn-act">View Finance Offers</button>
       <div>
-        <h2 className="title">Maruti Baleno Video</h2>
+        <h2 className="title">{carName} Video</h2>
         <iframe
           className="rounded-lg"
           width="100%"

@@ -1,3 +1,5 @@
+/** @format */
+
 import { createContext, useEffect, useState } from "react";
 import {
   RecaptchaVerifier,
@@ -17,7 +19,7 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-
+  const [searchCarName, setSearchCarName] = useState("");
   const [loading, setLoading] = useState(true);
 
   // create reCaptcha
@@ -61,6 +63,8 @@ const AuthProvider = ({ children }) => {
     updateUserProfile,
     googleSignUp,
     googleSignIn,
+    searchCarName,
+    setSearchCarName,
   };
 
   // private route

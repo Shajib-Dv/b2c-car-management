@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 const getUpComingCarData = () => {
-  let url = `http://localhost:3000/add_upcoming_car`;
+  let url = `https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/add_upcoming_car`;
 
   const {
     data: carData = [],

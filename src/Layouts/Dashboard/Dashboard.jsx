@@ -12,6 +12,7 @@ import UpdateProfileModal from "./Modal/UpdateProfileModal";
 import SendMsgModal from "./Modal/SendMsgModal";
 import WelcomeUser from "./WelcomeUser/WelcomeUser";
 import useCurrentUser from "../../hooks/useCurrentUser";
+import TestWork from "../../utils/TestWork";
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef(null);
@@ -21,6 +22,8 @@ const Dashboard = () => {
   const { user } = useAuth();
   const { currentUser, refetch } = useCurrentUser();
   const { role } = currentUser;
+
+  TestWork()
 
   const openModal = (action) => {
     if (action === "report") {

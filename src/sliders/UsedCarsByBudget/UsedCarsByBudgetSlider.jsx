@@ -1,3 +1,5 @@
+/** @format */
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -20,10 +22,10 @@ const carsInfo = [
     price: 12,
     icon: [round, flash, modem, ranger, seat],
     features: [
-      "Lorem Ipsum is simply dummy",
-      "Lorem Ipsum is simply dummy",
-      "Lorem Ipsum is simply dummy",
-      "Lorem Ipsum is simply dummy",
+      "Features for this installation on way",
+      "Features for this installation on way",
+      "Features for this installation on way",
+      "Features for this installation on way",
     ],
   },
   {
@@ -33,10 +35,10 @@ const carsInfo = [
     price: 127,
     icon: [round, flash, modem, ranger, seat],
     features: [
-      "Lorem Ipsum is simply dummy",
-      "Lorem Ipsum is simply dummy",
-      "Lorem Ipsum is simply dummy",
-      "Lorem Ipsum is simply dummy",
+      "Features for this installation on way",
+      "Features for this installation on way",
+      "Features for this installation on way",
+      "Features for this installation on way",
     ],
   },
   {
@@ -46,10 +48,10 @@ const carsInfo = [
     price: 17,
     icon: [round, flash, modem, ranger, seat],
     features: [
-      "Lorem Ipsum is simply dummy",
-      "Lorem Ipsum is simply dummy",
-      "Lorem Ipsum is simply dummy",
-      "Lorem Ipsum is simply dummy",
+      "Features for this installation on way",
+      "Features for this installation on way",
+      "Features for this installation on way",
+      "Features for this installation on way",
     ],
   },
   {
@@ -59,10 +61,10 @@ const carsInfo = [
     price: 12,
     icon: [round, flash, modem, ranger, seat],
     features: [
-      "Lorem Ipsum is simply dummy",
-      "Lorem Ipsum is simply dummy",
-      "Lorem Ipsum is simply dummy",
-      "Lorem Ipsum is simply dummy",
+      "Features for this installation on way",
+      "Features for this installation on way",
+      "Features for this installation on way",
+      "Features for this installation on way",
     ],
   },
   {
@@ -72,10 +74,10 @@ const carsInfo = [
     price: 17,
     icon: [round, flash, modem, ranger, seat],
     features: [
-      "Lorem Ipsum is simply dummy",
-      "Lorem Ipsum is simply dummy",
-      "Lorem Ipsum is simply dummy",
-      "Lorem Ipsum is simply dummy",
+      "Features for this installation on way",
+      "Features for this installation on way",
+      "Features for this installation on way",
+      "Features for this installation on way",
     ],
   },
   {
@@ -85,10 +87,10 @@ const carsInfo = [
     price: 127,
     icon: [round, flash, modem, ranger, seat],
     features: [
-      "Lorem Ipsum is simply dummy",
-      "Lorem Ipsum is simply dummy",
-      "Lorem Ipsum is simply dummy",
-      "Lorem Ipsum is simply dummy",
+      "Features for this installation on way",
+      "Features for this installation on way",
+      "Features for this installation on way",
+      "Features for this installation on way",
     ],
   },
 ];
@@ -111,7 +113,7 @@ const UsedCarsByBudgetSlider = () => {
             spaceBetween: 30,
           },
           1024: {
-            slidesPerView: 5,
+            slidesPerView: 3,
             spaceBetween: 20,
           },
         }}
@@ -123,7 +125,11 @@ const UsedCarsByBudgetSlider = () => {
             key={car.id}
             className="md:ml-2 bg-base-100 border rounded-md p-4"
           >
-            <img src={car.img} alt="car" className="w-full md:h-64 bg-cover" />
+            <img
+              src={car.img}
+              alt="car"
+              className="w-full md:h-64 object-cover rounded-md"
+            />
             <div className="text-black">
               <div className="flex items-center justify-between my-4">
                 {car?.icon?.map((icon, idx) => (
@@ -135,7 +141,7 @@ const UsedCarsByBudgetSlider = () => {
                 Lorem ipsum dolor sit amet, consectetur adipisicing
               </p>
 
-              <ul className="used-ul text-xs list-none flex flex-wrap">
+              <ul className="used-ul text-xs list-none flex gap-4 flex-wrap">
                 {car?.features?.map((li, idx) => (
                   <li key={idx}>{li}</li>
                 ))}

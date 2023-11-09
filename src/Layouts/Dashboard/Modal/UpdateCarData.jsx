@@ -122,7 +122,7 @@ const UpdateCarData = ({ car, modal, refetch, close }) => {
     };
     console.log(storableData)
 
-    fetch(`http://localhost:3000/add_new_car/${_id}`, {
+    fetch(`https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/add_new_car/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

@@ -8,7 +8,7 @@ const useCurrentUser = () => {
 
   // useEffect(() => {
   //   if (user?.email) {
-  //     fetch(`http://localhost:3000/user/${user?.email}`)
+  //     fetch(`https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/user/${user?.email}`)
   //       .then((res) => res.json())
   //       .then((data) => {
   //         if (user) {
@@ -28,7 +28,7 @@ const useCurrentUser = () => {
     enabled: !!user?.email,
     queryFn: async () => {
       if (user?.email) {
-        const res = await fetch(`http://localhost:3000/user/${user?.email}`);
+        const res = await fetch(`https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/user/${user?.email}`);
         return res.json();
       }
     },

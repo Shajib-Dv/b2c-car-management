@@ -18,7 +18,7 @@ const CarCoverSlider = ({images}) => {
       >
         {images &&
           images.map((img,idx) => (
-            <div key={idx}>
+            <div key={idx} className=" -z-10">
               <img src={img} alt="image" className="w-full h-full object-cover"/>
             </div>
           ))}

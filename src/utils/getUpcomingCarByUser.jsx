@@ -13,7 +13,7 @@ const getUpcomingCarByUser = () => {
     enabled: !!user?.email,
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:3000/add_upcoming_car?email=${user?.email}`
+        `https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/add_upcoming_car?email=${user?.email}`
       );
       return res.json();
     },

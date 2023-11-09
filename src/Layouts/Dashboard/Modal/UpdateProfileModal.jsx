@@ -57,7 +57,7 @@ const UpdateProfileModal = ({ open, close, currentUser, refetch }, ref) => {
 
   const updateDbUser = (userInfo) => {
     setLoader(true);
-    fetch(`http://localhost:3000/user/${user?.email}`, {
+    fetch(`https://b2c-car-management-server-p6jwvedmy-shajib-dv.vercel.app/user/${user?.email}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(userInfo),

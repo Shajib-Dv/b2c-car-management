@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import "./custom.css";
 import { BiSearch } from "react-icons/bi";
@@ -6,7 +8,7 @@ const Cover = () => {
   return (
     <div className="shadow-inner bg-[#FAFAFA] lg:px-20 lg:py-10 p-5">
       <div className="lg:flex justify-between items-center mb-5 lg:mb-0">
-        <div className="mb-5 lg:mb-0">
+        <div className="mb-5 lg:mb-0 md:flex-1">
           <h1 className="text-5xl font-bold mb-5">
             Say hello to your next <br /> awesome vehicle
           </h1>
@@ -14,7 +16,7 @@ const Cover = () => {
             Featuring Used, Wholesale and Salvage <br /> Cars, Trucks & SUVs for
             Sale
           </p>
-          <div className="flex gap-5 mt-5">
+          <div className="flex gap-5 my-5">
             <button className="border bg-[#00A541] text-white font-medium px-7 py-2 rounded">
               Used Car
             </button>
@@ -23,13 +25,14 @@ const Cover = () => {
             </button>
           </div>
         </div>
-        <div className="">
-          <div className="bg-[#FF7D05] rounded-lg ">
-            <img
-              className=""
-              src="https://cdn.discordapp.com/attachments/1094651413235253289/1143837253987209297/image_25.png"
-              alt=""
-            />
+        <div className="md:flex-1">
+          <div className="bg-[#FF7D05] rounded-lg md:h-96">
+            <div className="md:-ml-10">
+              <img
+                src="https://cdn.discordapp.com/attachments/1094651413235253289/1143837253987209297/image_25.png"
+                alt="car"
+              />
+            </div>
           </div>
         </div>
       </div>
